@@ -13,7 +13,7 @@ def reproject_coords(points):
     """
     # поиск центральной точки
     for point in points:
-        if point.type=='Central':
+        if point.type == 'Central':
             central_point = point
             break
 
@@ -32,14 +32,14 @@ def nodes(extent):
     :return: список с кортежами координат xy каждого узла в условной СК
     """
     result = list()
-    result.append((-extent/2, extent/2))
-    result.append((0, extent/2))
-    result.append((extent/2, extent/2))
-    result.append((extent/2, 0))
-    result.append((extent/2, -extent/2))
-    result.append((0, -extent/2))
-    result.append((-extent/2, -extent/2))
-    result.append((-extent/2, 0))
+    result.append((-extent / 2, extent / 2))
+    result.append((0, extent / 2))
+    result.append((extent / 2, extent / 2))
+    result.append((extent / 2, 0))
+    result.append((extent / 2, -extent / 2))
+    result.append((0, -extent / 2))
+    result.append((-extent / 2, -extent / 2))
+    result.append((-extent / 2, 0))
     return result
 
 
@@ -133,13 +133,13 @@ def calc_correlation_array(signal1, signal2, window_size,
     # выходной массив
     result = np.empty((0, 0), dtype=np.float32)
     # количество перестановок на первом сигнале
-    up_windows_count = signal1.shape[0] // window_size
+    up_windows_count = signal1.shape[0] - 1
 
     # пооконный расчет
     for i in range(up_windows_count):
         # получение выборки первого сигнала
-        left_edge_signal1 = i * window_size
-        right_edge_signal1 = (i + 1) * window_size
+        left_edge_signal1 = i
+        right_edge_signal1 = i + window_size
         window1 = signal1[left_edge_signal1:right_edge_signal1]
         # передвижка окон по второму сигналу
         for j in range(d_step_min, d_step_max + 1, 1):
@@ -184,7 +184,8 @@ def correlation_filtration(correlation_data, min_correlation, moment_interval):
     calc_correlation_array, но уже отфильтрованный
     """
     # сортировка входного массива по убыванию
-    correlation_sort = correlation_data[correlation_data[:, 0].argsort()[::-1]]
+    correlation_sort = correlation_data[correlation_data[:, 2].argsort()[::-1]]
+
     # выборка из отсортированного массива тех элементов, где корреляция
     # больше минимального заданного порога
     selection_correlation = correlation_sort[(correlation_sort[:,
@@ -211,13 +212,20 @@ def correlation_filtration(correlation_data, min_correlation, moment_interval):
     for correlation in selection_correlation:
         # получение номера левого отсчета сигнала из выборки
         moment1 = correlation[0]
+        is_correct = True
         for res in result:
-            # получение номера левого отсчета сигнала из выходного массива
+            # получение номера левого отсчета сигнала из результативной выборки
             moment2 = res[0]
-            # проверка на разность времени в отсчетах
-            if abs(moment2 - moment1) >= moment_interval:
-                result = np.append(result, correlation)
-                result_count = result.shape[0] // 3
-                result = np.reshape(result, (result_count, 3))
-                break
+            if abs(moment2 - moment1) < moment_interval:
+                is_correct = is_correct and False
+            else:
+                is_correct = is_correct and True
+
+        if is_correct is True:
+            # добавление в результативную выборку, если условие соблюдено,
+            # выход из вложенного цикла и переход к следующему элементу
+            result = np.append(result, correlation)
+            result_count = result.shape[0] // 3
+            result = np.reshape(result, (result_count, 3))
+
     return result

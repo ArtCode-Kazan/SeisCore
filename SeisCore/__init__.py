@@ -1,4 +1,5 @@
 from SeisCore.GeneralCalcFunctions.NormingSignal import norming_signal
+from SeisCore.GeneralCalcFunctions.CheckingName import checking_name
 
 from SeisCore.MSICore.CalcFunctions.AverSpectrum import average_spectrum
 from SeisCore.MSICore.CalcFunctions.BandPassFilter import band_pass_filter
