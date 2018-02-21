@@ -24,23 +24,43 @@ def reproject_coords(points):
     return points
 
 
-def nodes(extent):
+def nodes(radius,count_nodes):
     """
-    Функция генерации условных координат узлов для расчета максимального и
+    Функция генерации условных координат узлов по окружности для расчета
+    максимального и
     минимального времи задержки
-    :param extent: размер стороны квадрата в метрах
-    :return: список с кортежами координат xy каждого узла в условной СК
+    :param radius: радиус окружности
+    :param count_nodes: количесвто узлов на окружности
+    :return: numpy-массив с координатами узлов
     """
-    result = list()
-    result.append((-extent / 2, extent / 2))
-    result.append((0, extent / 2))
-    result.append((extent / 2, extent / 2))
-    result.append((extent / 2, 0))
-    result.append((extent / 2, -extent / 2))
-    result.append((0, -extent / 2))
-    result.append((-extent / 2, -extent / 2))
-    result.append((-extent / 2, 0))
+    result = np.empty(shape=(count_nodes,2), dtype=float)
+    alpha_deg=np.linspace(0,360,count_nodes)
+    alpha_rad=np.deg2rad(alpha_deg)
+
+    x = radius * np.cos(alpha_rad)
+    y = radius * np.sin(alpha_rad)
+    result[:, 0]=x
+    result[:, 1]=y
     return result
+
+
+# def nodes(extent):
+#     """
+#     Функция генерации условных координат узлов для расчета максимального и
+#     минимального времи задержки
+#     :param extent: размер стороны квадрата в метрах
+#     :return: список с кортежами координат xy каждого узла в условной СК
+#     """
+#     result = list()
+#     result.append((-extent / 2, extent / 2))
+#     result.append((0, extent / 2))
+#     result.append((extent / 2, extent / 2))
+#     result.append((extent / 2, 0))
+#     result.append((extent / 2, -extent / 2))
+#     result.append((0, -extent / 2))
+#     result.append((-extent / 2, -extent / 2))
+#     result.append((-extent / 2, 0))
+#     return result
 
 
 def calc_time(x1, y1, z1, x2, y2, z2, velocity):
@@ -60,12 +80,12 @@ def calc_time(x1, y1, z1, x2, y2, z2, velocity):
     return result
 
 
-def calc_time_delay(points, extent, frequency, velocity, max_depth):
+def calc_time_delay(points, radius, frequency, velocity, max_depth):
     """
     Функция для расчета максимального и минимального времи задержки между
     парами датчиков в количестве отсчетов (НЕ В СЕКУНДАХ, А В ОТСЧЕТАХ!)
     :param points: список экземпляров класса GRPPoint (SeisPars)
-    :param extent: длина стороны квадрата анализа событий метры
+    :param radius: радиус окружности для анализа событий метры
     :param frequency: частота дискретизации Гц
     :param velocity: скорость в среде в м/с
     :param max_depth: максимальная глубина анализа событий, метры
@@ -75,7 +95,7 @@ def calc_time_delay(points, extent, frequency, velocity, max_depth):
     # выходной список
     result = list()
     # генерация координат узлов
-    nodes_data = nodes(extent)
+    nodes_data = nodes(radius=radius,count_nodes=1000)
     # i и j используются только для того, чтобы избежать попадания в выходной
     # список пар датчиков (1, 2) и (2,1). Добавится только один из них - (1, 2)
     i = 0
