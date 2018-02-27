@@ -1,8 +1,8 @@
-
 """
 Модуль для проведения операции нормировки сигнала
 
 """
+
 
 def norming_signal(signal, sensor_coefficient, registrator_coefficient):
     """

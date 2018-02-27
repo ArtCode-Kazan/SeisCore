@@ -1,41 +1,20 @@
-from SeisCore.HydroFracCore.CalcFunctions.MomentsSelection import nodes, calc_time
+import numpy as np
 
+def reproject_coords(points_coords, x_central=0, y_central=0):
+    """
+    Функция перевода координат в условную СК
+    :param points_coords: двухмерный массив numpy с координатами датчиков
+    :param x_central: координата x центральной точки
+    :param y_central: координата y центральной точки
+    :return: список экземпляров класса GRPPoint c пересчитанными координатами
+    """
+    # пересчет координат
+    result=np.empty(shape=(points_coords.shape[0],2),dtype=float)
+    for i in range(points_coords.shape[0]):
+      result[i,0]=points_coords[i,0] - x_central
+      result[i,1]=points_coords[i,0] - y_central
+    return result
 
-x1 = 0
-y1 = 0
-x2 = -62.3100000005215
-y2 = 45.0949999997392
-
-extent = 400
-velocity = 4706.85579196217
-frequency = 1000
-
-nodes_coords=nodes(extent=extent)
-for el in nodes_coords:
-    print(el)
-
-min_delta_moments = 99999999
-max_delta_moments = -9999999
-for x_node, y_node in nodes_coords:
-    time_a = calc_time(x1=x1,
-                       y1=y1,
-                       z1=0,
-                       x2=x_node,
-                       y2=y_node,
-                       z2=2000,
-                       velocity=velocity)
-
-    time_b = calc_time(x1=x2,
-                       y1=y2,
-                       z1=0,
-                       x2=x_node,
-                       y2=y_node,
-                       z2=2000,
-                       velocity=velocity)
-    delta_moments = int(round(frequency * (time_b - time_a)))
-    if delta_moments < min_delta_moments:
-        min_delta_moments = delta_moments
-    if delta_moments > max_delta_moments:
-        max_delta_moments = delta_moments
-
-print(min_delta_moments, max_delta_moments)
+a=np.array([[0,0],[10,10],[0,10]])
+b=reproject_coords(a, x_central=10, y_central=10)
+print(b)
