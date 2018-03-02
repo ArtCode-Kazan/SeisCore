@@ -18,7 +18,7 @@ def reproject_coords(points_coords, x_central=0, y_central=0):
     result = np.empty(shape=(points_coords.shape[0], 2), dtype=float)
     for i in range(points_coords.shape[0]):
         result[i, 0] = points_coords[i, 0] - x_central
-        result[i, 1] = points_coords[i, 0] - y_central
+        result[i, 1] = points_coords[i, 1] - y_central
     return result
 
 
@@ -222,7 +222,7 @@ def calc_max_angles(points_numbers,points_coords, radius, max_depth):
 
 
 def pairs_points_filtration(points_numbers, points_coords, radius, frequency, velocity, max_depth,
-                            max_moments_delay, max_angle):
+                            max_moments_delay, max_angle, export_to_folder=None):
     """
     Функция для фильтрации пар датчиков в зависимости от максимально допустимой временной задержки (в отсчетах) и
     максимально допустимого угла
@@ -234,6 +234,7 @@ def pairs_points_filtration(points_numbers, points_coords, radius, frequency, ve
     :param max_depth: максимальная глубина в м
     :param max_moments_delay: максимальная задержка в отсчетах
     :param max_angle: максимальный угол в градусах
+    :param export_to_folder: папка для экспорта отобранных пар в файл. По умолчанию None, то есть экспорта нет
     :return:
     """
     # расчет пределов задержек в моментах
@@ -263,6 +264,17 @@ def pairs_points_filtration(points_numbers, points_coords, radius, frequency, ve
         if alpha <= max_angle:
             if points_pair in filtration_order_1:
                 filtration_order_2.append(points_pair)
+
+    # экспорт результата в файл
+    if export_to_folder is not None:
+        import os
+        if os.path.exists(export_to_folder):
+            file_path=os.path.join(export_to_folder,'SelectionPairs.dat')
+            f = open(file_path,'w')
+            for point_a, point_b in filtration_order_2:
+                line='\t'.join([str(int(point_a)), str(int(point_b))])+'\n'
+                f.write(line)
+            f.close()
     return filtration_order_2
 
 

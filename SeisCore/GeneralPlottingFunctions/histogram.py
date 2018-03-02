@@ -54,3 +54,5 @@ def histogram(data,bin_size,histo_label):
     # отображение гистограммы
     plt.show()
 
+
+
