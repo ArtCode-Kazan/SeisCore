@@ -106,7 +106,7 @@ def calc_angle(x_sensor1, y_sensor1, z_sensor1, x, y, z, x_sensor2, y_sensor2,
     return alpha_deg
 
 
-def calc_time_delay(points_numbers,points_coords, radius, frequency, velocity, max_depth):
+def calc_time_delay(points_numbers,points_coords, radius, frequency, velocity, max_depth, export_to_folder=None):
     """
     Функция для расчета максимального и минимального времени задержки между
     парами датчиков в количестве отсчетов (НЕ В СЕКУНДАХ, А В ОТСЧЕТАХ!)
@@ -116,6 +116,7 @@ def calc_time_delay(points_numbers,points_coords, radius, frequency, velocity, m
     :param frequency: частота дискретизации Гц
     :param velocity: скорость в среде в м/с
     :param max_depth: максимальная глубина анализа событий, метры
+    :param export_to_folder: папка для экспорта в файл (по умолчанию - None  - эспорт не производиться)
     :return: список типа [[[датчик 1, датчик 2 (реальный номер)],
     [минимальная задержка в отсчетах, максимальная задержка в отсчетах]], ... ]
     """
@@ -160,6 +161,20 @@ def calc_time_delay(points_numbers,points_coords, radius, frequency, velocity, m
                 result.append(
                     [(points_numbers[i-1], points_numbers[j-1]),
                      (min_delta_moments, max_delta_moments)])
+
+    # Экспорт данных в файл
+    import os
+    if export_to_folder is not None and os.path.exists(export_to_folder):
+        file_path=os.path.join(export_to_folder,'moments_delays.dat')
+        file=open(file_path,'w')
+        for pair,delays in result:
+            point_a_number=str(int(pair[0]))
+            point_b_number=str(int(pair[1]))
+            min_moment_delay=str(int(delays[0]))
+            max_moment_delay=str(int(delays[1]))
+            line='\t'.join([point_a_number,point_b_number, min_moment_delay,max_moment_delay])+'\n'
+            file.write(line)
+        file.close()
     return result
 
 
