@@ -106,7 +106,8 @@ def calc_angle(x_sensor1, y_sensor1, z_sensor1, x, y, z, x_sensor2, y_sensor2,
     return alpha_deg
 
 
-def calc_time_delay(points_numbers,points_coords, radius, frequency, velocity, max_depth, export_to_folder=None):
+def calc_time_delay(points_numbers,points_coords, radius, frequency, velocity,
+                    max_depth, export_to_folder=None):
     """
     Функция для расчета максимального и минимального времени задержки между
     парами датчиков в количестве отсчетов (НЕ В СЕКУНДАХ, А В ОТСЧЕТАХ!)
@@ -116,7 +117,8 @@ def calc_time_delay(points_numbers,points_coords, radius, frequency, velocity, m
     :param frequency: частота дискретизации Гц
     :param velocity: скорость в среде в м/с
     :param max_depth: максимальная глубина анализа событий, метры
-    :param export_to_folder: папка для экспорта в файл (по умолчанию - None  - эспорт не производиться)
+    :param export_to_folder: папка для экспорта в файл
+    (по умолчанию - None  - экспорт не производиться)
     :return: список типа [[[датчик 1, датчик 2 (реальный номер)],
     [минимальная задержка в отсчетах, максимальная задержка в отсчетах]], ... ]
     """
@@ -167,6 +169,14 @@ def calc_time_delay(points_numbers,points_coords, radius, frequency, velocity, m
     if export_to_folder is not None and os.path.exists(export_to_folder):
         file_path=os.path.join(export_to_folder,'moments_delays.dat')
         file=open(file_path,'w')
+        s='[frequency]={}\n'.format(frequency)
+        file.write(s)
+        s='[radius]={}\n'.format(radius)
+        file.write(s)
+        s='[velocity]={}\n'.format(velocity)
+        file.write(s)
+        s='[max_depth]={}\n'.format(max_depth)
+        file.write(s)
         for pair,delays in result:
             point_a_number=str(int(pair[0]))
             point_b_number=str(int(pair[1]))
@@ -221,11 +231,12 @@ def calc_max_angles(points_numbers,points_coords, radius, max_depth):
     return result
 
 
-def pairs_points_filtration(points_numbers, points_coords, radius, frequency, velocity, max_depth,
-                            max_moments_delay, max_angle, export_to_folder=None):
+def pairs_points_filtration(points_numbers, points_coords, radius, frequency,
+                            velocity, max_depth,max_moments_delay, max_angle,
+                            export_to_folder=None):
     """
-    Функция для фильтрации пар датчиков в зависимости от максимально допустимой временной задержки (в отсчетах) и
-    максимально допустимого угла
+    Функция для фильтрации пар датчиков в зависимости от максимально
+    допустимой временной задержки (в отсчетах) и максимально допустимого угла
     :param points_numbers: номера точек
     :param points_coords: перепроицированные координаты точек в м
     :param radius: радиус окружности для генерации узлов в м
@@ -234,7 +245,8 @@ def pairs_points_filtration(points_numbers, points_coords, radius, frequency, ve
     :param max_depth: максимальная глубина в м
     :param max_moments_delay: максимальная задержка в отсчетах
     :param max_angle: максимальный угол в градусах
-    :param export_to_folder: папка для экспорта отобранных пар в файл. По умолчанию None, то есть экспорта нет
+    :param export_to_folder: папка для экспорта отобранных пар в файл.
+    По умолчанию None, то есть экспорта нет
     :return:
     """
     # расчет пределов задержек в моментах
@@ -251,7 +263,7 @@ def pairs_points_filtration(points_numbers, points_coords, radius, frequency, ve
                              radius=radius,
                              max_depth=max_depth)
 
-    # фильтрация списка пределов задержек
+    # фильтрация списка пределов задержек по порогу максимальной задержки
     filtration_order_1 = list()
     for points_pair, moment_delay_limit in moments_delay:
         moment_range = moment_delay_limit[1] - moment_delay_limit[0]
@@ -271,8 +283,12 @@ def pairs_points_filtration(points_numbers, points_coords, radius, frequency, ve
         if os.path.exists(export_to_folder):
             file_path=os.path.join(export_to_folder,'SelectionPairs.dat')
             f = open(file_path,'w')
+            s = '[max_moments_delay]={}\n'.format(max_moments_delay)
+            f.write(s)
+            s = '[max_angle]={}\n'.format(max_angle)
+            f.write(s)
             for point_a, point_b in filtration_order_2:
-                line='\t'.join([str(int(point_a)), str(int(point_b))])+'\n'
+                line = '\t'.join([str(int(point_a)), str(int(point_b))])+'\n'
                 f.write(line)
             f.close()
     return filtration_order_2

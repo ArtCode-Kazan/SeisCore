@@ -1,19 +1,21 @@
-import matplotlib.pyplot as plt
-plt.plot([1,2,3,4])
-plt.show()
+from SeisCore.GeneralPlottingFunctions.histogram import histogram
 
-# from SeisCore.GeneralPlottingFunctions.histogram import histogram
-#
-# import matplotlib as mpl
-# import matplotlib.pyplot as plt
-# import matplotlib.ticker as ticker
-# import numpy as np
-#
-# data=[1,2,3,4,5,6,3,1,3,3,3,3,34,4,4,44,5,6,7,8,9,11,1,1,1,1,1,1,5]
-# bin_size=3
-#
-# #histogram(data,3,'yhftyf')
-#
+from SeisCore.HydroFracCore.PlottingFunctions.histograms import \
+    histogram_moments_delay
+
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+import numpy as np
+
+data = [[(1, 2), (-81, -81)], [(1, 3), (-20, -20)], [(1, 4), (5, 5)],
+        [(1, 5), (-20, -20)], [(1, 6), (-81, -81)], [(2, 3), (61, 61)],
+        [(2, 4), (86, 86)], [(2, 5), (61, 61)], [(2, 6), (0, 0)],
+        [(3, 4), (26, 26)], [(3, 5), (1, 1)], [(3, 6), (-61, -61)],
+        [(4, 5), (-25, -25)], [(4, 6), (-86, -86)], [(5, 6), (-61, -61)]]
+
+histogram_moments_delay(data, 'text')
+
 # # расчет количества бинов
 # bin_count=int((np.max(data)-np.min(data))//bin_size)
 # # бинирование данных
