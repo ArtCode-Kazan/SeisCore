@@ -28,7 +28,8 @@ def quantilies(data, procents=[95, 96, 97, 98, 99]):
 def get_intervals(moments_numbers, epsilon=1):
     """
     Функция для представления номеров отсчетов сигналов (отсортированных)
-    в виде интервалов
+    в виде интервалов. Например, [1,2,3,7,8,9] при epsilon=1 будет
+    представлен в виде интервалов [1,3],[7,9]
     :param moments_numbers: отсортированный одномерный массив numpy
     с номерами отсчетов сигнала
     :param epsilon: допуск для склеивания текущего номера с предыдущим
@@ -55,7 +56,7 @@ def quantile_intervals(data, quantile, epsilon=0):
     квадратов коэф-тов кросскорреляции
     :param quantile: значение квантиля (НЕ ПРОЦЕНТ!, а значение)
     :param epsilon: допуск отклонения корреляции от квантиля
-    :return:
+    :return: интервалы индексов моментов
     """
     selection_indexes = \
         np.where((abs(data - quantile) <= epsilon) + (data >= quantile))[0]
@@ -119,7 +120,8 @@ def intervals_intersection(intervals):
 
 def max_value_index(data, interval=None):
     """
-    Функция для поиска номера индекса максимального элемента массива
+    Функция для поиска номера индекса максимального элемента массива в
+    заданном интервале индексов элементов
     :param data: одномерный массив numpy со значениями максимальных квадратов
     коэф-тов кросскорреляции
     :param interval: интервал массива  в виде списка, где необходимо выполнить
@@ -142,7 +144,8 @@ def moments_selection(data, procents=[95, 96, 97, 98, 99], epsilon=0,
     Обобщенная функция для получения отсчетов сигналов
     :param data: одномерный массив numpy со значениями максимальных квадратов
     коэф-тов кросскорреляции
-    :param procents: список из процентов для расчетов квантилей
+    :param procents: список из процентов для расчетов квантилей.
+    По умолчанию [95, 96, 97, 98, 99]
     :param epsilon: допуск отклонения коэ-тов корреляции от значения квантиля
     при выборке
     :param minute_number: номер минуты для обработки. По умолчанию -9999
@@ -183,7 +186,7 @@ def moments_selection(data, procents=[95, 96, 97, 98, 99], epsilon=0,
     result = np.sort(result)
 
     # экспорт результата в файл, если требуется
-    export_file_name='selection_moments_minute_{}.dat'.format(minute_number)
+    export_file_name = 'selection_moments_minute_{}.dat'.format(minute_number)
     if export_folder is not None:
         import os
 
