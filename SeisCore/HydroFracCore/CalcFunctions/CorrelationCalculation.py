@@ -35,7 +35,7 @@ def calc_correlation(point_numbers, base_point_number, signals, frequency,
 
     # Создание выходного массива с данными средних
     # максимальных квадратов корреляций
-    result = np.empty(shape=0, dtype=float)
+    result = np.empty(shape=0, dtype=np.float)
 
     # Обход производится по каждому отсчету базового датчика в течение одной
     #  минуты, начиная от начала минуты
@@ -100,5 +100,5 @@ def calc_correlation(point_numbers, base_point_number, signals, frequency,
         # вывод количества обработанных отсчетов
         sys.stdout.write('\rОбработано {} из {} отсчетов'.format(base_moment,60 * frequency))
         sys.stdout.flush()
-
+    sys.stdout.write('\n')
     return result
