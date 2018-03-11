@@ -1,13 +1,9 @@
 import numpy as np
 import sys
 
-import os
-import ctypes
+from SeisCore.GeneralCythonFunctions.Correlation.CorrelationExecute import \
+    correlation
 
-cor_so_file_path = os.path.join(os.path.dirname(__file__),
-                                'CythonLib',
-                                'corr.cpython-36m-i386-linux-gnu.so')
-corr_so = ctypes.CDLL(cor_so_file_path)
 
 def calc_correlation(point_numbers, base_point_number, signals, frequency,
                      moment_window, left_buffer, moment_delays):
@@ -88,10 +84,10 @@ def calc_correlation(point_numbers, base_point_number, signals, frequency,
                 signal_b = current_point_signal[left_edge + current_delay:
                                                 right_edge + current_delay]
                 # Вычисление корреляции
-                corr = corr_so.corr(signal_a, signal_b)
+                cor = correlation.corr(signal_a, signal_b)
                 # Отборка максимальной корреляции
-                if corr > max_correlation:
-                    max_correlation = corr
+                if cor > max_correlation:
+                    max_correation = cor
 
             # Возведение корреляции в квадрат
             max_correlation = max_correlation ** 2
