@@ -3,5 +3,5 @@ import sys
 
 so_file_path = os.path.dirname(__file__)
 sys.path.insert(0, so_file_path)
-import correlation
+import CorrelationCalculation as correlation
 

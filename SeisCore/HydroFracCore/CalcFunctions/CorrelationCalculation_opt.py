@@ -1,7 +1,7 @@
 import numpy as np
 import sys
 
-from SeisCore.GeneralCythonFunctions.Correlation.CorrelationExecute import \
+from SeisCore.HydroFracCore.CythonCalcFunctions.CorrelationCalculation.CorrelationExecute import \
     correlation
 
 
