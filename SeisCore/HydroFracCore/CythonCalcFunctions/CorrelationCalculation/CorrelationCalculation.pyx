@@ -162,10 +162,4 @@ def calc_correlation(np.ndarray[np.int_t, ndim=1] point_numbers,
         avg_correlation = sum_correlation / (len(point_numbers) - 1)
         # Добавление результата корреляции в результирующий массив
         result = np.append(result, [avg_correlation])
-
-        if (base_moment - 200) % 1000 == 0:
-            print(
-                'Обработано {} тыс. записей'.format(
-                    (base_moment - 200) // 1000))
-
     return result
