@@ -124,3 +124,7 @@ Cython
 GeneralCalcFunctions
 Подправлена Cython-функция для расчета корреляции ГРП. Исправлен setup.py 
 этой функции специально для windows
+
+# version 0.0.18
+Добавлены бинарные файлы функции CorrelationCalculation(Cython) для систем 
+Windows32, Windows64, Linux32
