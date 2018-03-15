@@ -186,7 +186,7 @@ def moments_selection(data, procents=[95, 96, 97, 98, 99], epsilon=0,
     result = np.sort(result)
 
     # экспорт результата в файл, если требуется
-    export_file_name = 'selection_moments_minute_{}.dat'.format(minute_number)
+    export_file_name = 'SelectionMoments_minute_{}.dat'.format(minute_number)
     if export_folder is not None:
         import os
 

@@ -6,6 +6,7 @@ def calc_correlation(point_numbers, base_point_number, signals, frequency,
                      moment_window, left_buffer, moment_delays):
     """
     Функция для вычисления среднего максимального квадрата корреляции
+    На данный момент функция полностью переписана на Cython
     :param point_numbers: одномерный массив numpy номеров точек
     :param base_point_number: номер базового датчика
     :param signals: собранные в массив numpy буферизованные сигналы точек.
