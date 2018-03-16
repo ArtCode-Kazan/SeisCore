@@ -1,5 +1,9 @@
-import os
+import numpy as np
 
-a=os.path.dirname(__file__)
+a=np.array([[0,1],[1,2],[2,3]])
 
-print(a)
+b=np.array([1,1])
+if b in a:
+    print('ok')
+else:
+    print('No')

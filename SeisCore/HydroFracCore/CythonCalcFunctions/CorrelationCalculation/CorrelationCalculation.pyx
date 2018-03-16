@@ -7,21 +7,21 @@ def calc_correlation(np.ndarray[np.int_t, ndim=1] point_numbers,
                      int frequency,
                      int moment_window,
                      int left_buffer,
-                     list moment_delays):
+                     np.ndarray[np.int_t, ndim = 2] moment_delays):
     # Функция для вычисления среднего максимального квадрата корреляции
-    #:param point_numbers: одномерный массив numpy номеров точек
+    #:param point_numbers: одномерный массив numpy номеров точек, которые
+    # находятся в паре с базовой точкой из геометрической выборки и сама
+    # базовая точка
     #:param base_point_number: номер базового датчика
-    #:param signals: собранные в массив numpy буферизованные сигналы точек.
-    # Каждый столбец массива соответствует номеру точки из списка point_numbers
+    #:param signals: собранные в массив numpy буферизованные сигналы точек
+    # из point_numbers. Каждый столбец массива соответствует номеру точки из
+    # списка point_numbers
     #:param frequency: частота записи сигнала
     #:param moment_window: размер окна анализа в отсчетах
     #:param left_buffer: размер левого буфера
     #:param moment_delays: временные задержки точек относительно базовой точки
-    #в виде списка
-    #              (номер точки, [минимальная задержка, максимальная задержка])
-    #,
-    #              (point1,[min1,max1]),
-    #              (point2,[min2,max2]),...
+    # в виде массива с тремя колонками номер точки, минимальная задержка,
+    # максимальная задержка
     #:return: одномерный список numpy со значениями корреляций
 
     # Проверка, что базовая точка находится в массиве номеров точек
@@ -97,13 +97,12 @@ def calc_correlation(np.ndarray[np.int_t, ndim=1] point_numbers,
             # поиск задержек для текущей точки относительно базовой точки
             min_moment_delay = -9999
             max_moment_delay = -9999
-            for i in range(len(moment_delays)):
-                point_number = moment_delays[i][0]
+            for i in range(moment_delays.shape[0]):
+                point_number = moment_delays[i,0]
                 if point_number == point:
-                    min_moment_delay = moment_delays[i][1][0]
-                    max_moment_delay = moment_delays[i][1][1]
+                    min_moment_delay = moment_delays[i,1]
+                    max_moment_delay = moment_delays[i,2]
                     break
-
             # Если задержки для текущей пары не найдены, то функция преращает
             # работу
             if min_moment_delay == -9999 or max_moment_delay == -9999:
@@ -122,7 +121,6 @@ def calc_correlation(np.ndarray[np.int_t, ndim=1] point_numbers,
             # вычисления среднего см. ссылку
             # https://myslide.ru/documents_4/fb5049f5e3104927ac47a5009bfc8cc7
             # /img11.jpg
-
 
             # нахождение сумм для базового сигнала
             sum_a = sumsq_a = 0
