@@ -119,8 +119,7 @@ def calc_correlation(np.ndarray[np.int_t, ndim=1] point_numbers,
 
             # корреляция считается по альтернативной формуле через суммы без
             # вычисления среднего см. ссылку
-            # https://myslide.ru/documents_4/fb5049f5e3104927ac47a5009bfc8cc7
-            # /img11.jpg
+            # https://myslide.ru/documents_4/fb5049f5e3104927ac47a5009bfc8cc7/img11.jpg
 
             # нахождение сумм для базового сигнала
             sum_a = sumsq_a = 0
