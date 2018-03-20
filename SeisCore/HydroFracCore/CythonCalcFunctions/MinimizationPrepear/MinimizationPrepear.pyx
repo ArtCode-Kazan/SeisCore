@@ -108,7 +108,7 @@ def minimization_prep(int minute_number,
 
             # третий уровень циклов
             for moment_j in range(t1, t2+1, 1):
-               sum_a = sum_q_a = 0
+                sum_a = sum_q_a = 0
                 for j in range(window_size):
                     val = signal_a[moment_j+j]
                     sum_a += val
@@ -125,16 +125,16 @@ def minimization_prep(int minute_number,
                         sum_q_b += val * val
                         sum_ab += val*signal_a[moment_j+k]
 
-                        # вычисление корреляции
-                        corr = (sum_ab * window_size - sum_a * sum_b) / ((sum_q_a * window_size - sum_a ** 2) * (sum_q_b * window_size - sum_b ** 2)) ** 0.5
-                        # нахождение модуля корреляции
-                        if corr < 0:
-                            corr = -corr
-                        # определение максимального значения корреляции и
-                        # задежки
-                        if corr > max_correlation:
-                            max_correlation=corr
-                            delta_moment = moment_j - moment_i
+                    # вычисление корреляции
+                    corr = (sum_ab * window_size - sum_a * sum_b) / ((sum_q_a * window_size - sum_a ** 2) * (sum_q_b * window_size - sum_b ** 2)) ** 0.5
+                    # нахождение модуля корреляции
+                    if corr < 0:
+                        corr = -corr
+                    # определение максимального значения корреляции и
+                    # задежки
+                    if corr > max_correlation:
+                        max_correlation=corr
+                        delta_moment = moment_k - moment_j
             # добавление результата в массив
             result = np.append(result, [minute_number, moments[moment_i],
                                         point_a_number, point_b_number,

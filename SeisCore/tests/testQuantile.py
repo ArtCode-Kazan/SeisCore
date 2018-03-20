@@ -1,14 +1,14 @@
 import numpy as np
+from SeisCore.HydroFracCore.CalcFunctions.MomentsSelection import quantilies,moments_selection
 
-file_path=r'/home/michael/Documents/AppsBuildings/Work/TestingData/2Minsumres100.txt'
+
+file_path=r'D:\AppsBuilding\TestingData\TestHydroFrac\Result\CorrelationData' \
+          r'.dat'
 
 data=np.loadtxt(file_path)
 
-def quantilies(data,procents=[95,96,97,98]):
-    result=list()
-    for procent in procents:
-        current_quantile=np.percentile(data,procent)
-        result.append(current_quantile)
-    print(result)
-
-quantilies(data)
+data=data[:,0]
+quants=quantilies(data)
+f=moments_selection(data)
+for el in f:
+    print(el)

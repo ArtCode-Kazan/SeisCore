@@ -133,13 +133,10 @@ def max_value_index(data, interval=None):
         result = np.where(data == np.max(data))
     else:
         result = np.where(data == np.max(data[interval[0]:interval[1] + 1]))
-
     return result
 
 
-def moments_selection(data, procents=[95, 96, 97, 98, 99], epsilon=0,
-                      minute_number=-9999,
-                      export_folder=None):
+def moments_selection(data, procents=[95, 96, 97, 98, 99], epsilon=0):
     """
     Обобщенная функция для получения отсчетов сигналов
     :param data: одномерный массив numpy со значениями максимальных квадратов
@@ -178,29 +175,10 @@ def moments_selection(data, procents=[95, 96, 97, 98, 99], epsilon=0,
     result = np.empty(shape=0, dtype=int)
     for interval in intersections:
         left_edge = interval[0]
-        right_edge = interval[
-                         1] + 1  # +1, чтобы получить полуоткрытый интервал
+        # +1, чтобы получить полуоткрытый интервал
+        right_edge = interval[1] + 1
         index_with_max_value = max_value_index(data, interval=[left_edge,
                                                                right_edge])
         result = np.append(result, index_with_max_value)
     result = np.sort(result)
-
-    # экспорт результата в файл, если требуется
-    export_file_name = 'SelectionMoments_minute_{}.dat'.format(minute_number)
-    if export_folder is not None:
-        import os
-
-        file_path = os.path.join(export_folder, export_file_name)
-        f = open(file_path, 'w')
-        # запись шапки
-        s = '[minute]={}\n'.format(minute_number)
-        f.write(s)
-        s = '[minimum_quantile]={}\n'.format(min(quants))
-        f.write(s)
-        f.close()
-        # дозапись данных
-        f = open(file_path, 'a')
-        np.savetxt(f, result, fmt='%i')
-        f.close()
-
     return result
