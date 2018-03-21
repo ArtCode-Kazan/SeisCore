@@ -2,6 +2,7 @@ import numpy as np
 cimport numpy as np
 
 def minimization_prep(int minute_number,
+                      double min_correlation,
                       int window_size,
                       np.ndarray[np.int_t, ndim = 1] points,
                       np.ndarray[np.float_t, ndim = 2] bin_data,
@@ -10,6 +11,8 @@ def minimization_prep(int minute_number,
     """
     Функци для подготовки данных к минимизации - выделение "шестерок"
     :param  minute_number: номер минуты для обработки
+    :param  min_correlation: Минимальный порог корреляции для отборки
+    "шестерок"
     :param  window_size: размер окна для расчета корреляций
     :param  points: одномерный numpy-массив с номерами точек для расчетов
     :param  bin_data: буферизованные данные для текущей минуты для всех
@@ -135,8 +138,10 @@ def minimization_prep(int minute_number,
                     if corr > max_correlation:
                         max_correlation=corr
                         delta_moment = moment_k - moment_j
-            # добавление результата в массив
-            result = np.append(result, [minute_number, moments[moment_i],
-                                        point_a_number, point_b_number,
-                                        delta_moment, max_correlation])
+            # добавление результата в массив, если значение корреляции выше
+            # или равна минимальному заданному порогу
+            if min_correlation<=max_correlation:
+                result = np.append(result, [minute_number, moments[moment_i],
+                                            point_a_number, point_b_number,
+                                            delta_moment, max_correlation])
     return result

@@ -314,13 +314,14 @@ body.cython { font-family: courier; font-size: 12; }
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
 </pre><pre class="cython line score-0">&#xA0;<span class="">002</span>: cimport numpy as np</pre>
 <pre class="cython line score-0">&#xA0;<span class="">003</span>: </pre>
-<pre class="cython line score-153" onclick='toggleDiv(this)'>+<span class="">004</span>: def minimization_prep(int minute_number,</pre>
-<pre class='cython code score-153 '>/* Python wrapper */
+<pre class="cython line score-172" onclick='toggleDiv(this)'>+<span class="">004</span>: def minimization_prep(int minute_number,</pre>
+<pre class='cython code score-172 '>/* Python wrapper */
 static PyObject *__pyx_pw_19MinimizationPrepear_1minimization_prep(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_19MinimizationPrepear_minimization_prep[] = "\n    \320\244\321\203\320\275\320\272\321\206\320\270 \320\264\320\273\321\217 \320\277\320\276\320\264\320\263\320\276\321\202\320\276\320\262\320\272\320\270 \320\264\320\260\320\275\320\275\321\213\321\205 \320\272 \320\274\320\270\320\275\320\270\320\274\320\270\320\267\320\260\321\206\320\270\320\270 - \320\262\321\213\320\264\320\265\320\273\320\265\320\275\320\270\320\265 \"\321\210\320\265\321\201\321\202\320\265\321\200\320\276\320\272\"\n    :param  minute_number: \320\275\320\276\320\274\320\265\321\200 \320\274\320\270\320\275\321\203\321\202\321\213 \320\264\320\273\321\217 \320\276\320\261\321\200\320\260\320\261\320\276\321\202\320\272\320\270\n    :param  window_size: \321\200\320\260\320\267\320\274\320\265\321\200 \320\276\320\272\320\275\320\260 \320\264\320\273\321\217 \321\200\320\260\321\201\321\207\320\265\321\202\320\260 \320\272\320\276\321\200\321\200\320\265\320\273\321\217\321\206\320\270\320\271\n    :param  points: \320\276\320\264\320\275\320\276\320\274\320\265\321\200\320\275\321\213\320\271 numpy-\320\274\320\260\321\201\321\201\320\270\320\262 \321\201 \320\275\320\276\320\274\320\265\321\200\320\260\320\274\320\270 \321\202\320\276\321\207\320\265\320\272 \320\264\320\273\321\217 \321\200\320\260\321\201\321\207\320\265\321\202\320\276\320\262\n    :param  bin_data: \320\261\321\203\321\204\320\265\321\200\320\270\320\267\320\276\320\262\320\260\320\275\320\275\321\213\320\265 \320\264\320\260\320\275\320\275\321\213\320\265 \320\264\320\273\321\217 \321\202\320\265\320\272\321\203\321\211\320\265\320\271 \320\274\320\270\320\275\321\203\321\202\321\213 \320\264\320\273\321\217 \320\262\321\201\320\265\321\205\n    \321\202\320\276\321\207\320\265\320\272, \320\275\320\260\321\205\320\276\320\264\321\217\321\211\320\270\321\205\321\201\321\217 \320\262 \320\274\320\260\321\201\321\201\320\270\320\262\320\265 points. \320\235\320\276\320\274\320\265\321\200\320\260 \320\272\320\276\320\273\320\276\320\275\320\276\320\272 \321\201""\320\276\320\276\321\202\320\262\320\265\321\202\321\201\320\262\321\203\321\216\321\202\n    \320\270\320\275\320\264\320\265\320\272\321\201\320\260\320\274 \320\275\320\276\320\274\320\265\321\200\320\276\320\262 \321\202\320\276\321\207\320\265\320\272 \320\262 points\n    :param  moments: \320\276\320\264\320\275\320\276\320\274\320\265\321\200\320\275\321\213\320\271 \320\274\320\260\321\201\321\201\320\270\320\262 numpy \321\201 \320\276\321\202\320\276\320\261\321\200\320\260\320\275\320\275\321\213\320\274\320\270 \320\275\320\276\320\274\320\265\321\200\320\260\320\274\320\270 \320\276\321\202\321\201\321\207\320\265\321\202\320\276\320\262\n    \321\202\320\265\320\272\321\203\321\211\320\265\320\271 \320\274\320\270\320\275\321\203\321\202\321\213\n    :param  delay_data: \320\264\320\262\321\203\321\205\320\274\320\265\321\200\320\275\321\213\320\271 \320\274\320\260\321\201\321\201\320\270\320\262 \321\201 \320\270\320\275\321\204\320\276\321\200\320\274\320\260\321\206\320\270\320\265\320\271 \320\276 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\260\321\205. \320\234\320\260\321\201\321\201\320\270\320\262\n    \321\201\320\276\321\201\321\202\320\276\320\270\321\202 \320\270\320\267 6 \321\201\321\202\320\276\320\273\320\261\321\206\320\276\320\262:\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 1 - \320\275\320\276\320\274\320\265\321\200 \320\277\320\265\321\200\320\262\320\276\320\271 \321\202\320\276\321\207\320\272\320\270 \320\277\320\260\321\200\321\213\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 2 - \320\275\320\276\320\274\320\265\321\200 \320\262\321\202\320\276\321\200\320\276\320\271 \321\202\320\276\321\207\320\272\320\270 \320\277\320\260\321\200\321\213\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 3 - \320\274\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\260 \320\274\320\265""\320\266\320\264\321\203 \321\202\320\276\321\207\320\272\320\260\320\274\320\270 \320\277\320\260\321\200\321\213\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 4 - \320\274\320\260\320\272\321\201\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\260 \320\274\320\265\320\266\320\264\321\203 \321\202\320\276\321\207\320\272\320\260\320\274\320\270 \320\277\320\260\321\200\321\213\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 5 - \320\274\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\260 \320\274\320\265\320\266\320\264\321\203 \320\274\320\273\320\260\320\264\321\210\320\265\320\271 \321\202\320\276\321\207\320\272\320\276\320\271 \320\270 \320\261\320\260\320\267\320\276\320\262\320\276\320\271 \321\202\320\276\321\207\320\272\320\276\320\271\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 6 - \320\274\320\260\320\272\321\201\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\260 \320\274\320\265\320\266\320\264\321\203 \320\274\320\273\320\260\320\264\321\210\320\265\320\271 \321\202\320\276\321\207\320\272\320\276\320\271 \320\270 \320\261\320\260\320\267\320\276\320\262\320\276\320\271 \321\202\320\276\321\207\320\272\320\276\320\271\n    --------------------------------------------------------------------------\n    :return: \321\204\321\203\320\275\320\272\321\206\320\270\321\217 \320\262\320\276\320\267\320\262\321\200\320\260\321\211\320\260\320\265\321\202 \320\276\320\264\320\275\320\276\320\274\320\265\321\200\320\275\321\213\320\271 \320\274\320\260\321\201\321\201\320\270\320\262 (!!!), \320\272\320\276\321\202\320\276\321\200\321\213\320\271 \321\201\320\273\320\265\320\264\321\203\320\265\321\202\n    \320\277\320\276\320\264\320\262\320\265\321\200\320\263\320\275""\321\203\321\202\321\214 reshape, \321\207\321\202\320\276\320\261\321\213 \321\200\320\260\320\267\320\264\320\265\320\273\320\270\321\202\321\214 \320\265\320\263\320\276 \320\275\320\260 \321\210\320\265\321\201\321\202\321\214 \321\201\321\202\320\276\320\273\320\261\321\206\320\276\320\262:\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 1 - \320\275\320\276\320\274\320\265\321\200 \320\274\320\270\320\275\321\203\321\202\321\213 \320\276\320\261\321\200\320\260\320\261\320\276\321\202\320\272\320\270\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 2 - \320\275\320\276\320\274\320\265\321\200 \320\276\321\202\320\276\320\261\321\200\320\260\320\275\320\275\320\276\320\263\320\276 \320\274\320\276\320\274\320\265\320\275\321\202\320\260 \320\274\320\270\320\275\321\203\321\202\321\213\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 3 - \320\275\320\276\320\274\320\265\321\200 \320\277\320\265\321\200\320\262\320\276\320\271 \321\202\320\276\321\207\320\272\320\270 \320\277\320\260\321\200\321\213\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 4 - \320\275\320\276\320\274\320\265\321\200 \320\262\321\202\320\276\321\200\320\276\320\271 \321\202\320\276\321\207\320\272\320\270 \320\277\320\260\321\200\321\213\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 5 - \321\200\320\260\321\201\321\201\321\207\320\270\321\202\320\260\320\275\320\275\320\260\321\217 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\260\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 6 - \321\200\320\260\321\201\321\207\320\270\321\202\320\260\320\275\320\275\320\260\321\217 \320\274\320\260\320\272\321\201\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \320\272\320\276\321\200\321\200\320\265\320\273\321\217\321\206\320\270\321\217\n\n    ";
+static char __pyx_doc_19MinimizationPrepear_minimization_prep[] = "\n    \320\244\321\203\320\275\320\272\321\206\320\270 \320\264\320\273\321\217 \320\277\320\276\320\264\320\263\320\276\321\202\320\276\320\262\320\272\320\270 \320\264\320\260\320\275\320\275\321\213\321\205 \320\272 \320\274\320\270\320\275\320\270\320\274\320\270\320\267\320\260\321\206\320\270\320\270 - \320\262\321\213\320\264\320\265\320\273\320\265\320\275\320\270\320\265 \"\321\210\320\265\321\201\321\202\320\265\321\200\320\276\320\272\"\n    :param  minute_number: \320\275\320\276\320\274\320\265\321\200 \320\274\320\270\320\275\321\203\321\202\321\213 \320\264\320\273\321\217 \320\276\320\261\321\200\320\260\320\261\320\276\321\202\320\272\320\270\n    :param  min_correlation: \320\234\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\321\213\320\271 \320\277\320\276\321\200\320\276\320\263 \320\272\320\276\321\200\321\200\320\265\320\273\321\217\321\206\320\270\320\270 \320\264\320\273\321\217 \320\276\321\202\320\261\320\276\321\200\320\272\320\270\n    \"\321\210\320\265\321\201\321\202\320\265\321\200\320\276\320\272\"\n    :param  window_size: \321\200\320\260\320\267\320\274\320\265\321\200 \320\276\320\272\320\275\320\260 \320\264\320\273\321\217 \321\200\320\260\321\201\321\207\320\265\321\202\320\260 \320\272\320\276\321\200\321\200\320\265\320\273\321\217\321\206\320\270\320\271\n    :param  points: \320\276\320\264\320\275\320\276\320\274\320\265\321\200\320\275\321\213\320\271 numpy-\320\274\320\260\321\201\321\201\320\270\320\262 \321\201 \320\275\320\276\320\274\320\265\321\200\320\260\320\274\320\270 \321\202\320\276\321\207\320\265\320\272 \320\264\320\273\321\217 \321\200\320\260\321\201\321\207\320\265\321\202\320\276\320\262\n    :param  bin_data: \320\261\321\203\321\204\320\265\321\200\320\270\320\267\320\276\320\262\320\260\320\275\320\275\321\213\320\265 \320\264\320\260\320\275\320\275\321\213\320\265 \320\264\320\273\321\217 \321\202\320\265\320\272\321\203\321\211\320\265\320\271 \320\274\320\270\320\275\321\203""\321\202\321\213 \320\264\320\273\321\217 \320\262\321\201\320\265\321\205\n    \321\202\320\276\321\207\320\265\320\272, \320\275\320\260\321\205\320\276\320\264\321\217\321\211\320\270\321\205\321\201\321\217 \320\262 \320\274\320\260\321\201\321\201\320\270\320\262\320\265 points. \320\235\320\276\320\274\320\265\321\200\320\260 \320\272\320\276\320\273\320\276\320\275\320\276\320\272 \321\201\320\276\320\276\321\202\320\262\320\265\321\202\321\201\320\262\321\203\321\216\321\202\n    \320\270\320\275\320\264\320\265\320\272\321\201\320\260\320\274 \320\275\320\276\320\274\320\265\321\200\320\276\320\262 \321\202\320\276\321\207\320\265\320\272 \320\262 points\n    :param  moments: \320\276\320\264\320\275\320\276\320\274\320\265\321\200\320\275\321\213\320\271 \320\274\320\260\321\201\321\201\320\270\320\262 numpy \321\201 \320\276\321\202\320\276\320\261\321\200\320\260\320\275\320\275\321\213\320\274\320\270 \320\275\320\276\320\274\320\265\321\200\320\260\320\274\320\270 \320\276\321\202\321\201\321\207\320\265\321\202\320\276\320\262\n    \321\202\320\265\320\272\321\203\321\211\320\265\320\271 \320\274\320\270\320\275\321\203\321\202\321\213\n    :param  delay_data: \320\264\320\262\321\203\321\205\320\274\320\265\321\200\320\275\321\213\320\271 \320\274\320\260\321\201\321\201\320\270\320\262 \321\201 \320\270\320\275\321\204\320\276\321\200\320\274\320\260\321\206\320\270\320\265\320\271 \320\276 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\260\321\205. \320\234\320\260\321\201\321\201\320\270\320\262\n    \321\201\320\276\321\201\321\202\320\276\320\270\321\202 \320\270\320\267 6 \321\201\321\202\320\276\320\273\320\261\321\206\320\276\320\262:\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 1 - \320\275\320\276\320\274\320\265\321\200 \320\277\320\265\321\200\320\262\320\276\320\271 \321\202\320\276\321\207\320\272\320\270 \320\277\320\260\321\200\321\213\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 2 - ""\320\275\320\276\320\274\320\265\321\200 \320\262\321\202\320\276\321\200\320\276\320\271 \321\202\320\276\321\207\320\272\320\270 \320\277\320\260\321\200\321\213\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 3 - \320\274\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\260 \320\274\320\265\320\266\320\264\321\203 \321\202\320\276\321\207\320\272\320\260\320\274\320\270 \320\277\320\260\321\200\321\213\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 4 - \320\274\320\260\320\272\321\201\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\260 \320\274\320\265\320\266\320\264\321\203 \321\202\320\276\321\207\320\272\320\260\320\274\320\270 \320\277\320\260\321\200\321\213\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 5 - \320\274\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\260 \320\274\320\265\320\266\320\264\321\203 \320\274\320\273\320\260\320\264\321\210\320\265\320\271 \321\202\320\276\321\207\320\272\320\276\320\271 \320\270 \320\261\320\260\320\267\320\276\320\262\320\276\320\271 \321\202\320\276\321\207\320\272\320\276\320\271\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 6 - \320\274\320\260\320\272\321\201\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\260 \320\274\320\265\320\266\320\264\321\203 \320\274\320\273\320\260\320\264\321\210\320\265\320\271 \321\202\320\276\321\207\320\272\320\276\320\271 \320\270 \320\261\320\260\320\267\320\276\320\262\320\276\320\271 \321\202\320\276\321\207\320\272\320\276\320\271\n    --------------------------------------------------------------------------\n    :return: \321\204\321\203\320\275\320\272\321\206\320\270\321\217 ""\320\262\320\276\320\267\320\262\321\200\320\260\321\211\320\260\320\265\321\202 \320\276\320\264\320\275\320\276\320\274\320\265\321\200\320\275\321\213\320\271 \320\274\320\260\321\201\321\201\320\270\320\262 (!!!), \320\272\320\276\321\202\320\276\321\200\321\213\320\271 \321\201\320\273\320\265\320\264\321\203\320\265\321\202\n    \320\277\320\276\320\264\320\262\320\265\321\200\320\263\320\275\321\203\321\202\321\214 reshape, \321\207\321\202\320\276\320\261\321\213 \321\200\320\260\320\267\320\264\320\265\320\273\320\270\321\202\321\214 \320\265\320\263\320\276 \320\275\320\260 \321\210\320\265\321\201\321\202\321\214 \321\201\321\202\320\276\320\273\320\261\321\206\320\276\320\262:\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 1 - \320\275\320\276\320\274\320\265\321\200 \320\274\320\270\320\275\321\203\321\202\321\213 \320\276\320\261\321\200\320\260\320\261\320\276\321\202\320\272\320\270\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 2 - \320\275\320\276\320\274\320\265\321\200 \320\276\321\202\320\276\320\261\321\200\320\260\320\275\320\275\320\276\320\263\320\276 \320\274\320\276\320\274\320\265\320\275\321\202\320\260 \320\274\320\270\320\275\321\203\321\202\321\213\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 3 - \320\275\320\276\320\274\320\265\321\200 \320\277\320\265\321\200\320\262\320\276\320\271 \321\202\320\276\321\207\320\272\320\270 \320\277\320\260\321\200\321\213\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 4 - \320\275\320\276\320\274\320\265\321\200 \320\262\321\202\320\276\321\200\320\276\320\271 \321\202\320\276\321\207\320\272\320\270 \320\277\320\260\321\200\321\213\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 5 - \321\200\320\260\321\201\321\201\321\207\320\270\321\202\320\260\320\275\320\275\320\260\321\217 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\260\n    \321\201\321\202\320\276\320\273\320\261\320\265\321\206 6 - \321\200\320\260""\321\201\321\207\320\270\321\202\320\260\320\275\320\275\320\260\321\217 \320\274\320\260\320\272\321\201\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \320\272\320\276\321\200\321\200\320\265\320\273\321\217\321\206\320\270\321\217\n\n    ";
 static PyMethodDef __pyx_mdef_19MinimizationPrepear_1minimization_prep = {"minimization_prep", (PyCFunction)__pyx_pw_19MinimizationPrepear_1minimization_prep, METH_VARARGS|METH_KEYWORDS, __pyx_doc_19MinimizationPrepear_minimization_prep};
 static PyObject *__pyx_pw_19MinimizationPrepear_1minimization_prep(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_minute_number;
+  double __pyx_v_min_correlation;
   int __pyx_v_window_size;
   PyArrayObject *__pyx_v_points = 0;
   PyArrayObject *__pyx_v_bin_data = 0;
@@ -330,12 +331,14 @@ static PyObject *__pyx_pw_19MinimizationPrepear_1minimization_prep(PyObject *__p
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("minimization_prep (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&amp;__pyx_n_s_minute_number,&amp;__pyx_n_s_window_size,&amp;__pyx_n_s_points,&amp;__pyx_n_s_bin_data,&amp;__pyx_n_s_moments,&amp;__pyx_n_s_delay_data,0};
-    PyObject* values[6] = {0,0,0,0,0,0};
+    static PyObject **__pyx_pyargnames[] = {&amp;__pyx_n_s_minute_number,&amp;__pyx_n_s_min_correlation,&amp;__pyx_n_s_window_size,&amp;__pyx_n_s_points,&amp;__pyx_n_s_bin_data,&amp;__pyx_n_s_moments,&amp;__pyx_n_s_delay_data,0};
+    PyObject* values[7] = {0,0,0,0,0,0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args);
       switch (pos_args) {
+        case  7: values[6] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 6);
+        CYTHON_FALLTHROUGH;
         case  6: values[5] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 5);
         CYTHON_FALLTHROUGH;
         case  5: values[4] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 4);
@@ -358,39 +361,45 @@ static PyObject *__pyx_pw_19MinimizationPrepear_1minimization_prep(PyObject *__p
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
-        if (likely((values[1] = <span class='py_c_api'>PyDict_GetItem</span>(__pyx_kwds, __pyx_n_s_window_size)) != 0)) kw_args--;
+        if (likely((values[1] = <span class='py_c_api'>PyDict_GetItem</span>(__pyx_kwds, __pyx_n_s_min_correlation)) != 0)) kw_args--;
         else {
-          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("minimization_prep", 1, 6, 6, 1); <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L3_error)</span>
+          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("minimization_prep", 1, 7, 7, 1); <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L3_error)</span>
         }
         CYTHON_FALLTHROUGH;
         case  2:
-        if (likely((values[2] = <span class='py_c_api'>PyDict_GetItem</span>(__pyx_kwds, __pyx_n_s_points)) != 0)) kw_args--;
+        if (likely((values[2] = <span class='py_c_api'>PyDict_GetItem</span>(__pyx_kwds, __pyx_n_s_window_size)) != 0)) kw_args--;
         else {
-          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("minimization_prep", 1, 6, 6, 2); <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L3_error)</span>
+          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("minimization_prep", 1, 7, 7, 2); <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L3_error)</span>
         }
         CYTHON_FALLTHROUGH;
         case  3:
-        if (likely((values[3] = <span class='py_c_api'>PyDict_GetItem</span>(__pyx_kwds, __pyx_n_s_bin_data)) != 0)) kw_args--;
+        if (likely((values[3] = <span class='py_c_api'>PyDict_GetItem</span>(__pyx_kwds, __pyx_n_s_points)) != 0)) kw_args--;
         else {
-          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("minimization_prep", 1, 6, 6, 3); <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L3_error)</span>
+          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("minimization_prep", 1, 7, 7, 3); <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L3_error)</span>
         }
         CYTHON_FALLTHROUGH;
         case  4:
-        if (likely((values[4] = <span class='py_c_api'>PyDict_GetItem</span>(__pyx_kwds, __pyx_n_s_moments)) != 0)) kw_args--;
+        if (likely((values[4] = <span class='py_c_api'>PyDict_GetItem</span>(__pyx_kwds, __pyx_n_s_bin_data)) != 0)) kw_args--;
         else {
-          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("minimization_prep", 1, 6, 6, 4); <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L3_error)</span>
+          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("minimization_prep", 1, 7, 7, 4); <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L3_error)</span>
         }
         CYTHON_FALLTHROUGH;
         case  5:
-        if (likely((values[5] = <span class='py_c_api'>PyDict_GetItem</span>(__pyx_kwds, __pyx_n_s_delay_data)) != 0)) kw_args--;
+        if (likely((values[5] = <span class='py_c_api'>PyDict_GetItem</span>(__pyx_kwds, __pyx_n_s_moments)) != 0)) kw_args--;
         else {
-          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("minimization_prep", 1, 6, 6, 5); <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L3_error)</span>
+          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("minimization_prep", 1, 7, 7, 5); <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L3_error)</span>
+        }
+        CYTHON_FALLTHROUGH;
+        case  6:
+        if (likely((values[6] = <span class='py_c_api'>PyDict_GetItem</span>(__pyx_kwds, __pyx_n_s_delay_data)) != 0)) kw_args--;
+        else {
+          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("minimization_prep", 1, 7, 7, 6); <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L3_error)</span>
         }
       }
       if (unlikely(kw_args &gt; 0)) {
         if (unlikely(<span class='pyx_c_api'>__Pyx_ParseOptionalKeywords</span>(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "minimization_prep") &lt; 0)) <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L3_error)</span>
       }
-    } else if (<span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args) != 6) {
+    } else if (<span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args) != 7) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 0);
@@ -399,27 +408,29 @@ static PyObject *__pyx_pw_19MinimizationPrepear_1minimization_prep(PyObject *__p
       values[3] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 3);
       values[4] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 4);
       values[5] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 5);
+      values[6] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 6);
     }
     __pyx_v_minute_number = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[0]); if (unlikely((__pyx_v_minute_number == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L3_error)</span>
-    __pyx_v_window_size = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[1]); if (unlikely((__pyx_v_window_size == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 5, __pyx_L3_error)</span>
-    __pyx_v_points = ((PyArrayObject *)values[2]);
-    __pyx_v_bin_data = ((PyArrayObject *)values[3]);
-    __pyx_v_moments = ((PyArrayObject *)values[4]);
-    __pyx_v_delay_data = ((PyArrayObject *)values[5]);
+    __pyx_v_min_correlation = __pyx_<span class='py_c_api'>PyFloat_AsDouble</span>(values[1]); if (unlikely((__pyx_v_min_correlation == (double)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 5, __pyx_L3_error)</span>
+    __pyx_v_window_size = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[2]); if (unlikely((__pyx_v_window_size == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 6, __pyx_L3_error)</span>
+    __pyx_v_points = ((PyArrayObject *)values[3]);
+    __pyx_v_bin_data = ((PyArrayObject *)values[4]);
+    __pyx_v_moments = ((PyArrayObject *)values[5]);
+    __pyx_v_delay_data = ((PyArrayObject *)values[6]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("minimization_prep", 1, 6, 6, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L3_error)</span>
+  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("minimization_prep", 1, 7, 7, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L3_error)</span>
   __pyx_L3_error:;
   <span class='pyx_c_api'>__Pyx_AddTraceback</span>("MinimizationPrepear.minimization_prep", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_points), __pyx_ptype_5numpy_ndarray, 1, "points", 0))) <span class='error_goto'>__PYX_ERR(0, 6, __pyx_L1_error)</span>
-  if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_bin_data), __pyx_ptype_5numpy_ndarray, 1, "bin_data", 0))) <span class='error_goto'>__PYX_ERR(0, 7, __pyx_L1_error)</span>
-  if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_moments), __pyx_ptype_5numpy_ndarray, 1, "moments", 0))) <span class='error_goto'>__PYX_ERR(0, 8, __pyx_L1_error)</span>
-  if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_delay_data), __pyx_ptype_5numpy_ndarray, 1, "delay_data", 0))) <span class='error_goto'>__PYX_ERR(0, 9, __pyx_L1_error)</span>
-  __pyx_r = __pyx_pf_19MinimizationPrepear_minimization_prep(__pyx_self, __pyx_v_minute_number, __pyx_v_window_size, __pyx_v_points, __pyx_v_bin_data, __pyx_v_moments, __pyx_v_delay_data);
+  if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_points), __pyx_ptype_5numpy_ndarray, 1, "points", 0))) <span class='error_goto'>__PYX_ERR(0, 7, __pyx_L1_error)</span>
+  if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_bin_data), __pyx_ptype_5numpy_ndarray, 1, "bin_data", 0))) <span class='error_goto'>__PYX_ERR(0, 8, __pyx_L1_error)</span>
+  if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_moments), __pyx_ptype_5numpy_ndarray, 1, "moments", 0))) <span class='error_goto'>__PYX_ERR(0, 9, __pyx_L1_error)</span>
+  if (unlikely(!<span class='pyx_c_api'>__Pyx_ArgTypeTest</span>(((PyObject *)__pyx_v_delay_data), __pyx_ptype_5numpy_ndarray, 1, "delay_data", 0))) <span class='error_goto'>__PYX_ERR(0, 10, __pyx_L1_error)</span>
+  __pyx_r = __pyx_pf_19MinimizationPrepear_minimization_prep(__pyx_self, __pyx_v_minute_number, __pyx_v_min_correlation, __pyx_v_window_size, __pyx_v_points, __pyx_v_bin_data, __pyx_v_moments, __pyx_v_delay_data);
 
   /* function exit code */
   goto __pyx_L0;
@@ -430,7 +441,7 @@ static PyObject *__pyx_pw_19MinimizationPrepear_1minimization_prep(PyObject *__p
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_minute_number, int __pyx_v_window_size, PyArrayObject *__pyx_v_points, PyArrayObject *__pyx_v_bin_data, PyArrayObject *__pyx_v_moments, PyArrayObject *__pyx_v_delay_data) {
+static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_minute_number, double __pyx_v_min_correlation, int __pyx_v_window_size, PyArrayObject *__pyx_v_points, PyArrayObject *__pyx_v_bin_data, PyArrayObject *__pyx_v_moments, PyArrayObject *__pyx_v_delay_data) {
   int __pyx_v_moment_i;
   int __pyx_v_delay_i;
   int __pyx_v_point_a_number;
@@ -570,7 +581,7 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
   return __pyx_r;
 }
 /* … */
-  __pyx_tuple__12 = <span class='py_c_api'>PyTuple_Pack</span>(36, __pyx_n_s_minute_number, __pyx_n_s_window_size, __pyx_n_s_points, __pyx_n_s_bin_data, __pyx_n_s_moments, __pyx_n_s_delay_data, __pyx_n_s_moment_i, __pyx_n_s_delay_i, __pyx_n_s_point_a_number, __pyx_n_s_point_b_number, __pyx_n_s_moment_delay_ab_min, __pyx_n_s_moment_delay_ab_max, __pyx_n_s_moment_delay_base_min, __pyx_n_s_moment_delay_base_max, __pyx_n_s_column_number, __pyx_n_s_signal_a, __pyx_n_s_signal_b, __pyx_n_s_max_correlation, __pyx_n_s_delta_moment, __pyx_n_s_t1, __pyx_n_s_t2, __pyx_n_s_moment_j, __pyx_n_s_j, __pyx_n_s_moment_k, __pyx_n_s_k, __pyx_n_s_t3, __pyx_n_s_t4, __pyx_n_s_buffer_size, __pyx_n_s_sum_a, __pyx_n_s_sum_b, __pyx_n_s_sum_ab, __pyx_n_s_sum_q_a, __pyx_n_s_sum_q_b, __pyx_n_s_val, __pyx_n_s_corr, __pyx_n_s_result);<span class='error_goto'> if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 4, __pyx_L1_error)</span>
+  __pyx_tuple__12 = <span class='py_c_api'>PyTuple_Pack</span>(37, __pyx_n_s_minute_number, __pyx_n_s_min_correlation, __pyx_n_s_window_size, __pyx_n_s_points, __pyx_n_s_bin_data, __pyx_n_s_moments, __pyx_n_s_delay_data, __pyx_n_s_moment_i, __pyx_n_s_delay_i, __pyx_n_s_point_a_number, __pyx_n_s_point_b_number, __pyx_n_s_moment_delay_ab_min, __pyx_n_s_moment_delay_ab_max, __pyx_n_s_moment_delay_base_min, __pyx_n_s_moment_delay_base_max, __pyx_n_s_column_number, __pyx_n_s_signal_a, __pyx_n_s_signal_b, __pyx_n_s_max_correlation, __pyx_n_s_delta_moment, __pyx_n_s_t1, __pyx_n_s_t2, __pyx_n_s_moment_j, __pyx_n_s_j, __pyx_n_s_moment_k, __pyx_n_s_k, __pyx_n_s_t3, __pyx_n_s_t4, __pyx_n_s_buffer_size, __pyx_n_s_sum_a, __pyx_n_s_sum_b, __pyx_n_s_sum_ab, __pyx_n_s_sum_q_a, __pyx_n_s_sum_q_b, __pyx_n_s_val, __pyx_n_s_corr, __pyx_n_s_result);<span class='error_goto'> if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 4, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__12);
   <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__12);
 /* … */
@@ -578,100 +589,103 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_minimization_prep, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 4, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">005</span>:                       int window_size,</pre>
-<pre class="cython line score-0">&#xA0;<span class="">006</span>:                       np.ndarray[np.int_t, ndim = 1] points,</pre>
-<pre class="cython line score-0">&#xA0;<span class="">007</span>:                       np.ndarray[np.float_t, ndim = 2] bin_data,</pre>
-<pre class="cython line score-0">&#xA0;<span class="">008</span>:                       np.ndarray[np.int_t, ndim = 1] moments,</pre>
-<pre class="cython line score-0">&#xA0;<span class="">009</span>:                       np.ndarray[np.int_t, ndim = 2] delay_data):</pre>
-<pre class="cython line score-0">&#xA0;<span class="">010</span>:     """</pre>
-<pre class="cython line score-0">&#xA0;<span class="">011</span>:     Функци для подготовки данных к минимизации - выделение "шестерок"</pre>
-<pre class="cython line score-0">&#xA0;<span class="">012</span>:     :param  minute_number: номер минуты для обработки</pre>
-<pre class="cython line score-0">&#xA0;<span class="">013</span>:     :param  window_size: размер окна для расчета корреляций</pre>
-<pre class="cython line score-0">&#xA0;<span class="">014</span>:     :param  points: одномерный numpy-массив с номерами точек для расчетов</pre>
-<pre class="cython line score-0">&#xA0;<span class="">015</span>:     :param  bin_data: буферизованные данные для текущей минуты для всех</pre>
-<pre class="cython line score-0">&#xA0;<span class="">016</span>:     точек, находящихся в массиве points. Номера колонок соответсвуют</pre>
-<pre class="cython line score-0">&#xA0;<span class="">017</span>:     индексам номеров точек в points</pre>
-<pre class="cython line score-0">&#xA0;<span class="">018</span>:     :param  moments: одномерный массив numpy с отобранными номерами отсчетов</pre>
-<pre class="cython line score-0">&#xA0;<span class="">019</span>:     текущей минуты</pre>
-<pre class="cython line score-0">&#xA0;<span class="">020</span>:     :param  delay_data: двухмерный массив с информацией о задержках. Массив</pre>
-<pre class="cython line score-0">&#xA0;<span class="">021</span>:     состоит из 6 столбцов:</pre>
-<pre class="cython line score-0">&#xA0;<span class="">022</span>:     столбец 1 - номер первой точки пары</pre>
-<pre class="cython line score-0">&#xA0;<span class="">023</span>:     столбец 2 - номер второй точки пары</pre>
-<pre class="cython line score-0">&#xA0;<span class="">024</span>:     столбец 3 - минимальная задержка между точками пары</pre>
-<pre class="cython line score-0">&#xA0;<span class="">025</span>:     столбец 4 - максимальная задержка между точками пары</pre>
-<pre class="cython line score-0">&#xA0;<span class="">026</span>:     столбец 5 - минимальная задержка между младшей точкой и базовой точкой</pre>
-<pre class="cython line score-0">&#xA0;<span class="">027</span>:     столбец 6 - максимальная задержка между младшей точкой и базовой точкой</pre>
-<pre class="cython line score-0">&#xA0;<span class="">028</span>:     --------------------------------------------------------------------------</pre>
-<pre class="cython line score-0">&#xA0;<span class="">029</span>:     :return: функция возвращает одномерный массив (!!!), который следует</pre>
-<pre class="cython line score-0">&#xA0;<span class="">030</span>:     подвергнуть reshape, чтобы разделить его на шесть столбцов:</pre>
-<pre class="cython line score-0">&#xA0;<span class="">031</span>:     столбец 1 - номер минуты обработки</pre>
-<pre class="cython line score-0">&#xA0;<span class="">032</span>:     столбец 2 - номер отобранного момента минуты</pre>
-<pre class="cython line score-0">&#xA0;<span class="">033</span>:     столбец 3 - номер первой точки пары</pre>
-<pre class="cython line score-0">&#xA0;<span class="">034</span>:     столбец 4 - номер второй точки пары</pre>
-<pre class="cython line score-0">&#xA0;<span class="">035</span>:     столбец 5 - рассчитанная задержка</pre>
-<pre class="cython line score-0">&#xA0;<span class="">036</span>:     столбец 6 - расчитанная максимальная корреляция</pre>
-<pre class="cython line score-0">&#xA0;<span class="">037</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">038</span>:     """</pre>
-<pre class="cython line score-0">&#xA0;<span class="">039</span>:     # помоментная обработка</pre>
-<pre class="cython line score-0">&#xA0;<span class="">040</span>:     cdef:</pre>
-<pre class="cython line score-0">&#xA0;<span class="">041</span>:         # итерационная переменная для обхода отобранных моментов</pre>
-<pre class="cython line score-0">&#xA0;<span class="">042</span>:         int moment_i</pre>
-<pre class="cython line score-0">&#xA0;<span class="">043</span>:         # итерационная переменная для обхода данных по задержкам</pre>
-<pre class="cython line score-0">&#xA0;<span class="">044</span>:         int delay_i</pre>
-<pre class="cython line score-0">&#xA0;<span class="">045</span>:         # номер первой и второй точки пары</pre>
-<pre class="cython line score-0">&#xA0;<span class="">046</span>:         int point_a_number, point_b_number</pre>
-<pre class="cython line score-0">&#xA0;<span class="">047</span>:         # минимальная и максимальная задержки между точками пары</pre>
-<pre class="cython line score-0">&#xA0;<span class="">048</span>:         int moment_delay_ab_min, moment_delay_ab_max</pre>
-<pre class="cython line score-0">&#xA0;<span class="">049</span>:         # минимальная и максимальная задержки между младшей точкой пары и</pre>
-<pre class="cython line score-0">&#xA0;<span class="">050</span>:         # базовой точкой</pre>
-<pre class="cython line score-0">&#xA0;<span class="">051</span>:         int moment_delay_base_min, moment_delay_base_max</pre>
-<pre class="cython line score-0">&#xA0;<span class="">052</span>:         # номер колонки, в которой находится сигнал текущей точки</pre>
-<pre class="cython line score-0">&#xA0;<span class="">053</span>:         int column_number</pre>
-<pre class="cython line score-0">&#xA0;<span class="">054</span>:         # извлеченный из массива bin_data сигнал для первой точки пары</pre>
-<pre class="cython line score-0">&#xA0;<span class="">055</span>:         np.ndarray[np.float_t, ndim = 1] signal_a</pre>
-<pre class="cython line score-0">&#xA0;<span class="">056</span>:         # извлеченный из массива bin_data сигнал для второй точки пары</pre>
-<pre class="cython line score-0">&#xA0;<span class="">057</span>:         np.ndarray[np.float_t, ndim = 1] signal_b</pre>
-<pre class="cython line score-0">&#xA0;<span class="">058</span>:         # рассчитанное значение модуля максимальной корреляции</pre>
-<pre class="cython line score-0">&#xA0;<span class="">059</span>:         double max_correlation</pre>
-<pre class="cython line score-0">&#xA0;<span class="">060</span>:         # рассчиьтанное значение задержки</pre>
-<pre class="cython line score-0">&#xA0;<span class="">061</span>:         int delta_moment</pre>
-<pre class="cython line score-0">&#xA0;<span class="">062</span>:         # пределы для извлечения участка сигнала первой точки пары для</pre>
-<pre class="cython line score-0">&#xA0;<span class="">063</span>:         # расчета корреляции</pre>
-<pre class="cython line score-0">&#xA0;<span class="">064</span>:         int t1, t2</pre>
-<pre class="cython line score-0">&#xA0;<span class="">065</span>:         # итеративные переменные для расчета корреляции</pre>
-<pre class="cython line score-0">&#xA0;<span class="">066</span>:         int moment_j, j,moment_k, k</pre>
-<pre class="cython line score-0">&#xA0;<span class="">067</span>:         # пределы для извлечения участка сигнала второй точки пары для</pre>
-<pre class="cython line score-0">&#xA0;<span class="">068</span>:         # расчета корреляции</pre>
-<pre class="cython line score-0">&#xA0;<span class="">069</span>:         int t3, t4</pre>
-<pre class="cython line score-0">&#xA0;<span class="">070</span>:         # размер буфера извлечения сигналов</pre>
-<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">071</span>:         int buffer_size = 200</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">005</span>:                       double min_correlation,</pre>
+<pre class="cython line score-0">&#xA0;<span class="">006</span>:                       int window_size,</pre>
+<pre class="cython line score-0">&#xA0;<span class="">007</span>:                       np.ndarray[np.int_t, ndim = 1] points,</pre>
+<pre class="cython line score-0">&#xA0;<span class="">008</span>:                       np.ndarray[np.float_t, ndim = 2] bin_data,</pre>
+<pre class="cython line score-0">&#xA0;<span class="">009</span>:                       np.ndarray[np.int_t, ndim = 1] moments,</pre>
+<pre class="cython line score-0">&#xA0;<span class="">010</span>:                       np.ndarray[np.int_t, ndim = 2] delay_data):</pre>
+<pre class="cython line score-0">&#xA0;<span class="">011</span>:     """</pre>
+<pre class="cython line score-0">&#xA0;<span class="">012</span>:     Функци для подготовки данных к минимизации - выделение "шестерок"</pre>
+<pre class="cython line score-0">&#xA0;<span class="">013</span>:     :param  minute_number: номер минуты для обработки</pre>
+<pre class="cython line score-0">&#xA0;<span class="">014</span>:     :param  min_correlation: Минимальный порог корреляции для отборки</pre>
+<pre class="cython line score-0">&#xA0;<span class="">015</span>:     "шестерок"</pre>
+<pre class="cython line score-0">&#xA0;<span class="">016</span>:     :param  window_size: размер окна для расчета корреляций</pre>
+<pre class="cython line score-0">&#xA0;<span class="">017</span>:     :param  points: одномерный numpy-массив с номерами точек для расчетов</pre>
+<pre class="cython line score-0">&#xA0;<span class="">018</span>:     :param  bin_data: буферизованные данные для текущей минуты для всех</pre>
+<pre class="cython line score-0">&#xA0;<span class="">019</span>:     точек, находящихся в массиве points. Номера колонок соответсвуют</pre>
+<pre class="cython line score-0">&#xA0;<span class="">020</span>:     индексам номеров точек в points</pre>
+<pre class="cython line score-0">&#xA0;<span class="">021</span>:     :param  moments: одномерный массив numpy с отобранными номерами отсчетов</pre>
+<pre class="cython line score-0">&#xA0;<span class="">022</span>:     текущей минуты</pre>
+<pre class="cython line score-0">&#xA0;<span class="">023</span>:     :param  delay_data: двухмерный массив с информацией о задержках. Массив</pre>
+<pre class="cython line score-0">&#xA0;<span class="">024</span>:     состоит из 6 столбцов:</pre>
+<pre class="cython line score-0">&#xA0;<span class="">025</span>:     столбец 1 - номер первой точки пары</pre>
+<pre class="cython line score-0">&#xA0;<span class="">026</span>:     столбец 2 - номер второй точки пары</pre>
+<pre class="cython line score-0">&#xA0;<span class="">027</span>:     столбец 3 - минимальная задержка между точками пары</pre>
+<pre class="cython line score-0">&#xA0;<span class="">028</span>:     столбец 4 - максимальная задержка между точками пары</pre>
+<pre class="cython line score-0">&#xA0;<span class="">029</span>:     столбец 5 - минимальная задержка между младшей точкой и базовой точкой</pre>
+<pre class="cython line score-0">&#xA0;<span class="">030</span>:     столбец 6 - максимальная задержка между младшей точкой и базовой точкой</pre>
+<pre class="cython line score-0">&#xA0;<span class="">031</span>:     --------------------------------------------------------------------------</pre>
+<pre class="cython line score-0">&#xA0;<span class="">032</span>:     :return: функция возвращает одномерный массив (!!!), который следует</pre>
+<pre class="cython line score-0">&#xA0;<span class="">033</span>:     подвергнуть reshape, чтобы разделить его на шесть столбцов:</pre>
+<pre class="cython line score-0">&#xA0;<span class="">034</span>:     столбец 1 - номер минуты обработки</pre>
+<pre class="cython line score-0">&#xA0;<span class="">035</span>:     столбец 2 - номер отобранного момента минуты</pre>
+<pre class="cython line score-0">&#xA0;<span class="">036</span>:     столбец 3 - номер первой точки пары</pre>
+<pre class="cython line score-0">&#xA0;<span class="">037</span>:     столбец 4 - номер второй точки пары</pre>
+<pre class="cython line score-0">&#xA0;<span class="">038</span>:     столбец 5 - рассчитанная задержка</pre>
+<pre class="cython line score-0">&#xA0;<span class="">039</span>:     столбец 6 - расчитанная максимальная корреляция</pre>
+<pre class="cython line score-0">&#xA0;<span class="">040</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">041</span>:     """</pre>
+<pre class="cython line score-0">&#xA0;<span class="">042</span>:     # помоментная обработка</pre>
+<pre class="cython line score-0">&#xA0;<span class="">043</span>:     cdef:</pre>
+<pre class="cython line score-0">&#xA0;<span class="">044</span>:         # итерационная переменная для обхода отобранных моментов</pre>
+<pre class="cython line score-0">&#xA0;<span class="">045</span>:         int moment_i</pre>
+<pre class="cython line score-0">&#xA0;<span class="">046</span>:         # итерационная переменная для обхода данных по задержкам</pre>
+<pre class="cython line score-0">&#xA0;<span class="">047</span>:         int delay_i</pre>
+<pre class="cython line score-0">&#xA0;<span class="">048</span>:         # номер первой и второй точки пары</pre>
+<pre class="cython line score-0">&#xA0;<span class="">049</span>:         int point_a_number, point_b_number</pre>
+<pre class="cython line score-0">&#xA0;<span class="">050</span>:         # минимальная и максимальная задержки между точками пары</pre>
+<pre class="cython line score-0">&#xA0;<span class="">051</span>:         int moment_delay_ab_min, moment_delay_ab_max</pre>
+<pre class="cython line score-0">&#xA0;<span class="">052</span>:         # минимальная и максимальная задержки между младшей точкой пары и</pre>
+<pre class="cython line score-0">&#xA0;<span class="">053</span>:         # базовой точкой</pre>
+<pre class="cython line score-0">&#xA0;<span class="">054</span>:         int moment_delay_base_min, moment_delay_base_max</pre>
+<pre class="cython line score-0">&#xA0;<span class="">055</span>:         # номер колонки, в которой находится сигнал текущей точки</pre>
+<pre class="cython line score-0">&#xA0;<span class="">056</span>:         int column_number</pre>
+<pre class="cython line score-0">&#xA0;<span class="">057</span>:         # извлеченный из массива bin_data сигнал для первой точки пары</pre>
+<pre class="cython line score-0">&#xA0;<span class="">058</span>:         np.ndarray[np.float_t, ndim = 1] signal_a</pre>
+<pre class="cython line score-0">&#xA0;<span class="">059</span>:         # извлеченный из массива bin_data сигнал для второй точки пары</pre>
+<pre class="cython line score-0">&#xA0;<span class="">060</span>:         np.ndarray[np.float_t, ndim = 1] signal_b</pre>
+<pre class="cython line score-0">&#xA0;<span class="">061</span>:         # рассчитанное значение модуля максимальной корреляции</pre>
+<pre class="cython line score-0">&#xA0;<span class="">062</span>:         double max_correlation</pre>
+<pre class="cython line score-0">&#xA0;<span class="">063</span>:         # рассчиьтанное значение задержки</pre>
+<pre class="cython line score-0">&#xA0;<span class="">064</span>:         int delta_moment</pre>
+<pre class="cython line score-0">&#xA0;<span class="">065</span>:         # пределы для извлечения участка сигнала первой точки пары для</pre>
+<pre class="cython line score-0">&#xA0;<span class="">066</span>:         # расчета корреляции</pre>
+<pre class="cython line score-0">&#xA0;<span class="">067</span>:         int t1, t2</pre>
+<pre class="cython line score-0">&#xA0;<span class="">068</span>:         # итеративные переменные для расчета корреляции</pre>
+<pre class="cython line score-0">&#xA0;<span class="">069</span>:         int moment_j, j,moment_k, k</pre>
+<pre class="cython line score-0">&#xA0;<span class="">070</span>:         # пределы для извлечения участка сигнала второй точки пары для</pre>
+<pre class="cython line score-0">&#xA0;<span class="">071</span>:         # расчета корреляции</pre>
+<pre class="cython line score-0">&#xA0;<span class="">072</span>:         int t3, t4</pre>
+<pre class="cython line score-0">&#xA0;<span class="">073</span>:         # размер буфера извлечения сигналов</pre>
+<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">074</span>:         int buffer_size = 200</pre>
 <pre class='cython code score-0 '>  __pyx_v_buffer_size = 0xC8;
-</pre><pre class="cython line score-0">&#xA0;<span class="">072</span>:         # промежуточные переменные для расчета значений корреляций</pre>
-<pre class="cython line score-0">&#xA0;<span class="">073</span>:         double sum_a, sum_b, sum_ab, sum_q_a, sum_q_b, val, corr</pre>
-<pre class="cython line score-0">&#xA0;<span class="">074</span>:         # результирующий массив, который будет возвращен после работы функции</pre>
-<pre class="cython line score-0">&#xA0;<span class="">075</span>:         np.ndarray[np.float_t, ndim = 1] result</pre>
-<pre class="cython line score-0">&#xA0;<span class="">076</span>: </pre>
-<pre class="cython line score-47" onclick='toggleDiv(this)'>+<span class="">077</span>:     result = np.empty(shape = 0, dtype = np.float)</pre>
-<pre class='cython code score-47 '>  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)</span>
+</pre><pre class="cython line score-0">&#xA0;<span class="">075</span>:         # промежуточные переменные для расчета значений корреляций</pre>
+<pre class="cython line score-0">&#xA0;<span class="">076</span>:         double sum_a, sum_b, sum_ab, sum_q_a, sum_q_b, val, corr</pre>
+<pre class="cython line score-0">&#xA0;<span class="">077</span>:         # результирующий массив, который будет возвращен после работы функции</pre>
+<pre class="cython line score-0">&#xA0;<span class="">078</span>:         np.ndarray[np.float_t, ndim = 1] result</pre>
+<pre class="cython line score-0">&#xA0;<span class="">079</span>: </pre>
+<pre class="cython line score-47" onclick='toggleDiv(this)'>+<span class="">080</span>:     result = np.empty(shape = 0, dtype = np.float)</pre>
+<pre class='cython code score-47 '>  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_1, __pyx_n_s_empty);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)</span>
+  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_1, __pyx_n_s_empty);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyDict_NewPresized</span>(2);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)</span>
+  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyDict_NewPresized</span>(2);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_t_1, __pyx_n_s_shape, __pyx_int_0) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 77, __pyx_L1_error)</span>
-  __pyx_t_3 = <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)</span>
+  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_t_1, __pyx_n_s_shape, __pyx_int_0) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 80, __pyx_L1_error)</span>
+  __pyx_t_3 = <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_3);
-  __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_3, __pyx_n_s_float);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 77, __pyx_L1_error)</span>
+  __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_3, __pyx_n_s_float);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 80, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
-  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_4) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 77, __pyx_L1_error)</span>
+  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_4) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 80, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_Call</span>(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 77, __pyx_L1_error)</span>
+  __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_Call</span>(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 80, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_2); __pyx_t_2 = 0;
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_4) == Py_None) || likely(<span class='pyx_c_api'>__Pyx_TypeTest</span>(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) <span class='error_goto'>__PYX_ERR(0, 77, __pyx_L1_error)</span>
+  if (!(likely(((__pyx_t_4) == Py_None) || likely(<span class='pyx_c_api'>__Pyx_TypeTest</span>(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) <span class='error_goto'>__PYX_ERR(0, 80, __pyx_L1_error)</span>
   __pyx_t_5 = ((PyArrayObject *)__pyx_t_4);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
@@ -688,23 +702,23 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
       __pyx_t_7 = __pyx_t_8 = __pyx_t_9 = 0;
     }
     __pyx_pybuffernd_result.diminfo[0].strides = __pyx_pybuffernd_result.rcbuffer-&gt;pybuffer.strides[0]; __pyx_pybuffernd_result.diminfo[0].shape = __pyx_pybuffernd_result.rcbuffer-&gt;pybuffer.shape[0];
-    if (unlikely(__pyx_t_6 &lt; 0)) <span class='error_goto'>__PYX_ERR(0, 77, __pyx_L1_error)</span>
+    if (unlikely(__pyx_t_6 &lt; 0)) <span class='error_goto'>__PYX_ERR(0, 80, __pyx_L1_error)</span>
   }
   __pyx_t_5 = 0;
   __pyx_v_result = ((PyArrayObject *)__pyx_t_4);
   __pyx_t_4 = 0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">078</span>:     # первый уровень циклов - обход по отобранным моментам</pre>
-<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">079</span>:     for moment_i in range(moments.shape[0]):</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">081</span>:     # первый уровень циклов - обход по отобранным моментам</pre>
+<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">082</span>:     for moment_i in range(moments.shape[0]):</pre>
 <pre class='cython code score-0 '>  __pyx_t_10 = (__pyx_v_moments-&gt;dimensions[0]);
   for (__pyx_t_6 = 0; __pyx_t_6 &lt; __pyx_t_10; __pyx_t_6+=1) {
     __pyx_v_moment_i = __pyx_t_6;
-</pre><pre class="cython line score-0">&#xA0;<span class="">080</span>:         # второй уровень циклов - обход по отобранным парам</pre>
-<pre class="cython line score-0">&#xA0;<span class="">081</span>:         # геометрической выборки и их задержкам</pre>
-<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">082</span>:         for delay_i in range(delay_data.shape[0]):</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">083</span>:         # второй уровень циклов - обход по отобранным парам</pre>
+<pre class="cython line score-0">&#xA0;<span class="">084</span>:         # геометрической выборки и их задержкам</pre>
+<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">085</span>:         for delay_i in range(delay_data.shape[0]):</pre>
 <pre class='cython code score-0 '>    __pyx_t_11 = (__pyx_v_delay_data-&gt;dimensions[0]);
     for (__pyx_t_12 = 0; __pyx_t_12 &lt; __pyx_t_11; __pyx_t_12+=1) {
       __pyx_v_delay_i = __pyx_t_12;
-</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">083</span>:             point_a_number = delay_data[delay_i,0]</pre>
+</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">086</span>:             point_a_number = delay_data[delay_i,0]</pre>
 <pre class='cython code score-2 '>      __pyx_t_13 = __pyx_v_delay_i;
       __pyx_t_14 = 0;
       __pyx_t_15 = -1;
@@ -718,10 +732,10 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
       } else if (unlikely(__pyx_t_14 &gt;= __pyx_pybuffernd_delay_data.diminfo[1].shape)) __pyx_t_15 = 1;
       if (unlikely(__pyx_t_15 != -1)) {
         <span class='pyx_c_api'>__Pyx_RaiseBufferIndexError</span>(__pyx_t_15);
-        <span class='error_goto'>__PYX_ERR(0, 83, __pyx_L1_error)</span>
+        <span class='error_goto'>__PYX_ERR(0, 86, __pyx_L1_error)</span>
       }
       __pyx_v_point_a_number = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_delay_data.rcbuffer-&gt;pybuffer.buf, __pyx_t_13, __pyx_pybuffernd_delay_data.diminfo[0].strides, __pyx_t_14, __pyx_pybuffernd_delay_data.diminfo[1].strides));
-</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">084</span>:             point_b_number = delay_data[delay_i,1]</pre>
+</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">087</span>:             point_b_number = delay_data[delay_i,1]</pre>
 <pre class='cython code score-2 '>      __pyx_t_16 = __pyx_v_delay_i;
       __pyx_t_17 = 1;
       __pyx_t_15 = -1;
@@ -735,10 +749,10 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
       } else if (unlikely(__pyx_t_17 &gt;= __pyx_pybuffernd_delay_data.diminfo[1].shape)) __pyx_t_15 = 1;
       if (unlikely(__pyx_t_15 != -1)) {
         <span class='pyx_c_api'>__Pyx_RaiseBufferIndexError</span>(__pyx_t_15);
-        <span class='error_goto'>__PYX_ERR(0, 84, __pyx_L1_error)</span>
+        <span class='error_goto'>__PYX_ERR(0, 87, __pyx_L1_error)</span>
       }
       __pyx_v_point_b_number = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_delay_data.rcbuffer-&gt;pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_delay_data.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_delay_data.diminfo[1].strides));
-</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">085</span>:             moment_delay_ab_min = delay_data[delay_i,2]</pre>
+</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">088</span>:             moment_delay_ab_min = delay_data[delay_i,2]</pre>
 <pre class='cython code score-2 '>      __pyx_t_18 = __pyx_v_delay_i;
       __pyx_t_19 = 2;
       __pyx_t_15 = -1;
@@ -752,10 +766,10 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
       } else if (unlikely(__pyx_t_19 &gt;= __pyx_pybuffernd_delay_data.diminfo[1].shape)) __pyx_t_15 = 1;
       if (unlikely(__pyx_t_15 != -1)) {
         <span class='pyx_c_api'>__Pyx_RaiseBufferIndexError</span>(__pyx_t_15);
-        <span class='error_goto'>__PYX_ERR(0, 85, __pyx_L1_error)</span>
+        <span class='error_goto'>__PYX_ERR(0, 88, __pyx_L1_error)</span>
       }
       __pyx_v_moment_delay_ab_min = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_delay_data.rcbuffer-&gt;pybuffer.buf, __pyx_t_18, __pyx_pybuffernd_delay_data.diminfo[0].strides, __pyx_t_19, __pyx_pybuffernd_delay_data.diminfo[1].strides));
-</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">086</span>:             moment_delay_ab_max = delay_data[delay_i,3]</pre>
+</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">089</span>:             moment_delay_ab_max = delay_data[delay_i,3]</pre>
 <pre class='cython code score-2 '>      __pyx_t_20 = __pyx_v_delay_i;
       __pyx_t_21 = 3;
       __pyx_t_15 = -1;
@@ -769,10 +783,10 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
       } else if (unlikely(__pyx_t_21 &gt;= __pyx_pybuffernd_delay_data.diminfo[1].shape)) __pyx_t_15 = 1;
       if (unlikely(__pyx_t_15 != -1)) {
         <span class='pyx_c_api'>__Pyx_RaiseBufferIndexError</span>(__pyx_t_15);
-        <span class='error_goto'>__PYX_ERR(0, 86, __pyx_L1_error)</span>
+        <span class='error_goto'>__PYX_ERR(0, 89, __pyx_L1_error)</span>
       }
       __pyx_v_moment_delay_ab_max = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_delay_data.rcbuffer-&gt;pybuffer.buf, __pyx_t_20, __pyx_pybuffernd_delay_data.diminfo[0].strides, __pyx_t_21, __pyx_pybuffernd_delay_data.diminfo[1].strides));
-</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">087</span>:             moment_delay_base_min = delay_data[delay_i,4]</pre>
+</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">090</span>:             moment_delay_base_min = delay_data[delay_i,4]</pre>
 <pre class='cython code score-2 '>      __pyx_t_22 = __pyx_v_delay_i;
       __pyx_t_23 = 4;
       __pyx_t_15 = -1;
@@ -786,10 +800,10 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
       } else if (unlikely(__pyx_t_23 &gt;= __pyx_pybuffernd_delay_data.diminfo[1].shape)) __pyx_t_15 = 1;
       if (unlikely(__pyx_t_15 != -1)) {
         <span class='pyx_c_api'>__Pyx_RaiseBufferIndexError</span>(__pyx_t_15);
-        <span class='error_goto'>__PYX_ERR(0, 87, __pyx_L1_error)</span>
+        <span class='error_goto'>__PYX_ERR(0, 90, __pyx_L1_error)</span>
       }
       __pyx_v_moment_delay_base_min = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_delay_data.rcbuffer-&gt;pybuffer.buf, __pyx_t_22, __pyx_pybuffernd_delay_data.diminfo[0].strides, __pyx_t_23, __pyx_pybuffernd_delay_data.diminfo[1].strides));
-</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">088</span>:             moment_delay_base_max = delay_data[delay_i,5]</pre>
+</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">091</span>:             moment_delay_base_max = delay_data[delay_i,5]</pre>
 <pre class='cython code score-2 '>      __pyx_t_24 = __pyx_v_delay_i;
       __pyx_t_25 = 5;
       __pyx_t_15 = -1;
@@ -803,20 +817,20 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
       } else if (unlikely(__pyx_t_25 &gt;= __pyx_pybuffernd_delay_data.diminfo[1].shape)) __pyx_t_15 = 1;
       if (unlikely(__pyx_t_15 != -1)) {
         <span class='pyx_c_api'>__Pyx_RaiseBufferIndexError</span>(__pyx_t_15);
-        <span class='error_goto'>__PYX_ERR(0, 88, __pyx_L1_error)</span>
+        <span class='error_goto'>__PYX_ERR(0, 91, __pyx_L1_error)</span>
       }
       __pyx_v_moment_delay_base_max = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_delay_data.rcbuffer-&gt;pybuffer.buf, __pyx_t_24, __pyx_pybuffernd_delay_data.diminfo[0].strides, __pyx_t_25, __pyx_pybuffernd_delay_data.diminfo[1].strides));
-</pre><pre class="cython line score-0">&#xA0;<span class="">089</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">090</span>:             # поиск сигнала первой точки пары</pre>
-<pre class="cython line score-66" onclick='toggleDiv(this)'>+<span class="">091</span>:             column_number = np.where((points == point_a_number))[0][0]</pre>
-<pre class='cython code score-66 '>      __pyx_t_1 = <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)</span>
+</pre><pre class="cython line score-0">&#xA0;<span class="">092</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">093</span>:             # поиск сигнала первой точки пары</pre>
+<pre class="cython line score-66" onclick='toggleDiv(this)'>+<span class="">094</span>:             column_number = np.where((points == point_a_number))[0][0]</pre>
+<pre class='cython code score-66 '>      __pyx_t_1 = <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-      __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_1, __pyx_n_s_where);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)</span>
+      __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_1, __pyx_n_s_where);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
       <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_point_a_number);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)</span>
+      __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_point_a_number);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-      __pyx_t_3 = <span class='py_c_api'>PyObject_RichCompare</span>(((PyObject *)__pyx_v_points), __pyx_t_1, Py_EQ); <span class='refnanny'>__Pyx_XGOTREF</span>(__pyx_t_3);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 91, __pyx_L1_error)</span>
+      __pyx_t_3 = <span class='py_c_api'>PyObject_RichCompare</span>(((PyObject *)__pyx_v_points), __pyx_t_1, Py_EQ); <span class='refnanny'>__Pyx_XGOTREF</span>(__pyx_t_3);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 94, __pyx_L1_error)</span>
       <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_1 = NULL;
       if (CYTHON_UNPACK_METHODS &amp;&amp; unlikely(<span class='py_c_api'>PyMethod_Check</span>(__pyx_t_2))) {
@@ -829,14 +843,14 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
         }
       }
       if (!__pyx_t_1) {
-        __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_CallOneArg</span>(__pyx_t_2, __pyx_t_3);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)</span>
+        __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_CallOneArg</span>(__pyx_t_2, __pyx_t_3);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 94, __pyx_L1_error)</span>
         <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
         <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
       } else {
         #if CYTHON_FAST_PYCALL
         if (<span class='py_c_api'>PyFunction_Check</span>(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_3};
-          __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyFunction_FastCall</span>(__pyx_t_2, __pyx_temp+1-1, 1+1);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)</span>
+          __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyFunction_FastCall</span>(__pyx_t_2, __pyx_temp+1-1, 1+1);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 94, __pyx_L1_error)</span>
           <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
           <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
           <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
@@ -845,38 +859,38 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
         #if CYTHON_FAST_PYCCALL
         if (<span class='pyx_c_api'>__Pyx_PyFastCFunction_Check</span>(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_3};
-          __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyCFunction_FastCall</span>(__pyx_t_2, __pyx_temp+1-1, 1+1);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)</span>
+          __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyCFunction_FastCall</span>(__pyx_t_2, __pyx_temp+1-1, 1+1);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 94, __pyx_L1_error)</span>
           <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
           <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
           <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
         } else
         #endif
         {
-          __pyx_t_26 = <span class='py_c_api'>PyTuple_New</span>(1+1);<span class='error_goto'> if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 91, __pyx_L1_error)</span>
+          __pyx_t_26 = <span class='py_c_api'>PyTuple_New</span>(1+1);<span class='error_goto'> if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 94, __pyx_L1_error)</span>
           <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_26);
           <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_1); <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_26, 0, __pyx_t_1); __pyx_t_1 = NULL;
           <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_3);
           <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_26, 0+1, __pyx_t_3);
           __pyx_t_3 = 0;
-          __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_Call</span>(__pyx_t_2, __pyx_t_26, NULL);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)</span>
+          __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_Call</span>(__pyx_t_2, __pyx_t_26, NULL);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 94, __pyx_L1_error)</span>
           <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
           <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_26); __pyx_t_26 = 0;
         }
       }
       <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = <span class='pyx_c_api'>__Pyx_GetItemInt</span>(__pyx_t_4, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)</span>
+      __pyx_t_2 = <span class='pyx_c_api'>__Pyx_GetItemInt</span>(__pyx_t_4, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
       <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = <span class='pyx_c_api'>__Pyx_GetItemInt</span>(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)</span>
+      __pyx_t_4 = <span class='pyx_c_api'>__Pyx_GetItemInt</span>(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 94, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
       <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_15 = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(__pyx_t_4); if (unlikely((__pyx_t_15 == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 91, __pyx_L1_error)</span>
+      __pyx_t_15 = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(__pyx_t_4); if (unlikely((__pyx_t_15 == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 94, __pyx_L1_error)</span>
       <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_v_column_number = __pyx_t_15;
-</pre><pre class="cython line score-42" onclick='toggleDiv(this)'>+<span class="">092</span>:             signal_a = bin_data[:, column_number]</pre>
-<pre class='cython code score-42 '>      __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_column_number);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 92, __pyx_L1_error)</span>
+</pre><pre class="cython line score-42" onclick='toggleDiv(this)'>+<span class="">095</span>:             signal_a = bin_data[:, column_number]</pre>
+<pre class='cython code score-42 '>      __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_column_number);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
-      __pyx_t_2 = <span class='py_c_api'>PyTuple_New</span>(2);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)</span>
+      __pyx_t_2 = <span class='py_c_api'>PyTuple_New</span>(2);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
       <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_slice_);
       <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_slice_);
@@ -884,10 +898,10 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
       <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_4);
       <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_2, 1, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_4 = <span class='py_c_api'>PyObject_GetItem</span>(((PyObject *)__pyx_v_bin_data), __pyx_t_2);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 92, __pyx_L1_error)</span>
+      __pyx_t_4 = <span class='py_c_api'>PyObject_GetItem</span>(((PyObject *)__pyx_v_bin_data), __pyx_t_2);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
       <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_2); __pyx_t_2 = 0;
-      if (!(likely(((__pyx_t_4) == Py_None) || likely(<span class='pyx_c_api'>__Pyx_TypeTest</span>(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) <span class='error_goto'>__PYX_ERR(0, 92, __pyx_L1_error)</span>
+      if (!(likely(((__pyx_t_4) == Py_None) || likely(<span class='pyx_c_api'>__Pyx_TypeTest</span>(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) <span class='error_goto'>__PYX_ERR(0, 95, __pyx_L1_error)</span>
       __pyx_t_27 = ((PyArrayObject *)__pyx_t_4);
       {
         __Pyx_BufFmt_StackElem __pyx_stack[1];
@@ -904,26 +918,26 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
           __pyx_t_9 = __pyx_t_8 = __pyx_t_7 = 0;
         }
         __pyx_pybuffernd_signal_a.diminfo[0].strides = __pyx_pybuffernd_signal_a.rcbuffer-&gt;pybuffer.strides[0]; __pyx_pybuffernd_signal_a.diminfo[0].shape = __pyx_pybuffernd_signal_a.rcbuffer-&gt;pybuffer.shape[0];
-        if (unlikely(__pyx_t_15 &lt; 0)) <span class='error_goto'>__PYX_ERR(0, 92, __pyx_L1_error)</span>
+        if (unlikely(__pyx_t_15 &lt; 0)) <span class='error_goto'>__PYX_ERR(0, 95, __pyx_L1_error)</span>
       }
       __pyx_t_27 = 0;
       <span class='pyx_macro_api'>__Pyx_XDECREF_SET</span>(__pyx_v_signal_a, ((PyArrayObject *)__pyx_t_4));
       __pyx_t_4 = 0;
 /* … */
-  __pyx_slice_ = <span class='py_c_api'>PySlice_New</span>(Py_None, Py_None, Py_None);<span class='error_goto'> if (unlikely(!__pyx_slice_)) __PYX_ERR(0, 92, __pyx_L1_error)</span>
+  __pyx_slice_ = <span class='py_c_api'>PySlice_New</span>(Py_None, Py_None, Py_None);<span class='error_goto'> if (unlikely(!__pyx_slice_)) __PYX_ERR(0, 95, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_slice_);
   <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_slice_);
-</pre><pre class="cython line score-0">&#xA0;<span class="">093</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">094</span>:             # поиск сигнала второй точки пары</pre>
-<pre class="cython line score-66" onclick='toggleDiv(this)'>+<span class="">095</span>:             column_number = np.where((points == point_b_number))[0][0]</pre>
-<pre class='cython code score-66 '>      __pyx_t_2 = <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)</span>
+</pre><pre class="cython line score-0">&#xA0;<span class="">096</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">097</span>:             # поиск сигнала второй точки пары</pre>
+<pre class="cython line score-66" onclick='toggleDiv(this)'>+<span class="">098</span>:             column_number = np.where((points == point_b_number))[0][0]</pre>
+<pre class='cython code score-66 '>      __pyx_t_2 = <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
-      __pyx_t_26 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_2, __pyx_n_s_where);<span class='error_goto'> if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 95, __pyx_L1_error)</span>
+      __pyx_t_26 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_2, __pyx_n_s_where);<span class='error_goto'> if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 98, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_26);
       <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_point_b_number);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)</span>
+      __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_point_b_number);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
-      __pyx_t_3 = <span class='py_c_api'>PyObject_RichCompare</span>(((PyObject *)__pyx_v_points), __pyx_t_2, Py_EQ); <span class='refnanny'>__Pyx_XGOTREF</span>(__pyx_t_3);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)</span>
+      __pyx_t_3 = <span class='py_c_api'>PyObject_RichCompare</span>(((PyObject *)__pyx_v_points), __pyx_t_2, Py_EQ); <span class='refnanny'>__Pyx_XGOTREF</span>(__pyx_t_3);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)</span>
       <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_2 = NULL;
       if (CYTHON_UNPACK_METHODS &amp;&amp; unlikely(<span class='py_c_api'>PyMethod_Check</span>(__pyx_t_26))) {
@@ -936,14 +950,14 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
         }
       }
       if (!__pyx_t_2) {
-        __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_CallOneArg</span>(__pyx_t_26, __pyx_t_3);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)</span>
+        __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_CallOneArg</span>(__pyx_t_26, __pyx_t_3);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)</span>
         <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
         <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
       } else {
         #if CYTHON_FAST_PYCALL
         if (<span class='py_c_api'>PyFunction_Check</span>(__pyx_t_26)) {
           PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-          __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyFunction_FastCall</span>(__pyx_t_26, __pyx_temp+1-1, 1+1);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)</span>
+          __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyFunction_FastCall</span>(__pyx_t_26, __pyx_temp+1-1, 1+1);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)</span>
           <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_2); __pyx_t_2 = 0;
           <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
           <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
@@ -952,38 +966,38 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
         #if CYTHON_FAST_PYCCALL
         if (<span class='pyx_c_api'>__Pyx_PyFastCFunction_Check</span>(__pyx_t_26)) {
           PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-          __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyCFunction_FastCall</span>(__pyx_t_26, __pyx_temp+1-1, 1+1);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)</span>
+          __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyCFunction_FastCall</span>(__pyx_t_26, __pyx_temp+1-1, 1+1);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)</span>
           <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_2); __pyx_t_2 = 0;
           <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
           <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
         } else
         #endif
         {
-          __pyx_t_1 = <span class='py_c_api'>PyTuple_New</span>(1+1);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)</span>
+          __pyx_t_1 = <span class='py_c_api'>PyTuple_New</span>(1+1);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)</span>
           <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
           <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_2); <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_1, 0, __pyx_t_2); __pyx_t_2 = NULL;
           <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_3);
           <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_1, 0+1, __pyx_t_3);
           __pyx_t_3 = 0;
-          __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_Call</span>(__pyx_t_26, __pyx_t_1, NULL);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)</span>
+          __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_Call</span>(__pyx_t_26, __pyx_t_1, NULL);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)</span>
           <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
           <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
         }
       }
       <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_26); __pyx_t_26 = 0;
-      __pyx_t_26 = <span class='pyx_c_api'>__Pyx_GetItemInt</span>(__pyx_t_4, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1);<span class='error_goto'> if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 95, __pyx_L1_error)</span>
+      __pyx_t_26 = <span class='pyx_c_api'>__Pyx_GetItemInt</span>(__pyx_t_4, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1);<span class='error_goto'> if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 98, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_26);
       <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = <span class='pyx_c_api'>__Pyx_GetItemInt</span>(__pyx_t_26, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)</span>
+      __pyx_t_4 = <span class='pyx_c_api'>__Pyx_GetItemInt</span>(__pyx_t_26, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
       <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_26); __pyx_t_26 = 0;
-      __pyx_t_15 = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(__pyx_t_4); if (unlikely((__pyx_t_15 == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 95, __pyx_L1_error)</span>
+      __pyx_t_15 = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(__pyx_t_4); if (unlikely((__pyx_t_15 == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 98, __pyx_L1_error)</span>
       <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_v_column_number = __pyx_t_15;
-</pre><pre class="cython line score-42" onclick='toggleDiv(this)'>+<span class="">096</span>:             signal_b = bin_data[:, column_number]</pre>
-<pre class='cython code score-42 '>      __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_column_number);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)</span>
+</pre><pre class="cython line score-42" onclick='toggleDiv(this)'>+<span class="">099</span>:             signal_b = bin_data[:, column_number]</pre>
+<pre class='cython code score-42 '>      __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_column_number);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 99, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
-      __pyx_t_26 = <span class='py_c_api'>PyTuple_New</span>(2);<span class='error_goto'> if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 96, __pyx_L1_error)</span>
+      __pyx_t_26 = <span class='py_c_api'>PyTuple_New</span>(2);<span class='error_goto'> if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 99, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_26);
       <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_slice__2);
       <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_slice__2);
@@ -991,10 +1005,10 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
       <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_4);
       <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_26, 1, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_4 = <span class='py_c_api'>PyObject_GetItem</span>(((PyObject *)__pyx_v_bin_data), __pyx_t_26);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)</span>
+      __pyx_t_4 = <span class='py_c_api'>PyObject_GetItem</span>(((PyObject *)__pyx_v_bin_data), __pyx_t_26);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 99, __pyx_L1_error)</span>
       <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
       <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_26); __pyx_t_26 = 0;
-      if (!(likely(((__pyx_t_4) == Py_None) || likely(<span class='pyx_c_api'>__Pyx_TypeTest</span>(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) <span class='error_goto'>__PYX_ERR(0, 96, __pyx_L1_error)</span>
+      if (!(likely(((__pyx_t_4) == Py_None) || likely(<span class='pyx_c_api'>__Pyx_TypeTest</span>(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) <span class='error_goto'>__PYX_ERR(0, 99, __pyx_L1_error)</span>
       __pyx_t_28 = ((PyArrayObject *)__pyx_t_4);
       {
         __Pyx_BufFmt_StackElem __pyx_stack[1];
@@ -1011,27 +1025,27 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
           __pyx_t_7 = __pyx_t_8 = __pyx_t_9 = 0;
         }
         __pyx_pybuffernd_signal_b.diminfo[0].strides = __pyx_pybuffernd_signal_b.rcbuffer-&gt;pybuffer.strides[0]; __pyx_pybuffernd_signal_b.diminfo[0].shape = __pyx_pybuffernd_signal_b.rcbuffer-&gt;pybuffer.shape[0];
-        if (unlikely(__pyx_t_15 &lt; 0)) <span class='error_goto'>__PYX_ERR(0, 96, __pyx_L1_error)</span>
+        if (unlikely(__pyx_t_15 &lt; 0)) <span class='error_goto'>__PYX_ERR(0, 99, __pyx_L1_error)</span>
       }
       __pyx_t_28 = 0;
       <span class='pyx_macro_api'>__Pyx_XDECREF_SET</span>(__pyx_v_signal_b, ((PyArrayObject *)__pyx_t_4));
       __pyx_t_4 = 0;
 /* … */
-  __pyx_slice__2 = <span class='py_c_api'>PySlice_New</span>(Py_None, Py_None, Py_None);<span class='error_goto'> if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 96, __pyx_L1_error)</span>
+  __pyx_slice__2 = <span class='py_c_api'>PySlice_New</span>(Py_None, Py_None, Py_None);<span class='error_goto'> if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 99, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_slice__2);
   <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_slice__2);
-</pre><pre class="cython line score-0">&#xA0;<span class="">097</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">098</span>:             # начальные значения расчета корреляции и задержки</pre>
-<pre class="cython line score-0">&#xA0;<span class="">099</span>:             # корреляция считается по альтернативной формуле через суммы без</pre>
-<pre class="cython line score-0">&#xA0;<span class="">100</span>:             # вычисления среднего см. ссылку</pre>
-<pre class="cython line score-0">&#xA0;<span class="">101</span>:             # https://myslide.ru/documents_4/fb5049f5e3104927ac47a5009bfc8cc7/img11.jpg</pre>
-<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">102</span>:             max_correlation = -9999</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">100</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">101</span>:             # начальные значения расчета корреляции и задержки</pre>
+<pre class="cython line score-0">&#xA0;<span class="">102</span>:             # корреляция считается по альтернативной формуле через суммы без</pre>
+<pre class="cython line score-0">&#xA0;<span class="">103</span>:             # вычисления среднего см. ссылку</pre>
+<pre class="cython line score-0">&#xA0;<span class="">104</span>:             # https://myslide.ru/documents_4/fb5049f5e3104927ac47a5009bfc8cc7/img11.jpg</pre>
+<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">105</span>:             max_correlation = -9999</pre>
 <pre class='cython code score-0 '>      __pyx_v_max_correlation = -9999.0;
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">103</span>:             delta_moment = -9999</pre>
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">106</span>:             delta_moment = -9999</pre>
 <pre class='cython code score-0 '>      __pyx_v_delta_moment = -9999;
-</pre><pre class="cython line score-0">&#xA0;<span class="">104</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">105</span>:             # пределы для третьего уровня циклов</pre>
-<pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">106</span>:             t1 = buffer_size + moments[moment_i] + moment_delay_base_min</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">107</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">108</span>:             # пределы для третьего уровня циклов</pre>
+<pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">109</span>:             t1 = buffer_size + moments[moment_i] + moment_delay_base_min</pre>
 <pre class='cython code score-2 '>      __pyx_t_29 = __pyx_v_moment_i;
       __pyx_t_15 = -1;
       if (__pyx_t_29 &lt; 0) {
@@ -1040,10 +1054,10 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
       } else if (unlikely(__pyx_t_29 &gt;= __pyx_pybuffernd_moments.diminfo[0].shape)) __pyx_t_15 = 0;
       if (unlikely(__pyx_t_15 != -1)) {
         <span class='pyx_c_api'>__Pyx_RaiseBufferIndexError</span>(__pyx_t_15);
-        <span class='error_goto'>__PYX_ERR(0, 106, __pyx_L1_error)</span>
+        <span class='error_goto'>__PYX_ERR(0, 109, __pyx_L1_error)</span>
       }
       __pyx_v_t1 = ((__pyx_v_buffer_size + (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_moments.rcbuffer-&gt;pybuffer.buf, __pyx_t_29, __pyx_pybuffernd_moments.diminfo[0].strides))) + __pyx_v_moment_delay_base_min);
-</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">107</span>:             t2 = buffer_size + moments[moment_i] + moment_delay_base_max</pre>
+</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">110</span>:             t2 = buffer_size + moments[moment_i] + moment_delay_base_max</pre>
 <pre class='cython code score-2 '>      __pyx_t_30 = __pyx_v_moment_i;
       __pyx_t_15 = -1;
       if (__pyx_t_30 &lt; 0) {
@@ -1052,23 +1066,23 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
       } else if (unlikely(__pyx_t_30 &gt;= __pyx_pybuffernd_moments.diminfo[0].shape)) __pyx_t_15 = 0;
       if (unlikely(__pyx_t_15 != -1)) {
         <span class='pyx_c_api'>__Pyx_RaiseBufferIndexError</span>(__pyx_t_15);
-        <span class='error_goto'>__PYX_ERR(0, 107, __pyx_L1_error)</span>
+        <span class='error_goto'>__PYX_ERR(0, 110, __pyx_L1_error)</span>
       }
       __pyx_v_t2 = ((__pyx_v_buffer_size + (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_moments.rcbuffer-&gt;pybuffer.buf, __pyx_t_30, __pyx_pybuffernd_moments.diminfo[0].strides))) + __pyx_v_moment_delay_base_max);
-</pre><pre class="cython line score-0">&#xA0;<span class="">108</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">109</span>:             # третий уровень циклов</pre>
-<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">110</span>:             for moment_j in range(t1, t2+1, 1):</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">111</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">112</span>:             # третий уровень циклов</pre>
+<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">113</span>:             for moment_j in range(t1, t2+1, 1):</pre>
 <pre class='cython code score-0 '>      __pyx_t_31 = (__pyx_v_t2 + 1);
       for (__pyx_t_15 = __pyx_v_t1; __pyx_t_15 &lt; __pyx_t_31; __pyx_t_15+=1) {
         __pyx_v_moment_j = __pyx_t_15;
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">111</span>:                 sum_a = sum_q_a = 0</pre>
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">114</span>:                 sum_a = sum_q_a = 0</pre>
 <pre class='cython code score-0 '>        __pyx_v_sum_a = 0.0;
         __pyx_v_sum_q_a = 0.0;
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">112</span>:                 for j in range(window_size):</pre>
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">115</span>:                 for j in range(window_size):</pre>
 <pre class='cython code score-0 '>        __pyx_t_32 = __pyx_v_window_size;
         for (__pyx_t_33 = 0; __pyx_t_33 &lt; __pyx_t_32; __pyx_t_33+=1) {
           __pyx_v_j = __pyx_t_33;
-</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">113</span>:                     val = signal_a[moment_j+j]</pre>
+</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">116</span>:                     val = signal_a[moment_j+j]</pre>
 <pre class='cython code score-2 '>          __pyx_t_34 = (__pyx_v_moment_j + __pyx_v_j);
           __pyx_t_35 = -1;
           if (__pyx_t_34 &lt; 0) {
@@ -1077,33 +1091,33 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
           } else if (unlikely(__pyx_t_34 &gt;= __pyx_pybuffernd_signal_a.diminfo[0].shape)) __pyx_t_35 = 0;
           if (unlikely(__pyx_t_35 != -1)) {
             <span class='pyx_c_api'>__Pyx_RaiseBufferIndexError</span>(__pyx_t_35);
-            <span class='error_goto'>__PYX_ERR(0, 113, __pyx_L1_error)</span>
+            <span class='error_goto'>__PYX_ERR(0, 116, __pyx_L1_error)</span>
           }
           __pyx_v_val = (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float_t *, __pyx_pybuffernd_signal_a.rcbuffer-&gt;pybuffer.buf, __pyx_t_34, __pyx_pybuffernd_signal_a.diminfo[0].strides));
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">114</span>:                     sum_a += val</pre>
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">117</span>:                     sum_a += val</pre>
 <pre class='cython code score-0 '>          __pyx_v_sum_a = (__pyx_v_sum_a + __pyx_v_val);
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">115</span>:                     sum_q_a+= val*val</pre>
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">118</span>:                     sum_q_a+= val*val</pre>
 <pre class='cython code score-0 '>          __pyx_v_sum_q_a = (__pyx_v_sum_q_a + (__pyx_v_val * __pyx_v_val));
         }
-</pre><pre class="cython line score-0">&#xA0;<span class="">116</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">117</span>:                 # пределы для четвертого уровня циклов</pre>
-<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">118</span>:                 t3 = moment_j + moment_delay_ab_min</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">119</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">120</span>:                 # пределы для четвертого уровня циклов</pre>
+<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">121</span>:                 t3 = moment_j + moment_delay_ab_min</pre>
 <pre class='cython code score-0 '>        __pyx_v_t3 = (__pyx_v_moment_j + __pyx_v_moment_delay_ab_min);
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">119</span>:                 t4 = moment_j + moment_delay_ab_max</pre>
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">122</span>:                 t4 = moment_j + moment_delay_ab_max</pre>
 <pre class='cython code score-0 '>        __pyx_v_t4 = (__pyx_v_moment_j + __pyx_v_moment_delay_ab_max);
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">120</span>:                 for moment_k in range(t3, t4+1, 1):</pre>
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">123</span>:                 for moment_k in range(t3, t4+1, 1):</pre>
 <pre class='cython code score-0 '>        __pyx_t_36 = (__pyx_v_t4 + 1);
         for (__pyx_t_32 = __pyx_v_t3; __pyx_t_32 &lt; __pyx_t_36; __pyx_t_32+=1) {
           __pyx_v_moment_k = __pyx_t_32;
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">121</span>:                     sum_b = sum_q_b = sum_ab=0</pre>
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">124</span>:                     sum_b = sum_q_b = sum_ab=0</pre>
 <pre class='cython code score-0 '>          __pyx_v_sum_b = 0.0;
           __pyx_v_sum_q_b = 0.0;
           __pyx_v_sum_ab = 0.0;
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">122</span>:                     for k in range(window_size):</pre>
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">125</span>:                     for k in range(window_size):</pre>
 <pre class='cython code score-0 '>          __pyx_t_33 = __pyx_v_window_size;
           for (__pyx_t_35 = 0; __pyx_t_35 &lt; __pyx_t_33; __pyx_t_35+=1) {
             __pyx_v_k = __pyx_t_35;
-</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">123</span>:                         val = signal_b[moment_k + k]</pre>
+</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">126</span>:                         val = signal_b[moment_k + k]</pre>
 <pre class='cython code score-2 '>            __pyx_t_37 = (__pyx_v_moment_k + __pyx_v_k);
             __pyx_t_38 = -1;
             if (__pyx_t_37 &lt; 0) {
@@ -1112,14 +1126,14 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
             } else if (unlikely(__pyx_t_37 &gt;= __pyx_pybuffernd_signal_b.diminfo[0].shape)) __pyx_t_38 = 0;
             if (unlikely(__pyx_t_38 != -1)) {
               <span class='pyx_c_api'>__Pyx_RaiseBufferIndexError</span>(__pyx_t_38);
-              <span class='error_goto'>__PYX_ERR(0, 123, __pyx_L1_error)</span>
+              <span class='error_goto'>__PYX_ERR(0, 126, __pyx_L1_error)</span>
             }
             __pyx_v_val = (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float_t *, __pyx_pybuffernd_signal_b.rcbuffer-&gt;pybuffer.buf, __pyx_t_37, __pyx_pybuffernd_signal_b.diminfo[0].strides));
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">124</span>:                         sum_b += val</pre>
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">127</span>:                         sum_b += val</pre>
 <pre class='cython code score-0 '>            __pyx_v_sum_b = (__pyx_v_sum_b + __pyx_v_val);
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">125</span>:                         sum_q_b += val * val</pre>
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">128</span>:                         sum_q_b += val * val</pre>
 <pre class='cython code score-0 '>            __pyx_v_sum_q_b = (__pyx_v_sum_q_b + (__pyx_v_val * __pyx_v_val));
-</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">126</span>:                         sum_ab += val*signal_a[moment_j+k]</pre>
+</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">129</span>:                         sum_ab += val*signal_a[moment_j+k]</pre>
 <pre class='cython code score-2 '>            __pyx_t_39 = (__pyx_v_moment_j + __pyx_v_k);
             __pyx_t_38 = -1;
             if (__pyx_t_39 &lt; 0) {
@@ -1128,165 +1142,171 @@ static PyObject *__pyx_pf_19MinimizationPrepear_minimization_prep(CYTHON_UNUSED 
             } else if (unlikely(__pyx_t_39 &gt;= __pyx_pybuffernd_signal_a.diminfo[0].shape)) __pyx_t_38 = 0;
             if (unlikely(__pyx_t_38 != -1)) {
               <span class='pyx_c_api'>__Pyx_RaiseBufferIndexError</span>(__pyx_t_38);
-              <span class='error_goto'>__PYX_ERR(0, 126, __pyx_L1_error)</span>
+              <span class='error_goto'>__PYX_ERR(0, 129, __pyx_L1_error)</span>
             }
             __pyx_v_sum_ab = (__pyx_v_sum_ab + (__pyx_v_val * (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float_t *, __pyx_pybuffernd_signal_a.rcbuffer-&gt;pybuffer.buf, __pyx_t_39, __pyx_pybuffernd_signal_a.diminfo[0].strides))));
           }
-</pre><pre class="cython line score-0">&#xA0;<span class="">127</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">128</span>:                     # вычисление корреляции</pre>
-<pre class="cython line score-5" onclick='toggleDiv(this)'>+<span class="">129</span>:                     corr = (sum_ab * window_size - sum_a * sum_b) / ((sum_q_a * window_size - sum_a ** 2) * (sum_q_b * window_size - sum_b ** 2)) ** 0.5</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">130</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">131</span>:                     # вычисление корреляции</pre>
+<pre class="cython line score-5" onclick='toggleDiv(this)'>+<span class="">132</span>:                     corr = (sum_ab * window_size - sum_a * sum_b) / ((sum_q_a * window_size - sum_a ** 2) * (sum_q_b * window_size - sum_b ** 2)) ** 0.5</pre>
 <pre class='cython code score-5 '>          __pyx_t_40 = ((__pyx_v_sum_ab * __pyx_v_window_size) - (__pyx_v_sum_a * __pyx_v_sum_b));
           __pyx_t_41 = pow((((__pyx_v_sum_q_a * __pyx_v_window_size) - pow(__pyx_v_sum_a, 2.0)) * ((__pyx_v_sum_q_b * __pyx_v_window_size) - pow(__pyx_v_sum_b, 2.0))), 0.5);
           if (unlikely(__pyx_t_41 == 0)) {
             <span class='py_c_api'>PyErr_SetString</span>(PyExc_ZeroDivisionError, "float division");
-            <span class='error_goto'>__PYX_ERR(0, 129, __pyx_L1_error)</span>
+            <span class='error_goto'>__PYX_ERR(0, 132, __pyx_L1_error)</span>
           }
           __pyx_v_corr = (__pyx_t_40 / __pyx_t_41);
-</pre><pre class="cython line score-0">&#xA0;<span class="">130</span>:                     # нахождение модуля корреляции</pre>
-<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">131</span>:                     if corr &lt; 0:</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">133</span>:                     # нахождение модуля корреляции</pre>
+<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">134</span>:                     if corr &lt; 0:</pre>
 <pre class='cython code score-0 '>          __pyx_t_42 = ((__pyx_v_corr &lt; 0.0) != 0);
           if (__pyx_t_42) {
 /* … */
           }
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">132</span>:                         corr = -corr</pre>
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">135</span>:                         corr = -corr</pre>
 <pre class='cython code score-0 '>            __pyx_v_corr = (-__pyx_v_corr);
-</pre><pre class="cython line score-0">&#xA0;<span class="">133</span>:                     # определение максимального значения корреляции и</pre>
-<pre class="cython line score-0">&#xA0;<span class="">134</span>:                     # задежки</pre>
-<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">135</span>:                     if corr &gt; max_correlation:</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">136</span>:                     # определение максимального значения корреляции и</pre>
+<pre class="cython line score-0">&#xA0;<span class="">137</span>:                     # задежки</pre>
+<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">138</span>:                     if corr &gt; max_correlation:</pre>
 <pre class='cython code score-0 '>          __pyx_t_42 = ((__pyx_v_corr &gt; __pyx_v_max_correlation) != 0);
           if (__pyx_t_42) {
 /* … */
           }
         }
       }
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">136</span>:                         max_correlation=corr</pre>
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">139</span>:                         max_correlation=corr</pre>
 <pre class='cython code score-0 '>            __pyx_v_max_correlation = __pyx_v_corr;
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">137</span>:                         delta_moment = moment_k - moment_j</pre>
+</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">140</span>:                         delta_moment = moment_k - moment_j</pre>
 <pre class='cython code score-0 '>            __pyx_v_delta_moment = (__pyx_v_moment_k - __pyx_v_moment_j);
-</pre><pre class="cython line score-0">&#xA0;<span class="">138</span>:             # добавление результата в массив</pre>
-<pre class="cython line score-81" onclick='toggleDiv(this)'>+<span class="">139</span>:             result = np.append(result, [minute_number, moments[moment_i],</pre>
-<pre class='cython code score-81 '>      __pyx_t_26 = <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 139, __pyx_L1_error)</span>
-      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_26);
-      __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_26, __pyx_n_s_append);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)</span>
-      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-      <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_26); __pyx_t_26 = 0;
-      __pyx_t_26 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_minute_number);<span class='error_goto'> if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 139, __pyx_L1_error)</span>
-      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_26);
-      __pyx_t_43 = __pyx_v_moment_i;
-      __pyx_t_15 = -1;
-      if (__pyx_t_43 &lt; 0) {
-        __pyx_t_43 += __pyx_pybuffernd_moments.diminfo[0].shape;
-        if (unlikely(__pyx_t_43 &lt; 0)) __pyx_t_15 = 0;
-      } else if (unlikely(__pyx_t_43 &gt;= __pyx_pybuffernd_moments.diminfo[0].shape)) __pyx_t_15 = 0;
-      if (unlikely(__pyx_t_15 != -1)) {
-        <span class='pyx_c_api'>__Pyx_RaiseBufferIndexError</span>(__pyx_t_15);
-        <span class='error_goto'>__PYX_ERR(0, 139, __pyx_L1_error)</span>
-      }
-      __pyx_t_3 = <span class='pyx_c_api'>__Pyx_PyInt_From_npy_long</span>((*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_moments.rcbuffer-&gt;pybuffer.buf, __pyx_t_43, __pyx_pybuffernd_moments.diminfo[0].strides)));<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 139, __pyx_L1_error)</span>
-      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_3);
+</pre><pre class="cython line score-0">&#xA0;<span class="">141</span>:             # добавление результата в массив, если значение корреляции выше</pre>
+<pre class="cython line score-0">&#xA0;<span class="">142</span>:             # или равна минимальному заданному порогу</pre>
+<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">143</span>:             if min_correlation&lt;=max_correlation:</pre>
+<pre class='cython code score-0 '>      __pyx_t_42 = ((__pyx_v_min_correlation &lt;= __pyx_v_max_correlation) != 0);
+      if (__pyx_t_42) {
 /* … */
-      __pyx_t_47 = <span class='py_c_api'>PyList_New</span>(6);<span class='error_goto'> if (unlikely(!__pyx_t_47)) __PYX_ERR(0, 139, __pyx_L1_error)</span>
-      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_47);
-      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_26);
-      <span class='py_macro_api'>PyList_SET_ITEM</span>(__pyx_t_47, 0, __pyx_t_26);
-      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_3);
-      <span class='py_macro_api'>PyList_SET_ITEM</span>(__pyx_t_47, 1, __pyx_t_3);
-      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_2);
-      <span class='py_macro_api'>PyList_SET_ITEM</span>(__pyx_t_47, 2, __pyx_t_2);
-      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_44);
-      <span class='py_macro_api'>PyList_SET_ITEM</span>(__pyx_t_47, 3, __pyx_t_44);
-      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_45);
-      <span class='py_macro_api'>PyList_SET_ITEM</span>(__pyx_t_47, 4, __pyx_t_45);
-      <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_46);
-      <span class='py_macro_api'>PyList_SET_ITEM</span>(__pyx_t_47, 5, __pyx_t_46);
-      __pyx_t_26 = 0;
-      __pyx_t_3 = 0;
-      __pyx_t_2 = 0;
-      __pyx_t_44 = 0;
-      __pyx_t_45 = 0;
-      __pyx_t_46 = 0;
-      __pyx_t_46 = NULL;
-      __pyx_t_15 = 0;
-      if (CYTHON_UNPACK_METHODS &amp;&amp; unlikely(<span class='py_c_api'>PyMethod_Check</span>(__pyx_t_1))) {
-        __pyx_t_46 = <span class='py_macro_api'>PyMethod_GET_SELF</span>(__pyx_t_1);
-        if (likely(__pyx_t_46)) {
-          PyObject* function = <span class='py_macro_api'>PyMethod_GET_FUNCTION</span>(__pyx_t_1);
-          <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_t_46);
-          <span class='pyx_macro_api'>__Pyx_INCREF</span>(function);
-          <span class='pyx_macro_api'>__Pyx_DECREF_SET</span>(__pyx_t_1, function);
-          __pyx_t_15 = 1;
-        }
       }
-      #if CYTHON_FAST_PYCALL
-      if (<span class='py_c_api'>PyFunction_Check</span>(__pyx_t_1)) {
-        PyObject *__pyx_temp[3] = {__pyx_t_46, ((PyObject *)__pyx_v_result), __pyx_t_47};
-        __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyFunction_FastCall</span>(__pyx_t_1, __pyx_temp+1-__pyx_t_15, 2+__pyx_t_15);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 139, __pyx_L1_error)</span>
-        <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_46); __pyx_t_46 = 0;
-        <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
-        <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_47); __pyx_t_47 = 0;
-      } else
-      #endif
-      #if CYTHON_FAST_PYCCALL
-      if (<span class='pyx_c_api'>__Pyx_PyFastCFunction_Check</span>(__pyx_t_1)) {
-        PyObject *__pyx_temp[3] = {__pyx_t_46, ((PyObject *)__pyx_v_result), __pyx_t_47};
-        __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyCFunction_FastCall</span>(__pyx_t_1, __pyx_temp+1-__pyx_t_15, 2+__pyx_t_15);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 139, __pyx_L1_error)</span>
-        <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_46); __pyx_t_46 = 0;
-        <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
-        <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_47); __pyx_t_47 = 0;
-      } else
-      #endif
-      {
-        __pyx_t_45 = <span class='py_c_api'>PyTuple_New</span>(2+__pyx_t_15);<span class='error_goto'> if (unlikely(!__pyx_t_45)) __PYX_ERR(0, 139, __pyx_L1_error)</span>
-        <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_45);
-        if (__pyx_t_46) {
-          <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_46); <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_45, 0, __pyx_t_46); __pyx_t_46 = NULL;
-        }
-        <span class='pyx_macro_api'>__Pyx_INCREF</span>(((PyObject *)__pyx_v_result));
-        <span class='refnanny'>__Pyx_GIVEREF</span>(((PyObject *)__pyx_v_result));
-        <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_45, 0+__pyx_t_15, ((PyObject *)__pyx_v_result));
-        <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_47);
-        <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_45, 1+__pyx_t_15, __pyx_t_47);
-        __pyx_t_47 = 0;
-        __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_Call</span>(__pyx_t_1, __pyx_t_45, NULL);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 139, __pyx_L1_error)</span>
-        <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
-        <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_45); __pyx_t_45 = 0;
-      }
-      <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-      if (!(likely(((__pyx_t_4) == Py_None) || likely(<span class='pyx_c_api'>__Pyx_TypeTest</span>(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) <span class='error_goto'>__PYX_ERR(0, 139, __pyx_L1_error)</span>
-      __pyx_t_5 = ((PyArrayObject *)__pyx_t_4);
-      {
-        __Pyx_BufFmt_StackElem __pyx_stack[1];
-        <span class='pyx_c_api'>__Pyx_SafeReleaseBuffer</span>(&amp;__pyx_pybuffernd_result.rcbuffer-&gt;pybuffer);
-        __pyx_t_15 = <span class='pyx_c_api'>__Pyx_GetBufferAndValidate</span>(&amp;__pyx_pybuffernd_result.rcbuffer-&gt;pybuffer, (PyObject*)__pyx_t_5, &amp;__Pyx_TypeInfo_nn___pyx_t_5numpy_float_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
-        if (unlikely(__pyx_t_15 &lt; 0)) {
-          <span class='py_c_api'>PyErr_Fetch</span>(&amp;__pyx_t_9, &amp;__pyx_t_8, &amp;__pyx_t_7);
-          if (unlikely(<span class='pyx_c_api'>__Pyx_GetBufferAndValidate</span>(&amp;__pyx_pybuffernd_result.rcbuffer-&gt;pybuffer, (PyObject*)__pyx_v_result, &amp;__Pyx_TypeInfo_nn___pyx_t_5numpy_float_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
-            Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_8); Py_XDECREF(__pyx_t_7);
-            <span class='pyx_c_api'>__Pyx_RaiseBufferFallbackError</span>();
-          } else {
-            <span class='py_c_api'>PyErr_Restore</span>(__pyx_t_9, __pyx_t_8, __pyx_t_7);
-          }
-          __pyx_t_9 = __pyx_t_8 = __pyx_t_7 = 0;
-        }
-        __pyx_pybuffernd_result.diminfo[0].strides = __pyx_pybuffernd_result.rcbuffer-&gt;pybuffer.strides[0]; __pyx_pybuffernd_result.diminfo[0].shape = __pyx_pybuffernd_result.rcbuffer-&gt;pybuffer.shape[0];
-        if (unlikely(__pyx_t_15 &lt; 0)) <span class='error_goto'>__PYX_ERR(0, 139, __pyx_L1_error)</span>
-      }
-      __pyx_t_5 = 0;
-      <span class='pyx_macro_api'>__Pyx_DECREF_SET</span>(__pyx_v_result, ((PyArrayObject *)__pyx_t_4));
-      __pyx_t_4 = 0;
     }
   }
-</pre><pre class="cython line score-4" onclick='toggleDiv(this)'>+<span class="">140</span>:                                         point_a_number, point_b_number,</pre>
-<pre class='cython code score-4 '>      __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_point_a_number);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)</span>
-      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
-      __pyx_t_44 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_point_b_number);<span class='error_goto'> if (unlikely(!__pyx_t_44)) __PYX_ERR(0, 140, __pyx_L1_error)</span>
-      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_44);
-</pre><pre class="cython line score-7" onclick='toggleDiv(this)'>+<span class="">141</span>:                                         delta_moment, max_correlation])</pre>
-<pre class='cython code score-7 '>      __pyx_t_45 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_delta_moment);<span class='error_goto'> if (unlikely(!__pyx_t_45)) __PYX_ERR(0, 141, __pyx_L1_error)</span>
-      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_45);
-      __pyx_t_46 = <span class='py_c_api'>PyFloat_FromDouble</span>(__pyx_v_max_correlation);<span class='error_goto'> if (unlikely(!__pyx_t_46)) __PYX_ERR(0, 141, __pyx_L1_error)</span>
-      <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_46);
-</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">142</span>:     return result</pre>
+</pre><pre class="cython line score-81" onclick='toggleDiv(this)'>+<span class="">144</span>:                 result = np.append(result, [minute_number, moments[moment_i],</pre>
+<pre class='cython code score-81 '>        __pyx_t_26 = <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 144, __pyx_L1_error)</span>
+        <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_26);
+        __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_26, __pyx_n_s_append);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)</span>
+        <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
+        <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_26); __pyx_t_26 = 0;
+        __pyx_t_26 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_minute_number);<span class='error_goto'> if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 144, __pyx_L1_error)</span>
+        <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_26);
+        __pyx_t_43 = __pyx_v_moment_i;
+        __pyx_t_15 = -1;
+        if (__pyx_t_43 &lt; 0) {
+          __pyx_t_43 += __pyx_pybuffernd_moments.diminfo[0].shape;
+          if (unlikely(__pyx_t_43 &lt; 0)) __pyx_t_15 = 0;
+        } else if (unlikely(__pyx_t_43 &gt;= __pyx_pybuffernd_moments.diminfo[0].shape)) __pyx_t_15 = 0;
+        if (unlikely(__pyx_t_15 != -1)) {
+          <span class='pyx_c_api'>__Pyx_RaiseBufferIndexError</span>(__pyx_t_15);
+          <span class='error_goto'>__PYX_ERR(0, 144, __pyx_L1_error)</span>
+        }
+        __pyx_t_3 = <span class='pyx_c_api'>__Pyx_PyInt_From_npy_long</span>((*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_moments.rcbuffer-&gt;pybuffer.buf, __pyx_t_43, __pyx_pybuffernd_moments.diminfo[0].strides)));<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 144, __pyx_L1_error)</span>
+        <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_3);
+/* … */
+        __pyx_t_47 = <span class='py_c_api'>PyList_New</span>(6);<span class='error_goto'> if (unlikely(!__pyx_t_47)) __PYX_ERR(0, 144, __pyx_L1_error)</span>
+        <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_47);
+        <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_26);
+        <span class='py_macro_api'>PyList_SET_ITEM</span>(__pyx_t_47, 0, __pyx_t_26);
+        <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_3);
+        <span class='py_macro_api'>PyList_SET_ITEM</span>(__pyx_t_47, 1, __pyx_t_3);
+        <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_2);
+        <span class='py_macro_api'>PyList_SET_ITEM</span>(__pyx_t_47, 2, __pyx_t_2);
+        <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_44);
+        <span class='py_macro_api'>PyList_SET_ITEM</span>(__pyx_t_47, 3, __pyx_t_44);
+        <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_45);
+        <span class='py_macro_api'>PyList_SET_ITEM</span>(__pyx_t_47, 4, __pyx_t_45);
+        <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_46);
+        <span class='py_macro_api'>PyList_SET_ITEM</span>(__pyx_t_47, 5, __pyx_t_46);
+        __pyx_t_26 = 0;
+        __pyx_t_3 = 0;
+        __pyx_t_2 = 0;
+        __pyx_t_44 = 0;
+        __pyx_t_45 = 0;
+        __pyx_t_46 = 0;
+        __pyx_t_46 = NULL;
+        __pyx_t_15 = 0;
+        if (CYTHON_UNPACK_METHODS &amp;&amp; unlikely(<span class='py_c_api'>PyMethod_Check</span>(__pyx_t_1))) {
+          __pyx_t_46 = <span class='py_macro_api'>PyMethod_GET_SELF</span>(__pyx_t_1);
+          if (likely(__pyx_t_46)) {
+            PyObject* function = <span class='py_macro_api'>PyMethod_GET_FUNCTION</span>(__pyx_t_1);
+            <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_t_46);
+            <span class='pyx_macro_api'>__Pyx_INCREF</span>(function);
+            <span class='pyx_macro_api'>__Pyx_DECREF_SET</span>(__pyx_t_1, function);
+            __pyx_t_15 = 1;
+          }
+        }
+        #if CYTHON_FAST_PYCALL
+        if (<span class='py_c_api'>PyFunction_Check</span>(__pyx_t_1)) {
+          PyObject *__pyx_temp[3] = {__pyx_t_46, ((PyObject *)__pyx_v_result), __pyx_t_47};
+          __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyFunction_FastCall</span>(__pyx_t_1, __pyx_temp+1-__pyx_t_15, 2+__pyx_t_15);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)</span>
+          <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_46); __pyx_t_46 = 0;
+          <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
+          <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_47); __pyx_t_47 = 0;
+        } else
+        #endif
+        #if CYTHON_FAST_PYCCALL
+        if (<span class='pyx_c_api'>__Pyx_PyFastCFunction_Check</span>(__pyx_t_1)) {
+          PyObject *__pyx_temp[3] = {__pyx_t_46, ((PyObject *)__pyx_v_result), __pyx_t_47};
+          __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyCFunction_FastCall</span>(__pyx_t_1, __pyx_temp+1-__pyx_t_15, 2+__pyx_t_15);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)</span>
+          <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_46); __pyx_t_46 = 0;
+          <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
+          <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_47); __pyx_t_47 = 0;
+        } else
+        #endif
+        {
+          __pyx_t_45 = <span class='py_c_api'>PyTuple_New</span>(2+__pyx_t_15);<span class='error_goto'> if (unlikely(!__pyx_t_45)) __PYX_ERR(0, 144, __pyx_L1_error)</span>
+          <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_45);
+          if (__pyx_t_46) {
+            <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_46); <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_45, 0, __pyx_t_46); __pyx_t_46 = NULL;
+          }
+          <span class='pyx_macro_api'>__Pyx_INCREF</span>(((PyObject *)__pyx_v_result));
+          <span class='refnanny'>__Pyx_GIVEREF</span>(((PyObject *)__pyx_v_result));
+          <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_45, 0+__pyx_t_15, ((PyObject *)__pyx_v_result));
+          <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_t_47);
+          <span class='py_macro_api'>PyTuple_SET_ITEM</span>(__pyx_t_45, 1+__pyx_t_15, __pyx_t_47);
+          __pyx_t_47 = 0;
+          __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_Call</span>(__pyx_t_1, __pyx_t_45, NULL);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)</span>
+          <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
+          <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_45); __pyx_t_45 = 0;
+        }
+        <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
+        if (!(likely(((__pyx_t_4) == Py_None) || likely(<span class='pyx_c_api'>__Pyx_TypeTest</span>(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) <span class='error_goto'>__PYX_ERR(0, 144, __pyx_L1_error)</span>
+        __pyx_t_5 = ((PyArrayObject *)__pyx_t_4);
+        {
+          __Pyx_BufFmt_StackElem __pyx_stack[1];
+          <span class='pyx_c_api'>__Pyx_SafeReleaseBuffer</span>(&amp;__pyx_pybuffernd_result.rcbuffer-&gt;pybuffer);
+          __pyx_t_15 = <span class='pyx_c_api'>__Pyx_GetBufferAndValidate</span>(&amp;__pyx_pybuffernd_result.rcbuffer-&gt;pybuffer, (PyObject*)__pyx_t_5, &amp;__Pyx_TypeInfo_nn___pyx_t_5numpy_float_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+          if (unlikely(__pyx_t_15 &lt; 0)) {
+            <span class='py_c_api'>PyErr_Fetch</span>(&amp;__pyx_t_9, &amp;__pyx_t_8, &amp;__pyx_t_7);
+            if (unlikely(<span class='pyx_c_api'>__Pyx_GetBufferAndValidate</span>(&amp;__pyx_pybuffernd_result.rcbuffer-&gt;pybuffer, (PyObject*)__pyx_v_result, &amp;__Pyx_TypeInfo_nn___pyx_t_5numpy_float_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+              Py_XDECREF(__pyx_t_9); Py_XDECREF(__pyx_t_8); Py_XDECREF(__pyx_t_7);
+              <span class='pyx_c_api'>__Pyx_RaiseBufferFallbackError</span>();
+            } else {
+              <span class='py_c_api'>PyErr_Restore</span>(__pyx_t_9, __pyx_t_8, __pyx_t_7);
+            }
+            __pyx_t_9 = __pyx_t_8 = __pyx_t_7 = 0;
+          }
+          __pyx_pybuffernd_result.diminfo[0].strides = __pyx_pybuffernd_result.rcbuffer-&gt;pybuffer.strides[0]; __pyx_pybuffernd_result.diminfo[0].shape = __pyx_pybuffernd_result.rcbuffer-&gt;pybuffer.shape[0];
+          if (unlikely(__pyx_t_15 &lt; 0)) <span class='error_goto'>__PYX_ERR(0, 144, __pyx_L1_error)</span>
+        }
+        __pyx_t_5 = 0;
+        <span class='pyx_macro_api'>__Pyx_DECREF_SET</span>(__pyx_v_result, ((PyArrayObject *)__pyx_t_4));
+        __pyx_t_4 = 0;
+</pre><pre class="cython line score-4" onclick='toggleDiv(this)'>+<span class="">145</span>:                                             point_a_number, point_b_number,</pre>
+<pre class='cython code score-4 '>        __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_point_a_number);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)</span>
+        <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
+        __pyx_t_44 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_point_b_number);<span class='error_goto'> if (unlikely(!__pyx_t_44)) __PYX_ERR(0, 145, __pyx_L1_error)</span>
+        <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_44);
+</pre><pre class="cython line score-7" onclick='toggleDiv(this)'>+<span class="">146</span>:                                             delta_moment, max_correlation])</pre>
+<pre class='cython code score-7 '>        __pyx_t_45 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_delta_moment);<span class='error_goto'> if (unlikely(!__pyx_t_45)) __PYX_ERR(0, 146, __pyx_L1_error)</span>
+        <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_45);
+        __pyx_t_46 = <span class='py_c_api'>PyFloat_FromDouble</span>(__pyx_v_max_correlation);<span class='error_goto'> if (unlikely(!__pyx_t_46)) __PYX_ERR(0, 146, __pyx_L1_error)</span>
+        <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_46);
+</pre><pre class="cython line score-2" onclick='toggleDiv(this)'>+<span class="">147</span>:     return result</pre>
 <pre class='cython code score-2 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   <span class='pyx_macro_api'>__Pyx_INCREF</span>(((PyObject *)__pyx_v_result));
   __pyx_r = ((PyObject *)__pyx_v_result);
