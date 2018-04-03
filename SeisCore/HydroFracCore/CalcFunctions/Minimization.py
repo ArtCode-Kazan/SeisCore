@@ -70,36 +70,6 @@ def target_function_velocities(params, args):
     return result
 
 
-
-def target_function_velocities(params, args):
-    """
-    Целевая функция минимизации для поиска скоростей
-    :param params: неизвестные координаты события - x, y, z, v1,v2,v3,...,vn
-    :param args: известные параметры функции массив и частота дискретизации
-    :return:
-    """
-    # координаты, которые требуется найти
-    x, y, z, velocities = params
-
-    # параметры-постоянные для построения функции (массив и частота)
-    points_list, coeffs, frequency = args
-    # сама функция
-    result = 0
-    # обход по всем константам (слагаемым)
-    for point_a_number, x_a, y_a, point_b_number, x_b, y_b, delta_moments, \
-        correlation in coeffs:
-        # скорость первой точки
-        velocity_a = velocities[points_list.index(point_a_number)]
-        # скорость второй точки
-        velocity_b = velocities[points_list.index(point_b_number)]
-
-        t_1 = ((x - x_a) ** 2 + (y - y_a) ** 2 + z ** 2) ** 0.5 / velocity_a
-        t_2 = ((x - x_b) ** 2 + (y - y_b) ** 2 + z ** 2) ** 0.5 / velocity_b
-
-        result += (((t_2-t_1)*frequency-delta_moments)*correlation)**2
-    return result
-
-
 def minimization_coordinates(coeffs, start_coords, frequency):
     """
     Функция минимизации для поиска координат события
