@@ -136,13 +136,13 @@ def max_value_index(data, interval=None):
     return result
 
 
-def moments_selection(data, procents=[95, 96, 97, 98, 99], epsilon=0):
+def moments_selection(data, quantiles_value, epsilon=0):
     """
     Обобщенная функция для получения отсчетов сигналов
     :param data: одномерный массив numpy со значениями максимальных квадратов
     коэф-тов кросскорреляции
-    :param procents: список из процентов для расчетов квантилей.
-    По умолчанию [95, 96, 97, 98, 99]
+    :param quantiles_value: список из значений (!!!) процентов квантилей
+    Здесь не проценты, а именно значения
     :param epsilon: допуск отклонения коэ-тов корреляции от значения квантиля
     при выборке
     :param minute_number: номер минуты для обработки. По умолчанию -9999
@@ -152,13 +152,55 @@ def moments_selection(data, procents=[95, 96, 97, 98, 99], epsilon=0):
     :return: одномерный numpy массив с номерами индексов отсчетов
     (нумерация идет от ноля)
     """
-    # расчет квантилей
-    quants = quantilies(data=data, procents=procents)
-
     # получение интервалов для всех квантилей
     base_intervals = np.empty(shape=0, dtype=int)
-    for i in range(len(quants)):
-        ins = quantile_intervals(data=data, quantile=quants[i],
+    for i in range(len(quantiles_value)):
+        ins = quantile_intervals(data=data, quantile=quantiles_value[i],
+                                 epsilon=epsilon)
+        base_intervals = np.append(base_intervals, ins)
+
+    # изменение формы массива
+    column_count = 2
+    row_count = base_intervals.shape[0] // column_count
+    base_intervals = np.reshape(base_intervals, (row_count, column_count))
+
+    # поиск пересечений интервалов
+    intersections = intervals_intersection(base_intervals)
+
+    # поиск индекса максимального элемента массива в выбранных
+    # интервалах пересечений
+    result = np.empty(shape=0, dtype=int)
+    for interval in intersections:
+        left_edge = interval[0]
+        # +1, чтобы получить полуоткрытый интервал
+        right_edge = interval[1] + 1
+        index_with_max_value = max_value_index(data, interval=[left_edge,
+                                                               right_edge])
+        result = np.append(result, index_with_max_value)
+    result = np.sort(result)
+    return result
+
+
+def moments_selection2(data, quantiles_value, epsilon=0):
+    """
+    Обобщенная функция для получения отсчетов сигналов
+    :param data: одномерный массив numpy со значениями максимальных квадратов
+    коэф-тов кросскорреляции
+    :param quantiles_value: список из значений (!!!) процентов квантилей
+    Здесь не проценты, а именно значения
+    :param epsilon: допуск отклонения коэ-тов корреляции от значения квантиля
+    при выборке
+    :param minute_number: номер минуты для обработки. По умолчанию -9999
+    :param export_folder: папка для экспорта результата в файл. о умолчанию
+    - None - экспорт не производится
+    :param export_file_name: имя файла для экспорта
+    :return: одномерный numpy массив с номерами индексов отсчетов
+    (нумерация идет от ноля)
+    """
+    # получение интервалов для всех значений квантилей
+    base_intervals = np.empty(shape=0, dtype=int)
+    for i in range(len(quantiles_value)):
+        ins = quantile_intervals(data=data, quantile=quantiles_value[i],
                                  epsilon=epsilon)
         base_intervals = np.append(base_intervals, ins)
 

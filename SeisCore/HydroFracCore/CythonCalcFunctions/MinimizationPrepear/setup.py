@@ -19,7 +19,7 @@ import numpy
 
 setup(
     cmdclass = {'build_ext': build_ext},
-    ext_modules = [Extension("MinimizationPrepear_NEW",
-                             ["MinimizationPrepear_NEW.pyx"],
+    ext_modules = [Extension("MinimizationPrepear_OLD",
+                             ["MinimizationPrepear_OLD.pyx"],
                              include_dirs=[numpy.get_include()])]
 )
