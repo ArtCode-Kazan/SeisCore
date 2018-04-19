@@ -60,7 +60,10 @@ def quantile_intervals(data, quantile, epsilon=0):
     """
     selection_indexes = \
         np.where((abs(data - quantile) <= epsilon) + (data >= quantile))[0]
-    result = get_intervals(selection_indexes)
+    if selection_indexes.shape[0]>0:
+        result = get_intervals(selection_indexes)
+    else:
+        result = None
     return result
 
 
@@ -136,26 +139,25 @@ def max_value_index(data, interval=None):
     return result
 
 
-def moments_selection(data, quantiles_value, epsilon=0):
+def moments_selection(data, procents=[95, 96, 97, 98, 99], epsilon=0):
     """
     Обобщенная функция для получения отсчетов сигналов
     :param data: одномерный массив numpy со значениями максимальных квадратов
     коэф-тов кросскорреляции
-    :param quantiles_value: список из значений (!!!) процентов квантилей
-    Здесь не проценты, а именно значения
+    :param procents: список из процентов для расчетов квантилей.
+    По умолчанию [95, 96, 97, 98, 99]
     :param epsilon: допуск отклонения коэ-тов корреляции от значения квантиля
     при выборке
-    :param minute_number: номер минуты для обработки. По умолчанию -9999
-    :param export_folder: папка для экспорта результата в файл. о умолчанию
-    - None - экспорт не производится
-    :param export_file_name: имя файла для экспорта
     :return: одномерный numpy массив с номерами индексов отсчетов
     (нумерация идет от ноля)
     """
+    # расчет квантилей
+    quants = quantilies(data=data, procents=procents)
+
     # получение интервалов для всех квантилей
     base_intervals = np.empty(shape=0, dtype=int)
-    for i in range(len(quantiles_value)):
-        ins = quantile_intervals(data=data, quantile=quantiles_value[i],
+    for i in range(len(quants)):
+        ins = quantile_intervals(data=data, quantile=quants[i],
                                  epsilon=epsilon)
         base_intervals = np.append(base_intervals, ins)
 
@@ -190,10 +192,6 @@ def moments_selection2(data, quantiles_value, epsilon=0):
     Здесь не проценты, а именно значения
     :param epsilon: допуск отклонения коэ-тов корреляции от значения квантиля
     при выборке
-    :param minute_number: номер минуты для обработки. По умолчанию -9999
-    :param export_folder: папка для экспорта результата в файл. о умолчанию
-    - None - экспорт не производится
-    :param export_file_name: имя файла для экспорта
     :return: одномерный numpy массив с номерами индексов отсчетов
     (нумерация идет от ноля)
     """
@@ -202,7 +200,13 @@ def moments_selection2(data, quantiles_value, epsilon=0):
     for i in range(len(quantiles_value)):
         ins = quantile_intervals(data=data, quantile=quantiles_value[i],
                                  epsilon=epsilon)
-        base_intervals = np.append(base_intervals, ins)
+        # проверка, что интервалы были получены для текущего квантиля
+        if ins is not None:
+            base_intervals = np.append(base_intervals, ins)
+
+    # проверка, что интервалы для всех кватнтилей были получены
+    if base_intervals.shape[0]==0:
+        return None
 
     # изменение формы массива
     column_count = 2
@@ -223,4 +227,22 @@ def moments_selection2(data, quantiles_value, epsilon=0):
                                                                right_edge])
         result = np.append(result, index_with_max_value)
     result = np.sort(result)
+    return result
+
+
+def moments_selection3(data, quantile_value, epsilon=0):
+    """
+    Обобщенная функция для получения отсчетов сигналов
+    :param data: одномерный массив numpy со значениями максимальных квадратов
+    коэф-тов кросскорреляции
+    :param quantile_value: значение (!!!) процента квантиля для выборки
+    :param epsilon: допуск отклонения коэ-тов корреляции от значения квантиля
+    при выборке
+    :return: одномерный numpy массив с номерами индексов отсчетов
+    (нумерация идет от ноля)
+    """
+    selection_indexes = \
+        np.where((abs(data - quantile_value) <= epsilon) + (data >= quantile_value))[0]
+
+    result = np.sort(selection_indexes)
     return result

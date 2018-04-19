@@ -1,0 +1,17 @@
+{
+  "SeisCore/HydroFracCore/tests/MomentSelection_test.py::test_run_once[param_test0]": true,
+  "SeisCore/HydroFracCore/tests/MomentSelection_test.py::test_run_once[param_test1]": true,
+  "SeisCore/tests/t1/sum_test.py::test_run_once[11-10-2]": true,
+  "SeisCore/tests/t1/sum_test.py::test_run_once[11-11-1]": true,
+  "SeisCore/tests/t1/sum_test.py::test_run_once[11-11-2]": true,
+  "SeisCore/tests/t1/sum_test.py::test_run_once[13-10-11]": true,
+  "SeisCore/tests/t1/sum_test.py::test_run_once[13-10-1]": true,
+  "SeisCore/tests/t1/sum_test.py::test_run_once[13-10-2]": true,
+  "SeisCore/tests/t1/sum_test.py::test_run_once[13-11-11]": true,
+  "SeisCore/tests/t1/sum_test.py::test_run_once[13-11-1]": true,
+  "SeisCore/tests/t1/sum_test.py::test_run_once[21-10-2]": true,
+  "SeisCore/tests/t1/sum_test.py::test_run_once[21-11-11]": true,
+  "SeisCore/tests/t1/sum_test.py::test_run_once[21-11-2]": true,
+  "SeisCore/tests/t1/sum_test.py::test_run_once[param_test1]": true,
+  "SeisCore/tests/t1/sum_test.py::test_run_once[params: (2, 2, 5)]": true
+}
