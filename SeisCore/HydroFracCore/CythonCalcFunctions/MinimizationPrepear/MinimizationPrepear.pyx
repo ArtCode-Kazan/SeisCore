@@ -30,17 +30,13 @@ def minimization_prep(int minute_number,
     столбец 6 - максимальная задержка между младшей точкой и базовой точкой
     --------------------------------------------------------------------------
     :return: функция возвращает одномерный массив (!!!), который следует
-    подвергнуть reshape, чтобы разделить его на 8 столбцов:
+    подвергнуть reshape, чтобы разделить его на шесть столбцов:
     столбец 1 - номер минуты обработки
     столбец 2 - номер отобранного момента минуты
     столбец 3 - номер первой точки пары
     столбец 4 - номер второй точки пары
     столбец 5 - рассчитанная задержка
     столбец 6 - расчитанная максимальная корреляция
-    столбец 7 - сумма квадратов отсчетов первого и второго датчиков
-    для текущей пары и текущего момента (!!!)
-    столбец 8 - сумма квадратов отсчетов первого и второго датчиков
-    для текущего момента (!!!)
 
     """
     # помоментная обработка
@@ -81,18 +77,11 @@ def minimization_prep(int minute_number,
         # результирующий массив, который будет возвращен после работы функции
         np.ndarray[np.float_t, ndim = 1] result
 
-        # ЭКСПЕРИМЕНТАЛЬНЫЕ ПЕРЕМЕННЫЕ
-        double sum1,sum2
-        int column_count, row_count
-        np.ndarray[np.float_t, ndim = 1] temp_result
-        np.ndarray[np.float_t, ndim = 2] new_result,temp_result2
     result = np.empty(shape = 0, dtype = np.float)
     # первый уровень циклов - обход по отобранным моментам
     for moment_i in range(moments.shape[0]):
         # второй уровень циклов - обход по отобранным парам
         # геометрической выборки и их задержкам
-        sum2=0
-        temp_result = np.empty(shape = 0, dtype = np.float)
         for delay_i in range(delay_data.shape[0]):
             point_a_number = delay_data[delay_i,0]
             point_b_number = delay_data[delay_i,1]
@@ -149,30 +138,11 @@ def minimization_prep(int minute_number,
                     if corr > max_correlation:
                         max_correlation=corr
                         delta_moment = moment_k - moment_j
+
             # добавление результата в массив, если значение корреляции выше
             # или равна минимальному заданному порогу
             if min_correlation<=max_correlation:
-                # вычисление суммы квадратов сигнала для текущей пары и
-                # текущего момента
-                sum1 = sum_q_a + sum_q_b
-                # вычисление суммы квадратов сигнала для текущего момента
-                sum2+=sum1
-                temp_result = np.append(temp_result,
-                                        [minute_number, moments[moment_i],
+                result = np.append(result, [minute_number, moments[moment_i],
                                             point_a_number, point_b_number,
-                                            delta_moment, max_correlation,
-                                            sum1])
-        # reshape массива
-        column_count=7
-        row_count=temp_result.shape[0]//7
-        # создание временного массива для вставки последнего столбца
-        temp_result2 = np.reshape(temp_result,newshape=(row_count,
-                                                        column_count))
-        # массива со всеми итоговыми столбцами
-        new_result=np.empty(shape=(row_count,column_count+1), dtype=np.float)
-        new_result[:,:7]=temp_result2
-        # добавление суммы квадратов сигналов для текущего момента
-        new_result[:,7]=sum2
-        # вставка данных в итоговый массив
-        result = np.append(result,new_result)
+                                            delta_moment, max_correlation])
     return result
