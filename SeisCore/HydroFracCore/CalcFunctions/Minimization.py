@@ -87,7 +87,8 @@ def minimization_coordinates(coeffs, start_coords, frequency):
                       args=[coeffs, frequency])
     x, y, z = result.x
     z = abs(z)
-    return x, y, z
+    function_value=result.fun
+    return x, y, z, function_value
 
 
 def minimization_velocities(points_list, coeffs, start_coords, start_velocity,
