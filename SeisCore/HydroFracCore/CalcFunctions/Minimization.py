@@ -78,8 +78,7 @@ def minimization_coordinates(coeffs, start_coords, frequency):
     :param data: массив для целевой функции
     :param start_coords: начальные координаты поиска событий
     :param frequency: частота дискретизации
-    :return: x, y, z события
-
+    :return: x, y, z события, значение функции минимизации
     """
     x0, y0, z0 = start_coords
     result = minimize(fun=target_function_coordinates,
@@ -87,7 +86,8 @@ def minimization_coordinates(coeffs, start_coords, frequency):
                       args=[coeffs, frequency])
     x, y, z = result.x
     z = abs(z)
-    return x, y, z
+    function_value = result.fun
+    return x, y, z, function_value
 
 
 def minimization_velocities(points_list, coeffs, start_coords, start_velocity,
