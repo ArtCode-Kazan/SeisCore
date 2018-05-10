@@ -1,15 +1,17 @@
 import numpy as np
 cimport numpy as np
 
-def calc_correlation(np.ndarray[np.int_t, ndim=1] point_numbers,
-                     int base_point_number,
-                     np.ndarray[np.float_t, ndim=2] signals,
-                     int frequency,
-                     int moment_window,
-                     int left_buffer,
-                     np.ndarray[np.int_t, ndim = 2] moment_delays):
+
+def selection_moments(np.ndarray[np.int_t, ndim=1] point_numbers,
+                      int base_point_number,
+                      np.ndarray[np.float_t, ndim=2] signals,
+                      int frequency,
+                      int moment_window,
+                      int left_buffer,
+                      double correlation_edge,
+                      np.ndarray[np.int_t, ndim = 2] moment_delays):
     """
-    Функция для вычисления среднего максимального квадрата корреляции
+    Функция для выборки моментов на основе значения модуля корреляции
     :param point_numbers: одномерный массив numpy номеров точек, которые
      находятся в паре с базовой точкой из геометрической выборки и сама
      базовая точка
@@ -20,10 +22,11 @@ def calc_correlation(np.ndarray[np.int_t, ndim=1] point_numbers,
     :param frequency: частота записи сигнала
     :param moment_window: размер окна анализа в отсчетах
     :param left_buffer: размер левого буфера
+    :param correlation_edge: минимальное пороговое значение модуля корреляции
     :param moment_delays: временные задержки точек относительно базовой точки
      в виде массива с тремя колонками номер точки, минимальная задержка,
      максимальная задержка
-    :return: одномерный список numpy со значениями корреляций
+    :return: одномерный список numpy с отобранными моментами
     """
     # Проверка, что базовая точка находится в массиве номеров точек
     if base_point_number not in point_numbers:
@@ -46,14 +49,14 @@ def calc_correlation(np.ndarray[np.int_t, ndim=1] point_numbers,
 
     # Объявление переменных перед работо главного цикла
     cdef:
-        # Создание выходного массива с данными средних максимальных квадратов корреляций
-        np.ndarray[np.float_t, ndim = 1] result = np.empty(shape=0, dtype=np.float)
+        # количество максимальных коэф-тов корреляций, значения которых
+        # больше указанного порога
+        int correlation_count
+        # Создание выходного массива с отобранными моментами
+        np.ndarray[np.int_t, ndim = 1] result = np.empty(shape=0,
+                                                         dtype=np.int)
         # сигнал для текущей точки
         np.ndarray[np.float_t, ndim = 1] current_point_signal
-        # среднее значение корреляции
-        double avg_correlation
-        # сумма квадратов корреляций
-        double sum_correlation
         # максимальное значение корреляции
         double max_correlation
         # текущее значение корреляции
@@ -85,8 +88,9 @@ def calc_correlation(np.ndarray[np.int_t, ndim=1] point_numbers,
     # НЕ ОТ СНАЧАЛА СИГНАЛА, а от начала минуты.
     # Так как извлеченный сигнал содержит буферы
     for base_moment in range(left_buffer, 60 * frequency + left_buffer):
-        # сумма квадратов коэф-тов корреляции для текущего отсчета
-        sum_correlation = 0
+        # количество макисмальных коэф-тов корреляций момента, значения
+        # которых больше заданого порога
+        correlation_count = 0
 
         # второй цикл идет по всем точкам из списка
         for point in point_numbers:
@@ -150,14 +154,13 @@ def calc_correlation(np.ndarray[np.int_t, ndim=1] point_numbers,
                 if corr > max_correlation:
                     max_correlation = corr
 
-            # Возведение корреляции в квадрат
-            max_correlation = max_correlation ** 2
+            # Проверка, что максимальная корреляция больше или равна
+            # заданному пороговому значению
+            if max_correlation>=correlation_edge:
+                correlation_count+=1
 
-            # Суммирование квадратов корреляции
-            sum_correlation += max_correlation
-
-        # Вычисление средней корреляции
-        avg_correlation = sum_correlation / (len(point_numbers) - 1)
-        # Добавление результата корреляции в результирующий массив
-        result = np.append(result, [avg_correlation])
+        # проверка, если число коэф-тов больше или равно 4, то момент
+        # признается избранным
+        if correlation_count>=4:
+            result = np.append(result, [base_moment-left_buffer])
     return result

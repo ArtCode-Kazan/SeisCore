@@ -187,3 +187,10 @@ cmdLogging - для вывода логированных сообщений в 
 # version 0.0.29
 Исходная версия пакета без правок в алгоритмах обработки ГРП. В функцию
 минимизации координат добавлен вывод значения функции минимизации
+
+# version 0.0.29sm2
+Change the Cython function for calculating cross correlation. It's transfortm
+to SelectionMoment Function.
+
+# version 0.0.30sm2
+Fix bug in CythonFunction MomentSelection

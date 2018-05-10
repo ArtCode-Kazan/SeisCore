@@ -518,8 +518,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__SeisCore__HydroFracCore__CythonCalcFunctions__CorrelationCalculation__CorrelationCalculation
-#define __PYX_HAVE_API__SeisCore__HydroFracCore__CythonCalcFunctions__CorrelationCalculation__CorrelationCalculation
+#define __PYX_HAVE__SelectionMoments
+#define __PYX_HAVE_API__SelectionMoments
 #include <string.h>
 #include <stdio.h>
 #include "numpy/arrayobject.h"
@@ -749,7 +749,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "CorrelationCalculation.pyx",
+  "SelectionMoments.pyx",
   "__init__.pxd",
   "type.pxd",
 };
@@ -790,7 +790,7 @@ typedef struct {
 } __Pyx_BufFmt_Context;
 
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":743
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":743
  * # in Cython to enable them only on the right systems.
  * 
  * ctypedef npy_int8       int8_t             # <<<<<<<<<<<<<<
@@ -799,7 +799,7 @@ typedef struct {
  */
 typedef npy_int8 __pyx_t_5numpy_int8_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":744
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":744
  * 
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t             # <<<<<<<<<<<<<<
@@ -808,7 +808,7 @@ typedef npy_int8 __pyx_t_5numpy_int8_t;
  */
 typedef npy_int16 __pyx_t_5numpy_int16_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":745
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":745
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t             # <<<<<<<<<<<<<<
@@ -817,7 +817,7 @@ typedef npy_int16 __pyx_t_5numpy_int16_t;
  */
 typedef npy_int32 __pyx_t_5numpy_int32_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":746
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":746
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t
  * ctypedef npy_int64      int64_t             # <<<<<<<<<<<<<<
@@ -826,7 +826,7 @@ typedef npy_int32 __pyx_t_5numpy_int32_t;
  */
 typedef npy_int64 __pyx_t_5numpy_int64_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":750
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":750
  * #ctypedef npy_int128     int128_t
  * 
  * ctypedef npy_uint8      uint8_t             # <<<<<<<<<<<<<<
@@ -835,7 +835,7 @@ typedef npy_int64 __pyx_t_5numpy_int64_t;
  */
 typedef npy_uint8 __pyx_t_5numpy_uint8_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":751
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":751
  * 
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t             # <<<<<<<<<<<<<<
@@ -844,7 +844,7 @@ typedef npy_uint8 __pyx_t_5numpy_uint8_t;
  */
 typedef npy_uint16 __pyx_t_5numpy_uint16_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":752
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":752
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t             # <<<<<<<<<<<<<<
@@ -853,7 +853,7 @@ typedef npy_uint16 __pyx_t_5numpy_uint16_t;
  */
 typedef npy_uint32 __pyx_t_5numpy_uint32_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":753
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":753
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t
  * ctypedef npy_uint64     uint64_t             # <<<<<<<<<<<<<<
@@ -862,7 +862,7 @@ typedef npy_uint32 __pyx_t_5numpy_uint32_t;
  */
 typedef npy_uint64 __pyx_t_5numpy_uint64_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":757
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":757
  * #ctypedef npy_uint128    uint128_t
  * 
  * ctypedef npy_float32    float32_t             # <<<<<<<<<<<<<<
@@ -871,7 +871,7 @@ typedef npy_uint64 __pyx_t_5numpy_uint64_t;
  */
 typedef npy_float32 __pyx_t_5numpy_float32_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":758
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":758
  * 
  * ctypedef npy_float32    float32_t
  * ctypedef npy_float64    float64_t             # <<<<<<<<<<<<<<
@@ -880,7 +880,7 @@ typedef npy_float32 __pyx_t_5numpy_float32_t;
  */
 typedef npy_float64 __pyx_t_5numpy_float64_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":767
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":767
  * # The int types are mapped a bit surprising --
  * # numpy.int corresponds to 'l' and numpy.long to 'q'
  * ctypedef npy_long       int_t             # <<<<<<<<<<<<<<
@@ -889,7 +889,7 @@ typedef npy_float64 __pyx_t_5numpy_float64_t;
  */
 typedef npy_long __pyx_t_5numpy_int_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":768
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":768
  * # numpy.int corresponds to 'l' and numpy.long to 'q'
  * ctypedef npy_long       int_t
  * ctypedef npy_longlong   long_t             # <<<<<<<<<<<<<<
@@ -898,7 +898,7 @@ typedef npy_long __pyx_t_5numpy_int_t;
  */
 typedef npy_longlong __pyx_t_5numpy_long_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":769
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":769
  * ctypedef npy_long       int_t
  * ctypedef npy_longlong   long_t
  * ctypedef npy_longlong   longlong_t             # <<<<<<<<<<<<<<
@@ -907,7 +907,7 @@ typedef npy_longlong __pyx_t_5numpy_long_t;
  */
 typedef npy_longlong __pyx_t_5numpy_longlong_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":771
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":771
  * ctypedef npy_longlong   longlong_t
  * 
  * ctypedef npy_ulong      uint_t             # <<<<<<<<<<<<<<
@@ -916,7 +916,7 @@ typedef npy_longlong __pyx_t_5numpy_longlong_t;
  */
 typedef npy_ulong __pyx_t_5numpy_uint_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":772
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":772
  * 
  * ctypedef npy_ulong      uint_t
  * ctypedef npy_ulonglong  ulong_t             # <<<<<<<<<<<<<<
@@ -925,7 +925,7 @@ typedef npy_ulong __pyx_t_5numpy_uint_t;
  */
 typedef npy_ulonglong __pyx_t_5numpy_ulong_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":773
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":773
  * ctypedef npy_ulong      uint_t
  * ctypedef npy_ulonglong  ulong_t
  * ctypedef npy_ulonglong  ulonglong_t             # <<<<<<<<<<<<<<
@@ -934,7 +934,7 @@ typedef npy_ulonglong __pyx_t_5numpy_ulong_t;
  */
 typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":775
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":775
  * ctypedef npy_ulonglong  ulonglong_t
  * 
  * ctypedef npy_intp       intp_t             # <<<<<<<<<<<<<<
@@ -943,7 +943,7 @@ typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
  */
 typedef npy_intp __pyx_t_5numpy_intp_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":776
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":776
  * 
  * ctypedef npy_intp       intp_t
  * ctypedef npy_uintp      uintp_t             # <<<<<<<<<<<<<<
@@ -952,7 +952,7 @@ typedef npy_intp __pyx_t_5numpy_intp_t;
  */
 typedef npy_uintp __pyx_t_5numpy_uintp_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":778
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":778
  * ctypedef npy_uintp      uintp_t
  * 
  * ctypedef npy_double     float_t             # <<<<<<<<<<<<<<
@@ -961,7 +961,7 @@ typedef npy_uintp __pyx_t_5numpy_uintp_t;
  */
 typedef npy_double __pyx_t_5numpy_float_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":779
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":779
  * 
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t             # <<<<<<<<<<<<<<
@@ -970,7 +970,7 @@ typedef npy_double __pyx_t_5numpy_float_t;
  */
 typedef npy_double __pyx_t_5numpy_double_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":780
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":780
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t
  * ctypedef npy_longdouble longdouble_t             # <<<<<<<<<<<<<<
@@ -1005,7 +1005,7 @@ static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(do
 
 /*--- Type declarations ---*/
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":782
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":782
  * ctypedef npy_longdouble longdouble_t
  * 
  * ctypedef npy_cfloat      cfloat_t             # <<<<<<<<<<<<<<
@@ -1014,7 +1014,7 @@ static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(do
  */
 typedef npy_cfloat __pyx_t_5numpy_cfloat_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":783
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":783
  * 
  * ctypedef npy_cfloat      cfloat_t
  * ctypedef npy_cdouble     cdouble_t             # <<<<<<<<<<<<<<
@@ -1023,7 +1023,7 @@ typedef npy_cfloat __pyx_t_5numpy_cfloat_t;
  */
 typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":784
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":784
  * ctypedef npy_cfloat      cfloat_t
  * ctypedef npy_cdouble     cdouble_t
  * ctypedef npy_clongdouble clongdouble_t             # <<<<<<<<<<<<<<
@@ -1032,7 +1032,7 @@ typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
  */
 typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":786
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":786
  * ctypedef npy_clongdouble clongdouble_t
  * 
  * ctypedef npy_cdouble     complex_t             # <<<<<<<<<<<<<<
@@ -1578,14 +1578,14 @@ static PyTypeObject *__pyx_ptype_5numpy_ndarray = 0;
 static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *, char *, char *, int *); /*proto*/
 
-/* Module declarations from 'SeisCore.HydroFracCore.CythonCalcFunctions.CorrelationCalculation.CorrelationCalculation' */
+/* Module declarations from 'SelectionMoments' */
 static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_5numpy_int_t = { "int_t", NULL, sizeof(__pyx_t_5numpy_int_t), { 0 }, 0, IS_UNSIGNED(__pyx_t_5numpy_int_t) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_5numpy_int_t), 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_5numpy_float_t = { "float_t", NULL, sizeof(__pyx_t_5numpy_float_t), { 0 }, 0, 'R', 0, 0 };
-#define __Pyx_MODULE_NAME "SeisCore.HydroFracCore.CythonCalcFunctions.CorrelationCalculation.CorrelationCalculation"
-extern int __pyx_module_is_main_SeisCore__HydroFracCore__CythonCalcFunctions__CorrelationCalculation__CorrelationCalculation;
-int __pyx_module_is_main_SeisCore__HydroFracCore__CythonCalcFunctions__CorrelationCalculation__CorrelationCalculation = 0;
+#define __Pyx_MODULE_NAME "SelectionMoments"
+extern int __pyx_module_is_main_SelectionMoments;
+int __pyx_module_is_main_SelectionMoments = 0;
 
-/* Implementation of 'SeisCore.HydroFracCore.CythonCalcFunctions.CorrelationCalculation.CorrelationCalculation' */
+/* Implementation of 'SelectionMoments' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_RuntimeError;
@@ -1598,6 +1598,7 @@ static const char __pyx_k__3[] = "\320\232\320\276\320\273\320\270\321\207\320\2
 static const char __pyx_k__5[] = "\320\235\320\265 \320\275\320\260\320\271\320\264\320\265\320\275\321\213 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\270 \320\264\320\273\321\217 \320\264\320\260\321\202\321\207\320\270\320\272\320\260";
 static const char __pyx_k_np[] = "np";
 static const char __pyx_k_end[] = "end";
+static const char __pyx_k_int[] = "int";
 static const char __pyx_k_val[] = "val";
 static const char __pyx_k_corr[] = "corr";
 static const char __pyx_k_file[] = "file";
@@ -1605,7 +1606,6 @@ static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_dtype[] = "dtype";
 static const char __pyx_k_empty[] = "empty";
-static const char __pyx_k_float[] = "float";
 static const char __pyx_k_numpy[] = "numpy";
 static const char __pyx_k_point[] = "point";
 static const char __pyx_k_print[] = "print";
@@ -1634,58 +1634,58 @@ static const char __pyx_k_current_delay[] = "current_delay";
 static const char __pyx_k_moment_delays[] = "moment_delays";
 static const char __pyx_k_moment_window[] = "moment_window";
 static const char __pyx_k_point_numbers[] = "point_numbers";
-static const char __pyx_k_avg_correlation[] = "avg_correlation";
 static const char __pyx_k_max_correlation[] = "max_correlation";
-static const char __pyx_k_sum_correlation[] = "sum_correlation";
-static const char __pyx_k_calc_correlation[] = "calc_correlation";
+static const char __pyx_k_SelectionMoments[] = "SelectionMoments";
+static const char __pyx_k_correlation_edge[] = "correlation_edge";
 static const char __pyx_k_max_moment_delay[] = "max_moment_delay";
 static const char __pyx_k_min_moment_delay[] = "min_moment_delay";
 static const char __pyx_k_base_point_number[] = "base_point_number";
 static const char __pyx_k_base_point_signal[] = "base_point_signal";
+static const char __pyx_k_correlation_count[] = "correlation_count";
+static const char __pyx_k_selection_moments[] = "selection_moments";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
+static const char __pyx_k_SelectionMoments_pyx[] = "SelectionMoments.pyx";
 static const char __pyx_k_current_point_signal[] = "current_point_signal";
 static const char __pyx_k_signals_column_count[] = "signals_column_count";
-static const char __pyx_k_CorrelationCalculation_pyx[] = "CorrelationCalculation.pyx";
 static const char __pyx_k_ndarray_is_not_C_contiguous[] = "ndarray is not C contiguous";
 static const char __pyx_k_numpy_core_multiarray_failed_to[] = "numpy.core.multiarray failed to import";
 static const char __pyx_k_unknown_dtype_code_in_numpy_pxd[] = "unknown dtype code in numpy.pxd (%d)";
 static const char __pyx_k_Format_string_allocated_too_shor[] = "Format string allocated too short, see comment in numpy.pxd";
 static const char __pyx_k_Non_native_byte_order_not_suppor[] = "Non-native byte order not supported";
-static const char __pyx_k_SeisCore_HydroFracCore_CythonCal[] = "SeisCore.HydroFracCore.CythonCalcFunctions.CorrelationCalculation.CorrelationCalculation";
 static const char __pyx_k_ndarray_is_not_Fortran_contiguou[] = "ndarray is not Fortran contiguous";
 static const char __pyx_k_numpy_core_umath_failed_to_impor[] = "numpy.core.umath failed to import";
 static const char __pyx_k_Format_string_allocated_too_shor_2[] = "Format string allocated too short.";
 static PyObject *__pyx_kp_s_;
-static PyObject *__pyx_kp_s_CorrelationCalculation_pyx;
 static PyObject *__pyx_kp_u_Format_string_allocated_too_shor;
 static PyObject *__pyx_kp_u_Format_string_allocated_too_shor_2;
 static PyObject *__pyx_n_s_ImportError;
 static PyObject *__pyx_kp_u_Non_native_byte_order_not_suppor;
 static PyObject *__pyx_n_s_RuntimeError;
-static PyObject *__pyx_n_s_SeisCore_HydroFracCore_CythonCal;
+static PyObject *__pyx_n_s_SelectionMoments;
+static PyObject *__pyx_kp_s_SelectionMoments_pyx;
 static PyObject *__pyx_n_s_ValueError;
 static PyObject *__pyx_kp_s__2;
 static PyObject *__pyx_kp_s__3;
 static PyObject *__pyx_kp_s__5;
 static PyObject *__pyx_n_s_append;
-static PyObject *__pyx_n_s_avg_correlation;
 static PyObject *__pyx_n_s_base_moment;
 static PyObject *__pyx_n_s_base_point_number;
 static PyObject *__pyx_n_s_base_point_signal;
-static PyObject *__pyx_n_s_calc_correlation;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_column_number;
 static PyObject *__pyx_n_s_corr;
+static PyObject *__pyx_n_s_correlation_count;
+static PyObject *__pyx_n_s_correlation_edge;
 static PyObject *__pyx_n_s_current_delay;
 static PyObject *__pyx_n_s_current_point_signal;
 static PyObject *__pyx_n_s_dtype;
 static PyObject *__pyx_n_s_empty;
 static PyObject *__pyx_n_s_end;
 static PyObject *__pyx_n_s_file;
-static PyObject *__pyx_n_s_float;
 static PyObject *__pyx_n_s_frequency;
 static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_import;
+static PyObject *__pyx_n_s_int;
 static PyObject *__pyx_n_s_left_buffer;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_max_correlation;
@@ -1707,20 +1707,20 @@ static PyObject *__pyx_n_s_points_count;
 static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_n_s_result;
+static PyObject *__pyx_n_s_selection_moments;
 static PyObject *__pyx_n_s_shape;
 static PyObject *__pyx_n_s_signals;
 static PyObject *__pyx_n_s_signals_column_count;
 static PyObject *__pyx_n_s_sum_a;
 static PyObject *__pyx_n_s_sum_a_b;
 static PyObject *__pyx_n_s_sum_b;
-static PyObject *__pyx_n_s_sum_correlation;
 static PyObject *__pyx_n_s_sumsq_a;
 static PyObject *__pyx_n_s_sumsq_b;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_kp_u_unknown_dtype_code_in_numpy_pxd;
 static PyObject *__pyx_n_s_val;
 static PyObject *__pyx_n_s_where;
-static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22CorrelationCalculation_22CorrelationCalculation_calc_correlation(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_point_numbers, int __pyx_v_base_point_number, PyArrayObject *__pyx_v_signals, int __pyx_v_frequency, int __pyx_v_moment_window, int __pyx_v_left_buffer, PyArrayObject *__pyx_v_moment_delays); /* proto */
+static PyObject *__pyx_pf_16SelectionMoments_selection_moments(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_point_numbers, int __pyx_v_base_point_number, PyArrayObject *__pyx_v_signals, int __pyx_v_frequency, int __pyx_v_moment_window, int __pyx_v_left_buffer, double __pyx_v_correlation_edge, PyArrayObject *__pyx_v_moment_delays); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static PyObject *__pyx_int_0;
@@ -1738,35 +1738,39 @@ static PyObject *__pyx_tuple__15;
 static PyObject *__pyx_tuple__16;
 static PyObject *__pyx_codeobj__17;
 
-/* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":4
- * cimport numpy as np
+/* "SelectionMoments.pyx":5
  * 
- * def calc_correlation(np.ndarray[np.int_t, ndim=1] point_numbers,             # <<<<<<<<<<<<<<
- *                      int base_point_number,
- *                      np.ndarray[np.float_t, ndim=2] signals,
+ * 
+ * def selection_moments(np.ndarray[np.int_t, ndim=1] point_numbers,             # <<<<<<<<<<<<<<
+ *                       int base_point_number,
+ *                       np.ndarray[np.float_t, ndim=2] signals,
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22CorrelationCalculation_22CorrelationCalculation_1calc_correlation(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22CorrelationCalculation_22CorrelationCalculation_1calc_correlation = {"calc_correlation", (PyCFunction)__pyx_pw_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22CorrelationCalculation_22CorrelationCalculation_1calc_correlation, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22CorrelationCalculation_22CorrelationCalculation_1calc_correlation(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_16SelectionMoments_1selection_moments(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_16SelectionMoments_selection_moments[] = "\n    \320\244\321\203\320\275\320\272\321\206\320\270\321\217 \320\264\320\273\321\217 \320\262\321\213\320\261\320\276\321\200\320\272\320\270 \320\274\320\276\320\274\320\265\320\275\321\202\320\276\320\262 \320\275\320\260 \320\276\321\201\320\275\320\276\320\262\320\265 \320\267\320\275\320\260\321\207\320\265\320\275\320\270\321\217 \320\274\320\276\320\264\321\203\320\273\321\217 \320\272\320\276\321\200\321\200\320\265\320\273\321\217\321\206\320\270\320\270\n    :param point_numbers: \320\276\320\264\320\275\320\276\320\274\320\265\321\200\320\275\321\213\320\271 \320\274\320\260\321\201\321\201\320\270\320\262 numpy \320\275\320\276\320\274\320\265\321\200\320\276\320\262 \321\202\320\276\321\207\320\265\320\272, \320\272\320\276\321\202\320\276\321\200\321\213\320\265\n     \320\275\320\260\321\205\320\276\320\264\321\217\321\202\321\201\321\217 \320\262 \320\277\320\260\321\200\320\265 \321\201 \320\261\320\260\320\267\320\276\320\262\320\276\320\271 \321\202\320\276\321\207\320\272\320\276\320\271 \320\270\320\267 \320\263\320\265\320\276\320\274\320\265\321\202\321\200\320\270\321\207\320\265\321\201\320\272\320\276\320\271 \320\262\321\213\320\261\320\276\321\200\320\272\320\270 \320\270 \321\201\320\260\320\274\320\260\n     \320\261\320\260\320\267\320\276\320\262\320\260\321\217 \321\202\320\276\321\207\320\272\320\260\n    :param base_point_number: \320\275\320\276\320\274\320\265\321\200 \320\261\320\260\320\267\320\276\320\262\320\276\320\263\320\276 \320\264\320\260\321\202\321\207\320\270\320\272\320\260\n    :param signals: \321\201\320\276\320\261\321\200\320\260\320\275\320\275\321\213\320\265 \320\262 \320\274\320\260\321\201\321\201\320\270\320\262 numpy \320\261\321\203\321\204\320\265\321\200\320\270\320\267\320\276\320\262\320\260\320\275\320\275\321\213\320\265 \321\201\320\270\320\263\320\275\320\260\320\273\321\213 \321\202\320\276\321\207\320\265\320\272\n     \320\270\320\267 point_numbers. \320\232\320\260\320\266\320\264\321""\213\320\271 \321\201\321\202\320\276\320\273\320\261\320\265\321\206 \320\274\320\260\321\201\321\201\320\270\320\262\320\260 \321\201\320\276\320\276\321\202\320\262\320\265\321\202\321\201\321\202\320\262\321\203\320\265\321\202 \320\275\320\276\320\274\320\265\321\200\321\203 \321\202\320\276\321\207\320\272\320\270 \320\270\320\267\n     \321\201\320\277\320\270\321\201\320\272\320\260 point_numbers\n    :param frequency: \321\207\320\260\321\201\321\202\320\276\321\202\320\260 \320\267\320\260\320\277\320\270\321\201\320\270 \321\201\320\270\320\263\320\275\320\260\320\273\320\260\n    :param moment_window: \321\200\320\260\320\267\320\274\320\265\321\200 \320\276\320\272\320\275\320\260 \320\260\320\275\320\260\320\273\320\270\320\267\320\260 \320\262 \320\276\321\202\321\201\321\207\320\265\321\202\320\260\321\205\n    :param left_buffer: \321\200\320\260\320\267\320\274\320\265\321\200 \320\273\320\265\320\262\320\276\320\263\320\276 \320\261\321\203\321\204\320\265\321\200\320\260\n    :param correlation_edge: \320\274\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\320\276\320\265 \320\277\320\276\321\200\320\276\320\263\320\276\320\262\320\276\320\265 \320\267\320\275\320\260\321\207\320\265\320\275\320\270\320\265 \320\274\320\276\320\264\321\203\320\273\321\217 \320\272\320\276\321\200\321\200\320\265\320\273\321\217\321\206\320\270\320\270\n    :param moment_delays: \320\262\321\200\320\265\320\274\320\265\320\275\320\275\321\213\320\265 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\270 \321\202\320\276\321\207\320\265\320\272 \320\276\321\202\320\275\320\276\321\201\320\270\321\202\320\265\320\273\321\214\320\275\320\276 \320\261\320\260\320\267\320\276\320\262\320\276\320\271 \321\202\320\276\321\207\320\272\320\270\n     \320\262 \320\262\320\270\320\264\320\265 \320\274\320\260\321\201\321\201\320\270\320\262\320\260 \321\201 \321\202\321\200\320\265\320\274\321\217 \320\272\320\276\320\273\320\276\320\275\320\272""\320\260\320\274\320\270 \320\275\320\276\320\274\320\265\321\200 \321\202\320\276\321\207\320\272\320\270, \320\274\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\260,\n     \320\274\320\260\320\272\321\201\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \320\267\320\260\320\264\320\265\321\200\320\266\320\272\320\260\n    :return: \320\276\320\264\320\275\320\276\320\274\320\265\321\200\320\275\321\213\320\271 \321\201\320\277\320\270\321\201\320\276\320\272 numpy \321\201 \320\276\321\202\320\276\320\261\321\200\320\260\320\275\320\275\321\213\320\274\320\270 \320\274\320\276\320\274\320\265\320\275\321\202\320\260\320\274\320\270\n    ";
+static PyMethodDef __pyx_mdef_16SelectionMoments_1selection_moments = {"selection_moments", (PyCFunction)__pyx_pw_16SelectionMoments_1selection_moments, METH_VARARGS|METH_KEYWORDS, __pyx_doc_16SelectionMoments_selection_moments};
+static PyObject *__pyx_pw_16SelectionMoments_1selection_moments(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyArrayObject *__pyx_v_point_numbers = 0;
   int __pyx_v_base_point_number;
   PyArrayObject *__pyx_v_signals = 0;
   int __pyx_v_frequency;
   int __pyx_v_moment_window;
   int __pyx_v_left_buffer;
+  double __pyx_v_correlation_edge;
   PyArrayObject *__pyx_v_moment_delays = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("calc_correlation (wrapper)", 0);
+  __Pyx_RefNannySetupContext("selection_moments (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_point_numbers,&__pyx_n_s_base_point_number,&__pyx_n_s_signals,&__pyx_n_s_frequency,&__pyx_n_s_moment_window,&__pyx_n_s_left_buffer,&__pyx_n_s_moment_delays,0};
-    PyObject* values[7] = {0,0,0,0,0,0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_point_numbers,&__pyx_n_s_base_point_number,&__pyx_n_s_signals,&__pyx_n_s_frequency,&__pyx_n_s_moment_window,&__pyx_n_s_left_buffer,&__pyx_n_s_correlation_edge,&__pyx_n_s_moment_delays,0};
+    PyObject* values[8] = {0,0,0,0,0,0,0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  8: values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
+        CYTHON_FALLTHROUGH;
         case  7: values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
         CYTHON_FALLTHROUGH;
         case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
@@ -1793,43 +1797,49 @@ static PyObject *__pyx_pw_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_base_point_number)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("calc_correlation", 1, 7, 7, 1); __PYX_ERR(0, 4, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("selection_moments", 1, 8, 8, 1); __PYX_ERR(0, 5, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_signals)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("calc_correlation", 1, 7, 7, 2); __PYX_ERR(0, 4, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("selection_moments", 1, 8, 8, 2); __PYX_ERR(0, 5, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_frequency)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("calc_correlation", 1, 7, 7, 3); __PYX_ERR(0, 4, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("selection_moments", 1, 8, 8, 3); __PYX_ERR(0, 5, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_moment_window)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("calc_correlation", 1, 7, 7, 4); __PYX_ERR(0, 4, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("selection_moments", 1, 8, 8, 4); __PYX_ERR(0, 5, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_left_buffer)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("calc_correlation", 1, 7, 7, 5); __PYX_ERR(0, 4, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("selection_moments", 1, 8, 8, 5); __PYX_ERR(0, 5, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
-        if (likely((values[6] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_moment_delays)) != 0)) kw_args--;
+        if (likely((values[6] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_correlation_edge)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("calc_correlation", 1, 7, 7, 6); __PYX_ERR(0, 4, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("selection_moments", 1, 8, 8, 6); __PYX_ERR(0, 5, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  7:
+        if (likely((values[7] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_moment_delays)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("selection_moments", 1, 8, 8, 7); __PYX_ERR(0, 5, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "calc_correlation") < 0)) __PYX_ERR(0, 4, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "selection_moments") < 0)) __PYX_ERR(0, 5, __pyx_L3_error)
       }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 7) {
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 8) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
@@ -1839,27 +1849,29 @@ static PyObject *__pyx_pw_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
       values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
       values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
       values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
+      values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
     }
     __pyx_v_point_numbers = ((PyArrayObject *)values[0]);
-    __pyx_v_base_point_number = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_base_point_number == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 5, __pyx_L3_error)
+    __pyx_v_base_point_number = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_base_point_number == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 6, __pyx_L3_error)
     __pyx_v_signals = ((PyArrayObject *)values[2]);
-    __pyx_v_frequency = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_frequency == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 7, __pyx_L3_error)
-    __pyx_v_moment_window = __Pyx_PyInt_As_int(values[4]); if (unlikely((__pyx_v_moment_window == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 8, __pyx_L3_error)
-    __pyx_v_left_buffer = __Pyx_PyInt_As_int(values[5]); if (unlikely((__pyx_v_left_buffer == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 9, __pyx_L3_error)
-    __pyx_v_moment_delays = ((PyArrayObject *)values[6]);
+    __pyx_v_frequency = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_frequency == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 8, __pyx_L3_error)
+    __pyx_v_moment_window = __Pyx_PyInt_As_int(values[4]); if (unlikely((__pyx_v_moment_window == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 9, __pyx_L3_error)
+    __pyx_v_left_buffer = __Pyx_PyInt_As_int(values[5]); if (unlikely((__pyx_v_left_buffer == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 10, __pyx_L3_error)
+    __pyx_v_correlation_edge = __pyx_PyFloat_AsDouble(values[6]); if (unlikely((__pyx_v_correlation_edge == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 11, __pyx_L3_error)
+    __pyx_v_moment_delays = ((PyArrayObject *)values[7]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_correlation", 1, 7, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 4, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("selection_moments", 1, 8, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 5, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("SeisCore.HydroFracCore.CythonCalcFunctions.CorrelationCalculation.CorrelationCalculation.calc_correlation", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("SelectionMoments.selection_moments", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_point_numbers), __pyx_ptype_5numpy_ndarray, 1, "point_numbers", 0))) __PYX_ERR(0, 4, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_signals), __pyx_ptype_5numpy_ndarray, 1, "signals", 0))) __PYX_ERR(0, 6, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_moment_delays), __pyx_ptype_5numpy_ndarray, 1, "moment_delays", 0))) __PYX_ERR(0, 10, __pyx_L1_error)
-  __pyx_r = __pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22CorrelationCalculation_22CorrelationCalculation_calc_correlation(__pyx_self, __pyx_v_point_numbers, __pyx_v_base_point_number, __pyx_v_signals, __pyx_v_frequency, __pyx_v_moment_window, __pyx_v_left_buffer, __pyx_v_moment_delays);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_point_numbers), __pyx_ptype_5numpy_ndarray, 1, "point_numbers", 0))) __PYX_ERR(0, 5, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_signals), __pyx_ptype_5numpy_ndarray, 1, "signals", 0))) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_moment_delays), __pyx_ptype_5numpy_ndarray, 1, "moment_delays", 0))) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_r = __pyx_pf_16SelectionMoments_selection_moments(__pyx_self, __pyx_v_point_numbers, __pyx_v_base_point_number, __pyx_v_signals, __pyx_v_frequency, __pyx_v_moment_window, __pyx_v_left_buffer, __pyx_v_correlation_edge, __pyx_v_moment_delays);
 
   /* function exit code */
   goto __pyx_L0;
@@ -1870,15 +1882,14 @@ static PyObject *__pyx_pw_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22CorrelationCalculation_22CorrelationCalculation_calc_correlation(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_point_numbers, int __pyx_v_base_point_number, PyArrayObject *__pyx_v_signals, int __pyx_v_frequency, int __pyx_v_moment_window, int __pyx_v_left_buffer, PyArrayObject *__pyx_v_moment_delays) {
+static PyObject *__pyx_pf_16SelectionMoments_selection_moments(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_point_numbers, int __pyx_v_base_point_number, PyArrayObject *__pyx_v_signals, int __pyx_v_frequency, int __pyx_v_moment_window, int __pyx_v_left_buffer, double __pyx_v_correlation_edge, PyArrayObject *__pyx_v_moment_delays) {
   int __pyx_v_signals_column_count;
   int __pyx_v_points_count;
   PyObject *__pyx_v_column_number = NULL;
   PyArrayObject *__pyx_v_base_point_signal = 0;
+  int __pyx_v_correlation_count;
   PyArrayObject *__pyx_v_result = 0;
   PyArrayObject *__pyx_v_current_point_signal = 0;
-  double __pyx_v_avg_correlation;
-  double __pyx_v_sum_correlation;
   double __pyx_v_max_correlation;
   double __pyx_v_corr;
   double __pyx_v_sum_a;
@@ -1945,8 +1956,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
   Py_ssize_t __pyx_t_34;
   double __pyx_t_35;
   double __pyx_t_36;
-  Py_ssize_t __pyx_t_37;
-  __Pyx_RefNannySetupContext("calc_correlation", 0);
+  __Pyx_RefNannySetupContext("selection_moments", 0);
   __pyx_pybuffer_base_point_signal.pybuffer.buf = NULL;
   __pyx_pybuffer_base_point_signal.refcount = 0;
   __pyx_pybuffernd_base_point_signal.data = NULL;
@@ -1973,53 +1983,53 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
   __pyx_pybuffernd_moment_delays.rcbuffer = &__pyx_pybuffer_moment_delays;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_point_numbers.rcbuffer->pybuffer, (PyObject*)__pyx_v_point_numbers, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 4, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_point_numbers.rcbuffer->pybuffer, (PyObject*)__pyx_v_point_numbers, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 5, __pyx_L1_error)
   }
   __pyx_pybuffernd_point_numbers.diminfo[0].strides = __pyx_pybuffernd_point_numbers.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_point_numbers.diminfo[0].shape = __pyx_pybuffernd_point_numbers.rcbuffer->pybuffer.shape[0];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_signals.rcbuffer->pybuffer, (PyObject*)__pyx_v_signals, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 4, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_signals.rcbuffer->pybuffer, (PyObject*)__pyx_v_signals, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 5, __pyx_L1_error)
   }
   __pyx_pybuffernd_signals.diminfo[0].strides = __pyx_pybuffernd_signals.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_signals.diminfo[0].shape = __pyx_pybuffernd_signals.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_signals.diminfo[1].strides = __pyx_pybuffernd_signals.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_signals.diminfo[1].shape = __pyx_pybuffernd_signals.rcbuffer->pybuffer.shape[1];
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_moment_delays.rcbuffer->pybuffer, (PyObject*)__pyx_v_moment_delays, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 4, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_moment_delays.rcbuffer->pybuffer, (PyObject*)__pyx_v_moment_delays, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 5, __pyx_L1_error)
   }
   __pyx_pybuffernd_moment_delays.diminfo[0].strides = __pyx_pybuffernd_moment_delays.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_moment_delays.diminfo[0].shape = __pyx_pybuffernd_moment_delays.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_moment_delays.diminfo[1].strides = __pyx_pybuffernd_moment_delays.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_moment_delays.diminfo[1].shape = __pyx_pybuffernd_moment_delays.rcbuffer->pybuffer.shape[1];
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":28
- * 
+  /* "SelectionMoments.pyx":32
+ *     """
  *     # ,
  *     if base_point_number not in point_numbers:             # <<<<<<<<<<<<<<
  *         print("     ")
  *         print(" ")
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_base_point_number); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_base_point_number); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, ((PyObject *)__pyx_v_point_numbers), Py_NE)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, ((PyObject *)__pyx_v_point_numbers), Py_NE)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
 
-    /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":29
+    /* "SelectionMoments.pyx":33
  *     # ,
  *     if base_point_number not in point_numbers:
  *         print("     ")             # <<<<<<<<<<<<<<
  *         print(" ")
  *         return None
  */
-    if (__Pyx_PrintOne(0, __pyx_kp_s_) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
+    if (__Pyx_PrintOne(0, __pyx_kp_s_) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
 
-    /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":30
+    /* "SelectionMoments.pyx":34
  *     if base_point_number not in point_numbers:
  *         print("     ")
  *         print(" ")             # <<<<<<<<<<<<<<
  *         return None
  * 
  */
-    if (__Pyx_PrintOne(0, __pyx_kp_s__2) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
+    if (__Pyx_PrintOne(0, __pyx_kp_s__2) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
 
-    /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":31
+    /* "SelectionMoments.pyx":35
  *         print("     ")
  *         print(" ")
  *         return None             # <<<<<<<<<<<<<<
@@ -2031,8 +2041,8 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
     __pyx_r = Py_None;
     goto __pyx_L0;
 
-    /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":28
- * 
+    /* "SelectionMoments.pyx":32
+ *     """
  *     # ,
  *     if base_point_number not in point_numbers:             # <<<<<<<<<<<<<<
  *         print("     ")
@@ -2040,7 +2050,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
   }
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":35
+  /* "SelectionMoments.pyx":39
  *     # ,
  *     #
  *     cdef int signals_column_count = signals.shape[1]             # <<<<<<<<<<<<<<
@@ -2049,7 +2059,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
   __pyx_v_signals_column_count = (__pyx_v_signals->dimensions[1]);
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":36
+  /* "SelectionMoments.pyx":40
  *     #
  *     cdef int signals_column_count = signals.shape[1]
  *     cdef int points_count = point_numbers.shape[0]             # <<<<<<<<<<<<<<
@@ -2058,7 +2068,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
   __pyx_v_points_count = (__pyx_v_point_numbers->dimensions[0]);
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":37
+  /* "SelectionMoments.pyx":41
  *     cdef int signals_column_count = signals.shape[1]
  *     cdef int points_count = point_numbers.shape[0]
  *     if points_count != signals_column_count:             # <<<<<<<<<<<<<<
@@ -2068,25 +2078,25 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
   __pyx_t_3 = ((__pyx_v_points_count != __pyx_v_signals_column_count) != 0);
   if (__pyx_t_3) {
 
-    /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":38
+    /* "SelectionMoments.pyx":42
  *     cdef int points_count = point_numbers.shape[0]
  *     if points_count != signals_column_count:
  *         print("        ")             # <<<<<<<<<<<<<<
  *         print(" ")
  *         return None
  */
-    if (__Pyx_PrintOne(0, __pyx_kp_s__3) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
+    if (__Pyx_PrintOne(0, __pyx_kp_s__3) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
 
-    /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":39
+    /* "SelectionMoments.pyx":43
  *     if points_count != signals_column_count:
  *         print("        ")
  *         print(" ")             # <<<<<<<<<<<<<<
  *         return None
  * 
  */
-    if (__Pyx_PrintOne(0, __pyx_kp_s__2) < 0) __PYX_ERR(0, 39, __pyx_L1_error)
+    if (__Pyx_PrintOne(0, __pyx_kp_s__2) < 0) __PYX_ERR(0, 43, __pyx_L1_error)
 
-    /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":40
+    /* "SelectionMoments.pyx":44
  *         print("        ")
  *         print(" ")
  *         return None             # <<<<<<<<<<<<<<
@@ -2098,7 +2108,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
     __pyx_r = Py_None;
     goto __pyx_L0;
 
-    /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":37
+    /* "SelectionMoments.pyx":41
  *     cdef int signals_column_count = signals.shape[1]
  *     cdef int points_count = point_numbers.shape[0]
  *     if points_count != signals_column_count:             # <<<<<<<<<<<<<<
@@ -2107,21 +2117,21 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
   }
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":43
+  /* "SelectionMoments.pyx":47
  * 
  *     #
  *     column_number = np.where((point_numbers == base_point_number))[0][0]             # <<<<<<<<<<<<<<
  *     cdef np.ndarray[np.float_t, ndim = 1] base_point_signal = signals[:, column_number]
  * 
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_where); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_where); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_base_point_number); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_base_point_number); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = PyObject_RichCompare(((PyObject *)__pyx_v_point_numbers), __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_6 = PyObject_RichCompare(((PyObject *)__pyx_v_point_numbers), __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -2134,14 +2144,14 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_6};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -2150,42 +2160,42 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_6};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 43, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_6);
       __pyx_t_6 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_column_number = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":44
+  /* "SelectionMoments.pyx":48
  *     #
  *     column_number = np.where((point_numbers == base_point_number))[0][0]
  *     cdef np.ndarray[np.float_t, ndim = 1] base_point_signal = signals[:, column_number]             # <<<<<<<<<<<<<<
  * 
  *     #
  */
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_slice__4);
   __Pyx_GIVEREF(__pyx_slice__4);
@@ -2193,16 +2203,16 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
   __Pyx_INCREF(__pyx_v_column_number);
   __Pyx_GIVEREF(__pyx_v_column_number);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_column_number);
-  __pyx_t_5 = PyObject_GetItem(((PyObject *)__pyx_v_signals), __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_5 = PyObject_GetItem(((PyObject *)__pyx_v_signals), __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 44, __pyx_L1_error)
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 48, __pyx_L1_error)
   __pyx_t_8 = ((PyArrayObject *)__pyx_t_5);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_base_point_signal.rcbuffer->pybuffer, (PyObject*)__pyx_t_8, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_base_point_signal = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_base_point_signal.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 44, __pyx_L1_error)
+      __PYX_ERR(0, 48, __pyx_L1_error)
     } else {__pyx_pybuffernd_base_point_signal.diminfo[0].strides = __pyx_pybuffernd_base_point_signal.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_base_point_signal.diminfo[0].shape = __pyx_pybuffernd_base_point_signal.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -2210,39 +2220,55 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
   __pyx_v_base_point_signal = ((PyArrayObject *)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":49
- *     cdef:
+  /* "SelectionMoments.pyx":56
+ *         int correlation_count
  *         #
- *         np.ndarray[np.float_t, ndim = 1] result = np.empty(shape=0, dtype=np.float)             # <<<<<<<<<<<<<<
+ *         np.ndarray[np.int_t, ndim = 1] result = np.empty(shape=0,             # <<<<<<<<<<<<<<
+ *                                                          dtype=np.int)
+ *         #
+ */
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_shape, __pyx_int_0) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+
+  /* "SelectionMoments.pyx":57
+ *         #
+ *         np.ndarray[np.int_t, ndim = 1] result = np.empty(shape=0,
+ *                                                          dtype=np.int)             # <<<<<<<<<<<<<<
  *         #
  *         np.ndarray[np.float_t, ndim = 1] current_point_signal
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 49, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 49, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_shape, __pyx_int_0) < 0) __PYX_ERR(0, 49, __pyx_L1_error)
-  __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_float); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_int); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 49, __pyx_L1_error)
+
+  /* "SelectionMoments.pyx":56
+ *         int correlation_count
+ *         #
+ *         np.ndarray[np.int_t, ndim = 1] result = np.empty(shape=0,             # <<<<<<<<<<<<<<
+ *                                                          dtype=np.int)
+ *         #
+ */
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 56, __pyx_L1_error)
   __pyx_t_9 = ((PyArrayObject *)__pyx_t_6);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_result.rcbuffer->pybuffer, (PyObject*)__pyx_t_9, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_result.rcbuffer->pybuffer, (PyObject*)__pyx_t_9, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_result = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_result.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 49, __pyx_L1_error)
+      __PYX_ERR(0, 56, __pyx_L1_error)
     } else {__pyx_pybuffernd_result.diminfo[0].strides = __pyx_pybuffernd_result.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_result.diminfo[0].shape = __pyx_pybuffernd_result.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -2250,27 +2276,27 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
   __pyx_v_result = ((PyArrayObject *)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":86
+  /* "SelectionMoments.pyx":90
  *     #    ,    .
  *     #
  *     for base_moment in range(left_buffer, 60 * frequency + left_buffer):             # <<<<<<<<<<<<<<
- *         #   -
- *         sum_correlation = 0
+ *         #   -  ,
+ *         #
  */
   __pyx_t_10 = ((60 * __pyx_v_frequency) + __pyx_v_left_buffer);
   for (__pyx_t_11 = __pyx_v_left_buffer; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
     __pyx_v_base_moment = __pyx_t_11;
 
-    /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":88
- *     for base_moment in range(left_buffer, 60 * frequency + left_buffer):
- *         #   -
- *         sum_correlation = 0             # <<<<<<<<<<<<<<
+    /* "SelectionMoments.pyx":93
+ *         #   -  ,
+ *         #
+ *         correlation_count = 0             # <<<<<<<<<<<<<<
  * 
  *         #
  */
-    __pyx_v_sum_correlation = 0.0;
+    __pyx_v_correlation_count = 0;
 
-    /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":91
+    /* "SelectionMoments.pyx":96
  * 
  *         #
  *         for point in point_numbers:             # <<<<<<<<<<<<<<
@@ -2281,26 +2307,26 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
       __pyx_t_6 = ((PyObject *)__pyx_v_point_numbers); __Pyx_INCREF(__pyx_t_6); __pyx_t_12 = 0;
       __pyx_t_13 = NULL;
     } else {
-      __pyx_t_12 = -1; __pyx_t_6 = PyObject_GetIter(((PyObject *)__pyx_v_point_numbers)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_12 = -1; __pyx_t_6 = PyObject_GetIter(((PyObject *)__pyx_v_point_numbers)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 96, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_13 = Py_TYPE(__pyx_t_6)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_13 = Py_TYPE(__pyx_t_6)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 96, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_13)) {
         if (likely(PyList_CheckExact(__pyx_t_6))) {
           if (__pyx_t_12 >= PyList_GET_SIZE(__pyx_t_6)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_12); __Pyx_INCREF(__pyx_t_5); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 91, __pyx_L1_error)
+          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_12); __Pyx_INCREF(__pyx_t_5); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 96, __pyx_L1_error)
           #else
-          __pyx_t_5 = PySequence_ITEM(__pyx_t_6, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+          __pyx_t_5 = PySequence_ITEM(__pyx_t_6, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         } else {
           if (__pyx_t_12 >= PyTuple_GET_SIZE(__pyx_t_6)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_12); __Pyx_INCREF(__pyx_t_5); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 91, __pyx_L1_error)
+          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_12); __Pyx_INCREF(__pyx_t_5); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 96, __pyx_L1_error)
           #else
-          __pyx_t_5 = PySequence_ITEM(__pyx_t_6, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+          __pyx_t_5 = PySequence_ITEM(__pyx_t_6, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         }
@@ -2310,7 +2336,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 91, __pyx_L1_error)
+            else __PYX_ERR(0, 96, __pyx_L1_error)
           }
           break;
         }
@@ -2319,22 +2345,22 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
       __Pyx_XDECREF_SET(__pyx_v_point, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":94
+      /* "SelectionMoments.pyx":99
  *             #        ,
  *             #
  *             if point == base_point_number:             # <<<<<<<<<<<<<<
  *                 continue
  * 
  */
-      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_base_point_number); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 94, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_base_point_number); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 99, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_1 = PyObject_RichCompare(__pyx_v_point, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
+      __pyx_t_1 = PyObject_RichCompare(__pyx_v_point, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 94, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 99, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       if (__pyx_t_3) {
 
-        /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":95
+        /* "SelectionMoments.pyx":100
  *             #
  *             if point == base_point_number:
  *                 continue             # <<<<<<<<<<<<<<
@@ -2343,7 +2369,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
         goto __pyx_L7_continue;
 
-        /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":94
+        /* "SelectionMoments.pyx":99
  *             #        ,
  *             #
  *             if point == base_point_number:             # <<<<<<<<<<<<<<
@@ -2352,7 +2378,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
       }
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":98
+      /* "SelectionMoments.pyx":103
  * 
  *             #
  *             min_moment_delay = -9999             # <<<<<<<<<<<<<<
@@ -2361,7 +2387,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
       __pyx_v_min_moment_delay = -9999;
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":99
+      /* "SelectionMoments.pyx":104
  *             #
  *             min_moment_delay = -9999
  *             max_moment_delay = -9999             # <<<<<<<<<<<<<<
@@ -2370,7 +2396,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
       __pyx_v_max_moment_delay = -9999;
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":100
+      /* "SelectionMoments.pyx":105
  *             min_moment_delay = -9999
  *             max_moment_delay = -9999
  *             for i in range(moment_delays.shape[0]):             # <<<<<<<<<<<<<<
@@ -2381,7 +2407,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
       for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
         __pyx_v_i = __pyx_t_15;
 
-        /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":101
+        /* "SelectionMoments.pyx":106
  *             max_moment_delay = -9999
  *             for i in range(moment_delays.shape[0]):
  *                 point_number = moment_delays[i,0]             # <<<<<<<<<<<<<<
@@ -2401,26 +2427,26 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
         } else if (unlikely(__pyx_t_17 >= __pyx_pybuffernd_moment_delays.diminfo[1].shape)) __pyx_t_18 = 1;
         if (unlikely(__pyx_t_18 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_18);
-          __PYX_ERR(0, 101, __pyx_L1_error)
+          __PYX_ERR(0, 106, __pyx_L1_error)
         }
-        __pyx_t_1 = __Pyx_PyInt_From_npy_long((*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_moment_delays.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_moment_delays.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_moment_delays.diminfo[1].strides))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyInt_From_npy_long((*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_moment_delays.rcbuffer->pybuffer.buf, __pyx_t_16, __pyx_pybuffernd_moment_delays.diminfo[0].strides, __pyx_t_17, __pyx_pybuffernd_moment_delays.diminfo[1].strides))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_XDECREF_SET(__pyx_v_point_number, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":102
+        /* "SelectionMoments.pyx":107
  *             for i in range(moment_delays.shape[0]):
  *                 point_number = moment_delays[i,0]
  *                 if point_number == point:             # <<<<<<<<<<<<<<
  *                     min_moment_delay = moment_delays[i,1]
  *                     max_moment_delay = moment_delays[i,2]
  */
-        __pyx_t_1 = PyObject_RichCompare(__pyx_v_point_number, __pyx_v_point, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
-        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 102, __pyx_L1_error)
+        __pyx_t_1 = PyObject_RichCompare(__pyx_v_point_number, __pyx_v_point, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 107, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (__pyx_t_3) {
 
-          /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":103
+          /* "SelectionMoments.pyx":108
  *                 point_number = moment_delays[i,0]
  *                 if point_number == point:
  *                     min_moment_delay = moment_delays[i,1]             # <<<<<<<<<<<<<<
@@ -2440,11 +2466,11 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
           } else if (unlikely(__pyx_t_20 >= __pyx_pybuffernd_moment_delays.diminfo[1].shape)) __pyx_t_18 = 1;
           if (unlikely(__pyx_t_18 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_18);
-            __PYX_ERR(0, 103, __pyx_L1_error)
+            __PYX_ERR(0, 108, __pyx_L1_error)
           }
           __pyx_v_min_moment_delay = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_moment_delays.rcbuffer->pybuffer.buf, __pyx_t_19, __pyx_pybuffernd_moment_delays.diminfo[0].strides, __pyx_t_20, __pyx_pybuffernd_moment_delays.diminfo[1].strides));
 
-          /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":104
+          /* "SelectionMoments.pyx":109
  *                 if point_number == point:
  *                     min_moment_delay = moment_delays[i,1]
  *                     max_moment_delay = moment_delays[i,2]             # <<<<<<<<<<<<<<
@@ -2464,11 +2490,11 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
           } else if (unlikely(__pyx_t_22 >= __pyx_pybuffernd_moment_delays.diminfo[1].shape)) __pyx_t_18 = 1;
           if (unlikely(__pyx_t_18 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_18);
-            __PYX_ERR(0, 104, __pyx_L1_error)
+            __PYX_ERR(0, 109, __pyx_L1_error)
           }
           __pyx_v_max_moment_delay = (*__Pyx_BufPtrStrided2d(__pyx_t_5numpy_int_t *, __pyx_pybuffernd_moment_delays.rcbuffer->pybuffer.buf, __pyx_t_21, __pyx_pybuffernd_moment_delays.diminfo[0].strides, __pyx_t_22, __pyx_pybuffernd_moment_delays.diminfo[1].strides));
 
-          /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":105
+          /* "SelectionMoments.pyx":110
  *                     min_moment_delay = moment_delays[i,1]
  *                     max_moment_delay = moment_delays[i,2]
  *                     break             # <<<<<<<<<<<<<<
@@ -2477,7 +2503,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
           goto __pyx_L11_break;
 
-          /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":102
+          /* "SelectionMoments.pyx":107
  *             for i in range(moment_delays.shape[0]):
  *                 point_number = moment_delays[i,0]
  *                 if point_number == point:             # <<<<<<<<<<<<<<
@@ -2488,7 +2514,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
       }
       __pyx_L11_break:;
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":108
+      /* "SelectionMoments.pyx":113
  *             #       ,
  *             #
  *             if min_moment_delay == -9999 or max_moment_delay == -9999:             # <<<<<<<<<<<<<<
@@ -2506,25 +2532,25 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
       __pyx_L14_bool_binop_done:;
       if (__pyx_t_3) {
 
-        /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":109
+        /* "SelectionMoments.pyx":114
  *             #
  *             if min_moment_delay == -9999 or max_moment_delay == -9999:
  *                 print("    ")             # <<<<<<<<<<<<<<
  *                 print(" ")
  *                 return None
  */
-        if (__Pyx_PrintOne(0, __pyx_kp_s__5) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
+        if (__Pyx_PrintOne(0, __pyx_kp_s__5) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
 
-        /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":110
+        /* "SelectionMoments.pyx":115
  *             if min_moment_delay == -9999 or max_moment_delay == -9999:
  *                 print("    ")
  *                 print(" ")             # <<<<<<<<<<<<<<
  *                 return None
  * 
  */
-        if (__Pyx_PrintOne(0, __pyx_kp_s__2) < 0) __PYX_ERR(0, 110, __pyx_L1_error)
+        if (__Pyx_PrintOne(0, __pyx_kp_s__2) < 0) __PYX_ERR(0, 115, __pyx_L1_error)
 
-        /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":111
+        /* "SelectionMoments.pyx":116
  *                 print("    ")
  *                 print(" ")
  *                 return None             # <<<<<<<<<<<<<<
@@ -2537,7 +2563,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         goto __pyx_L0;
 
-        /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":108
+        /* "SelectionMoments.pyx":113
  *             #       ,
  *             #
  *             if min_moment_delay == -9999 or max_moment_delay == -9999:             # <<<<<<<<<<<<<<
@@ -2546,19 +2572,19 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
       }
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":114
+      /* "SelectionMoments.pyx":119
  * 
  *             #
  *             column_number = np.where((point_numbers == point))[0][0]             # <<<<<<<<<<<<<<
  *             current_point_signal = signals[:, column_number]
  * 
  */
-      __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 119, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_where); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_where); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 119, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = PyObject_RichCompare(((PyObject *)__pyx_v_point_numbers), __pyx_v_point, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __pyx_t_5 = PyObject_RichCompare(((PyObject *)__pyx_v_point_numbers), __pyx_v_point, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 119, __pyx_L1_error)
       __pyx_t_4 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_7))) {
         __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_7);
@@ -2570,14 +2596,14 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
         }
       }
       if (!__pyx_t_4) {
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_1);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_7)) {
           PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
-          __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -2586,42 +2612,42 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
           PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
-          __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         } else
         #endif
         {
-          __pyx_t_23 = PyTuple_New(1+1); if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 114, __pyx_L1_error)
+          __pyx_t_23 = PyTuple_New(1+1); if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 119, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_23);
           __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_23, 0, __pyx_t_4); __pyx_t_4 = NULL;
           __Pyx_GIVEREF(__pyx_t_5);
           PyTuple_SET_ITEM(__pyx_t_23, 0+1, __pyx_t_5);
           __pyx_t_5 = 0;
-          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_23, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_23, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 119, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_7, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_7, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF_SET(__pyx_v_column_number, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":115
+      /* "SelectionMoments.pyx":120
  *             #
  *             column_number = np.where((point_numbers == point))[0][0]
  *             current_point_signal = signals[:, column_number]             # <<<<<<<<<<<<<<
  * 
  *             #
  */
-      __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_INCREF(__pyx_slice__6);
       __Pyx_GIVEREF(__pyx_slice__6);
@@ -2629,10 +2655,10 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
       __Pyx_INCREF(__pyx_v_column_number);
       __Pyx_GIVEREF(__pyx_v_column_number);
       PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_column_number);
-      __pyx_t_7 = PyObject_GetItem(((PyObject *)__pyx_v_signals), __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 115, __pyx_L1_error)
+      __pyx_t_7 = PyObject_GetItem(((PyObject *)__pyx_v_signals), __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 120, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 115, __pyx_L1_error)
+      if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 120, __pyx_L1_error)
       __pyx_t_24 = ((PyArrayObject *)__pyx_t_7);
       {
         __Pyx_BufFmt_StackElem __pyx_stack[1];
@@ -2649,13 +2675,13 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
           __pyx_t_25 = __pyx_t_26 = __pyx_t_27 = 0;
         }
         __pyx_pybuffernd_current_point_signal.diminfo[0].strides = __pyx_pybuffernd_current_point_signal.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_current_point_signal.diminfo[0].shape = __pyx_pybuffernd_current_point_signal.rcbuffer->pybuffer.shape[0];
-        if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 115, __pyx_L1_error)
+        if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 120, __pyx_L1_error)
       }
       __pyx_t_24 = 0;
       __Pyx_XDECREF_SET(__pyx_v_current_point_signal, ((PyArrayObject *)__pyx_t_7));
       __pyx_t_7 = 0;
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":118
+      /* "SelectionMoments.pyx":123
  * 
  *             #
  *             max_correlation = -9999             # <<<<<<<<<<<<<<
@@ -2664,7 +2690,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
       __pyx_v_max_correlation = -9999.0;
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":125
+      /* "SelectionMoments.pyx":130
  * 
  *             #
  *             sum_a = sumsq_a = 0             # <<<<<<<<<<<<<<
@@ -2674,7 +2700,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
       __pyx_v_sum_a = 0.0;
       __pyx_v_sumsq_a = 0.0;
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":126
+      /* "SelectionMoments.pyx":131
  *             #
  *             sum_a = sumsq_a = 0
  *             n = moment_window             # <<<<<<<<<<<<<<
@@ -2683,7 +2709,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
       __pyx_v_n = __pyx_v_moment_window;
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":127
+      /* "SelectionMoments.pyx":132
  *             sum_a = sumsq_a = 0
  *             n = moment_window
  *             for i in range(n):             # <<<<<<<<<<<<<<
@@ -2694,7 +2720,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
       for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_15; __pyx_t_18+=1) {
         __pyx_v_i = __pyx_t_18;
 
-        /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":128
+        /* "SelectionMoments.pyx":133
  *             n = moment_window
  *             for i in range(n):
  *                 sum_a += base_point_signal[base_moment + i]             # <<<<<<<<<<<<<<
@@ -2709,11 +2735,11 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
         } else if (unlikely(__pyx_t_28 >= __pyx_pybuffernd_base_point_signal.diminfo[0].shape)) __pyx_t_29 = 0;
         if (unlikely(__pyx_t_29 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_29);
-          __PYX_ERR(0, 128, __pyx_L1_error)
+          __PYX_ERR(0, 133, __pyx_L1_error)
         }
         __pyx_v_sum_a = (__pyx_v_sum_a + (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float_t *, __pyx_pybuffernd_base_point_signal.rcbuffer->pybuffer.buf, __pyx_t_28, __pyx_pybuffernd_base_point_signal.diminfo[0].strides)));
 
-        /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":129
+        /* "SelectionMoments.pyx":134
  *             for i in range(n):
  *                 sum_a += base_point_signal[base_moment + i]
  *                 sumsq_a += base_point_signal[base_moment + i] ** 2             # <<<<<<<<<<<<<<
@@ -2728,12 +2754,12 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
         } else if (unlikely(__pyx_t_30 >= __pyx_pybuffernd_base_point_signal.diminfo[0].shape)) __pyx_t_29 = 0;
         if (unlikely(__pyx_t_29 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_29);
-          __PYX_ERR(0, 129, __pyx_L1_error)
+          __PYX_ERR(0, 134, __pyx_L1_error)
         }
         __pyx_v_sumsq_a = (__pyx_v_sumsq_a + pow((*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float_t *, __pyx_pybuffernd_base_point_signal.rcbuffer->pybuffer.buf, __pyx_t_30, __pyx_pybuffernd_base_point_signal.diminfo[0].strides)), 2.0));
       }
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":133
+      /* "SelectionMoments.pyx":138
  *             #
  *             for current_delay in \
  *                     range(min_moment_delay, max_moment_delay + 1, 1):             # <<<<<<<<<<<<<<
@@ -2742,7 +2768,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
       __pyx_t_31 = (__pyx_v_max_moment_delay + 1);
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":132
+      /* "SelectionMoments.pyx":137
  * 
  *             #
  *             for current_delay in \             # <<<<<<<<<<<<<<
@@ -2752,7 +2778,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
       for (__pyx_t_15 = __pyx_v_min_moment_delay; __pyx_t_15 < __pyx_t_31; __pyx_t_15+=1) {
         __pyx_v_current_delay = __pyx_t_15;
 
-        /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":135
+        /* "SelectionMoments.pyx":140
  *                     range(min_moment_delay, max_moment_delay + 1, 1):
  *                 #
  *                 sum_b = sumsq_b = sum_a_b = 0             # <<<<<<<<<<<<<<
@@ -2763,7 +2789,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
         __pyx_v_sumsq_b = 0.0;
         __pyx_v_sum_a_b = 0.0;
 
-        /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":136
+        /* "SelectionMoments.pyx":141
  *                 #
  *                 sum_b = sumsq_b = sum_a_b = 0
  *                 for i in range(n):             # <<<<<<<<<<<<<<
@@ -2774,7 +2800,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
         for (__pyx_t_29 = 0; __pyx_t_29 < __pyx_t_18; __pyx_t_29+=1) {
           __pyx_v_i = __pyx_t_29;
 
-          /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":137
+          /* "SelectionMoments.pyx":142
  *                 sum_b = sumsq_b = sum_a_b = 0
  *                 for i in range(n):
  *                     val = current_point_signal[base_moment + current_delay + i]             # <<<<<<<<<<<<<<
@@ -2789,11 +2815,11 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
           } else if (unlikely(__pyx_t_32 >= __pyx_pybuffernd_current_point_signal.diminfo[0].shape)) __pyx_t_33 = 0;
           if (unlikely(__pyx_t_33 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_33);
-            __PYX_ERR(0, 137, __pyx_L1_error)
+            __PYX_ERR(0, 142, __pyx_L1_error)
           }
           __pyx_v_val = (*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float_t *, __pyx_pybuffernd_current_point_signal.rcbuffer->pybuffer.buf, __pyx_t_32, __pyx_pybuffernd_current_point_signal.diminfo[0].strides));
 
-          /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":138
+          /* "SelectionMoments.pyx":143
  *                 for i in range(n):
  *                     val = current_point_signal[base_moment + current_delay + i]
  *                     sum_b += val             # <<<<<<<<<<<<<<
@@ -2802,7 +2828,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
           __pyx_v_sum_b = (__pyx_v_sum_b + __pyx_v_val);
 
-          /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":139
+          /* "SelectionMoments.pyx":144
  *                     val = current_point_signal[base_moment + current_delay + i]
  *                     sum_b += val
  *                     sumsq_b += val * val             # <<<<<<<<<<<<<<
@@ -2811,7 +2837,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
           __pyx_v_sumsq_b = (__pyx_v_sumsq_b + (__pyx_v_val * __pyx_v_val));
 
-          /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":141
+          /* "SelectionMoments.pyx":146
  *                     sumsq_b += val * val
  *                     #
  *                     sum_a_b += base_point_signal[base_moment + i] * val             # <<<<<<<<<<<<<<
@@ -2826,12 +2852,12 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
           } else if (unlikely(__pyx_t_34 >= __pyx_pybuffernd_base_point_signal.diminfo[0].shape)) __pyx_t_33 = 0;
           if (unlikely(__pyx_t_33 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_33);
-            __PYX_ERR(0, 141, __pyx_L1_error)
+            __PYX_ERR(0, 146, __pyx_L1_error)
           }
           __pyx_v_sum_a_b = (__pyx_v_sum_a_b + ((*__Pyx_BufPtrStrided1d(__pyx_t_5numpy_float_t *, __pyx_pybuffernd_base_point_signal.rcbuffer->pybuffer.buf, __pyx_t_34, __pyx_pybuffernd_base_point_signal.diminfo[0].strides)) * __pyx_v_val));
         }
 
-        /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":143
+        /* "SelectionMoments.pyx":148
  *                     sum_a_b += base_point_signal[base_moment + i] * val
  *                 #
  *                 corr = (sum_a_b * n - sum_a * sum_b) / ((sumsq_a * n - sum_a**2) * (sumsq_b * n - sum_b**2)) ** 0.5             # <<<<<<<<<<<<<<
@@ -2842,11 +2868,11 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
         __pyx_t_36 = pow((((__pyx_v_sumsq_a * __pyx_v_n) - pow(__pyx_v_sum_a, 2.0)) * ((__pyx_v_sumsq_b * __pyx_v_n) - pow(__pyx_v_sum_b, 2.0))), 0.5);
         if (unlikely(__pyx_t_36 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 143, __pyx_L1_error)
+          __PYX_ERR(0, 148, __pyx_L1_error)
         }
         __pyx_v_corr = (__pyx_t_35 / __pyx_t_36);
 
-        /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":145
+        /* "SelectionMoments.pyx":150
  *                 corr = (sum_a_b * n - sum_a * sum_b) / ((sumsq_a * n - sum_a**2) * (sumsq_b * n - sum_b**2)) ** 0.5
  *                 #
  *                 if corr < 0:             # <<<<<<<<<<<<<<
@@ -2856,7 +2882,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
         __pyx_t_3 = ((__pyx_v_corr < 0.0) != 0);
         if (__pyx_t_3) {
 
-          /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":146
+          /* "SelectionMoments.pyx":151
  *                 #
  *                 if corr < 0:
  *                     corr = -corr             # <<<<<<<<<<<<<<
@@ -2865,7 +2891,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
           __pyx_v_corr = (-__pyx_v_corr);
 
-          /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":145
+          /* "SelectionMoments.pyx":150
  *                 corr = (sum_a_b * n - sum_a * sum_b) / ((sumsq_a * n - sum_a**2) * (sumsq_b * n - sum_b**2)) ** 0.5
  *                 #
  *                 if corr < 0:             # <<<<<<<<<<<<<<
@@ -2874,7 +2900,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
  */
         }
 
-        /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":149
+        /* "SelectionMoments.pyx":154
  * 
  *                 #
  *                 if corr > max_correlation:             # <<<<<<<<<<<<<<
@@ -2884,16 +2910,16 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
         __pyx_t_3 = ((__pyx_v_corr > __pyx_v_max_correlation) != 0);
         if (__pyx_t_3) {
 
-          /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":150
+          /* "SelectionMoments.pyx":155
  *                 #
  *                 if corr > max_correlation:
  *                     max_correlation = corr             # <<<<<<<<<<<<<<
  * 
- *             #
+ *             # ,
  */
           __pyx_v_max_correlation = __pyx_v_corr;
 
-          /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":149
+          /* "SelectionMoments.pyx":154
  * 
  *                 #
  *                 if corr > max_correlation:             # <<<<<<<<<<<<<<
@@ -2903,25 +2929,35 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
         }
       }
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":153
- * 
+      /* "SelectionMoments.pyx":159
+ *             # ,
  *             #
- *             max_correlation = max_correlation ** 2             # <<<<<<<<<<<<<<
+ *             if max_correlation>=correlation_edge:             # <<<<<<<<<<<<<<
+ *                 correlation_count+=1
  * 
- *             #
  */
-      __pyx_v_max_correlation = pow(__pyx_v_max_correlation, 2.0);
+      __pyx_t_3 = ((__pyx_v_max_correlation >= __pyx_v_correlation_edge) != 0);
+      if (__pyx_t_3) {
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":156
- * 
+        /* "SelectionMoments.pyx":160
  *             #
- *             sum_correlation += max_correlation             # <<<<<<<<<<<<<<
+ *             if max_correlation>=correlation_edge:
+ *                 correlation_count+=1             # <<<<<<<<<<<<<<
  * 
- *         #
+ *         # ,   -    4,
  */
-      __pyx_v_sum_correlation = (__pyx_v_sum_correlation + __pyx_v_max_correlation);
+        __pyx_v_correlation_count = (__pyx_v_correlation_count + 1);
 
-      /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":91
+        /* "SelectionMoments.pyx":159
+ *             # ,
+ *             #
+ *             if max_correlation>=correlation_edge:             # <<<<<<<<<<<<<<
+ *                 correlation_count+=1
+ * 
+ */
+      }
+
+      /* "SelectionMoments.pyx":96
  * 
  *         #
  *         for point in point_numbers:             # <<<<<<<<<<<<<<
@@ -2932,113 +2968,117 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":159
- * 
+    /* "SelectionMoments.pyx":164
+ *         # ,   -    4,
  *         #
- *         avg_correlation = sum_correlation / (len(point_numbers) - 1)             # <<<<<<<<<<<<<<
- *         #
- *         result = np.append(result, [avg_correlation])
- */
-    __pyx_t_12 = PyObject_Length(((PyObject *)__pyx_v_point_numbers)); if (unlikely(__pyx_t_12 == ((Py_ssize_t)-1))) __PYX_ERR(0, 159, __pyx_L1_error)
-    __pyx_t_37 = (__pyx_t_12 - 1);
-    if (unlikely(__pyx_t_37 == 0)) {
-      PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 159, __pyx_L1_error)
-    }
-    __pyx_v_avg_correlation = (__pyx_v_sum_correlation / __pyx_t_37);
-
-    /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":161
- *         avg_correlation = sum_correlation / (len(point_numbers) - 1)
- *         #
- *         result = np.append(result, [avg_correlation])             # <<<<<<<<<<<<<<
+ *         if correlation_count>=4:             # <<<<<<<<<<<<<<
+ *             result = np.append(result, [base_moment-left_buffer])
  *     return result
  */
-    __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 161, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_append); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = PyFloat_FromDouble(__pyx_v_avg_correlation); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 161, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_23 = PyList_New(1); if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 161, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_23);
-    __Pyx_GIVEREF(__pyx_t_7);
-    PyList_SET_ITEM(__pyx_t_23, 0, __pyx_t_7);
-    __pyx_t_7 = 0;
-    __pyx_t_7 = NULL;
-    __pyx_t_15 = 0;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_1);
-      if (likely(__pyx_t_7)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-        __Pyx_INCREF(__pyx_t_7);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_1, function);
-        __pyx_t_15 = 1;
-      }
-    }
-    #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_1)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_7, ((PyObject *)__pyx_v_result), __pyx_t_23};
-      __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_15, 2+__pyx_t_15); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 161, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
-    } else
-    #endif
-    #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_7, ((PyObject *)__pyx_v_result), __pyx_t_23};
-      __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_15, 2+__pyx_t_15); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 161, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
-    } else
-    #endif
-    {
-      __pyx_t_5 = PyTuple_New(2+__pyx_t_15); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      if (__pyx_t_7) {
-        __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_7); __pyx_t_7 = NULL;
-      }
-      __Pyx_INCREF(((PyObject *)__pyx_v_result));
-      __Pyx_GIVEREF(((PyObject *)__pyx_v_result));
-      PyTuple_SET_ITEM(__pyx_t_5, 0+__pyx_t_15, ((PyObject *)__pyx_v_result));
-      __Pyx_GIVEREF(__pyx_t_23);
-      PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_15, __pyx_t_23);
-      __pyx_t_23 = 0;
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 161, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    }
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 161, __pyx_L1_error)
-    __pyx_t_9 = ((PyArrayObject *)__pyx_t_6);
-    {
-      __Pyx_BufFmt_StackElem __pyx_stack[1];
-      __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_result.rcbuffer->pybuffer);
-      __pyx_t_15 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_result.rcbuffer->pybuffer, (PyObject*)__pyx_t_9, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
-      if (unlikely(__pyx_t_15 < 0)) {
-        PyErr_Fetch(&__pyx_t_27, &__pyx_t_26, &__pyx_t_25);
-        if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_result.rcbuffer->pybuffer, (PyObject*)__pyx_v_result, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
-          Py_XDECREF(__pyx_t_27); Py_XDECREF(__pyx_t_26); Py_XDECREF(__pyx_t_25);
-          __Pyx_RaiseBufferFallbackError();
-        } else {
-          PyErr_Restore(__pyx_t_27, __pyx_t_26, __pyx_t_25);
+    __pyx_t_3 = ((__pyx_v_correlation_count >= 4) != 0);
+    if (__pyx_t_3) {
+
+      /* "SelectionMoments.pyx":165
+ *         #
+ *         if correlation_count>=4:
+ *             result = np.append(result, [base_moment-left_buffer])             # <<<<<<<<<<<<<<
+ *     return result
+ */
+      __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_append); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_7 = __Pyx_PyInt_From_int((__pyx_v_base_moment - __pyx_v_left_buffer)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_23 = PyList_New(1); if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_23);
+      __Pyx_GIVEREF(__pyx_t_7);
+      PyList_SET_ITEM(__pyx_t_23, 0, __pyx_t_7);
+      __pyx_t_7 = 0;
+      __pyx_t_7 = NULL;
+      __pyx_t_15 = 0;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
+        __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_1);
+        if (likely(__pyx_t_7)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+          __Pyx_INCREF(__pyx_t_7);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_1, function);
+          __pyx_t_15 = 1;
         }
-        __pyx_t_27 = __pyx_t_26 = __pyx_t_25 = 0;
       }
-      __pyx_pybuffernd_result.diminfo[0].strides = __pyx_pybuffernd_result.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_result.diminfo[0].shape = __pyx_pybuffernd_result.rcbuffer->pybuffer.shape[0];
-      if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 161, __pyx_L1_error)
+      #if CYTHON_FAST_PYCALL
+      if (PyFunction_Check(__pyx_t_1)) {
+        PyObject *__pyx_temp[3] = {__pyx_t_7, ((PyObject *)__pyx_v_result), __pyx_t_23};
+        __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_15, 2+__pyx_t_15); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 165, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_GOTREF(__pyx_t_6);
+        __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
+      } else
+      #endif
+      #if CYTHON_FAST_PYCCALL
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
+        PyObject *__pyx_temp[3] = {__pyx_t_7, ((PyObject *)__pyx_v_result), __pyx_t_23};
+        __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_15, 2+__pyx_t_15); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 165, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_GOTREF(__pyx_t_6);
+        __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
+      } else
+      #endif
+      {
+        __pyx_t_5 = PyTuple_New(2+__pyx_t_15); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 165, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        if (__pyx_t_7) {
+          __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_7); __pyx_t_7 = NULL;
+        }
+        __Pyx_INCREF(((PyObject *)__pyx_v_result));
+        __Pyx_GIVEREF(((PyObject *)__pyx_v_result));
+        PyTuple_SET_ITEM(__pyx_t_5, 0+__pyx_t_15, ((PyObject *)__pyx_v_result));
+        __Pyx_GIVEREF(__pyx_t_23);
+        PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_15, __pyx_t_23);
+        __pyx_t_23 = 0;
+        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 165, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_6);
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      }
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 165, __pyx_L1_error)
+      __pyx_t_9 = ((PyArrayObject *)__pyx_t_6);
+      {
+        __Pyx_BufFmt_StackElem __pyx_stack[1];
+        __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_result.rcbuffer->pybuffer);
+        __pyx_t_15 = __Pyx_GetBufferAndValidate(&__pyx_pybuffernd_result.rcbuffer->pybuffer, (PyObject*)__pyx_t_9, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack);
+        if (unlikely(__pyx_t_15 < 0)) {
+          PyErr_Fetch(&__pyx_t_27, &__pyx_t_26, &__pyx_t_25);
+          if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_result.rcbuffer->pybuffer, (PyObject*)__pyx_v_result, &__Pyx_TypeInfo_nn___pyx_t_5numpy_int_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+            Py_XDECREF(__pyx_t_27); Py_XDECREF(__pyx_t_26); Py_XDECREF(__pyx_t_25);
+            __Pyx_RaiseBufferFallbackError();
+          } else {
+            PyErr_Restore(__pyx_t_27, __pyx_t_26, __pyx_t_25);
+          }
+          __pyx_t_27 = __pyx_t_26 = __pyx_t_25 = 0;
+        }
+        __pyx_pybuffernd_result.diminfo[0].strides = __pyx_pybuffernd_result.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_result.diminfo[0].shape = __pyx_pybuffernd_result.rcbuffer->pybuffer.shape[0];
+        if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 165, __pyx_L1_error)
+      }
+      __pyx_t_9 = 0;
+      __Pyx_DECREF_SET(__pyx_v_result, ((PyArrayObject *)__pyx_t_6));
+      __pyx_t_6 = 0;
+
+      /* "SelectionMoments.pyx":164
+ *         # ,   -    4,
+ *         #
+ *         if correlation_count>=4:             # <<<<<<<<<<<<<<
+ *             result = np.append(result, [base_moment-left_buffer])
+ *     return result
+ */
     }
-    __pyx_t_9 = 0;
-    __Pyx_DECREF_SET(__pyx_v_result, ((PyArrayObject *)__pyx_t_6));
-    __pyx_t_6 = 0;
   }
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":162
- *         #
- *         result = np.append(result, [avg_correlation])
+  /* "SelectionMoments.pyx":166
+ *         if correlation_count>=4:
+ *             result = np.append(result, [base_moment-left_buffer])
  *     return result             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
@@ -3046,12 +3086,12 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
   __pyx_r = ((PyObject *)__pyx_v_result);
   goto __pyx_L0;
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":4
- * cimport numpy as np
+  /* "SelectionMoments.pyx":5
  * 
- * def calc_correlation(np.ndarray[np.int_t, ndim=1] point_numbers,             # <<<<<<<<<<<<<<
- *                      int base_point_number,
- *                      np.ndarray[np.float_t, ndim=2] signals,
+ * 
+ * def selection_moments(np.ndarray[np.int_t, ndim=1] point_numbers,             # <<<<<<<<<<<<<<
+ *                       int base_point_number,
+ *                       np.ndarray[np.float_t, ndim=2] signals,
  */
 
   /* function exit code */
@@ -3073,7 +3113,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_result.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_signals.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("SeisCore.HydroFracCore.CythonCalcFunctions.CorrelationCalculation.CorrelationCalculation.calc_correlation", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("SelectionMoments.selection_moments", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -3095,7 +3135,7 @@ static PyObject *__pyx_pf_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22Corr
   return __pyx_r;
 }
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":214
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":214
  *         # experimental exception made for __getbuffer__ and __releasebuffer__
  *         # -- the details of this may change.
  *         def __getbuffer__(ndarray self, Py_buffer* info, int flags):             # <<<<<<<<<<<<<<
@@ -3142,7 +3182,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     __Pyx_GIVEREF(__pyx_v_info->obj);
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":220
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":220
  *             # of flags
  * 
  *             if info == NULL: return             # <<<<<<<<<<<<<<
@@ -3155,7 +3195,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     goto __pyx_L0;
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":223
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":223
  * 
  *             cdef int copy_shape, i, ndim
  *             cdef int endian_detector = 1             # <<<<<<<<<<<<<<
@@ -3164,7 +3204,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
   __pyx_v_endian_detector = 1;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":224
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":224
  *             cdef int copy_shape, i, ndim
  *             cdef int endian_detector = 1
  *             cdef bint little_endian = ((<char*>&endian_detector)[0] != 0)             # <<<<<<<<<<<<<<
@@ -3173,7 +3213,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
   __pyx_v_little_endian = ((((char *)(&__pyx_v_endian_detector))[0]) != 0);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":226
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":226
  *             cdef bint little_endian = ((<char*>&endian_detector)[0] != 0)
  * 
  *             ndim = PyArray_NDIM(self)             # <<<<<<<<<<<<<<
@@ -3182,7 +3222,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
   __pyx_v_ndim = PyArray_NDIM(__pyx_v_self);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":228
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":228
  *             ndim = PyArray_NDIM(self)
  * 
  *             if sizeof(npy_intp) != sizeof(Py_ssize_t):             # <<<<<<<<<<<<<<
@@ -3192,7 +3232,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   __pyx_t_1 = (((sizeof(npy_intp)) != (sizeof(Py_ssize_t))) != 0);
   if (__pyx_t_1) {
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":229
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":229
  * 
  *             if sizeof(npy_intp) != sizeof(Py_ssize_t):
  *                 copy_shape = 1             # <<<<<<<<<<<<<<
@@ -3201,7 +3241,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
     __pyx_v_copy_shape = 1;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":228
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":228
  *             ndim = PyArray_NDIM(self)
  * 
  *             if sizeof(npy_intp) != sizeof(Py_ssize_t):             # <<<<<<<<<<<<<<
@@ -3211,7 +3251,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     goto __pyx_L4;
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":231
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":231
  *                 copy_shape = 1
  *             else:
  *                 copy_shape = 0             # <<<<<<<<<<<<<<
@@ -3223,7 +3263,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   }
   __pyx_L4:;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":233
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":233
  *                 copy_shape = 0
  * 
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -3237,7 +3277,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     goto __pyx_L6_bool_binop_done;
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":234
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":234
  * 
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)
  *                 and not PyArray_CHKFLAGS(self, NPY_C_CONTIGUOUS)):             # <<<<<<<<<<<<<<
@@ -3248,7 +3288,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   __pyx_t_1 = __pyx_t_2;
   __pyx_L6_bool_binop_done:;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":233
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":233
  *                 copy_shape = 0
  * 
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -3257,7 +3297,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
   if (__pyx_t_1) {
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":235
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":235
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)
  *                 and not PyArray_CHKFLAGS(self, NPY_C_CONTIGUOUS)):
  *                 raise ValueError(u"ndarray is not C contiguous")             # <<<<<<<<<<<<<<
@@ -3270,7 +3310,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __PYX_ERR(1, 235, __pyx_L1_error)
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":233
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":233
  *                 copy_shape = 0
  * 
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -3279,7 +3319,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":237
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":237
  *                 raise ValueError(u"ndarray is not C contiguous")
  * 
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -3293,7 +3333,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     goto __pyx_L9_bool_binop_done;
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":238
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":238
  * 
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
  *                 and not PyArray_CHKFLAGS(self, NPY_F_CONTIGUOUS)):             # <<<<<<<<<<<<<<
@@ -3304,7 +3344,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   __pyx_t_1 = __pyx_t_2;
   __pyx_L9_bool_binop_done:;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":237
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":237
  *                 raise ValueError(u"ndarray is not C contiguous")
  * 
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -3313,7 +3353,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
   if (__pyx_t_1) {
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":239
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":239
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
  *                 and not PyArray_CHKFLAGS(self, NPY_F_CONTIGUOUS)):
  *                 raise ValueError(u"ndarray is not Fortran contiguous")             # <<<<<<<<<<<<<<
@@ -3326,7 +3366,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __PYX_ERR(1, 239, __pyx_L1_error)
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":237
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":237
  *                 raise ValueError(u"ndarray is not C contiguous")
  * 
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -3335,7 +3375,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":241
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":241
  *                 raise ValueError(u"ndarray is not Fortran contiguous")
  * 
  *             info.buf = PyArray_DATA(self)             # <<<<<<<<<<<<<<
@@ -3344,7 +3384,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
   __pyx_v_info->buf = PyArray_DATA(__pyx_v_self);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":242
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":242
  * 
  *             info.buf = PyArray_DATA(self)
  *             info.ndim = ndim             # <<<<<<<<<<<<<<
@@ -3353,7 +3393,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
   __pyx_v_info->ndim = __pyx_v_ndim;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":243
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":243
  *             info.buf = PyArray_DATA(self)
  *             info.ndim = ndim
  *             if copy_shape:             # <<<<<<<<<<<<<<
@@ -3363,7 +3403,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   __pyx_t_1 = (__pyx_v_copy_shape != 0);
   if (__pyx_t_1) {
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":246
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":246
  *                 # Allocate new buffer for strides and shape info.
  *                 # This is allocated as one block, strides first.
  *                 info.strides = <Py_ssize_t*>PyObject_Malloc(sizeof(Py_ssize_t) * 2 * <size_t>ndim)             # <<<<<<<<<<<<<<
@@ -3372,7 +3412,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
     __pyx_v_info->strides = ((Py_ssize_t *)PyObject_Malloc((((sizeof(Py_ssize_t)) * 2) * ((size_t)__pyx_v_ndim))));
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":247
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":247
  *                 # This is allocated as one block, strides first.
  *                 info.strides = <Py_ssize_t*>PyObject_Malloc(sizeof(Py_ssize_t) * 2 * <size_t>ndim)
  *                 info.shape = info.strides + ndim             # <<<<<<<<<<<<<<
@@ -3381,7 +3421,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
     __pyx_v_info->shape = (__pyx_v_info->strides + __pyx_v_ndim);
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":248
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":248
  *                 info.strides = <Py_ssize_t*>PyObject_Malloc(sizeof(Py_ssize_t) * 2 * <size_t>ndim)
  *                 info.shape = info.strides + ndim
  *                 for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -3392,7 +3432,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
       __pyx_v_i = __pyx_t_5;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":249
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":249
  *                 info.shape = info.strides + ndim
  *                 for i in range(ndim):
  *                     info.strides[i] = PyArray_STRIDES(self)[i]             # <<<<<<<<<<<<<<
@@ -3401,7 +3441,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
       (__pyx_v_info->strides[__pyx_v_i]) = (PyArray_STRIDES(__pyx_v_self)[__pyx_v_i]);
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":250
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":250
  *                 for i in range(ndim):
  *                     info.strides[i] = PyArray_STRIDES(self)[i]
  *                     info.shape[i] = PyArray_DIMS(self)[i]             # <<<<<<<<<<<<<<
@@ -3411,7 +3451,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       (__pyx_v_info->shape[__pyx_v_i]) = (PyArray_DIMS(__pyx_v_self)[__pyx_v_i]);
     }
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":243
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":243
  *             info.buf = PyArray_DATA(self)
  *             info.ndim = ndim
  *             if copy_shape:             # <<<<<<<<<<<<<<
@@ -3421,7 +3461,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     goto __pyx_L11;
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":252
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":252
  *                     info.shape[i] = PyArray_DIMS(self)[i]
  *             else:
  *                 info.strides = <Py_ssize_t*>PyArray_STRIDES(self)             # <<<<<<<<<<<<<<
@@ -3431,7 +3471,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /*else*/ {
     __pyx_v_info->strides = ((Py_ssize_t *)PyArray_STRIDES(__pyx_v_self));
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":253
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":253
  *             else:
  *                 info.strides = <Py_ssize_t*>PyArray_STRIDES(self)
  *                 info.shape = <Py_ssize_t*>PyArray_DIMS(self)             # <<<<<<<<<<<<<<
@@ -3442,7 +3482,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   }
   __pyx_L11:;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":254
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":254
  *                 info.strides = <Py_ssize_t*>PyArray_STRIDES(self)
  *                 info.shape = <Py_ssize_t*>PyArray_DIMS(self)
  *             info.suboffsets = NULL             # <<<<<<<<<<<<<<
@@ -3451,7 +3491,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
   __pyx_v_info->suboffsets = NULL;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":255
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":255
  *                 info.shape = <Py_ssize_t*>PyArray_DIMS(self)
  *             info.suboffsets = NULL
  *             info.itemsize = PyArray_ITEMSIZE(self)             # <<<<<<<<<<<<<<
@@ -3460,7 +3500,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
   __pyx_v_info->itemsize = PyArray_ITEMSIZE(__pyx_v_self);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":256
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":256
  *             info.suboffsets = NULL
  *             info.itemsize = PyArray_ITEMSIZE(self)
  *             info.readonly = not PyArray_ISWRITEABLE(self)             # <<<<<<<<<<<<<<
@@ -3469,7 +3509,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
   __pyx_v_info->readonly = (!(PyArray_ISWRITEABLE(__pyx_v_self) != 0));
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":259
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":259
  * 
  *             cdef int t
  *             cdef char* f = NULL             # <<<<<<<<<<<<<<
@@ -3478,7 +3518,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
   __pyx_v_f = NULL;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":260
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":260
  *             cdef int t
  *             cdef char* f = NULL
  *             cdef dtype descr = self.descr             # <<<<<<<<<<<<<<
@@ -3490,7 +3530,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   __pyx_v_descr = ((PyArray_Descr *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":263
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":263
  *             cdef int offset
  * 
  *             cdef bint hasfields = PyDataType_HASFIELDS(descr)             # <<<<<<<<<<<<<<
@@ -3499,7 +3539,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
   __pyx_v_hasfields = PyDataType_HASFIELDS(__pyx_v_descr);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":265
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":265
  *             cdef bint hasfields = PyDataType_HASFIELDS(descr)
  * 
  *             if not hasfields and not copy_shape:             # <<<<<<<<<<<<<<
@@ -3517,7 +3557,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   __pyx_L15_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":267
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":267
  *             if not hasfields and not copy_shape:
  *                 # do not call releasebuffer
  *                 info.obj = None             # <<<<<<<<<<<<<<
@@ -3530,7 +3570,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     __Pyx_DECREF(__pyx_v_info->obj);
     __pyx_v_info->obj = Py_None;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":265
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":265
  *             cdef bint hasfields = PyDataType_HASFIELDS(descr)
  * 
  *             if not hasfields and not copy_shape:             # <<<<<<<<<<<<<<
@@ -3540,7 +3580,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     goto __pyx_L14;
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":270
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":270
  *             else:
  *                 # need to call releasebuffer
  *                 info.obj = self             # <<<<<<<<<<<<<<
@@ -3556,7 +3596,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   }
   __pyx_L14:;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":272
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":272
  *                 info.obj = self
  * 
  *             if not hasfields:             # <<<<<<<<<<<<<<
@@ -3566,7 +3606,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   __pyx_t_1 = ((!(__pyx_v_hasfields != 0)) != 0);
   if (__pyx_t_1) {
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":273
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":273
  * 
  *             if not hasfields:
  *                 t = descr.type_num             # <<<<<<<<<<<<<<
@@ -3576,7 +3616,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     __pyx_t_4 = __pyx_v_descr->type_num;
     __pyx_v_t = __pyx_t_4;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":274
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":274
  *             if not hasfields:
  *                 t = descr.type_num
  *                 if ((descr.byteorder == c'>' and little_endian) or             # <<<<<<<<<<<<<<
@@ -3596,7 +3636,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     }
     __pyx_L20_next_or:;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":275
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":275
  *                 t = descr.type_num
  *                 if ((descr.byteorder == c'>' and little_endian) or
  *                     (descr.byteorder == c'<' and not little_endian)):             # <<<<<<<<<<<<<<
@@ -3613,7 +3653,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     __pyx_t_1 = __pyx_t_2;
     __pyx_L19_bool_binop_done:;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":274
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":274
  *             if not hasfields:
  *                 t = descr.type_num
  *                 if ((descr.byteorder == c'>' and little_endian) or             # <<<<<<<<<<<<<<
@@ -3622,7 +3662,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
     if (__pyx_t_1) {
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":276
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":276
  *                 if ((descr.byteorder == c'>' and little_endian) or
  *                     (descr.byteorder == c'<' and not little_endian)):
  *                     raise ValueError(u"Non-native byte order not supported")             # <<<<<<<<<<<<<<
@@ -3635,7 +3675,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __PYX_ERR(1, 276, __pyx_L1_error)
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":274
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":274
  *             if not hasfields:
  *                 t = descr.type_num
  *                 if ((descr.byteorder == c'>' and little_endian) or             # <<<<<<<<<<<<<<
@@ -3644,7 +3684,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
     }
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":277
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":277
  *                     (descr.byteorder == c'<' and not little_endian)):
  *                     raise ValueError(u"Non-native byte order not supported")
  *                 if   t == NPY_BYTE:        f = "b"             # <<<<<<<<<<<<<<
@@ -3656,7 +3696,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"b");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":278
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":278
  *                     raise ValueError(u"Non-native byte order not supported")
  *                 if   t == NPY_BYTE:        f = "b"
  *                 elif t == NPY_UBYTE:       f = "B"             # <<<<<<<<<<<<<<
@@ -3667,7 +3707,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"B");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":279
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":279
  *                 if   t == NPY_BYTE:        f = "b"
  *                 elif t == NPY_UBYTE:       f = "B"
  *                 elif t == NPY_SHORT:       f = "h"             # <<<<<<<<<<<<<<
@@ -3678,7 +3718,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"h");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":280
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":280
  *                 elif t == NPY_UBYTE:       f = "B"
  *                 elif t == NPY_SHORT:       f = "h"
  *                 elif t == NPY_USHORT:      f = "H"             # <<<<<<<<<<<<<<
@@ -3689,7 +3729,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"H");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":281
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":281
  *                 elif t == NPY_SHORT:       f = "h"
  *                 elif t == NPY_USHORT:      f = "H"
  *                 elif t == NPY_INT:         f = "i"             # <<<<<<<<<<<<<<
@@ -3700,7 +3740,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"i");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":282
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":282
  *                 elif t == NPY_USHORT:      f = "H"
  *                 elif t == NPY_INT:         f = "i"
  *                 elif t == NPY_UINT:        f = "I"             # <<<<<<<<<<<<<<
@@ -3711,7 +3751,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"I");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":283
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":283
  *                 elif t == NPY_INT:         f = "i"
  *                 elif t == NPY_UINT:        f = "I"
  *                 elif t == NPY_LONG:        f = "l"             # <<<<<<<<<<<<<<
@@ -3722,7 +3762,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"l");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":284
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":284
  *                 elif t == NPY_UINT:        f = "I"
  *                 elif t == NPY_LONG:        f = "l"
  *                 elif t == NPY_ULONG:       f = "L"             # <<<<<<<<<<<<<<
@@ -3733,7 +3773,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"L");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":285
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":285
  *                 elif t == NPY_LONG:        f = "l"
  *                 elif t == NPY_ULONG:       f = "L"
  *                 elif t == NPY_LONGLONG:    f = "q"             # <<<<<<<<<<<<<<
@@ -3744,7 +3784,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"q");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":286
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":286
  *                 elif t == NPY_ULONG:       f = "L"
  *                 elif t == NPY_LONGLONG:    f = "q"
  *                 elif t == NPY_ULONGLONG:   f = "Q"             # <<<<<<<<<<<<<<
@@ -3755,7 +3795,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"Q");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":287
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":287
  *                 elif t == NPY_LONGLONG:    f = "q"
  *                 elif t == NPY_ULONGLONG:   f = "Q"
  *                 elif t == NPY_FLOAT:       f = "f"             # <<<<<<<<<<<<<<
@@ -3766,7 +3806,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"f");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":288
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":288
  *                 elif t == NPY_ULONGLONG:   f = "Q"
  *                 elif t == NPY_FLOAT:       f = "f"
  *                 elif t == NPY_DOUBLE:      f = "d"             # <<<<<<<<<<<<<<
@@ -3777,7 +3817,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"d");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":289
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":289
  *                 elif t == NPY_FLOAT:       f = "f"
  *                 elif t == NPY_DOUBLE:      f = "d"
  *                 elif t == NPY_LONGDOUBLE:  f = "g"             # <<<<<<<<<<<<<<
@@ -3788,7 +3828,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"g");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":290
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":290
  *                 elif t == NPY_DOUBLE:      f = "d"
  *                 elif t == NPY_LONGDOUBLE:  f = "g"
  *                 elif t == NPY_CFLOAT:      f = "Zf"             # <<<<<<<<<<<<<<
@@ -3799,7 +3839,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"Zf");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":291
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":291
  *                 elif t == NPY_LONGDOUBLE:  f = "g"
  *                 elif t == NPY_CFLOAT:      f = "Zf"
  *                 elif t == NPY_CDOUBLE:     f = "Zd"             # <<<<<<<<<<<<<<
@@ -3810,7 +3850,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"Zd");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":292
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":292
  *                 elif t == NPY_CFLOAT:      f = "Zf"
  *                 elif t == NPY_CDOUBLE:     f = "Zd"
  *                 elif t == NPY_CLONGDOUBLE: f = "Zg"             # <<<<<<<<<<<<<<
@@ -3821,7 +3861,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       __pyx_v_f = ((char *)"Zg");
       break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":293
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":293
  *                 elif t == NPY_CDOUBLE:     f = "Zd"
  *                 elif t == NPY_CLONGDOUBLE: f = "Zg"
  *                 elif t == NPY_OBJECT:      f = "O"             # <<<<<<<<<<<<<<
@@ -3833,7 +3873,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       break;
       default:
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":295
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":295
  *                 elif t == NPY_OBJECT:      f = "O"
  *                 else:
  *                     raise ValueError(u"unknown dtype code in numpy.pxd (%d)" % t)             # <<<<<<<<<<<<<<
@@ -3859,7 +3899,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       break;
     }
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":296
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":296
  *                 else:
  *                     raise ValueError(u"unknown dtype code in numpy.pxd (%d)" % t)
  *                 info.format = f             # <<<<<<<<<<<<<<
@@ -3868,7 +3908,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
     __pyx_v_info->format = __pyx_v_f;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":297
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":297
  *                     raise ValueError(u"unknown dtype code in numpy.pxd (%d)" % t)
  *                 info.format = f
  *                 return             # <<<<<<<<<<<<<<
@@ -3878,7 +3918,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":272
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":272
  *                 info.obj = self
  * 
  *             if not hasfields:             # <<<<<<<<<<<<<<
@@ -3887,7 +3927,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":299
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":299
  *                 return
  *             else:
  *                 info.format = <char*>PyObject_Malloc(_buffer_format_string_len)             # <<<<<<<<<<<<<<
@@ -3897,7 +3937,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /*else*/ {
     __pyx_v_info->format = ((char *)PyObject_Malloc(0xFF));
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":300
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":300
  *             else:
  *                 info.format = <char*>PyObject_Malloc(_buffer_format_string_len)
  *                 info.format[0] = c'^' # Native data types, manual alignment             # <<<<<<<<<<<<<<
@@ -3906,7 +3946,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
     (__pyx_v_info->format[0]) = '^';
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":301
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":301
  *                 info.format = <char*>PyObject_Malloc(_buffer_format_string_len)
  *                 info.format[0] = c'^' # Native data types, manual alignment
  *                 offset = 0             # <<<<<<<<<<<<<<
@@ -3915,7 +3955,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  */
     __pyx_v_offset = 0;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":302
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":302
  *                 info.format[0] = c'^' # Native data types, manual alignment
  *                 offset = 0
  *                 f = _util_dtypestring(descr, info.format + 1,             # <<<<<<<<<<<<<<
@@ -3925,7 +3965,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     __pyx_t_7 = __pyx_f_5numpy__util_dtypestring(__pyx_v_descr, (__pyx_v_info->format + 1), (__pyx_v_info->format + 0xFF), (&__pyx_v_offset)); if (unlikely(__pyx_t_7 == ((char *)NULL))) __PYX_ERR(1, 302, __pyx_L1_error)
     __pyx_v_f = __pyx_t_7;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":305
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":305
  *                                       info.format + _buffer_format_string_len,
  *                                       &offset)
  *                 f[0] = c'\0' # Terminate format string             # <<<<<<<<<<<<<<
@@ -3935,7 +3975,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     (__pyx_v_f[0]) = '\x00';
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":214
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":214
  *         # experimental exception made for __getbuffer__ and __releasebuffer__
  *         # -- the details of this may change.
  *         def __getbuffer__(ndarray self, Py_buffer* info, int flags):             # <<<<<<<<<<<<<<
@@ -3967,7 +4007,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   return __pyx_r;
 }
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":307
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":307
  *                 f[0] = c'\0' # Terminate format string
  * 
  *         def __releasebuffer__(ndarray self, Py_buffer* info):             # <<<<<<<<<<<<<<
@@ -3991,7 +4031,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__releasebuffer__", 0);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":308
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":308
  * 
  *         def __releasebuffer__(ndarray self, Py_buffer* info):
  *             if PyArray_HASFIELDS(self):             # <<<<<<<<<<<<<<
@@ -4001,7 +4041,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
   __pyx_t_1 = (PyArray_HASFIELDS(__pyx_v_self) != 0);
   if (__pyx_t_1) {
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":309
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":309
  *         def __releasebuffer__(ndarray self, Py_buffer* info):
  *             if PyArray_HASFIELDS(self):
  *                 PyObject_Free(info.format)             # <<<<<<<<<<<<<<
@@ -4010,7 +4050,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
  */
     PyObject_Free(__pyx_v_info->format);
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":308
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":308
  * 
  *         def __releasebuffer__(ndarray self, Py_buffer* info):
  *             if PyArray_HASFIELDS(self):             # <<<<<<<<<<<<<<
@@ -4019,7 +4059,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
  */
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":310
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":310
  *             if PyArray_HASFIELDS(self):
  *                 PyObject_Free(info.format)
  *             if sizeof(npy_intp) != sizeof(Py_ssize_t):             # <<<<<<<<<<<<<<
@@ -4029,7 +4069,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
   __pyx_t_1 = (((sizeof(npy_intp)) != (sizeof(Py_ssize_t))) != 0);
   if (__pyx_t_1) {
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":311
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":311
  *                 PyObject_Free(info.format)
  *             if sizeof(npy_intp) != sizeof(Py_ssize_t):
  *                 PyObject_Free(info.strides)             # <<<<<<<<<<<<<<
@@ -4038,7 +4078,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
  */
     PyObject_Free(__pyx_v_info->strides);
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":310
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":310
  *             if PyArray_HASFIELDS(self):
  *                 PyObject_Free(info.format)
  *             if sizeof(npy_intp) != sizeof(Py_ssize_t):             # <<<<<<<<<<<<<<
@@ -4047,7 +4087,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
  */
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":307
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":307
  *                 f[0] = c'\0' # Terminate format string
  * 
  *         def __releasebuffer__(ndarray self, Py_buffer* info):             # <<<<<<<<<<<<<<
@@ -4059,7 +4099,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
   __Pyx_RefNannyFinishContext();
 }
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":788
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":788
  * ctypedef npy_cdouble     complex_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -4073,7 +4113,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew1", 0);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":789
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":789
  * 
  * cdef inline object PyArray_MultiIterNew1(a):
  *     return PyArray_MultiIterNew(1, <void*>a)             # <<<<<<<<<<<<<<
@@ -4087,7 +4127,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":788
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":788
  * ctypedef npy_cdouble     complex_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -4106,7 +4146,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   return __pyx_r;
 }
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":791
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":791
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -4120,7 +4160,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew2", 0);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":792
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":792
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)             # <<<<<<<<<<<<<<
@@ -4134,7 +4174,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":791
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":791
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -4153,7 +4193,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   return __pyx_r;
 }
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":794
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":794
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -4167,7 +4207,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew3", 0);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":795
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":795
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)             # <<<<<<<<<<<<<<
@@ -4181,7 +4221,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":794
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":794
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -4200,7 +4240,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   return __pyx_r;
 }
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":797
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":797
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -4214,7 +4254,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew4", 0);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":798
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":798
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)             # <<<<<<<<<<<<<<
@@ -4228,7 +4268,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":797
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":797
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -4247,7 +4287,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   return __pyx_r;
 }
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":800
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":800
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -4261,7 +4301,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew5", 0);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":801
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":801
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)             # <<<<<<<<<<<<<<
@@ -4275,7 +4315,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":800
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":800
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -4294,7 +4334,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   return __pyx_r;
 }
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":803
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":803
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -4308,7 +4348,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("PyDataType_SHAPE", 0);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":804
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":804
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -4318,7 +4358,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   __pyx_t_1 = (PyDataType_HASSUBARRAY(__pyx_v_d) != 0);
   if (__pyx_t_1) {
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":805
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":805
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):
  *         return <tuple>d.subarray.shape             # <<<<<<<<<<<<<<
@@ -4330,7 +4370,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     __pyx_r = ((PyObject*)__pyx_v_d->subarray->shape);
     goto __pyx_L0;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":804
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":804
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -4339,7 +4379,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
  */
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":807
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":807
  *         return <tuple>d.subarray.shape
  *     else:
  *         return ()             # <<<<<<<<<<<<<<
@@ -4353,7 +4393,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     goto __pyx_L0;
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":803
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":803
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -4368,7 +4408,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   return __pyx_r;
 }
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":809
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":809
  *         return ()
  * 
  * cdef inline char* _util_dtypestring(dtype descr, char* f, char* end, int* offset) except NULL:             # <<<<<<<<<<<<<<
@@ -4397,7 +4437,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
   char *__pyx_t_9;
   __Pyx_RefNannySetupContext("_util_dtypestring", 0);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":814
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":814
  * 
  *     cdef dtype child
  *     cdef int endian_detector = 1             # <<<<<<<<<<<<<<
@@ -4406,7 +4446,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  */
   __pyx_v_endian_detector = 1;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":815
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":815
  *     cdef dtype child
  *     cdef int endian_detector = 1
  *     cdef bint little_endian = ((<char*>&endian_detector)[0] != 0)             # <<<<<<<<<<<<<<
@@ -4415,7 +4455,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  */
   __pyx_v_little_endian = ((((char *)(&__pyx_v_endian_detector))[0]) != 0);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":818
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":818
  *     cdef tuple fields
  * 
  *     for childname in descr.names:             # <<<<<<<<<<<<<<
@@ -4438,7 +4478,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     __Pyx_XDECREF_SET(__pyx_v_childname, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":819
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":819
  * 
  *     for childname in descr.names:
  *         fields = descr.fields[childname]             # <<<<<<<<<<<<<<
@@ -4455,7 +4495,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     __Pyx_XDECREF_SET(__pyx_v_fields, ((PyObject*)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":820
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":820
  *     for childname in descr.names:
  *         fields = descr.fields[childname]
  *         child, new_offset = fields             # <<<<<<<<<<<<<<
@@ -4494,7 +4534,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     __Pyx_XDECREF_SET(__pyx_v_new_offset, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":822
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":822
  *         child, new_offset = fields
  * 
  *         if (end - f) - <int>(new_offset - offset[0]) < 15:             # <<<<<<<<<<<<<<
@@ -4511,7 +4551,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     __pyx_t_6 = ((((__pyx_v_end - __pyx_v_f) - ((int)__pyx_t_5)) < 15) != 0);
     if (__pyx_t_6) {
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":823
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":823
  * 
  *         if (end - f) - <int>(new_offset - offset[0]) < 15:
  *             raise RuntimeError(u"Format string allocated too short, see comment in numpy.pxd")             # <<<<<<<<<<<<<<
@@ -4524,7 +4564,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __PYX_ERR(1, 823, __pyx_L1_error)
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":822
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":822
  *         child, new_offset = fields
  * 
  *         if (end - f) - <int>(new_offset - offset[0]) < 15:             # <<<<<<<<<<<<<<
@@ -4533,7 +4573,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  */
     }
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":825
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":825
  *             raise RuntimeError(u"Format string allocated too short, see comment in numpy.pxd")
  * 
  *         if ((child.byteorder == c'>' and little_endian) or             # <<<<<<<<<<<<<<
@@ -4553,7 +4593,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     }
     __pyx_L8_next_or:;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":826
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":826
  * 
  *         if ((child.byteorder == c'>' and little_endian) or
  *             (child.byteorder == c'<' and not little_endian)):             # <<<<<<<<<<<<<<
@@ -4570,7 +4610,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     __pyx_t_6 = __pyx_t_7;
     __pyx_L7_bool_binop_done:;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":825
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":825
  *             raise RuntimeError(u"Format string allocated too short, see comment in numpy.pxd")
  * 
  *         if ((child.byteorder == c'>' and little_endian) or             # <<<<<<<<<<<<<<
@@ -4579,7 +4619,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  */
     if (__pyx_t_6) {
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":827
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":827
  *         if ((child.byteorder == c'>' and little_endian) or
  *             (child.byteorder == c'<' and not little_endian)):
  *             raise ValueError(u"Non-native byte order not supported")             # <<<<<<<<<<<<<<
@@ -4592,7 +4632,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __PYX_ERR(1, 827, __pyx_L1_error)
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":825
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":825
  *             raise RuntimeError(u"Format string allocated too short, see comment in numpy.pxd")
  * 
  *         if ((child.byteorder == c'>' and little_endian) or             # <<<<<<<<<<<<<<
@@ -4601,7 +4641,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  */
     }
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":837
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":837
  * 
  *         # Output padding bytes
  *         while offset[0] < new_offset:             # <<<<<<<<<<<<<<
@@ -4617,7 +4657,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (!__pyx_t_6) break;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":838
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":838
  *         # Output padding bytes
  *         while offset[0] < new_offset:
  *             f[0] = 120 # "x"; pad byte             # <<<<<<<<<<<<<<
@@ -4626,7 +4666,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  */
       (__pyx_v_f[0]) = 0x78;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":839
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":839
  *         while offset[0] < new_offset:
  *             f[0] = 120 # "x"; pad byte
  *             f += 1             # <<<<<<<<<<<<<<
@@ -4635,7 +4675,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  */
       __pyx_v_f = (__pyx_v_f + 1);
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":840
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":840
  *             f[0] = 120 # "x"; pad byte
  *             f += 1
  *             offset[0] += 1             # <<<<<<<<<<<<<<
@@ -4646,7 +4686,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       (__pyx_v_offset[__pyx_t_8]) = ((__pyx_v_offset[__pyx_t_8]) + 1);
     }
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":842
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":842
  *             offset[0] += 1
  * 
  *         offset[0] += child.itemsize             # <<<<<<<<<<<<<<
@@ -4656,7 +4696,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     __pyx_t_8 = 0;
     (__pyx_v_offset[__pyx_t_8]) = ((__pyx_v_offset[__pyx_t_8]) + __pyx_v_child->elsize);
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":844
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":844
  *         offset[0] += child.itemsize
  * 
  *         if not PyDataType_HASFIELDS(child):             # <<<<<<<<<<<<<<
@@ -4666,7 +4706,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     __pyx_t_6 = ((!(PyDataType_HASFIELDS(__pyx_v_child) != 0)) != 0);
     if (__pyx_t_6) {
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":845
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":845
  * 
  *         if not PyDataType_HASFIELDS(child):
  *             t = child.type_num             # <<<<<<<<<<<<<<
@@ -4678,7 +4718,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       __Pyx_XDECREF_SET(__pyx_v_t, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":846
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":846
  *         if not PyDataType_HASFIELDS(child):
  *             t = child.type_num
  *             if end - f < 5:             # <<<<<<<<<<<<<<
@@ -4688,7 +4728,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       __pyx_t_6 = (((__pyx_v_end - __pyx_v_f) < 5) != 0);
       if (__pyx_t_6) {
 
-        /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":847
+        /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":847
  *             t = child.type_num
  *             if end - f < 5:
  *                 raise RuntimeError(u"Format string allocated too short.")             # <<<<<<<<<<<<<<
@@ -4701,7 +4741,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __PYX_ERR(1, 847, __pyx_L1_error)
 
-        /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":846
+        /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":846
  *         if not PyDataType_HASFIELDS(child):
  *             t = child.type_num
  *             if end - f < 5:             # <<<<<<<<<<<<<<
@@ -4710,7 +4750,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  */
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":850
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":850
  * 
  *             # Until ticket #99 is fixed, use integers to avoid warnings
  *             if   t == NPY_BYTE:        f[0] =  98 #"b"             # <<<<<<<<<<<<<<
@@ -4728,7 +4768,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":851
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":851
  *             # Until ticket #99 is fixed, use integers to avoid warnings
  *             if   t == NPY_BYTE:        f[0] =  98 #"b"
  *             elif t == NPY_UBYTE:       f[0] =  66 #"B"             # <<<<<<<<<<<<<<
@@ -4746,7 +4786,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":852
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":852
  *             if   t == NPY_BYTE:        f[0] =  98 #"b"
  *             elif t == NPY_UBYTE:       f[0] =  66 #"B"
  *             elif t == NPY_SHORT:       f[0] = 104 #"h"             # <<<<<<<<<<<<<<
@@ -4764,7 +4804,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":853
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":853
  *             elif t == NPY_UBYTE:       f[0] =  66 #"B"
  *             elif t == NPY_SHORT:       f[0] = 104 #"h"
  *             elif t == NPY_USHORT:      f[0] =  72 #"H"             # <<<<<<<<<<<<<<
@@ -4782,7 +4822,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":854
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":854
  *             elif t == NPY_SHORT:       f[0] = 104 #"h"
  *             elif t == NPY_USHORT:      f[0] =  72 #"H"
  *             elif t == NPY_INT:         f[0] = 105 #"i"             # <<<<<<<<<<<<<<
@@ -4800,7 +4840,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":855
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":855
  *             elif t == NPY_USHORT:      f[0] =  72 #"H"
  *             elif t == NPY_INT:         f[0] = 105 #"i"
  *             elif t == NPY_UINT:        f[0] =  73 #"I"             # <<<<<<<<<<<<<<
@@ -4818,7 +4858,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":856
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":856
  *             elif t == NPY_INT:         f[0] = 105 #"i"
  *             elif t == NPY_UINT:        f[0] =  73 #"I"
  *             elif t == NPY_LONG:        f[0] = 108 #"l"             # <<<<<<<<<<<<<<
@@ -4836,7 +4876,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":857
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":857
  *             elif t == NPY_UINT:        f[0] =  73 #"I"
  *             elif t == NPY_LONG:        f[0] = 108 #"l"
  *             elif t == NPY_ULONG:       f[0] = 76  #"L"             # <<<<<<<<<<<<<<
@@ -4854,7 +4894,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":858
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":858
  *             elif t == NPY_LONG:        f[0] = 108 #"l"
  *             elif t == NPY_ULONG:       f[0] = 76  #"L"
  *             elif t == NPY_LONGLONG:    f[0] = 113 #"q"             # <<<<<<<<<<<<<<
@@ -4872,7 +4912,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":859
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":859
  *             elif t == NPY_ULONG:       f[0] = 76  #"L"
  *             elif t == NPY_LONGLONG:    f[0] = 113 #"q"
  *             elif t == NPY_ULONGLONG:   f[0] = 81  #"Q"             # <<<<<<<<<<<<<<
@@ -4890,7 +4930,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":860
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":860
  *             elif t == NPY_LONGLONG:    f[0] = 113 #"q"
  *             elif t == NPY_ULONGLONG:   f[0] = 81  #"Q"
  *             elif t == NPY_FLOAT:       f[0] = 102 #"f"             # <<<<<<<<<<<<<<
@@ -4908,7 +4948,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":861
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":861
  *             elif t == NPY_ULONGLONG:   f[0] = 81  #"Q"
  *             elif t == NPY_FLOAT:       f[0] = 102 #"f"
  *             elif t == NPY_DOUBLE:      f[0] = 100 #"d"             # <<<<<<<<<<<<<<
@@ -4926,7 +4966,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":862
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":862
  *             elif t == NPY_FLOAT:       f[0] = 102 #"f"
  *             elif t == NPY_DOUBLE:      f[0] = 100 #"d"
  *             elif t == NPY_LONGDOUBLE:  f[0] = 103 #"g"             # <<<<<<<<<<<<<<
@@ -4944,7 +4984,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":863
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":863
  *             elif t == NPY_DOUBLE:      f[0] = 100 #"d"
  *             elif t == NPY_LONGDOUBLE:  f[0] = 103 #"g"
  *             elif t == NPY_CFLOAT:      f[0] = 90; f[1] = 102; f += 1 # Zf             # <<<<<<<<<<<<<<
@@ -4964,7 +5004,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":864
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":864
  *             elif t == NPY_LONGDOUBLE:  f[0] = 103 #"g"
  *             elif t == NPY_CFLOAT:      f[0] = 90; f[1] = 102; f += 1 # Zf
  *             elif t == NPY_CDOUBLE:     f[0] = 90; f[1] = 100; f += 1 # Zd             # <<<<<<<<<<<<<<
@@ -4984,7 +5024,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":865
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":865
  *             elif t == NPY_CFLOAT:      f[0] = 90; f[1] = 102; f += 1 # Zf
  *             elif t == NPY_CDOUBLE:     f[0] = 90; f[1] = 100; f += 1 # Zd
  *             elif t == NPY_CLONGDOUBLE: f[0] = 90; f[1] = 103; f += 1 # Zg             # <<<<<<<<<<<<<<
@@ -5004,7 +5044,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":866
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":866
  *             elif t == NPY_CDOUBLE:     f[0] = 90; f[1] = 100; f += 1 # Zd
  *             elif t == NPY_CLONGDOUBLE: f[0] = 90; f[1] = 103; f += 1 # Zg
  *             elif t == NPY_OBJECT:      f[0] = 79 #"O"             # <<<<<<<<<<<<<<
@@ -5022,7 +5062,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         goto __pyx_L15;
       }
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":868
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":868
  *             elif t == NPY_OBJECT:      f[0] = 79 #"O"
  *             else:
  *                 raise ValueError(u"unknown dtype code in numpy.pxd (%d)" % t)             # <<<<<<<<<<<<<<
@@ -5046,7 +5086,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       }
       __pyx_L15:;
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":869
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":869
  *             else:
  *                 raise ValueError(u"unknown dtype code in numpy.pxd (%d)" % t)
  *             f += 1             # <<<<<<<<<<<<<<
@@ -5055,7 +5095,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  */
       __pyx_v_f = (__pyx_v_f + 1);
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":844
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":844
  *         offset[0] += child.itemsize
  * 
  *         if not PyDataType_HASFIELDS(child):             # <<<<<<<<<<<<<<
@@ -5065,7 +5105,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       goto __pyx_L13;
     }
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":873
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":873
  *             # Cython ignores struct boundary information ("T{...}"),
  *             # so don't output it
  *             f = _util_dtypestring(child, f, end, offset)             # <<<<<<<<<<<<<<
@@ -5078,7 +5118,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     }
     __pyx_L13:;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":818
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":818
  *     cdef tuple fields
  * 
  *     for childname in descr.names:             # <<<<<<<<<<<<<<
@@ -5088,7 +5128,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":874
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":874
  *             # so don't output it
  *             f = _util_dtypestring(child, f, end, offset)
  *     return f             # <<<<<<<<<<<<<<
@@ -5098,7 +5138,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
   __pyx_r = __pyx_v_f;
   goto __pyx_L0;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":809
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":809
  *         return ()
  * 
  * cdef inline char* _util_dtypestring(dtype descr, char* f, char* end, int* offset) except NULL:             # <<<<<<<<<<<<<<
@@ -5123,7 +5163,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
   return __pyx_r;
 }
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":990
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":990
  * 
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -5138,7 +5178,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   int __pyx_t_2;
   __Pyx_RefNannySetupContext("set_array_base", 0);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":992
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":992
  * cdef inline void set_array_base(ndarray arr, object base):
  *      cdef PyObject* baseptr
  *      if base is None:             # <<<<<<<<<<<<<<
@@ -5149,7 +5189,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":993
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":993
  *      cdef PyObject* baseptr
  *      if base is None:
  *          baseptr = NULL             # <<<<<<<<<<<<<<
@@ -5158,7 +5198,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
     __pyx_v_baseptr = NULL;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":992
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":992
  * cdef inline void set_array_base(ndarray arr, object base):
  *      cdef PyObject* baseptr
  *      if base is None:             # <<<<<<<<<<<<<<
@@ -5168,7 +5208,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
     goto __pyx_L3;
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":995
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":995
  *          baseptr = NULL
  *      else:
  *          Py_INCREF(base) # important to do this before decref below!             # <<<<<<<<<<<<<<
@@ -5178,7 +5218,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   /*else*/ {
     Py_INCREF(__pyx_v_base);
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":996
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":996
  *      else:
  *          Py_INCREF(base) # important to do this before decref below!
  *          baseptr = <PyObject*>base             # <<<<<<<<<<<<<<
@@ -5189,7 +5229,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   }
   __pyx_L3:;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":997
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":997
  *          Py_INCREF(base) # important to do this before decref below!
  *          baseptr = <PyObject*>base
  *      Py_XDECREF(arr.base)             # <<<<<<<<<<<<<<
@@ -5198,7 +5238,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   Py_XDECREF(__pyx_v_arr->base);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":998
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":998
  *          baseptr = <PyObject*>base
  *      Py_XDECREF(arr.base)
  *      arr.base = baseptr             # <<<<<<<<<<<<<<
@@ -5207,7 +5247,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   __pyx_v_arr->base = __pyx_v_baseptr;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":990
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":990
  * 
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -5219,7 +5259,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __Pyx_RefNannyFinishContext();
 }
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1000
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1000
  *      arr.base = baseptr
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -5233,7 +5273,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("get_array_base", 0);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1001
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1001
  * 
  * cdef inline object get_array_base(ndarray arr):
  *     if arr.base is NULL:             # <<<<<<<<<<<<<<
@@ -5243,7 +5283,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_t_1 = ((__pyx_v_arr->base == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1002
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1002
  * cdef inline object get_array_base(ndarray arr):
  *     if arr.base is NULL:
  *         return None             # <<<<<<<<<<<<<<
@@ -5255,7 +5295,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
     __pyx_r = Py_None;
     goto __pyx_L0;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1001
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1001
  * 
  * cdef inline object get_array_base(ndarray arr):
  *     if arr.base is NULL:             # <<<<<<<<<<<<<<
@@ -5264,7 +5304,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1004
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1004
  *         return None
  *     else:
  *         return <object>arr.base             # <<<<<<<<<<<<<<
@@ -5278,7 +5318,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
     goto __pyx_L0;
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1000
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1000
  *      arr.base = baseptr
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -5293,7 +5333,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   return __pyx_r;
 }
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1009
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1009
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -5314,7 +5354,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   PyObject *__pyx_t_8 = NULL;
   __Pyx_RefNannySetupContext("import_array", 0);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1010
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1010
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5330,7 +5370,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1011
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1011
  * cdef inline int import_array() except -1:
  *     try:
  *         _import_array()             # <<<<<<<<<<<<<<
@@ -5339,7 +5379,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  */
       __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 1011, __pyx_L3_error)
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1010
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1010
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5353,7 +5393,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1012
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1012
  *     try:
  *         _import_array()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -5368,7 +5408,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1013
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1013
  *         _import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
@@ -5384,7 +5424,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1010
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1010
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5399,7 +5439,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1009
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1009
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -5422,7 +5462,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   return __pyx_r;
 }
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1015
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1015
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -5443,7 +5483,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   PyObject *__pyx_t_8 = NULL;
   __Pyx_RefNannySetupContext("import_umath", 0);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1016
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1016
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5459,7 +5499,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1017
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1017
  * cdef inline int import_umath() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -5468,7 +5508,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 1017, __pyx_L3_error)
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1016
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1016
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5482,7 +5522,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1018
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1018
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -5497,7 +5537,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1019
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1019
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -5513,7 +5553,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1016
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1016
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5528,7 +5568,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1015
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1015
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -5551,7 +5591,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   return __pyx_r;
 }
 
-/* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1021
+/* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1021
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -5572,7 +5612,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   PyObject *__pyx_t_8 = NULL;
   __Pyx_RefNannySetupContext("import_ufunc", 0);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1022
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1022
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5588,7 +5628,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1023
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1023
  * cdef inline int import_ufunc() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -5597,7 +5637,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 1023, __pyx_L3_error)
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1022
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1022
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5611,7 +5651,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1024
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1024
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -5625,7 +5665,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1025
+      /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1025
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -5639,7 +5679,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1022
+    /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1022
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -5654,7 +5694,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1021
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1021
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -5684,17 +5724,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_CorrelationCalculation(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_SelectionMoments(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_CorrelationCalculation},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_SelectionMoments},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "CorrelationCalculation",
+    "SelectionMoments",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -5715,36 +5755,36 @@ static struct PyModuleDef __pyx_moduledef = {
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_, __pyx_k_, sizeof(__pyx_k_), 0, 0, 1, 0},
-  {&__pyx_kp_s_CorrelationCalculation_pyx, __pyx_k_CorrelationCalculation_pyx, sizeof(__pyx_k_CorrelationCalculation_pyx), 0, 0, 1, 0},
   {&__pyx_kp_u_Format_string_allocated_too_shor, __pyx_k_Format_string_allocated_too_shor, sizeof(__pyx_k_Format_string_allocated_too_shor), 0, 1, 0, 0},
   {&__pyx_kp_u_Format_string_allocated_too_shor_2, __pyx_k_Format_string_allocated_too_shor_2, sizeof(__pyx_k_Format_string_allocated_too_shor_2), 0, 1, 0, 0},
   {&__pyx_n_s_ImportError, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
   {&__pyx_kp_u_Non_native_byte_order_not_suppor, __pyx_k_Non_native_byte_order_not_suppor, sizeof(__pyx_k_Non_native_byte_order_not_suppor), 0, 1, 0, 0},
   {&__pyx_n_s_RuntimeError, __pyx_k_RuntimeError, sizeof(__pyx_k_RuntimeError), 0, 0, 1, 1},
-  {&__pyx_n_s_SeisCore_HydroFracCore_CythonCal, __pyx_k_SeisCore_HydroFracCore_CythonCal, sizeof(__pyx_k_SeisCore_HydroFracCore_CythonCal), 0, 0, 1, 1},
+  {&__pyx_n_s_SelectionMoments, __pyx_k_SelectionMoments, sizeof(__pyx_k_SelectionMoments), 0, 0, 1, 1},
+  {&__pyx_kp_s_SelectionMoments_pyx, __pyx_k_SelectionMoments_pyx, sizeof(__pyx_k_SelectionMoments_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
   {&__pyx_kp_s__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 0, 1, 0},
   {&__pyx_kp_s__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 0, 1, 0},
   {&__pyx_kp_s__5, __pyx_k__5, sizeof(__pyx_k__5), 0, 0, 1, 0},
   {&__pyx_n_s_append, __pyx_k_append, sizeof(__pyx_k_append), 0, 0, 1, 1},
-  {&__pyx_n_s_avg_correlation, __pyx_k_avg_correlation, sizeof(__pyx_k_avg_correlation), 0, 0, 1, 1},
   {&__pyx_n_s_base_moment, __pyx_k_base_moment, sizeof(__pyx_k_base_moment), 0, 0, 1, 1},
   {&__pyx_n_s_base_point_number, __pyx_k_base_point_number, sizeof(__pyx_k_base_point_number), 0, 0, 1, 1},
   {&__pyx_n_s_base_point_signal, __pyx_k_base_point_signal, sizeof(__pyx_k_base_point_signal), 0, 0, 1, 1},
-  {&__pyx_n_s_calc_correlation, __pyx_k_calc_correlation, sizeof(__pyx_k_calc_correlation), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_column_number, __pyx_k_column_number, sizeof(__pyx_k_column_number), 0, 0, 1, 1},
   {&__pyx_n_s_corr, __pyx_k_corr, sizeof(__pyx_k_corr), 0, 0, 1, 1},
+  {&__pyx_n_s_correlation_count, __pyx_k_correlation_count, sizeof(__pyx_k_correlation_count), 0, 0, 1, 1},
+  {&__pyx_n_s_correlation_edge, __pyx_k_correlation_edge, sizeof(__pyx_k_correlation_edge), 0, 0, 1, 1},
   {&__pyx_n_s_current_delay, __pyx_k_current_delay, sizeof(__pyx_k_current_delay), 0, 0, 1, 1},
   {&__pyx_n_s_current_point_signal, __pyx_k_current_point_signal, sizeof(__pyx_k_current_point_signal), 0, 0, 1, 1},
   {&__pyx_n_s_dtype, __pyx_k_dtype, sizeof(__pyx_k_dtype), 0, 0, 1, 1},
   {&__pyx_n_s_empty, __pyx_k_empty, sizeof(__pyx_k_empty), 0, 0, 1, 1},
   {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
   {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
-  {&__pyx_n_s_float, __pyx_k_float, sizeof(__pyx_k_float), 0, 0, 1, 1},
   {&__pyx_n_s_frequency, __pyx_k_frequency, sizeof(__pyx_k_frequency), 0, 0, 1, 1},
   {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
+  {&__pyx_n_s_int, __pyx_k_int, sizeof(__pyx_k_int), 0, 0, 1, 1},
   {&__pyx_n_s_left_buffer, __pyx_k_left_buffer, sizeof(__pyx_k_left_buffer), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_max_correlation, __pyx_k_max_correlation, sizeof(__pyx_k_max_correlation), 0, 0, 1, 1},
@@ -5766,13 +5806,13 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
   {&__pyx_n_s_result, __pyx_k_result, sizeof(__pyx_k_result), 0, 0, 1, 1},
+  {&__pyx_n_s_selection_moments, __pyx_k_selection_moments, sizeof(__pyx_k_selection_moments), 0, 0, 1, 1},
   {&__pyx_n_s_shape, __pyx_k_shape, sizeof(__pyx_k_shape), 0, 0, 1, 1},
   {&__pyx_n_s_signals, __pyx_k_signals, sizeof(__pyx_k_signals), 0, 0, 1, 1},
   {&__pyx_n_s_signals_column_count, __pyx_k_signals_column_count, sizeof(__pyx_k_signals_column_count), 0, 0, 1, 1},
   {&__pyx_n_s_sum_a, __pyx_k_sum_a, sizeof(__pyx_k_sum_a), 0, 0, 1, 1},
   {&__pyx_n_s_sum_a_b, __pyx_k_sum_a_b, sizeof(__pyx_k_sum_a_b), 0, 0, 1, 1},
   {&__pyx_n_s_sum_b, __pyx_k_sum_b, sizeof(__pyx_k_sum_b), 0, 0, 1, 1},
-  {&__pyx_n_s_sum_correlation, __pyx_k_sum_correlation, sizeof(__pyx_k_sum_correlation), 0, 0, 1, 1},
   {&__pyx_n_s_sumsq_a, __pyx_k_sumsq_a, sizeof(__pyx_k_sumsq_a), 0, 0, 1, 1},
   {&__pyx_n_s_sumsq_b, __pyx_k_sumsq_b, sizeof(__pyx_k_sumsq_b), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
@@ -5782,7 +5822,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 90, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 235, __pyx_L1_error)
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 823, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 1013, __pyx_L1_error)
@@ -5795,29 +5835,29 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":44
+  /* "SelectionMoments.pyx":48
  *     #
  *     column_number = np.where((point_numbers == base_point_number))[0][0]
  *     cdef np.ndarray[np.float_t, ndim = 1] base_point_signal = signals[:, column_number]             # <<<<<<<<<<<<<<
  * 
  *     #
  */
-  __pyx_slice__4 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_slice__4 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__4);
   __Pyx_GIVEREF(__pyx_slice__4);
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":115
+  /* "SelectionMoments.pyx":120
  *             #
  *             column_number = np.where((point_numbers == point))[0][0]
  *             current_point_signal = signals[:, column_number]             # <<<<<<<<<<<<<<
  * 
  *             #
  */
-  __pyx_slice__6 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__6)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_slice__6 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__6)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__6);
   __Pyx_GIVEREF(__pyx_slice__6);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":235
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":235
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)
  *                 and not PyArray_CHKFLAGS(self, NPY_C_CONTIGUOUS)):
  *                 raise ValueError(u"ndarray is not C contiguous")             # <<<<<<<<<<<<<<
@@ -5828,7 +5868,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":239
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":239
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
  *                 and not PyArray_CHKFLAGS(self, NPY_F_CONTIGUOUS)):
  *                 raise ValueError(u"ndarray is not Fortran contiguous")             # <<<<<<<<<<<<<<
@@ -5839,7 +5879,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":276
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":276
  *                 if ((descr.byteorder == c'>' and little_endian) or
  *                     (descr.byteorder == c'<' and not little_endian)):
  *                     raise ValueError(u"Non-native byte order not supported")             # <<<<<<<<<<<<<<
@@ -5850,7 +5890,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":823
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":823
  * 
  *         if (end - f) - <int>(new_offset - offset[0]) < 15:
  *             raise RuntimeError(u"Format string allocated too short, see comment in numpy.pxd")             # <<<<<<<<<<<<<<
@@ -5861,7 +5901,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":827
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":827
  *         if ((child.byteorder == c'>' and little_endian) or
  *             (child.byteorder == c'<' and not little_endian)):
  *             raise ValueError(u"Non-native byte order not supported")             # <<<<<<<<<<<<<<
@@ -5872,7 +5912,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":847
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":847
  *             t = child.type_num
  *             if end - f < 5:
  *                 raise RuntimeError(u"Format string allocated too short.")             # <<<<<<<<<<<<<<
@@ -5883,7 +5923,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1013
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1013
  *         _import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
@@ -5894,7 +5934,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1019
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1019
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -5905,7 +5945,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1025
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1025
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -5914,17 +5954,17 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":4
- * cimport numpy as np
+  /* "SelectionMoments.pyx":5
  * 
- * def calc_correlation(np.ndarray[np.int_t, ndim=1] point_numbers,             # <<<<<<<<<<<<<<
- *                      int base_point_number,
- *                      np.ndarray[np.float_t, ndim=2] signals,
+ * 
+ * def selection_moments(np.ndarray[np.int_t, ndim=1] point_numbers,             # <<<<<<<<<<<<<<
+ *                       int base_point_number,
+ *                       np.ndarray[np.float_t, ndim=2] signals,
  */
-  __pyx_tuple__16 = PyTuple_Pack(31, __pyx_n_s_point_numbers, __pyx_n_s_base_point_number, __pyx_n_s_signals, __pyx_n_s_frequency, __pyx_n_s_moment_window, __pyx_n_s_left_buffer, __pyx_n_s_moment_delays, __pyx_n_s_signals_column_count, __pyx_n_s_points_count, __pyx_n_s_column_number, __pyx_n_s_base_point_signal, __pyx_n_s_result, __pyx_n_s_current_point_signal, __pyx_n_s_avg_correlation, __pyx_n_s_sum_correlation, __pyx_n_s_max_correlation, __pyx_n_s_corr, __pyx_n_s_sum_a, __pyx_n_s_sum_b, __pyx_n_s_sumsq_a, __pyx_n_s_sumsq_b, __pyx_n_s_sum_a_b, __pyx_n_s_val, __pyx_n_s_base_moment, __pyx_n_s_current_delay, __pyx_n_s_min_moment_delay, __pyx_n_s_max_moment_delay, __pyx_n_s_i, __pyx_n_s_n, __pyx_n_s_point, __pyx_n_s_point_number); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_tuple__16 = PyTuple_Pack(31, __pyx_n_s_point_numbers, __pyx_n_s_base_point_number, __pyx_n_s_signals, __pyx_n_s_frequency, __pyx_n_s_moment_window, __pyx_n_s_left_buffer, __pyx_n_s_correlation_edge, __pyx_n_s_moment_delays, __pyx_n_s_signals_column_count, __pyx_n_s_points_count, __pyx_n_s_column_number, __pyx_n_s_base_point_signal, __pyx_n_s_correlation_count, __pyx_n_s_result, __pyx_n_s_current_point_signal, __pyx_n_s_max_correlation, __pyx_n_s_corr, __pyx_n_s_sum_a, __pyx_n_s_sum_b, __pyx_n_s_sumsq_a, __pyx_n_s_sumsq_b, __pyx_n_s_sum_a_b, __pyx_n_s_val, __pyx_n_s_base_moment, __pyx_n_s_current_delay, __pyx_n_s_min_moment_delay, __pyx_n_s_max_moment_delay, __pyx_n_s_i, __pyx_n_s_n, __pyx_n_s_point, __pyx_n_s_point_number); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(7, 0, 31, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_CorrelationCalculation_pyx, __pyx_n_s_calc_correlation, 4, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(8, 0, 31, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_SelectionMoments_pyx, __pyx_n_s_selection_moments, 5, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -5941,11 +5981,11 @@ static int __Pyx_InitGlobals(void) {
 }
 
 #if PY_MAJOR_VERSION < 3
-PyMODINIT_FUNC initCorrelationCalculation(void); /*proto*/
-PyMODINIT_FUNC initCorrelationCalculation(void)
+PyMODINIT_FUNC initSelectionMoments(void); /*proto*/
+PyMODINIT_FUNC initSelectionMoments(void)
 #else
-PyMODINIT_FUNC PyInit_CorrelationCalculation(void); /*proto*/
-PyMODINIT_FUNC PyInit_CorrelationCalculation(void)
+PyMODINIT_FUNC PyInit_SelectionMoments(void); /*proto*/
+PyMODINIT_FUNC PyInit_SelectionMoments(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -5985,7 +6025,7 @@ bad:
 }
 
 
-static int __pyx_pymod_exec_CorrelationCalculation(PyObject *__pyx_pyinit_module)
+static int __pyx_pymod_exec_SelectionMoments(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -6003,7 +6043,7 @@ static int __pyx_pymod_exec_CorrelationCalculation(PyObject *__pyx_pyinit_module
           Py_FatalError("failed to import 'refnanny' module");
   }
   #endif
-  __Pyx_RefNannySetupContext("PyMODINIT_FUNC PyInit_CorrelationCalculation(void)", 0);
+  __Pyx_RefNannySetupContext("PyMODINIT_FUNC PyInit_SelectionMoments(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_empty_tuple)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_empty_bytes = PyBytes_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_bytes)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -6039,7 +6079,7 @@ static int __pyx_pymod_exec_CorrelationCalculation(PyObject *__pyx_pyinit_module
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("CorrelationCalculation", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("SelectionMoments", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -6058,14 +6098,14 @@ static int __pyx_pymod_exec_CorrelationCalculation(PyObject *__pyx_pyinit_module
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_SeisCore__HydroFracCore__CythonCalcFunctions__CorrelationCalculation__CorrelationCalculation) {
+  if (__pyx_module_is_main_SelectionMoments) {
     if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "SeisCore.HydroFracCore.CythonCalcFunctions.CorrelationCalculation.CorrelationCalculation")) {
-      if (unlikely(PyDict_SetItemString(modules, "SeisCore.HydroFracCore.CythonCalcFunctions.CorrelationCalculation.CorrelationCalculation", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "SelectionMoments")) {
+      if (unlikely(PyDict_SetItemString(modules, "SelectionMoments", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -6097,7 +6137,7 @@ static int __pyx_pymod_exec_CorrelationCalculation(PyObject *__pyx_pyinit_module
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":1
+  /* "SelectionMoments.pyx":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * cimport numpy as np
  * 
@@ -6107,19 +6147,19 @@ static int __pyx_pymod_exec_CorrelationCalculation(PyObject *__pyx_pyinit_module
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":4
- * cimport numpy as np
+  /* "SelectionMoments.pyx":5
  * 
- * def calc_correlation(np.ndarray[np.int_t, ndim=1] point_numbers,             # <<<<<<<<<<<<<<
- *                      int base_point_number,
- *                      np.ndarray[np.float_t, ndim=2] signals,
+ * 
+ * def selection_moments(np.ndarray[np.int_t, ndim=1] point_numbers,             # <<<<<<<<<<<<<<
+ *                       int base_point_number,
+ *                       np.ndarray[np.float_t, ndim=2] signals,
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_8SeisCore_13HydroFracCore_19CythonCalcFunctions_22CorrelationCalculation_22CorrelationCalculation_1calc_correlation, NULL, __pyx_n_s_SeisCore_HydroFracCore_CythonCal); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_16SelectionMoments_1selection_moments, NULL, __pyx_n_s_SelectionMoments); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_calc_correlation, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_selection_moments, __pyx_t_1) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "SeisCore/HydroFracCore/CythonCalcFunctions/CorrelationCalculation/CorrelationCalculation.pyx":1
+  /* "SelectionMoments.pyx":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * cimport numpy as np
  * 
@@ -6129,7 +6169,7 @@ static int __pyx_pymod_exec_CorrelationCalculation(PyObject *__pyx_pyinit_module
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "../../../../../../venvs/venvtesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1021
+  /* "../../../../../../Venvs/venvTesting/lib/site-packages/Cython/Includes/numpy/__init__.pxd":1021
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -6144,11 +6184,11 @@ static int __pyx_pymod_exec_CorrelationCalculation(PyObject *__pyx_pyinit_module
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init SeisCore.HydroFracCore.CythonCalcFunctions.CorrelationCalculation.CorrelationCalculation", 0, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init SelectionMoments", 0, __pyx_lineno, __pyx_filename);
     }
     Py_DECREF(__pyx_m); __pyx_m = 0;
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init SeisCore.HydroFracCore.CythonCalcFunctions.CorrelationCalculation.CorrelationCalculation");
+    PyErr_SetString(PyExc_ImportError, "init SelectionMoments");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

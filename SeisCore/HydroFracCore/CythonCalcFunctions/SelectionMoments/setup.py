@@ -6,8 +6,8 @@ from distutils.core import setup
 #
 # setup(
 #     cmdclass = {'build_ext': build_ext},
-#     ext_modules = [Extension("CorrelationCalculation",
-#                              ["CorrelationCalculation.pyx"],
+#     ext_modules = [Extension("SelectionMoments",
+#                              ["SelectionMoments.pyx"],
 #                              include_dirs=[numpy.get_include()])]
 # )
 
@@ -19,7 +19,7 @@ import numpy
 
 setup(
     cmdclass = {'build_ext': build_ext},
-    ext_modules = [Extension("CorrelationCalculation",
-                             ["CorrelationCalculation.pyx"],
+    ext_modules = [Extension("SelectionMoments",
+                             ["SelectionMoments.pyx"],
                              include_dirs=[numpy.get_include()])]
 )
