@@ -194,3 +194,11 @@ to SelectionMoment Function.
 
 # version 0.0.30sm2
 Fix bug in CythonFunction MomentSelection
+
+# version 0.0.31sm2
+Fix bug in CythonFunction MomentSelection - add control error for calculating
+correlation (divide by zero)
+
+# version 0.0.32sm2
+Change GeneralCalcFunctions and GeneralPlottingFunctions - Add general
+functions for signal analysis

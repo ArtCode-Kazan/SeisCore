@@ -4,7 +4,7 @@ import matplotlib.ticker as ticker
 import numpy as np
 
 
-def histogram(data,bin_size,histo_label):
+def histogram(data, bin_size, histo_label):
     """
     Функция построения гистограммы
     :param data: одномерный массив numpy с числовым рядом
@@ -13,7 +13,7 @@ def histogram(data,bin_size,histo_label):
     :return: None
     """
     # расчет количества бинов
-    bin_count=int((np.max(data)-np.min(data))//bin_size)
+    bin_count = int((np.max(data) - np.min(data)) // bin_size)
     # бинирование данных
     hist, bins = np.histogram(data, bins=bin_count)
 
@@ -40,7 +40,7 @@ def histogram(data,bin_size,histo_label):
     # значение одного интервала равно размеру бина
     axes.xaxis.set_major_locator(ticker.MultipleLocator(bin_size))
     # планируется 10 интервалов
-    dy_size=np.max(hist)/10
+    dy_size = np.max(hist) / 10
     axes.yaxis.set_major_locator(ticker.MultipleLocator(dy_size))
 
     # расчет ширины столбца
@@ -48,11 +48,8 @@ def histogram(data,bin_size,histo_label):
     # расчет положения столбца по x
     center = (bins[:-1] + bins[1:]) / 2
     # построение гистограммы
-    axes.bar(center, hist, align='center', width=width,edgecolor= 'black')
+    axes.bar(center, hist, align='center', width=width, edgecolor='black')
     # подпись гистограммы
     axes.set_title(histo_label)
     # отображение гистограммы
     plt.show()
-
-
-

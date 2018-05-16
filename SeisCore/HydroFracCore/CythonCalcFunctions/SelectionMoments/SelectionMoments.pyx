@@ -145,7 +145,10 @@ def selection_moments(np.ndarray[np.int_t, ndim=1] point_numbers,
                     # сумма произведений
                     sum_a_b += base_point_signal[base_moment + i] * val
                 # вычисление корреляции
-                corr = (sum_a_b * n - sum_a * sum_b) / ((sumsq_a * n - sum_a**2) * (sumsq_b * n - sum_b**2)) ** 0.5
+                try:
+                    corr = (sum_a_b * n - sum_a * sum_b) / ((sumsq_a * n - sum_a**2) * (sumsq_b * n - sum_b**2)) ** 0.5
+                except:
+                    corr = 0
                 # нахождение модуля корреляции
                 if corr < 0:
                     corr = -corr
