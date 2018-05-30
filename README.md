@@ -208,3 +208,7 @@ Change pointsSelection - add control for negative moments delay
 
 # version 0.0.34sm2ref
 Пакет находится в стадии рефакторинга
+
+# version 0.0.35sm2ref
+Изменен модуль для построения спектрограммы (убран ввод размера окна и его
+сдвига. Они строго зафиксированы)

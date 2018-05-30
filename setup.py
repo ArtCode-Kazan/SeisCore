@@ -3,7 +3,7 @@ from setuptools import find_packages
 
 
 setup(name='SeisCore',
-      version='0.0.34sm2ref',
+      version='0.0.35sm2ref',
       packages=find_packages(),
       description='Package for processing of microseismic data',
       author='Michael Chernov',
