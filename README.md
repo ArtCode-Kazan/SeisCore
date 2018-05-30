@@ -202,3 +202,6 @@ correlation (divide by zero)
 # version 0.0.32sm2
 Change GeneralCalcFunctions and GeneralPlottingFunctions - Add general
 functions for signal analysis
+
+# version 0.0.33sm2
+Change pointsSelection - add control for negative moments delay

@@ -87,7 +87,7 @@ def calc_angle(x_sensor1, y_sensor1, z_sensor1, x, y, z, x_sensor2, y_sensor2,
     return alpha_deg
 
 
-def calc_time_delay(points_numbers,points_coords, radius, frequency, velocity,
+def calc_time_delay(points_numbers, points_coords, radius, frequency, velocity,
                     max_depth):
     """
     Функция для расчета максимального и минимального времени задержки между
@@ -109,17 +109,17 @@ def calc_time_delay(points_numbers,points_coords, radius, frequency, velocity,
     # список пар датчиков (1,1), (2,2), (1, 2) и (2,1). Добавится
     # только один из них - (1, 2)
     i = 0
-    for x_a,y_a in points_coords:
+    for x_a, y_a in points_coords:
         i += 1
         j = 0
-        for x_b,y_b in points_coords:
+        for x_b, y_b in points_coords:
             j += 1
             if i < j:
                 # поиск максимального и минимального времени задержки между
                 # двумя датчиками от точек, находящихся на глубине
                 # max_depth и в узлах квадрата и точками датчиков
-                min_delta_moments = 99999999
-                max_delta_moments = -9999999
+                min_delta_moments = 0
+                max_delta_moments = 0
                 for x_node, y_node in nodes_data:
                     time_a = calc_time(x1=x_a,
                                        y1=y_a,
@@ -136,22 +136,22 @@ def calc_time_delay(points_numbers,points_coords, radius, frequency, velocity,
                                        z2=max_depth,
                                        velocity=velocity)
                     delta_moments = int(round(frequency * (time_b - time_a)))
-                    if delta_moments < min_delta_moments:
+                    if 0 <= delta_moments < min_delta_moments:
                         min_delta_moments = delta_moments
                     if delta_moments > max_delta_moments:
                         max_delta_moments = delta_moments
-                result=np.append(result,[points_numbers[i-1],
-                                         points_numbers[j-1],
-                                         min_delta_moments,
-                                         max_delta_moments])
+                result = np.append(result, [points_numbers[i - 1],
+                                            points_numbers[j - 1],
+                                            min_delta_moments,
+                                            max_delta_moments])
     # изменение размера массива, чтобы данные оказались по колонкам
-    column_count=4
-    rows_count=result.shape[0]//column_count
-    result = np.reshape(result,newshape=(rows_count,column_count))
+    column_count = 4
+    rows_count = result.shape[0] // column_count
+    result = np.reshape(result, newshape=(rows_count, column_count))
     return result
 
 
-def calc_max_angles(points_numbers,points_coords, radius, max_depth):
+def calc_max_angles(points_numbers, points_coords, radius, max_depth):
     """
     Функция для расчета максимального угла между парами датчиков в градусах
     :param points_numbers: номера точек
@@ -171,10 +171,10 @@ def calc_max_angles(points_numbers,points_coords, radius, max_depth):
     # список пар датчиков (1,1), (2,2), (1, 2) и (2,1). Добавится только
     # один из них - (1, 2)
     i = 0
-    for x_a,y_a in points_coords:
+    for x_a, y_a in points_coords:
         i += 1
         j = 0
-        for x_b,y_b in points_coords:
+        for x_b, y_b in points_coords:
             j += 1
             if i < j:
                 max_angle = -9999999
@@ -195,13 +195,13 @@ def calc_max_angles(points_numbers,points_coords, radius, max_depth):
                                             max_angle])
     # изменение размера массива, чтобы данные оказались по колонкам
     column_count = 3
-    rows_count = result.shape[0]//column_count
-    result = np.reshape(result,newshape=(rows_count,column_count))
+    rows_count = result.shape[0] // column_count
+    result = np.reshape(result, newshape=(rows_count, column_count))
     return result
 
 
 def pairs_points_filtration(points_numbers, points_coords, radius, frequency,
-                            velocity, max_depth,max_moments_delay, max_angle):
+                            velocity, max_depth, max_moments_delay, max_angle):
     """
     Функция для фильтрации пар датчиков в зависимости от максимально
     допустимой временной задержки (в отсчетах) и максимально допустимого угла
@@ -230,29 +230,31 @@ def pairs_points_filtration(points_numbers, points_coords, radius, frequency,
                              max_depth=max_depth)
 
     # фильтрация пределов задержек по порогу максимальной задержки
-    filtration_order_1 = np.empty(shape=0,dtype=np.int)
+    filtration_order_1 = np.empty(shape=0, dtype=np.int)
     for point_a_number, point_b_number, min_delay, max_delay in moments_delay:
         moment_range = max_delay - min_delay
         if moment_range <= max_moments_delay:
-            filtration_order_1=np.append(filtration_order_1,[point_a_number,
-                                                             point_b_number])
+            filtration_order_1 = np.append(filtration_order_1, [point_a_number,
+                                                                point_b_number])
     # изменение формы массива, чтобы пары были в строках
-    column_count=2
-    rows_count=filtration_order_1.shape[0]//column_count
-    filtration_order_1 = np.reshape(filtration_order_1,newshape=(rows_count,
-                                                                 column_count))
+    column_count = 2
+    rows_count = filtration_order_1.shape[0] // column_count
+    filtration_order_1 = np.reshape(filtration_order_1, newshape=(rows_count,
+                                                                  column_count))
 
     # фильтрация списка углов - второй порядок фильтрации
-    filtration_order_2 = np.empty(shape=0,dtype=np.int)
+    filtration_order_2 = np.empty(shape=0, dtype=np.int)
     for point_a_number, point_b_number, alpha in angles:
         if alpha <= max_angle:
             for point_a, point_b in filtration_order_1:
-                if point_a==point_a_number and point_b==point_b_number:
-                    filtration_order_2=np.append(filtration_order_2,[point_a_number, point_b_number])
+                if point_a == point_a_number and point_b == point_b_number:
+                    filtration_order_2 = np.append(filtration_order_2,
+                                                   [point_a_number,
+                                                    point_b_number])
                     break
     # изменение формы массива, чтобы пары были в строках
-    column_count=2
-    rows_count=filtration_order_2.shape[0]//column_count
-    filtration_order_2 = np.reshape(filtration_order_2,newshape=(rows_count,
-                                                                 column_count))
+    column_count = 2
+    rows_count = filtration_order_2.shape[0] // column_count
+    filtration_order_2 = np.reshape(filtration_order_2, newshape=(rows_count,
+                                                                  column_count))
     return filtration_order_2
