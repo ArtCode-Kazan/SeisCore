@@ -205,3 +205,6 @@ functions for signal analysis
 
 # version 0.0.33sm2
 Change pointsSelection - add control for negative moments delay
+
+# version 0.0.34sm2ref
+Пакет находится в стадии рефакторинга
