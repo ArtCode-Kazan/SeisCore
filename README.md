@@ -212,3 +212,7 @@ Change pointsSelection - add control for negative moments delay
 # version 0.0.35sm2ref
 Изменен модуль для построения спектрограммы (убран ввод размера окна и его
 сдвига. Они строго зафиксированы)
+
+# version 0.0.36sm2ref
+Изменен паттерн для проверки корректности имени папки и файла
+В подпакет GeneralCalcFunctions добавлена функция вычисления энергии
