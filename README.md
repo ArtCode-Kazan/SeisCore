@@ -216,3 +216,7 @@ Change pointsSelection - add control for negative moments delay
 # version 0.0.36sm2ref
 Изменен паттерн для проверки корректности имени папки и файла
 В подпакет GeneralCalcFunctions добавлена функция вычисления энергии
+
+# version 0.0.37sm2ref
+Изменен алгоритм расчета энергии EnergyCalc (GeneralCalcFunctions) - упрощено
+выделение куска анализируемого интервала частот

@@ -20,7 +20,7 @@ def error_format(number, text):
     :param text: текст ошибки
     :return: форматированный текст ошибки
     """
-    if len(str(number))<3:
+    if len(str(number)) < 3:
         number = '0' * (3 - len(str(number))) + str(number)
     else:
         number = str(number)
