@@ -74,7 +74,6 @@ def detrend(signal, frequency, edge_frequency):
     :param frequency: частота дискретизации сигнала
     :param edge_frequency: пороговая частота
     :return: массив numpy выходного детрендированного сигнала
-
     """
     # получение необходимо уровня разложения
     need_level = level_num(frequency=frequency, edge_frequency=edge_frequency)
