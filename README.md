@@ -229,3 +229,7 @@ Change pointsSelection - add control for negative moments delay
 
 # version 0.1.0ref
 В пакет добавлен подпакет для парсинга bin-файлов
+
+# version 0.1.1ref
+В BinaryFile добавлена обработка случая, если длина сигнала не кратна 
+параметру ресемплирования

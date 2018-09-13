@@ -3,6 +3,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 from matplotlib.colors import BoundaryNorm
 from matplotlib.ticker import MaxNLocator
+import warnings
 
 
 def scale(amplitudes):
@@ -50,6 +51,7 @@ def plot(label, times, frequencies, amplitudes, cmap, norm, output_folder,
     :return: функция ничего не возвращает, работает как процедура
 
     """
+    warnings.filterwarnings("ignore")
     # настройка вывода спектрограммы
     mpl.rcParams['figure.figsize'] = (12, 9)  # размер поля для вывода графика
     mpl.rcParams['figure.dpi'] = 96  # разрешение отображения графика

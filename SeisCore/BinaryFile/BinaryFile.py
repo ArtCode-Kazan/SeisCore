@@ -714,10 +714,11 @@ class BinaryFile:
         if self.resample_parameter > 1:
             # проверка кратности параметра ресемплирования и длины сигнала
             if signals.shape[0] % self.resample_parameter != 0:
-                print('Параметр ресемплирования не кратен длине извлекаемого '
-                      'сигнала')
-                return None
-            resample_signal = Resampling.resampling(signals, self.resample_parameter)
+                new_size = signals.shape[0] - \
+                           (signals.shape[0] % self.resample_parameter)
+                signals = signals[:new_size]
+            resample_signal = Resampling.resampling(signals,
+                                                    self.resample_parameter)
         else:
             resample_signal = signals
 
