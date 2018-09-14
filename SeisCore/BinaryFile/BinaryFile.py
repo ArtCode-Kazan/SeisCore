@@ -306,6 +306,8 @@ class BinaryFile:
         self.__resample_frequency = None
         # тип записи данных
         self.__record_type = None
+        # boolean-параметр извлечения сигнала только даты записи
+        self.__only_date_start_signal = False
         # номер отсчета для начала выгрузки куска сигнала
         self.__start_moment = None
         # номер отсчета для конца выгрузки куска сигнала
@@ -376,8 +378,20 @@ class BinaryFile:
                     self.__resample_frequency = value
 
     @property
+    def only_date_start_signal(self):
+        return self.__only_date_start_signal
+
+    @only_date_start_signal.setter
+    def only_date_start_signal(self, value):
+        if isinstance(value, bool) and self.path is not None:
+            self.__only_date_start_signal = value
+
+    @property
     def start_moment(self):
-        return self.__start_moment
+        if self.only_date_start_signal:
+            return None
+        else:
+            return self.__start_moment
 
     @start_moment.setter
     def start_moment(self, value):
@@ -386,7 +400,17 @@ class BinaryFile:
 
     @property
     def end_moment(self):
-        return self.__end_moment
+        if self.only_date_start_signal:
+            date_time_in = self.datetime_start
+            date_time_out = datetime(year=date_time_in.year,
+                                     month=date_time_in.month,
+                                     day=date_time_in.day) + \
+                timedelta(days=1) - timedelta(microseconds=1)
+
+            delta_t = int((date_time_out - date_time_in).total_seconds())
+            return delta_t * self.signal_frequency
+        else:
+            return self.__end_moment
 
     @end_moment.setter
     def end_moment(self, value):
@@ -726,7 +750,6 @@ class BinaryFile:
         resample_signal[:, 0] = resample_signal[:, 0] - avg_values[0]
         resample_signal[:, 1] = resample_signal[:, 1] - avg_values[1]
         resample_signal[:, 2] = resample_signal[:, 2] - avg_values[2]
-
         return resample_signal
 
     @property

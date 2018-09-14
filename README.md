@@ -233,3 +233,7 @@ Change pointsSelection - add control for negative moments delay
 # version 0.1.1ref
 В BinaryFile добавлена обработка случая, если длина сигнала не кратна 
 параметру ресемплирования
+
+# version 0.1.2ref
+В BinaryFile добавлено свойство извлечение сигнала только для даты записи 
+сигнала
