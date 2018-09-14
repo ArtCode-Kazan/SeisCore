@@ -408,7 +408,11 @@ class BinaryFile:
                 timedelta(days=1) - timedelta(microseconds=1)
 
             delta_t = int((date_time_out - date_time_in).total_seconds())
-            return delta_t * self.signal_frequency
+            result = delta_t * self.signal_frequency
+            if result > self.discrete_amount:
+                return None
+            else:
+                return result
         else:
             return self.__end_moment
 
