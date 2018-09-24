@@ -389,7 +389,7 @@ class BinaryFile:
     @property
     def start_moment(self):
         if self.only_date_start_signal:
-            return None
+            return 0
         else:
             return self.__start_moment
 

@@ -1,6 +1,3 @@
-from SeisCore.GeneralFunction.CheckingName import checking_name
+from SeisCore.GeneralCalcFunctions.Spectrogram import spectrogram_2
 
-a='PT_6253_05B_134'
-
-c=checking_name(a)
-print(c)
+spectrogram_2()
