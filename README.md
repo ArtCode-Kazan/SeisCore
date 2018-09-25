@@ -245,3 +245,7 @@ Change pointsSelection - add control for negative moments delay
 # version 0.1.4ref
 Переписана функция вычисления и построения спектрограмм в соотвествии с 
 функции Matlab
+
+# version 0.1.5ref
+Исправлена исходная функция вычисления спектрограммы, переписанная функция 
+Matlab упразднена

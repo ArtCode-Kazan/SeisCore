@@ -606,6 +606,9 @@ class BinaryFile:
                 if self.start_moment >= self.end_moment:
                     errors.append('Неверно указаны пределы извлечения сигнала')
                 if self.discrete_amount is not None:
+                    if self.discrete_amount < 3600*self.signal_frequency:
+                        errors.append('Записанный сигнал в файле менее '
+                                      'одного часа')
                     if self.end_moment >= self.discrete_amount:
                         errors.append('Максимальный предел извлечения сигнала '
                                       'выходит за пределы длительности записи '
@@ -647,31 +650,35 @@ class BinaryFile:
             return None
 
         if self.__avg_value_channels is None:
-            # чтение файла
-            file_data = open(self.path, 'rb')
-            # пропуск части файла с шапкой
-            file_data.seek(336)
+            # количество дискрет в одном блоке
+            discrete_block_count = 3600 * self.signal_frequency
 
-            # чтение всего сигнала
-            try:
-                bin_data = file_data.read()
-                signals = np.frombuffer(bin_data, dtype=np.int32)
-            except MemoryError:
-                return None
-            finally:
-                # закрытие файла
+            # количество блоков для считывания
+            block_count = self.discrete_amount//discrete_block_count
+
+            if block_count>0:
+                # список для сохранения суммы средних значений блоков сигнала
+                mean_values = [0, 0, 0]
+
+                # поблочное чтение данных файла и вычисление средних по каждому
+                # каналу
+                file_data = open(self.path, 'rb')
+                for i in range(block_count):
+                    file_data.seek(336+i*4*3*discrete_block_count)
+                    bin_data = file_data.read(4*3*discrete_block_count)
+                    signals = np.frombuffer(bin_data, dtype=np.int32)
+                    for j in range(3):
+                        channel_signal = signals[j:len(signals):3]
+                        mean_value = np.mean(channel_signal)
+                        mean_values[j] = mean_values[j]+mean_value
                 file_data.close()
 
-            # перестройка формы массива
-            channel_count = 3
-            signal_count = signals.shape[0] // channel_count
-            signals = np.reshape(signals,
-                                 newshape=(signal_count, channel_count))
+                # вычисление средних значений по каналам
+                for i in range(3):
+                    mean_values[i] = int(mean_values[i]/block_count)
 
-            # Вычисление средних значений
-            avg_values = np.mean(a=signals, axis=0).round(decimals=0)
-            self.__avg_value_channels = \
-                (avg_values[0], avg_values[1], avg_values[2])
+                self.__avg_value_channels = \
+                    (mean_values[0], mean_values[1], mean_values[2])
         return self.__avg_value_channels
 
     @property
@@ -694,8 +701,8 @@ class BinaryFile:
         # отсчета (нумерация отсчетов с единицы)
         # signals = None
         if self.start_moment is not None:
-            bytes_value = self.start_moment * 4 * 3
-            file_data.seek(336 + bytes_value)
+            bytes_count = self.start_moment * 4 * 3
+            file_data.seek(336 + bytes_count)
         else:
             file_data.seek(336)
 
