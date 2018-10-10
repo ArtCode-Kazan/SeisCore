@@ -29,6 +29,9 @@ def _specgram(signal_data, frequency_of_signal,
     # перекрытие окна построения спектрограммы
     noverlap_size = 1792    # 2048-256
 
+    if signal_data.shape[0]<=window_kaiser.shape[0]:
+        return None
+
     # получение данных спектрограммы
     f, t, s = signal.spectrogram(x=signal_data,
                                  fs=frequency_of_signal,
@@ -44,7 +47,7 @@ def _specgram(signal_data, frequency_of_signal,
     if min_frequency is None:
         min_frequency = 0
     if max_frequency is None:
-        max_frequency = frequency_of_signal
+        max_frequency = frequency_of_signal/2
 
     # получение подмассива dS из массива S, элементы которого лежат
     # в пределах частот
@@ -117,8 +120,8 @@ def _plot(times, frequencies, amplitudes, cmap, cnorm,
 
     # размер плота в дюймах
     ly = 9
-    if np.max(times) > 3600:
-        lx = 12 / 3600 * np.max(times)
+    if np.max(times)-np.min(times) > 3600:
+        lx = 12 / 3600 * (np.max(times)-np.min(times))
         # ly = 9/20*(max_frequency_visualize-min_frequency_visulize)
     else:
         lx = 12
@@ -166,10 +169,16 @@ def create_spectrogram(signal_data, frequency, output_folder, output_name,
     :return:
     """
     # вычисление параметров спектрограммы
-    t, f, amplitudes = _specgram(
+    result = _specgram(
         signal_data=signal_data, frequency_of_signal=frequency,
         min_frequency=min_frequency, max_frequency=max_frequency,
         time_start=time_start)
+
+    if result is None:
+        return False
+
+    t, f, amplitudes = result
+    print(t[0])
 
     # определение параметров раскраски шкалы
     cmap, cnorm = _scale(amplitudes)
@@ -179,7 +188,3 @@ def create_spectrogram(signal_data, frequency, output_folder, output_name,
                    cmap=cmap, cnorm=cnorm, output_folder=output_folder,
                    output_name=output_name)
     return result
-
-
-
-

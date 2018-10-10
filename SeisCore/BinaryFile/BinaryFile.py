@@ -328,7 +328,7 @@ class BinaryFile:
                 t = file_name.split('.')
                 if len(t) == 2:
                     name, extension = t
-                    if self.data_type in ('Ordinal', 'Control'):
+                    if self.data_type in ('Ordinal','Control','Well'):
                         # example - PO_123B_123A_117
                         pattern = '^[A-Z]{2,2}_[0-9]+[A-Z]*_[0-9]+[A-Z]*' \
                                   '_[0-9]+[A-Z]*$'
@@ -353,7 +353,7 @@ class BinaryFile:
 
     @data_type.setter
     def data_type(self, value):
-        if value in ('Revise', 'Variation', 'Ordinal', 'Control'):
+        if value in ('Revise', 'Variation', 'Ordinal'):
             self.__data_type = value
         else:
             self.__data_type = 'NoDataType'
@@ -606,7 +606,7 @@ class BinaryFile:
                 if self.start_moment >= self.end_moment:
                     errors.append('Неверно указаны пределы извлечения сигнала')
                 if self.discrete_amount is not None:
-                    if self.discrete_amount < 3600*self.signal_frequency:
+                    if self.seconds_duration < 3600:
                         errors.append('Записанный сигнал в файле менее '
                                       'одного часа')
                     if self.end_moment >= self.discrete_amount:
@@ -614,7 +614,7 @@ class BinaryFile:
                                       'выходит за пределы длительности записи '
                                       'сигнала')
 
-            if self.data_type in ['Revise', 'Variation']:
+            if self.data_type in ('Revise', 'Variation'):
                 file_name = os.path.basename(self.path)
                 name, extension = file_name.split('.')
                 info = name.split('_')

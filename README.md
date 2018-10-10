@@ -249,3 +249,7 @@ Change pointsSelection - add control for negative moments delay
 # version 0.1.5ref
 Исправлена исходная функция вычисления спектрограммы, переписанная функция 
 Matlab упразднена
+
+# version 0.1.6ref
+В класс BinaryFile добавлено свойство, извлекающее из названия файла номер 
+точки и ее атрибут
