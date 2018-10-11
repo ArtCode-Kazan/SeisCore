@@ -353,7 +353,7 @@ class BinaryFile:
 
     @data_type.setter
     def data_type(self, value):
-        if value in ('Revise', 'Variation', 'Ordinal'):
+        if value in ('Revise', 'Variation', 'Ordinal', 'Control', 'Well'):
             self.__data_type = value
         else:
             self.__data_type = 'NoDataType'
@@ -793,7 +793,7 @@ class BinaryFile:
 
     @property
     def point_name(self):
-        if self.data_type not in ('Ordinal', 'Control', 'Well'):
+        if self.data_type in ('Revise', 'Variation'):
             return None
 
         if self.path is None:
