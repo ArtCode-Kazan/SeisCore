@@ -790,3 +790,25 @@ class BinaryFile:
         name, extension = file_name.split('.')
         parser = re.findall('[0-9]+[A-Z]*', name)
         return parser[-1].upper()
+
+    @property
+    def point_name(self):
+        if self.data_type not in ('Ordinal', 'Control', 'Well'):
+            return None
+
+        if self.path is None:
+            return None
+        file_name = os.path.basename(self.path)
+        name, extension = file_name.split('.')
+        parser = re.findall('[0-9]+[A-Z]*', name)
+        point_name = parser[0]
+        try:
+            number = int(point_name)
+            return number, 'A'
+        except ValueError:
+            try:
+                number = int(point_name[:-1])
+                attr = point_name[-1]
+                return number, attr
+            except ValueError:
+                return None
