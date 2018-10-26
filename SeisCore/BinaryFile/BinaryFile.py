@@ -50,7 +50,7 @@ def _binary_read(bin_data, skipping_bytes, x_type, count):
     return result
 
 
-class _MainHeader:
+class MainHeader:
     """
     базовая структура главного заголовка файла
     """
@@ -229,13 +229,81 @@ class _MainHeader:
         else:
             return int(1 / self.dt)
 
+    def get_binary_format(self):
+        """
+        Метод, возвращающий заголовок файла в бинарном формате
+        :return:
+        """
+        if self._device_type == 'Baikal7':
+            result = struct.pack('H', self.channel_count)
+            result += struct.pack('H', self.reserved1)
+            result += struct.pack('H', self.version)
+            result += struct.pack('H', self.day)
+            result += struct.pack('H', self.month)
+            result += struct.pack('H', self.year)
+            for i in range(3):
+                result += struct.pack('H', self.reserved2[i])
+            result += struct.pack('H', self.digitsACP)
+            result += struct.pack('H', self.reserved3)
+            result += struct.pack('H', self.signal_frequency)
+            for i in range(4):
+                result += struct.pack('H', self.reserved4[i])
+            result += struct.pack('16s',self.station_name.encode('utf-8'))
+            result += struct.pack('d', self.dt)
+            result += struct.pack('I', self.to_low)
+            result += struct.pack('I', self.to_high)
+            result += struct.pack('d', self.reserved5)
+            result += struct.pack('d', self.latitude)
+            result += struct.pack('d', self.longitude)
+            for i in range(2):
+                result += struct.pack('Q', self.reserved6[i])
+            result += struct.pack('Q', self.time_begin)
+            for i in range(4):
+                result += struct.pack('H', self.reserved7[i])
+        elif self._device_type == 'Baikal8':
+            result = struct.pack('H', self.channel_count)
+            result += struct.pack('H', self.reserved1)
+            result += struct.pack('H', self.version)
+            result += struct.pack('H', self.day)
+            result += struct.pack('H', self.month)
+            result += struct.pack('H', self.year)
+            result += struct.pack('H', self.satellite_number)
+            result += struct.pack('H', self.minutes_without_valid)
+            result += struct.pack('H', self.synchronization_flag)
+            result += struct.pack('H', self.digits)
+            result += struct.pack('H', self.old_valid)
+            result += struct.pack('H', self.version_bi)
+            result += struct.pack('H', self.version_data)
+            result += struct.pack('H', self.version_adsp)
+            result += struct.pack('H', self.old_satellites)
+            result += struct.pack('H', self.signal)
+            result += struct.pack('16s', self.station_name.encode('utf-8'))
+            result += struct.pack('d', self.dt)
+            result += struct.pack('d', self.time_first_point)
+            result += struct.pack('d', self.deltas)
+            result += struct.pack('d', self.latitude)
+            result += struct.pack('d', self.longitude)
+            result += struct.pack('Q', self.old_time_begin)
+            result += struct.pack('Q', self.time_point_file)
+            result += struct.pack('Q', self.time_begin)
+            result += struct.pack('I', self.synchro_point)
+            result += struct.pack('I', self.reserved)
+        else:
+            result = None
+        return result
 
-class _ChannelHeader:
+
+class ChannelHeader:
     """
     базовая структура заголовка канала. На данный момент нигде не используется
     """
-    # тип файла - служебное поле
-    device_type = None
+    def __init__(self, device_type):
+        # тип файла - служебное поле
+        self.__device_type = device_type
+
+    @property
+    def _device_type(self):
+        return self.__device_type
 
     # Общие поля для обоих типов приборов
     # номер канала
@@ -251,43 +319,35 @@ class _ChannelHeader:
     # неясное содержание
     calcfreq = None
     # Эксклюзивные поля для каждого типа прибора
-    if device_type == 'Baikal7':
+    if _device_type == 'Baikal7':
         # неясное содержание
         adc_gain = None
 
-
-def _read_channel_header(file_path, file_type, channel_number):
-    """
-    Функция для чтения заголовка канала.
-    На данный момент нигде не используется
-    :param file_path: путь к бинарному файлу
-    :param file_type: тип файла
-    :param channel_number: номер канала для считывания (нумерация от ноля)
-    :return:
-    """
-    bin_data = open(file_path, 'rb')
-    # пропуск главного заголовка (120 байт) + редыдущих заголовков каналов (
-    # кажый по 72 байта)
-    bin_data.seek(120 + 72 * channel_number)
-    # чтение текущего заголовка
-    channel_header = _ChannelHeader()
-    if file_type == 'Baikal7':
-        channel_header.phys_num = _binary_read(bin_data, 120, "H", 1)
-        channel_header.adc_gain = _binary_read(bin_data, 0, "H", 1)
-        channel_header.reserved = _binary_read(bin_data, 0, "H", 2)
-        channel_header.channel_name = _binary_read(bin_data, 0, "s", 24)
-        channel_header.sensor_type = _binary_read(bin_data, 0, "s", 24)
-        channel_header.coefficient = _binary_read(bin_data, 0, "d", 1)
-        channel_header.calcfreq = _binary_read(bin_data, 0, "d", 1)
-    if file_type == 'Baikal8':
-        channel_header.phys_num = _binary_read(bin_data, 120, "H", 1)
-        channel_header.reserved = _binary_read(bin_data, 0, "H", 3)
-        channel_header.channel_name = _binary_read(bin_data, 0, "s", 24)
-        channel_header.sensor_type = _binary_read(bin_data, 0, "s", 24)
-        channel_header.coefficient = _binary_read(bin_data, 0, "d", 1)
-        channel_header.calcfreq = _binary_read(bin_data, 0, "d", 1)
-    bin_data.close()
-    return channel_number
+    def get_binary_format(self):
+        """
+        Метод, возвращающий заголовк канала в бинарном виде
+        :return:
+        """
+        if self._device_type == 'Baikal7':
+            result = struct.pack('H', self.phys_num)
+            result += struct.pack('H', self.adc_gain)
+            for i in range(2):
+                result += struct.pack('H', self.reserved[i])
+            result += struct.pack('24s', self.channel_name.encode('utf-8'))
+            result += struct.pack('24s', self.sensor_type.encode('utf-8'))
+            result += struct.pack('d', self.coefficient)
+            result += struct.pack('d', self.calcfreq)
+        elif self._device_type == 'Baikal8':
+            result = struct.pack('H', self.phys_num)
+            for i in range(3):
+                result += struct.pack('H', self.reserved[i])
+            result += struct.pack('24s', self.channel_name.encode('utf-8'))
+            result += struct.pack('24s', self.sensor_type.encode('utf-8'))
+            result += struct.pack('d', self.coefficient)
+            result += struct.pack('d', self.calcfreq)
+        else:
+            result = None
+        return result
 
 
 class BinaryFile:
@@ -308,10 +368,11 @@ class BinaryFile:
         self.__record_type = None
         # boolean-параметр извлечения сигнала только даты записи
         self.__only_date_start_signal = False
-        # номер отсчета для начала выгрузки куска сигнала
-        self.__start_moment = None
-        # номер отсчета для конца выгрузки куска сигнала
-        self.__end_moment = None
+        # дата+время начала считывания сигнала
+        self.__read_date_time_start = None
+        # дата+время окончания считывания сигнала
+        self.__read_date_time_stop = None
+
         # среднее значение по каналам
         self.__avg_value_channels = None
 
@@ -328,7 +389,7 @@ class BinaryFile:
                 t = file_name.split('.')
                 if len(t) == 2:
                     name, extension = t
-                    if self.data_type in ('Ordinal','Control','Well'):
+                    if self.data_type in ('Ordinal', 'Control', 'Well'):
                         # example - PO_123B_123A_117
                         pattern = '^[A-Z]{2,2}_[0-9]+[A-Z]*_[0-9]+[A-Z]*' \
                                   '_[0-9]+[A-Z]*$'
@@ -387,39 +448,57 @@ class BinaryFile:
             self.__only_date_start_signal = value
 
     @property
-    def start_moment(self):
-        if self.only_date_start_signal:
-            return 0
-        else:
-            return self.__start_moment
+    def read_date_time_start(self):
+        return self.__read_date_time_start
 
-    @start_moment.setter
-    def start_moment(self, value):
-        if isinstance(value, int):
-            self.__start_moment = value
+    @read_date_time_start.setter
+    def read_date_time_start(self, value):
+        if self.only_date_start_signal:
+            self.__read_date_time_start = self.datetime_start
+        else:
+            if isinstance(value, datetime) and self.path is not None:
+                dt1 = (value - self.datetime_start).total_seconds()
+                dt2 = (self.datetime_stop - value).total_seconds()
+                if dt1 >= 0 and dt2 > 0:
+                    self.__read_date_time_start = value
+                else:
+                    self.__read_date_time_start = self.datetime_start
 
     @property
-    def end_moment(self):
+    def read_date_time_stop(self):
+        return self.__read_date_time_stop
+
+    @read_date_time_stop.setter
+    def read_date_time_stop(self, value):
         if self.only_date_start_signal:
             date_time_in = self.datetime_start
             date_time_out = datetime(year=date_time_in.year,
                                      month=date_time_in.month,
                                      day=date_time_in.day) + \
-                timedelta(days=1) - timedelta(microseconds=1)
-
-            delta_t = int((date_time_out - date_time_in).total_seconds())
-            result = delta_t * self.signal_frequency
-            if result > self.discrete_amount:
-                return None
-            else:
-                return result
+                            timedelta(days=1, microseconds=-1)
+            self.__read_date_time_stop = date_time_out
         else:
-            return self.__end_moment
+            if isinstance(value, datetime) and self.path is not None:
+                dt1 = (value - self.datetime_start).total_seconds()
+                dt2 = (self.datetime_stop - value).total_seconds()
+                if dt1 > 0 and dt2 >= 0:
+                    self.__read_date_time_stop = value
+                else:
+                    self.__read_date_time_stop = self.datetime_stop
 
-    @end_moment.setter
-    def end_moment(self, value):
-        if isinstance(value, int):
-            self.__end_moment = value
+    @property
+    def start_moment(self):
+        if self.path is None:
+            return None
+        dt = (self.read_date_time_start - self.datetime_start).total_seconds()
+        return int(dt * self.signal_frequency)
+
+    @property
+    def end_moment(self):
+        if self.path is None:
+            return None
+        dt = (self.read_date_time_stop - self.datetime_start).total_seconds()
+        return int(dt * self.signal_frequency)
 
     @property
     def device_type(self):
@@ -433,7 +512,7 @@ class BinaryFile:
             return 'Baikal8'
 
     @property
-    def _main_header(self):
+    def main_header(self):
         # проверка пути к файлу
         if self.path is None:
             return None
@@ -444,7 +523,7 @@ class BinaryFile:
         # объем главного заголовка 120 байт
         # ----------------------------------------
         # создание экземпляра класса MainHeader
-        main_header = _MainHeader(self.device_type)
+        main_header = MainHeader(self.device_type)
         # парсинг заголовка в зависимости от типа файла
         if self.device_type == 'Baikal7':
             main_header.channel_count = _binary_read(file_data, 0, 'H', 1)
@@ -505,9 +584,44 @@ class BinaryFile:
             return None
         return main_header
 
+    def get_channel_header(self, channel_index):
+        """
+        Метод чтения заголовка канала по его индексу
+        :param channel_index:
+        :return:
+        """
+        # проверка пути к файлу
+        if self.path is None:
+            return None
+
+        bin_data = open(self.path, 'rb')
+        # пропуск главного заголовка (120 байт) + предыдущих заголовков
+        # каналов (
+        # кажый по 72 байта)
+        bin_data.seek(120 + 72 * channel_index)
+        # чтение текущего заголовка
+        channel_header = ChannelHeader(self.device_type)
+        if self.device_type == 'Baikal7':
+            channel_header.phys_num = _binary_read(bin_data, 120, "H", 1)
+            channel_header.adc_gain = _binary_read(bin_data, 0, "H", 1)
+            channel_header.reserved = _binary_read(bin_data, 0, "H", 2)
+            channel_header.channel_name = _binary_read(bin_data, 0, "s", 24)
+            channel_header.sensor_type = _binary_read(bin_data, 0, "s", 24)
+            channel_header.coefficient = _binary_read(bin_data, 0, "d", 1)
+            channel_header.calcfreq = _binary_read(bin_data, 0, "d", 1)
+        if self.device_type == 'Baikal8':
+            channel_header.phys_num = _binary_read(bin_data, 120, "H", 1)
+            channel_header.reserved = _binary_read(bin_data, 0, "H", 3)
+            channel_header.channel_name = _binary_read(bin_data, 0, "s", 24)
+            channel_header.sensor_type = _binary_read(bin_data, 0, "s", 24)
+            channel_header.coefficient = _binary_read(bin_data, 0, "d", 1)
+            channel_header.calcfreq = _binary_read(bin_data, 0, "d", 1)
+        bin_data.close()
+        return channel_header
+
     @property
     def signal_frequency(self):
-        main_header = self._main_header
+        main_header = self.main_header
         if main_header is None:
             return None
         else:
@@ -515,7 +629,7 @@ class BinaryFile:
 
     @property
     def datetime_start(self):
-        main_header = self._main_header
+        main_header = self.main_header
         if main_header is None:
             return None
         else:
@@ -523,7 +637,7 @@ class BinaryFile:
 
     @property
     def longitude(self):
-        main_header = self._main_header
+        main_header = self.main_header
         if main_header is None:
             return None
         else:
@@ -531,7 +645,7 @@ class BinaryFile:
 
     @property
     def latitude(self):
-        main_header = self._main_header
+        main_header = self.main_header
         if main_header is None:
             return None
         else:
@@ -602,17 +716,12 @@ class BinaryFile:
                 errors.append('Ошибка чтения долготы точки записи сигнала')
             if self.latitude is None:
                 errors.append('Ошибка чтения широты точки записи сигнала')
-            if self.start_moment is not None and self.end_moment is not None:
-                if self.start_moment >= self.end_moment:
-                    errors.append('Неверно указаны пределы извлечения сигнала')
-                if self.discrete_amount is not None:
-                    if self.seconds_duration < 3600:
-                        errors.append('Записанный сигнал в файле менее '
-                                      'одного часа')
-                    if self.end_moment >= self.discrete_amount:
-                        errors.append('Максимальный предел извлечения сигнала '
-                                      'выходит за пределы длительности записи '
-                                      'сигнала')
+            if self.start_moment >= self.end_moment:
+                errors.append('Неверно указаны пределы извлечения сигнала')
+            if self.discrete_amount is not None:
+                if self.seconds_duration < 3600:
+                    errors.append('Записанный сигнал в файле менее '
+                                  'одного часа')
 
             if self.data_type in ('Revise', 'Variation'):
                 file_name = os.path.basename(self.path)
@@ -654,9 +763,9 @@ class BinaryFile:
             discrete_block_count = 3600 * self.signal_frequency
 
             # количество блоков для считывания
-            block_count = self.discrete_amount//discrete_block_count
+            block_count = self.discrete_amount // discrete_block_count
 
-            if block_count>0:
+            if block_count > 0:
                 # список для сохранения суммы средних значений блоков сигнала
                 mean_values = [0, 0, 0]
 
@@ -664,18 +773,18 @@ class BinaryFile:
                 # каналу
                 file_data = open(self.path, 'rb')
                 for i in range(block_count):
-                    file_data.seek(336+i*4*3*discrete_block_count)
-                    bin_data = file_data.read(4*3*discrete_block_count)
+                    file_data.seek(336 + i * 4 * 3 * discrete_block_count)
+                    bin_data = file_data.read(4 * 3 * discrete_block_count)
                     signals = np.frombuffer(bin_data, dtype=np.int32)
                     for j in range(3):
                         channel_signal = signals[j:len(signals):3]
                         mean_value = np.mean(channel_signal)
-                        mean_values[j] = mean_values[j]+mean_value
+                        mean_values[j] = mean_values[j] + mean_value
                 file_data.close()
 
                 # вычисление средних значений по каналам
                 for i in range(3):
-                    mean_values[i] = int(mean_values[i]/block_count)
+                    mean_values[i] = int(mean_values[i] / block_count)
 
                 self.__avg_value_channels = \
                     (mean_values[0], mean_values[1], mean_values[2])

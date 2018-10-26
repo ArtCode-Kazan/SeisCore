@@ -1,6 +1,7 @@
 import numpy as np
 cimport numpy as np
 
+
 def minimization_prep(int minute_number,
                       double min_correlation,
                       int window_size,
