@@ -241,13 +241,11 @@ class MainHeader:
             result += struct.pack('H', self.day)
             result += struct.pack('H', self.month)
             result += struct.pack('H', self.year)
-            for i in range(3):
-                result += struct.pack('H', self.reserved2[i])
+            result += struct.pack('3H', self.reserved2,0,0)
             result += struct.pack('H', self.digitsACP)
             result += struct.pack('H', self.reserved3)
             result += struct.pack('H', self.signal_frequency)
-            for i in range(4):
-                result += struct.pack('H', self.reserved4[i])
+            result += struct.pack('4H', self.reserved4,0,0,0)
             result += struct.pack('16s',self.station_name.encode('utf-8'))
             result += struct.pack('d', self.dt)
             result += struct.pack('I', self.to_low)
@@ -255,14 +253,12 @@ class MainHeader:
             result += struct.pack('d', self.reserved5)
             result += struct.pack('d', self.latitude)
             result += struct.pack('d', self.longitude)
-            for i in range(2):
-                result += struct.pack('Q', self.reserved6[i])
+            result += struct.pack('2Q', self.reserved6,0)
             result += struct.pack('Q', self.time_begin)
-            for i in range(4):
-                result += struct.pack('H', self.reserved7[i])
+            result += struct.pack('4H', self.reserved7,0,0,0)
         elif self._device_type == 'Baikal8':
             result = struct.pack('H', self.channel_count)
-            result += struct.pack('H', self.reserved1)
+            result += struct.pack('H', self.test_type)
             result += struct.pack('H', self.version)
             result += struct.pack('H', self.day)
             result += struct.pack('H', self.month)
@@ -331,16 +327,14 @@ class ChannelHeader:
         if self._device_type == 'Baikal7':
             result = struct.pack('H', self.phys_num)
             result += struct.pack('H', self.adc_gain)
-            for i in range(2):
-                result += struct.pack('H', self.reserved[i])
+            result += struct.pack('2H', self.reserved,0)
             result += struct.pack('24s', self.channel_name.encode('utf-8'))
             result += struct.pack('24s', self.sensor_type.encode('utf-8'))
             result += struct.pack('d', self.coefficient)
             result += struct.pack('d', self.calcfreq)
         elif self._device_type == 'Baikal8':
             result = struct.pack('H', self.phys_num)
-            for i in range(3):
-                result += struct.pack('H', self.reserved[i])
+            result += struct.pack('3H', self.reserved,0,0)
             result += struct.pack('24s', self.channel_name.encode('utf-8'))
             result += struct.pack('24s', self.sensor_type.encode('utf-8'))
             result += struct.pack('d', self.coefficient)
@@ -368,6 +362,8 @@ class BinaryFile:
         self.__record_type = None
         # boolean-параметр извлечения сигнала только даты записи
         self.__only_date_start_signal = False
+        # boolean-параметр удаления среднего значения из каждого канала
+        self.__use_avg_values = False
         # дата+время начала считывания сигнала
         self.__read_date_time_start = None
         # дата+время окончания считывания сигнала
@@ -439,6 +435,15 @@ class BinaryFile:
                     self.__resample_frequency = value
 
     @property
+    def use_avg_values(self):
+        return self.__use_avg_values
+
+    @use_avg_values.setter
+    def use_avg_values(self, value):
+        if isinstance(value, bool):
+            self.__use_avg_values = value
+
+    @property
     def only_date_start_signal(self):
         return self.__only_date_start_signal
 
@@ -449,6 +454,8 @@ class BinaryFile:
 
     @property
     def read_date_time_start(self):
+        if self.__read_date_time_start is None:
+            self.__read_date_time_start = self.datetime_start
         return self.__read_date_time_start
 
     @read_date_time_start.setter
@@ -458,14 +465,15 @@ class BinaryFile:
         else:
             if isinstance(value, datetime) and self.path is not None:
                 dt1 = (value - self.datetime_start).total_seconds()
-                dt2 = (self.datetime_stop - value).total_seconds()
-                if dt1 >= 0 and dt2 > 0:
+                if dt1 >= 0:
                     self.__read_date_time_start = value
                 else:
                     self.__read_date_time_start = self.datetime_start
 
     @property
     def read_date_time_stop(self):
+        if self.__read_date_time_stop is None:
+            self.__read_date_time_stop = self.datetime_stop
         return self.__read_date_time_stop
 
     @read_date_time_stop.setter
@@ -476,12 +484,14 @@ class BinaryFile:
                                      month=date_time_in.month,
                                      day=date_time_in.day) + \
                             timedelta(days=1, microseconds=-1)
-            self.__read_date_time_stop = date_time_out
+            if self.datetime_stop<=date_time_out:
+                self.__read_date_time_stop = self.datetime_stop
+            else:
+                self.__read_date_time_stop = date_time_out
         else:
             if isinstance(value, datetime) and self.path is not None:
-                dt1 = (value - self.datetime_start).total_seconds()
                 dt2 = (self.datetime_stop - value).total_seconds()
-                if dt1 > 0 and dt2 >= 0:
+                if dt2 >= 0:
                     self.__read_date_time_stop = value
                 else:
                     self.__read_date_time_stop = self.datetime_stop
@@ -602,7 +612,7 @@ class BinaryFile:
         # чтение текущего заголовка
         channel_header = ChannelHeader(self.device_type)
         if self.device_type == 'Baikal7':
-            channel_header.phys_num = _binary_read(bin_data, 120, "H", 1)
+            channel_header.phys_num = _binary_read(bin_data, 0, "H", 1)
             channel_header.adc_gain = _binary_read(bin_data, 0, "H", 1)
             channel_header.reserved = _binary_read(bin_data, 0, "H", 2)
             channel_header.channel_name = _binary_read(bin_data, 0, "s", 24)
@@ -610,7 +620,7 @@ class BinaryFile:
             channel_header.coefficient = _binary_read(bin_data, 0, "d", 1)
             channel_header.calcfreq = _binary_read(bin_data, 0, "d", 1)
         if self.device_type == 'Baikal8':
-            channel_header.phys_num = _binary_read(bin_data, 120, "H", 1)
+            channel_header.phys_num = _binary_read(bin_data, 0, "H", 1)
             channel_header.reserved = _binary_read(bin_data, 0, "H", 3)
             channel_header.channel_name = _binary_read(bin_data, 0, "s", 24)
             channel_header.sensor_type = _binary_read(bin_data, 0, "s", 24)
@@ -758,14 +768,17 @@ class BinaryFile:
         if not is_correct:
             return None
 
-        if self.__avg_value_channels is None:
-            # количество дискрет в одном блоке
-            discrete_block_count = 3600 * self.signal_frequency
+        if not self.use_avg_values:
+            self.__avg_value_channels = (0, 0, 0)
+        else:
+            if self.__avg_value_channels is None or \
+                    self.__avg_value_channels == (0, 0, 0):
+                # количество дискрет в одном блоке
+                discrete_block_count = 3600 * self.signal_frequency
 
-            # количество блоков для считывания
-            block_count = self.discrete_amount // discrete_block_count
+                # количество блоков для считывания
+                block_count = self.discrete_amount // discrete_block_count + 1
 
-            if block_count > 0:
                 # список для сохранения суммы средних значений блоков сигнала
                 mean_values = [0, 0, 0]
 
@@ -867,20 +880,24 @@ class BinaryFile:
             resample_signal = signals
 
         resample_signal.setflags(True)
-        resample_signal[:, 0] = resample_signal[:, 0] - avg_values[0]
-        resample_signal[:, 1] = resample_signal[:, 1] - avg_values[1]
-        resample_signal[:, 2] = resample_signal[:, 2] - avg_values[2]
+        if self.use_avg_values:
+            resample_signal[:, 0] = resample_signal[:, 0] - avg_values[0]
+            resample_signal[:, 1] = resample_signal[:, 1] - avg_values[1]
+            resample_signal[:, 2] = resample_signal[:, 2] - avg_values[2]
         return resample_signal
 
     @property
-    def unique_file_name(self):
+    def extension(self):
         if self.device_type == 'Baikal7':
-            file_name = '{}.{}'.format(_generate_name(), '00')
+            return '00'
         elif self.device_type == 'Baikal8':
-            file_name = '{}.{}'.format(_generate_name(), 'xx')
+            return 'xx'
         else:
-            file_name = None
-        return file_name
+            return 'null'
+
+    @property
+    def unique_file_name(self):
+        return '{}.{}'.format(_generate_name(),self.extension)
 
     @property
     def registrator_number(self):
@@ -899,6 +916,18 @@ class BinaryFile:
         name, extension = file_name.split('.')
         parser = re.findall('[0-9]+[A-Z]*', name)
         return parser[-1].upper()
+
+    @property
+    def point_prefix(self):
+        if self.data_type in ('Revise', 'Variation'):
+            return None
+
+        if self.path is None:
+            return None
+        file_name = os.path.basename(self.path)
+        name, extension = file_name.split('.')
+        prefix_value = name[:2]
+        return prefix_value
 
     @property
     def point_name(self):
@@ -921,3 +950,143 @@ class BinaryFile:
                 return number, attr
             except ValueError:
                 return None
+
+    @property
+    def dates(self):
+        is_correct, errors = self.check_correct()
+        if not is_correct:
+            return None
+
+        record_start = self.datetime_start
+        record_stop = self.datetime_stop
+
+        days_count = (record_stop.date() - record_start.date()).days + 1
+
+        result=list()
+        for i in range(days_count):
+            result.append(record_start+timedelta(days=i))
+        return tuple(result)
+
+    def split_file_by_date(self, export_folder):
+        """
+        Метод для разбития bin-файла на части, чтобы сигнал был отнесен
+        только к единой дате
+        :param export_folder: папка экспорта данных
+        :return:
+        """
+        date_list=self.dates
+        if date_list is None:
+            return None
+
+        # запоминание начального состояния параметров
+        start_use_avg_values_flag = self.__use_avg_values
+        start_read_dt_start_value = self.__read_date_time_start
+        start_read_dt_stop_value = self.__read_date_time_stop
+
+        # принудительное отключение вычитания средних значений
+        self.__use_avg_values = False
+
+        record_start = self.datetime_start
+        record_stop = self.datetime_stop
+
+        if len(date_list)==1:
+            return None
+
+        # получение заголовков файла
+        main_header = self.main_header
+        channel_header_a = self.get_channel_header(channel_index=0)
+        channel_header_b = self.get_channel_header(channel_index=1)
+        channel_header_c = self.get_channel_header(channel_index=2)
+
+        extension = self.extension
+        sensor_number = self.sensor_number
+        registrator_number = self.registrator_number
+
+        days_count = len(date_list)
+        output_files=list()
+        for day_index in range(days_count):
+            left_dt = datetime(year=record_start.year,
+                               month=record_start.month,
+                               day=record_start.day) + timedelta(
+                days=day_index)
+            if left_dt < record_start:
+                left_dt = record_start
+
+            right_dt = datetime(year=record_start.year,
+                                month=record_start.month,
+                                day=record_start.day) + \
+                       timedelta(days=day_index + 1, microseconds=-1)
+            if right_dt > record_stop:
+                right_dt = record_stop
+
+            main_header.day = left_dt.day
+            main_header.month = left_dt.month
+            main_header.year = left_dt.year
+
+            if self.device_type == 'Baikal7':
+                marker_dt = datetime(1980, 1, 1, 0, 0, 0)
+                seconds_count = int((left_dt - marker_dt).total_seconds())
+                main_header.time_begin = seconds_count * 256000000
+            elif self.device_type == 'Baikal8':
+                marker_dt = datetime(year=left_dt.year,
+                                     month=left_dt.month,
+                                     day=left_dt.day)
+                seconds_count = (left_dt - marker_dt).total_seconds()
+                main_header.time_first_point = seconds_count
+
+            if self.data_type == 'Revise':
+                output_name = 'RV_{}_{}_{}.{}'.format(
+                    datetime.strftime(left_dt,'%Y-%m-%d'),registrator_number,
+                                      sensor_number, extension)
+            elif self.data_type == 'Variation':
+                output_name = 'VR_{}_{}_{}.{}'.format(
+                    datetime.strftime(left_dt,'%Y-%m-%d'),registrator_number,
+                                      sensor_number, extension)
+            elif self.data_type in ('Revise', 'Variation', 'Ordinal',
+                                    'Control', 'Well'):
+                point_prefix = self.point_prefix
+                number, attr = self.point_name
+                point_name = '{}{}'.format(number, attr)
+                output_name = '{}_{}_{}_{}.{}'.format(
+                    point_prefix, point_name, registrator_number,
+                    sensor_number,
+                    extension)
+            else:
+                output_name = 'ZZ_{}_{}_{}.{}'.format(
+                    datetime.strftime(left_dt,'%Y-%m-%d'),registrator_number,
+                                      sensor_number, extension)
+
+            export_path = os.path.join(export_folder, output_name)
+            # # if os.path.isfile(export_path):
+            # #     continue
+
+            # запись файла
+            f = open(export_path, 'wb')
+            f.write(main_header.get_binary_format())
+            f.write(channel_header_a.get_binary_format())
+            f.write(channel_header_b.get_binary_format())
+            f.write(channel_header_c.get_binary_format())
+
+            block_count = int((right_dt - left_dt).total_seconds() / 3600) + 1
+            for block_index in range(block_count):
+                left_dt_block = left_dt + timedelta(hours=block_index)
+                if left_dt_block >= right_dt:
+                    break
+                right_dt_block = left_dt_block + timedelta(hours=1,
+                                                           microseconds=-1)
+                if right_dt_block > right_dt:
+                    right_dt_block = right_dt
+                self.__read_date_time_start = left_dt_block
+                self.__read_date_time_stop = right_dt_block
+                block_signals = self.signals
+                if block_signals is None:
+                    break
+                block_signals.astype(np.int32).tofile(f)
+            f.close()
+            output_files.append(output_name)
+
+        # восстановление исходных значений
+        self.__use_avg_values = start_use_avg_values_flag
+        self.__read_date_time_start = start_read_dt_start_value
+        self.__read_date_time_stop = start_read_dt_stop_value
+        return tuple(output_files)
