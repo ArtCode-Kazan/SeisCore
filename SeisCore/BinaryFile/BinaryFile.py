@@ -880,7 +880,7 @@ class BinaryFile:
             resample_signal = signals
 
         resample_signal.setflags(True)
-        if self.use_avg_values:
+        if self.use_avg_values or self.resample_parameter > 1:
             resample_signal[:, 0] = resample_signal[:, 0] - avg_values[0]
             resample_signal[:, 1] = resample_signal[:, 1] - avg_values[1]
             resample_signal[:, 2] = resample_signal[:, 2] - avg_values[2]
