@@ -771,8 +771,7 @@ class BinaryFile:
         if not self.use_avg_values:
             self.__avg_value_channels = (0, 0, 0)
         else:
-            if self.__avg_value_channels is None or \
-                    self.__avg_value_channels == (0, 0, 0):
+            if self.__avg_value_channels is None:
                 # количество дискрет в одном блоке
                 discrete_block_count = 3600 * self.signal_frequency
 
@@ -789,6 +788,8 @@ class BinaryFile:
                     file_data.seek(336 + i * 4 * 3 * discrete_block_count)
                     bin_data = file_data.read(4 * 3 * discrete_block_count)
                     signals = np.frombuffer(bin_data, dtype=np.int32)
+                    if signals.shape[0]==0:
+                        break
                     for j in range(3):
                         channel_signal = signals[j:len(signals):3]
                         mean_value = np.mean(channel_signal)
