@@ -31,14 +31,32 @@ def nodes(radius, count_nodes):
     :param count_nodes: количество узлов на окружности
     :return: numpy-массив с координатами узлов
     """
-    result = np.empty(shape=(count_nodes, 2), dtype=float)
-    alpha_deg = np.linspace(0, 360, count_nodes)
-    alpha_rad = np.deg2rad(alpha_deg)
+    #result = np.empty(shape=(count_nodes, 2), dtype=float)
+    # узлы по окружности
+    # alpha_deg = np.linspace(0, 360, count_nodes)
+    # alpha_rad = np.deg2rad(alpha_deg)
+    #
+    # x = radius * np.cos(alpha_rad)
+    # y = radius * np.sin(alpha_rad)
+    # result[:, 0] = x
+    # result[:, 1] = y
 
-    x = radius * np.cos(alpha_rad)
-    y = radius * np.sin(alpha_rad)
-    result[:, 0] = x
-    result[:, 1] = y
+    # узлы по периметру квадрата
+    result = np.empty(shape=(0, 2), dtype=np.float)
+    t=np.linspace(-radius, radius, count_nodes//4)
+    temp=np.empty(shape=(t.shape[0],2), dtype=np.float)
+    temp[:,0]=t
+    temp[:,1]=radius
+    result = np.vstack((result,temp))
+    temp[:, 0] = radius
+    temp[:, 1] = t
+    result = np.vstack((result, temp))
+    temp[:, 0] = t
+    temp[:, 1] = -radius
+    result = np.vstack((result, temp))
+    temp[:, 0] = -radius
+    temp[:, 1] = t
+    result = np.vstack((result, temp))
     return result
 
 
