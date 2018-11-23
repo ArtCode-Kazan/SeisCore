@@ -501,14 +501,14 @@ class BinaryFile:
         if self.path is None:
             return None
         dt = (self.read_date_time_start - self.datetime_start).total_seconds()
-        return int(dt * self.signal_frequency)
+        return int(round(dt * self.signal_frequency))
 
     @property
     def end_moment(self):
         if self.path is None:
             return None
         dt = (self.read_date_time_stop - self.datetime_start).total_seconds()
-        return int(dt * self.signal_frequency)
+        return int(round(dt * self.signal_frequency))
 
     @property
     def device_type(self):
