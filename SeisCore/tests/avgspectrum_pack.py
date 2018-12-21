@@ -4,15 +4,13 @@ from datetime import datetime, timedelta
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
-import sys
 
 from SeisCore.BinaryFile.BinaryFile import BinaryFile
 from SeisCore.GeneralCalcFunctions.AverSpectrum import average_spectrum
 
 
 def plot_average_spectrum(frequency, spectrum_begin_amplitudes,
-                          spectrum_smooth_amplitudes,
-                          f_min, f_max,
+                          spectrum_smooth_amplitudes, f_min, f_max,
                           output_folder, output_name):
     """
     Функция для оформления осредненного (кумулятивного) спектра в виде
@@ -106,84 +104,60 @@ def plot_average_spectrum(frequency, spectrum_begin_amplitudes,
     plt.close(fig)
 
 
-
 work_directory = r'E:\Lachel\src'
 output_folder_name = 'Spectrums'
-resample_frequency=250
-dt_start=datetime(day=15, month=8, year=2018, hour=0, minute=0, second=0)
-dt_stop=datetime(day=16, month=8, year=2018, hour=0, minute=0, second=0)
-delta_time=3600*4
-window_size=32768
-overlap=32768//2
-med_filter=7
-marmett_filter=7
-f_min=1
-f_max=30
-
-intervals_count=int((dt_stop-dt_start).total_seconds()/60+1)
-folder_struct = os.walk(work_directory)
-
-dt_sum=0
-all_intervals_count=0
-counter=0
-for root, folders, files in folder_struct:
-    for file in files:
-        name, extension = file.split('.')
-        if extension not in ('00', 'xx'):
-            continue
-        full_path=os.path.join(root,file)
-
-        bin_data = BinaryFile()
-        bin_data.path = full_path
-        bin_data.record_type='ZXY'
-        bin_data.resample_frequency = resample_frequency
-        is_correct, errors = bin_data.check_correct()
-        if not is_correct:
-            continue
-
-        if bin_data.datetime_start<dt_start:
-            continue
-
-        for interval in range(intervals_count):
-            dt_start_i = dt_start+timedelta(seconds=delta_time*interval)
-            dt_stop_i = dt_start_i + timedelta(seconds=delta_time)
-            if bin_data.datetime_stop<dt_stop_i:
-                break
-            all_intervals_count+=1
-
+resample_frequency = 250
+dt_start = datetime(day=15, month=8, year=2018, hour=0, minute=0, second=0)
+dt_stop = datetime(day=30, month=8, year=2018, hour=0, minute=0, second=0)
+delta_time = 3600 * 4
+window_size = 32768
+overlap = 32768 // 2
+med_filter = 7
+marmett_filter = 7
+f_min = 1
+f_max = 30
 
 for root, folders, files in os.walk(work_directory):
     for file in files:
         name, extension = file.split('.')
         if extension not in ('00', 'xx'):
             continue
-        full_path=os.path.join(root,file)
+        full_path = os.path.join(root, file)
 
         bin_data = BinaryFile()
         bin_data.path = full_path
-        bin_data.record_type='ZXY'
+        bin_data.record_type = 'ZXY'
         bin_data.resample_frequency = resample_frequency
         is_correct, errors = bin_data.check_correct()
         if not is_correct:
             continue
 
-        if bin_data.datetime_start<dt_start:
+        if bin_data.datetime_start < dt_start:
             continue
 
-        xi,yi,zi = bin_data.components_index
+        xi, yi, zi = bin_data.components_index
 
-        for interval in range(intervals_count):
-            dt_a_synopsis = datetime.now()
-            dt_start_i = dt_start+timedelta(seconds=delta_time*interval)
+        interval = 0
+        while True:
+            dt_start_i = dt_start + timedelta(seconds=interval * delta_time)
             dt_stop_i = dt_start_i + timedelta(seconds=delta_time)
-            if bin_data.datetime_stop<dt_stop_i:
+            interval += 1
+
+            if bin_data.datetime_stop < dt_stop_i:
+                continue
+
+            if dt_stop_i > dt_stop:
                 break
 
             bin_data.read_date_time_start = dt_start_i
             bin_data.read_date_time_stop = dt_stop_i
             signal = bin_data.signals
+
+            print(name)
+            interval += 1
             if signal is None:
-                break
+                continue
+            print(dt_start_i, dt_stop_i, signal.shape)
 
             for component in bin_data.record_type:
                 signal_i = signal[:, bin_data.record_type.index(component)]
@@ -198,8 +172,9 @@ for root, folders, files in os.walk(work_directory):
                     window=window_size, overlap=overlap,
                     med_filter=None, marmett_filter=None)
 
-                export_folder=os.path.join(work_directory,
-                                           output_folder_name, name, component)
+                export_folder = os.path.join(work_directory,
+                                             output_folder_name, name,
+                                             component)
                 if not os.path.isdir(export_folder):
                     os.makedirs(export_folder)
 
@@ -207,30 +182,20 @@ for root, folders, files in os.walk(work_directory):
                                                    '%Y-%m-%d_%H-%M-%S')
                 dt_stop_label = datetime.strftime(dt_stop_i,
                                                   '%Y-%m-%d_%H-%M-%S')
-                smooth_file='{}_{}-component_{}-{}.ssc'.format(
+                smooth_file = '{}_{}-component_{}-{}.ssc'.format(
                     name, component, dt_start_label, dt_stop_label)
-                smooth_path=os.path.join(export_folder, smooth_file)
-                no_smooth_file='{}_{}-component_{}-{}.sc'.format(
+                smooth_path = os.path.join(export_folder, smooth_file)
+                no_smooth_file = '{}_{}-component_{}-{}.sc'.format(
                     name, component, dt_start_label, dt_stop_label)
-                no_smooth_path=os.path.join(export_folder,no_smooth_file)
-                pic_name='{}_{}-component_{}-{}'.format(
+                no_smooth_path = os.path.join(export_folder, no_smooth_file)
+                pic_name = '{}_{}-component_{}-{}'.format(
                     name, component, dt_start_label, dt_stop_label)
 
-                np.savetxt(smooth_path,smooth_avg_sp_data,'%f','\t')
+                np.savetxt(smooth_path, smooth_avg_sp_data, '%f', '\t')
                 np.savetxt(no_smooth_path, no_smooth_avg_sp_data, '%f', '\t')
-                plot_average_spectrum(frequency=smooth_avg_sp_data[:,0],
-                                      spectrum_begin_amplitudes=no_smooth_avg_sp_data[:,1],
-                                      spectrum_smooth_amplitudes=smooth_avg_sp_data[:,1],
-                                      f_min=f_min, f_max=f_max,
-                                      output_folder=export_folder,
-                                      output_name=pic_name)
-            dt_b_synopsis = datetime.now()
-
-            dt=(dt_b_synopsis-dt_a_synopsis).total_seconds()
-            dt_sum+=dt
-            counter+=1
-            syn_time=dt_sum/counter*(all_intervals_count-counter)/60
-            sys.stdout.write('\r Осталось {} минут'.format(int(syn_time)))
-            sys.stdout.flush()
-
-
+                plot_average_spectrum(
+                    frequency=smooth_avg_sp_data[:, 0],
+                    spectrum_begin_amplitudes=no_smooth_avg_sp_data[:, 1],
+                    spectrum_smooth_amplitudes=smooth_avg_sp_data[:, 1],
+                    f_min=f_min, f_max=f_max,
+                    output_folder=export_folder, output_name=pic_name)
