@@ -1,8 +1,8 @@
 import numpy as np
 import sys
 
-from SeisCore.GeneralCalcFunctions.Spectrum import spectrum
-from SeisCore.GeneralCalcFunctions.NormingSignal import norming_signal
+from SeisCore.Functions.Spectrum import spectrum
+from SeisCore.Functions.NormingSignal import norming_signal
 
 """
 Модуль для получения пределов участка сигнала

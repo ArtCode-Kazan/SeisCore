@@ -17,30 +17,31 @@ def resampling(np.ndarray[np.int_t, ndim=2] signal,
         # Количество дискрет в ресемплированном сигнале
         int resample_discrete_amount
         # Итеративные переменные
-        int i, j
+        int i, j, k
         # Вычисление сумм для нахождения среднего
         int sum_a, sum_b, sum_c
         # Вычисленные значения после ресемплирования
         int value_a, value_b, value_c
+        # Создание выходного массива
+        np.ndarray[np.int_t, ndim = 2] resample_signal
 
     # проверка кратности длины сигнала и параметра ресемплирования
     discrete_amount = signal.shape[0]
-    if discrete_amount % resample_parameter != 0:
-        return None
+
     # расчет длины ресемплированного сигнала
     resample_discrete_amount = discrete_amount // resample_parameter
 
-    # Создание выходного массива
-    cdef:
-        np.ndarray[np.int_t, ndim = 2] resample_signal = np.empty(shape=(resample_discrete_amount,3),
-                                                                  dtype=np.int32)
+    resample_signal = np.empty(shape=(resample_discrete_amount,3),
+                               dtype=np.int)
+
     # операция ресемплирования
     for i in range(resample_discrete_amount):
         sum_a = sum_b = sum_c = 0
         for j in range(resample_parameter):
-            sum_a = sum_a + signal[i * resample_parameter + j, 0]
-            sum_b = sum_b + signal[i * resample_parameter + j, 1]
-            sum_c = sum_c + signal[i * resample_parameter + j, 2]
+            k = i * resample_parameter + j
+            sum_a = sum_a + signal[k, 0]
+            sum_b = sum_b + signal[k, 1]
+            sum_c = sum_c + signal[k, 2]
         value_a = sum_a // resample_parameter
         value_b = sum_b // resample_parameter
         value_c = sum_c // resample_parameter
