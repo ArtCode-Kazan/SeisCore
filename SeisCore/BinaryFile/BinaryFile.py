@@ -843,7 +843,7 @@ class BinaryFile:
         if self.end_moment is None:
             try:
                 bin_data = file_data.read()
-                signals = np.frombuffer(bin_data, dtype=np.int32)
+                signals = np.frombuffer(bin_data, dtype=np.int)
             except MemoryError:
                 return None
             finally:
