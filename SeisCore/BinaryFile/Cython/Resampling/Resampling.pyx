@@ -1,7 +1,12 @@
 import numpy as np
 cimport numpy as np
+cimport cython
 
 
+np.import_array()
+
+@cython.boundscheck(False)  # Deactivate bounds checking
+@cython.wraparound(False)   # Deactivate negative indexing.
 def resampling(np.ndarray[np.int_t, ndim=2] signal,
                int resample_parameter):
     """

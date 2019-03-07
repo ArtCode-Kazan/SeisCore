@@ -6,7 +6,7 @@ import numpy as np
 import re
 import uuid
 
-from SeisCore.BinaryFile.Cython.Resampling.ResamplingExecute import Resampling
+from SeisCore.BinaryFile.Cython.Resampling.Execute import Resampling
 
 
 def _generate_name():
