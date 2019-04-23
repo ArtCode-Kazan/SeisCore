@@ -7,7 +7,7 @@ np.import_array()
 
 @cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False)   # Deactivate negative indexing.
-def resampling(np.ndarray[np.int_t, ndim=2] signal,
+def resampling(np.ndarray[np.int32_t, ndim=2] signal,
                int resample_parameter):
     """
     Функция для ресемплирования сигнала
@@ -28,7 +28,7 @@ def resampling(np.ndarray[np.int_t, ndim=2] signal,
         # Вычисленные значения после ресемплирования
         int value_a, value_b, value_c
         # Создание выходного массива
-        np.ndarray[np.int_t, ndim = 2] resample_signal
+        np.ndarray[np.int32_t, ndim = 2] resample_signal
 
     # проверка кратности длины сигнала и параметра ресемплирования
     discrete_amount = signal.shape[0]
@@ -37,7 +37,7 @@ def resampling(np.ndarray[np.int_t, ndim=2] signal,
     resample_discrete_amount = discrete_amount // resample_parameter
 
     resample_signal = np.empty(shape=(resample_discrete_amount,3),
-                               dtype=np.int)
+                               dtype=np.int32)
 
     # операция ресемплирования
     for i in range(resample_discrete_amount):

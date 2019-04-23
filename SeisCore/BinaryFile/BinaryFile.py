@@ -843,7 +843,7 @@ class BinaryFile:
         if self.end_moment is None:
             try:
                 bin_data = file_data.read()
-                signals = np.frombuffer(bin_data, dtype=np.int)
+                signals = np.frombuffer(bin_data, dtype=np.int32)
             except MemoryError:
                 return None
             finally:
@@ -873,6 +873,8 @@ class BinaryFile:
         # если указаны end_moment и start_moment
         if self.start_moment is not None and self.end_moment is not None:
             if (self.end_moment - self.start_moment + 1) != signal_count:
+                print(self.end_moment - self.start_moment + 1, signal_count)
+                print('Err')
                 return None
 
         # проверка значения параметра ресемплирования
@@ -891,8 +893,8 @@ class BinaryFile:
         else:
             resample_signal = signals
 
-        resample_signal.setflags(True)
-        if self.use_avg_values or self.resample_parameter > 1:
+        # resample_signal.setflags(True)
+        if self.use_avg_values:
             resample_signal[:, 0] = resample_signal[:, 0] - avg_values[0]
             resample_signal[:, 1] = resample_signal[:, 1] - avg_values[1]
             resample_signal[:, 2] = resample_signal[:, 2] - avg_values[2]
