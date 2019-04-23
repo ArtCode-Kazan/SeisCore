@@ -3,10 +3,10 @@
 
 
 # Необходимые модули
-    - numpy         version 1.16.1
-    - scipy         version 1.1.0
-    - pywavelets    version 0.5.2
-    - matplotlib    version 2.1.0
+    - numpy         version 1.16.3
+    - scipy         version 1.2.1
+    - pywavelets    version 1.0.2
+    - matplotlib    version 2.1.1
 
 # HYSTORY
 
