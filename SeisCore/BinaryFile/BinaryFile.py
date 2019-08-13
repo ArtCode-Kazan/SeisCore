@@ -76,14 +76,14 @@ class MainHeader:
     year = None
     # название станции
     station_name = None
-    # шаг квантования сигнала по времени (в секундах) = 1/signal_frequency
-    dt = None
     # широта
     latitude = None
     # долгота
     longitude = None
     # Экслюзивные поля для каждого типа прибора
     if _device_type == 'Baikal7':
+        # шаг квантования сигнала по времени (в секундах) = 1/signal_frequency
+        dt = None
         # зарезервировано системой
         reserved1 = None
         # зарезервировано системой
@@ -110,6 +110,8 @@ class MainHeader:
         reserved7 = None
 
     if _device_type == 'Baikal8':
+        # шаг квантования сигнала по времени (в секундах) = 1/signal_frequency
+        dt = None
         # Не используется, оставлено для совместимости с предыдущими версиями
         test_type = None
         # Не используется
@@ -148,6 +150,12 @@ class MainHeader:
         # Не используется
         reserved = None
 
+    if _device_type == 'Sigma':
+        resolution = None
+        signal_frequency = None
+        date_start=None
+        time_start=None
+
     def check_correct(self):
         """
         свойство-геттер для проверки корректности класса
@@ -156,17 +164,26 @@ class MainHeader:
         errors = list()
         if self._device_type == 'Baikal7' and self.signal_frequency is None:
             errors.append('Отсутствует частота записи сигнала')
+
         if self._device_type == 'Baikal8':
             if self.dt is None:
-                errors.append('Отсутствует шаг квантования сигнала по времени')
+                errors.append(
+                    'Отсутствует шаг квантования сигнала по времени')
             if self.dt == 0:
-                errors.append('Шаг квантования сигнала по времени равен нулю.')
-        if self.day is None:
-            errors.append('Отсутствует значение дня начала записи сигнала')
-        if self.month is None:
-            errors.append('Отсутствует значение месяца начала записи сигнала')
-        if self.year is None:
-            errors.append('Отсутствует значение года начала записи сигнала')
+                errors.append(
+                    'Шаг квантования сигнала по времени равен нулю.')
+
+        if self._device_type == 'Sigma' and self.signal_frequency is None:
+            errors.append('Отсутствует частота записи сигнала')
+
+        if self._device_type in ('Baikal7','Baikal8'):
+            if self.day is None:
+                errors.append('Отсутствует значение дня начала записи сигнала')
+            if self.month is None:
+                errors.append('Отсутствует значение месяца начала записи сигнала')
+            if self.year is None:
+                errors.append('Отсутствует значение года начала записи сигнала')
+
         if self.longitude is None:
             errors.append('Отсутствует значение долготы')
         if self.latitude is None:
@@ -212,6 +229,16 @@ class MainHeader:
             start_date = datetime(year, month, day, 0, 0, 0)
             end_date = start_date + timedelta(seconds=seconds)
             return end_date
+        elif self._device_type == 'Sigma':
+            date_src=str(self.date_start)
+            time_src=str(self.time_start)
+            year = 2000+int(date_src[:2])
+            month = int(date_src[2:4])
+            day = int(date_src[4:])
+            hour = int(time_src[:2])
+            minute=int(time_src[2:4])
+            second=int(time_src[4:])
+            return datetime(year, month, day, hour, minute, second)
         else:
             return None
 
@@ -221,13 +248,18 @@ class MainHeader:
         Свойство-геттер, возвращающее частоту дискретизации записи сигнала
         :return:
         """
-        if self.dt is None or self.dt == 0:
-            if self._device_type == 'Baikal7':
+        if self._device_type == 'Baikal7':
+            if self.dt is None or self.dt == 0:
                 return self.signal_frequency
-            if self._device_type == 'Baikal8':
+            else:
+                return int(1 / self.dt)
+        elif self._device_type == 'Baikal8':
+            if self.dt is None or self.dt == 0:
                 return None
+        elif self._device_type == 'Sigma':
+            return self.signal_frequency
         else:
-            return int(1 / self.dt)
+            return None
 
     def get_binary_format(self):
         """
@@ -377,6 +409,28 @@ class BinaryFile:
     def path(self):
         return self.__path
 
+    def get_file_name_pattern(self):
+        if self.data_type in ('Ordinal', 'Control', 'Well'):
+            # example - PO_123B_123A_117
+            pattern = '^[A-Z]{2,2}_[0-9]+[A-Z]*_[0-9]+[A-Z]*' \
+                      '_[0-9]+[A-Z]*$'
+        elif self.data_type == 'Variation':
+            # example - VR_2018-06-30_123A_117
+            pattern = '^VR_[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}_' \
+                      '[0-9]+[A-Z]*_[0-9]+[A-Z]*$'
+        elif self.data_type == 'Revise':
+            # example - RV_2018-06-30_12_1117V
+            pattern = '^RV_[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}_' \
+                      '[0-9]+[A-Z]*_[0-9]+[A-Z]*$'
+        elif self.data_type == 'HydroFrac':
+            # example - HF_0151_2018-06-30_23-59-30_12_1117V
+            pattern = '^HF_[0-9]{4,4}_[0-9]{4,4}-[0-9]{2,2}-' \
+                      '[0-9]{2,2}_[0-9]{2,2}-[0-9]{2,2}-' \
+                      '[0-9]{2,2}_[a-zA-Z0-9]+_[a-zA-Z0-9]+$'
+        else:
+            pattern = ''
+        return pattern
+
     @path.setter
     def path(self, value):
         self.__input_path = value
@@ -386,20 +440,7 @@ class BinaryFile:
                 t = file_name.split('.')
                 if len(t) == 2:
                     name, extension = t
-                    if self.data_type in ('Ordinal', 'Control', 'Well'):
-                        # example - PO_123B_123A_117
-                        pattern = '^[A-Z]{2,2}_[0-9]+[A-Z]*_[0-9]+[A-Z]*' \
-                                  '_[0-9]+[A-Z]*$'
-                    elif self.data_type == 'Variation':
-                        # example - VR_2018-06-30_123A_117
-                        pattern = '^VR_[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}_' \
-                                  '[0-9]+[A-Z]*_[0-9]+[A-Z]*$'
-                    elif self.data_type == 'Revise':
-                        # example - RV_2018-06-30_12_1117V
-                        pattern = '^RV_[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}_' \
-                                  '[0-9]+[A-Z]*_[0-9]+[A-Z]*$'
-                    else:
-                        pattern = ''
+                    pattern = self.get_file_name_pattern()
                     if re.match(pattern, name):
                         self.__path = value
 
@@ -411,7 +452,8 @@ class BinaryFile:
 
     @data_type.setter
     def data_type(self, value):
-        if value in ('Revise', 'Variation', 'Ordinal', 'Control', 'Well'):
+        if value in ('HydroFrac', 'Revise', 'Variation', 'Ordinal', 'Control',
+                     'Well'):
             self.__data_type = value
         else:
             self.__data_type = 'NoDataType'
@@ -494,7 +536,7 @@ class BinaryFile:
             date_time_out = datetime(year=date_time_in.year,
                                      month=date_time_in.month,
                                      day=date_time_in.day) + \
-                timedelta(days=1, microseconds=-1)
+                            timedelta(days=1, microseconds=-1)
             if self.datetime_stop <= date_time_out:
                 self.__read_date_time_stop = self.datetime_stop
             else:
@@ -519,7 +561,7 @@ class BinaryFile:
         if self.path is None:
             return None
         dt = (self.read_date_time_stop - self.datetime_start).total_seconds()
-        return int(round(dt * self.signal_frequency))
+        return int(round(dt * self.signal_frequency) - 1)
 
     @property
     def device_type(self):
@@ -529,8 +571,12 @@ class BinaryFile:
         name, extension = file_name.split('.')
         if extension == '00':
             return 'Baikal7'
-        if extension == 'xx':
+        elif extension == 'xx':
             return 'Baikal8'
+        elif extension == 'bin':
+            return 'Sigma'
+        else:
+            return 'null'
 
     @property
     def main_header(self):
@@ -568,8 +614,7 @@ class BinaryFile:
             main_header.reserved6 = _binary_read(file_data, 0, 'Q', 2)
             main_header.time_begin = _binary_read(file_data, 0, 'Q', 1)
             main_header.reserved7 = _binary_read(file_data, 0, 'H', 4)
-
-        if self.device_type == 'Baikal8':
+        elif self.device_type == 'Baikal8':
             main_header.channel_count = _binary_read(file_data, 0, 'H', 1)
             main_header.test_type = _binary_read(file_data, 0, 'H', 1)
             main_header.version = _binary_read(file_data, 0, 'H', 1)
@@ -599,6 +644,17 @@ class BinaryFile:
             main_header.time_begin = _binary_read(file_data, 0, 'Q', 1)
             main_header.synchro_point = _binary_read(file_data, 0, 'I', 1)
             main_header.reserved = _binary_read(file_data, 0, 'I', 1)
+        elif self.device_type == 'Sigma':
+            main_header.channel_count = _binary_read(file_data, 12, 'I', 1)
+            main_header.version = _binary_read(file_data,0,'I',1)
+            main_header.resolution = _binary_read(file_data,0,'I',1)
+            main_header.signal_frequency = _binary_read(file_data, 0, 'I', 1)
+            # main_header.station_name = _binary_read(file_data, 0, 's',12)
+            main_header.latitude = _binary_read(file_data, 12, 's',8)
+            main_header.longitude = _binary_read(file_data, 0, 's', 9)
+            main_header.date_start = _binary_read(file_data, 3, 'I', 1)
+            main_header.time_start = _binary_read(file_data, 0, 'I', 1)
+
         file_data.close()
         is_correct, error = main_header.check_correct()
         if not is_correct:
@@ -661,16 +717,24 @@ class BinaryFile:
         main_header = self.main_header
         if main_header is None:
             return None
-        else:
+        if self.device_type in ('Baikal7', 'Baikal8'):
             return main_header.longitude
+        elif self.device_type=='Sigma':
+            return float(main_header.longitude[1:-1])
+        else:
+            return None
 
     @property
     def latitude(self):
         main_header = self.main_header
         if main_header is None:
             return None
-        else:
+        if self.device_type in ('Baikal7', 'Baikal8'):
             return main_header.latitude
+        elif self.device_type == 'Sigma':
+            return float(main_header.latitude[:-1])
+        else:
+            return None
 
     @property
     def discrete_amount(self):
@@ -709,6 +773,8 @@ class BinaryFile:
 
     @property
     def record_type(self):
+        if self.device_type=='Sigma' and self.__record_type is None:
+            self.__record_type='ZXY'
         return self.__record_type
 
     @record_type.setter
@@ -726,8 +792,6 @@ class BinaryFile:
             if self.signal_frequency is None:
                 errors.append('Не указана частота дискретизации записи '
                               'сигнала')
-            if self.resample_frequency is None:
-                errors.append('Неверно указана частота ресемплирования')
             if self.record_type is None:
                 errors.append('Неверно указан тип записи файла')
             if self.datetime_start is None:
@@ -739,10 +803,10 @@ class BinaryFile:
                 errors.append('Ошибка чтения широты точки записи сигнала')
             if self.start_moment >= self.end_moment:
                 errors.append('Неверно указаны пределы извлечения сигнала')
-            if self.discrete_amount is not None:
-                if self.seconds_duration < 3600:
-                    errors.append('Записанный сигнал в файле менее '
-                                  'одного часа')
+            # if self.discrete_amount is not None:
+            #     if self.seconds_duration < 3600:
+            #         errors.append('Записанный сигнал в файле менее '
+            #                       'одного часа')
 
             if self.data_type in ('Revise', 'Variation'):
                 file_name = os.path.basename(self.path)
@@ -894,6 +958,7 @@ class BinaryFile:
             resample_signal = signals
 
         # resample_signal.setflags(True)
+        resample_signal = np.copy(resample_signal)
         if self.use_avg_values:
             resample_signal[:, 0] = resample_signal[:, 0] - avg_values[0]
             resample_signal[:, 1] = resample_signal[:, 1] - avg_values[1]
@@ -901,11 +966,23 @@ class BinaryFile:
         return resample_signal
 
     @property
+    def ordered_signal_by_components(self):
+        signal = self.signals
+        channel_x, channel_y, channel_z = self.components_index
+        result = np.empty_like(signal, dtype=np.int)
+        result[:, 0] = signal[:, channel_x]
+        result[:, 1] = signal[:, channel_y]
+        result[:, 2] = signal[:, channel_z]
+        return result
+
+    @property
     def extension(self):
         if self.device_type == 'Baikal7':
             return '00'
         elif self.device_type == 'Baikal8':
             return 'xx'
+        elif self.device_type == 'Sigma':
+            return 'bin'
         else:
             return 'null'
 
@@ -945,160 +1022,168 @@ class BinaryFile:
 
     @property
     def point_name(self):
+        if self.path is None:
+            return None
         if self.data_type in ('Revise', 'Variation'):
             return None
 
-        if self.path is None:
-            return None
         file_name = os.path.basename(self.path)
         name, extension = file_name.split('.')
-        parser = re.findall('[0-9]+[A-Z]*', name)
-        point_name = parser[0]
-        try:
-            number = int(point_name)
-            return number, 'A'
-        except ValueError:
+        if self.data_type in ('Ordinal', 'Control', 'Well'):
+            parser = re.findall('[0-9]+[A-Z]*', name)
+            point_name = parser[0]
             try:
-                number = int(point_name[:-1])
-                attr = point_name[-1]
-                return number, attr
+                number = int(point_name)
+                return number, 'A'
             except ValueError:
-                return None
+                try:
+                    number = int(point_name[:-1])
+                    attr = point_name[-1]
+                    return number, attr
+                except ValueError:
+                    return None
+        if self.data_type == 'HydroFrac':
+            parser = re.findall('[0-9]{4,4}', name)
+            point_name = int(parser[0])
+            return point_name
 
-    @property
-    def dates(self):
-        is_correct, errors = self.check_correct()
-        if not is_correct:
-            return None
-
-        record_start = self.datetime_start
-        record_stop = self.datetime_stop
-
-        days_count = (record_stop.date() - record_start.date()).days + 1
-
-        result = list()
-        for i in range(days_count):
-            result.append(record_start + timedelta(days=i))
-        return tuple(result)
-
-    def split_file_by_date(self, export_folder):
-        """
-        Метод для разбития bin-файла на части, чтобы сигнал был отнесен
-        только к единой дате
-        :param export_folder: папка экспорта данных
-        :return:
-        """
-        date_list = self.dates
-        if date_list is None:
-            return None
-
-        # запоминание начального состояния параметров
-        start_use_avg_values_flag = self.__use_avg_values
-        start_read_dt_start_value = self.__read_date_time_start
-        start_read_dt_stop_value = self.__read_date_time_stop
-
-        # принудительное отключение вычитания средних значений
-        self.__use_avg_values = False
-
-        record_start = self.datetime_start
-        record_stop = self.datetime_stop
-
-        if len(date_list) == 1:
-            return None
-
-        # получение заголовков файла
-        main_header = self.main_header
-        channel_header_a = self.get_channel_header(channel_index=0)
-        channel_header_b = self.get_channel_header(channel_index=1)
-        channel_header_c = self.get_channel_header(channel_index=2)
-
-        extension = self.extension
-        sensor_number = self.sensor_number
-        registrator_number = self.registrator_number
-
-        days_count = len(date_list)
-        output_files = list()
-        for day_index in range(days_count):
-            left_dt = datetime(year=record_start.year,
-                               month=record_start.month,
-                               day=record_start.day) + \
-                      timedelta(days=day_index)
-            if left_dt < record_start:
-                left_dt = record_start
-
-            right_dt = datetime(year=record_start.year,
-                                month=record_start.month,
-                                day=record_start.day) + \
-                timedelta(days=day_index + 1, microseconds=-1)
-            if right_dt > record_stop:
-                right_dt = record_stop
-
-            main_header.day = left_dt.day
-            main_header.month = left_dt.month
-            main_header.year = left_dt.year
-
-            if self.device_type == 'Baikal7':
-                marker_dt = datetime(1980, 1, 1, 0, 0, 0)
-                seconds_count = int((left_dt - marker_dt).total_seconds())
-                main_header.time_begin = seconds_count * 256000000
-            elif self.device_type == 'Baikal8':
-                marker_dt = datetime(year=left_dt.year,
-                                     month=left_dt.month,
-                                     day=left_dt.day)
-                seconds_count = (left_dt - marker_dt).total_seconds()
-                main_header.time_first_point = seconds_count
-
-            if self.data_type == 'Revise':
-                output_name = 'RV_{}_{}_{}.{}'.format(
-                    datetime.strftime(left_dt, '%Y-%m-%d'), registrator_number,
-                    sensor_number, extension)
-            elif self.data_type == 'Variation':
-                output_name = 'VR_{}_{}_{}.{}'.format(
-                    datetime.strftime(left_dt, '%Y-%m-%d'), registrator_number,
-                    sensor_number, extension)
-            elif self.data_type in ('Revise', 'Variation', 'Ordinal',
-                                    'Control', 'Well'):
-                point_prefix = self.point_prefix
-                number, attr = self.point_name
-                point_name = '{}{}'.format(number, attr)
-                output_name = '{}_{}_{}_{}.{}'.format(
-                    point_prefix, point_name, registrator_number,
-                    sensor_number,
-                    extension)
-            else:
-                output_name = 'ZZ_{}_{}_{}.{}'.format(
-                    datetime.strftime(left_dt, '%Y-%m-%d'), registrator_number,
-                    sensor_number, extension)
-
-            export_path = os.path.join(export_folder, output_name)
-
-            # запись файла
-            f = open(export_path, 'wb')
-            f.write(main_header.get_binary_format())
-            f.write(channel_header_a.get_binary_format())
-            f.write(channel_header_b.get_binary_format())
-            f.write(channel_header_c.get_binary_format())
-
-            block_count = int((right_dt - left_dt).total_seconds() / 3600) + 1
-            for block_index in range(block_count):
-                left_dt_block = left_dt + timedelta(hours=block_index)
-                if left_dt_block >= right_dt:
-                    break
-                right_dt_block = left_dt_block + timedelta(hours=1,
-                                                           microseconds=-1)
-                if right_dt_block > right_dt:
-                    right_dt_block = right_dt
-                self.__read_date_time_start = left_dt_block
-                self.__read_date_time_stop = right_dt_block
-                block_signals = self.signals
-                if block_signals is None:
-                    break
-                block_signals.astype(np.int32).tofile(f)
-            f.close()
-            output_files.append(output_name)
-
-        # восстановление исходных значений
-        self.__use_avg_values = start_use_avg_values_flag
-        self.__read_date_time_start = start_read_dt_start_value
-        self.__read_date_time_stop = start_read_dt_stop_value
-        return tuple(output_files)
+    # @property
+    # def dates(self):
+    #     is_correct, errors = self.check_correct()
+    #     if not is_correct:
+    #         return None
+    #
+    #     record_start = self.datetime_start
+    #     record_stop = self.datetime_stop
+    #
+    #     days_count = (record_stop.date() - record_start.date()).days + 1
+    #
+    #     result = list()
+    #     for i in range(days_count):
+    #         result.append(record_start + timedelta(days=i))
+    #     return tuple(result)
+    #
+    # def split_file_by_date(self, export_folder):
+    #     """
+    #     Метод для разбития bin-файла на части, чтобы сигнал был отнесен
+    #     только к единой дате
+    #     :param export_folder: папка экспорта данных
+    #     :return:
+    #     """
+    #     date_list = self.dates
+    #     if date_list is None:
+    #         return None
+    #
+    #     # запоминание начального состояния параметров
+    #     start_use_avg_values_flag = self.__use_avg_values
+    #     start_read_dt_start_value = self.__read_date_time_start
+    #     start_read_dt_stop_value = self.__read_date_time_stop
+    #
+    #     # принудительное отключение вычитания средних значений
+    #     self.__use_avg_values = False
+    #
+    #     record_start = self.datetime_start
+    #     record_stop = self.datetime_stop
+    #
+    #     if len(date_list) == 1:
+    #         return None
+    #
+    #     # получение заголовков файла
+    #     main_header = self.main_header
+    #     channel_header_a = self.get_channel_header(channel_index=0)
+    #     channel_header_b = self.get_channel_header(channel_index=1)
+    #     channel_header_c = self.get_channel_header(channel_index=2)
+    #
+    #     extension = self.extension
+    #     sensor_number = self.sensor_number
+    #     registrator_number = self.registrator_number
+    #
+    #     days_count = len(date_list)
+    #     output_files = list()
+    #     for day_index in range(days_count):
+    #         left_dt = datetime(year=record_start.year,
+    #                            month=record_start.month,
+    #                            day=record_start.day) + \
+    #                   timedelta(days=day_index)
+    #         if left_dt < record_start:
+    #             left_dt = record_start
+    #
+    #         right_dt = datetime(year=record_start.year,
+    #                             month=record_start.month,
+    #                             day=record_start.day) + \
+    #                    timedelta(days=day_index + 1, microseconds=-1)
+    #         if right_dt > record_stop:
+    #             right_dt = record_stop
+    #
+    #         main_header.day = left_dt.day
+    #         main_header.month = left_dt.month
+    #         main_header.year = left_dt.year
+    #
+    #         if self.device_type == 'Baikal7':
+    #             marker_dt = datetime(1980, 1, 1, 0, 0, 0)
+    #             seconds_count = int((left_dt - marker_dt).total_seconds())
+    #             main_header.time_begin = seconds_count * 256000000
+    #         elif self.device_type == 'Baikal8':
+    #             marker_dt = datetime(year=left_dt.year,
+    #                                  month=left_dt.month,
+    #                                  day=left_dt.day)
+    #             seconds_count = (left_dt - marker_dt).total_seconds()
+    #             main_header.time_first_point = seconds_count
+    #
+    #         if self.data_type == 'Revise':
+    #             output_name = 'RV_{}_{}_{}.{}'.format(
+    #                 datetime.strftime(left_dt, '%Y-%m-%d'),
+    #                 registrator_number,
+    #                 sensor_number, extension)
+    #         elif self.data_type == 'Variation':
+    #             output_name = 'VR_{}_{}_{}.{}'.format(
+    #                 datetime.strftime(left_dt, '%Y-%m-%d'),
+    #                 registrator_number,
+    #                 sensor_number, extension)
+    #         elif self.data_type in ('Revise', 'Variation', 'Ordinal',
+    #                                 'Control', 'Well'):
+    #             point_prefix = self.point_prefix
+    #             number, attr = self.point_name
+    #             point_name = '{}{}'.format(number, attr)
+    #             output_name = '{}_{}_{}_{}.{}'.format(
+    #                 point_prefix, point_name, registrator_number,
+    #                 sensor_number,
+    #                 extension)
+    #         else:
+    #             output_name = 'ZZ_{}_{}_{}.{}'.format(
+    #                 datetime.strftime(left_dt, '%Y-%m-%d'),
+    #                 registrator_number,
+    #                 sensor_number, extension)
+    #
+    #         export_path = os.path.join(export_folder, output_name)
+    #
+    #         # запись файла
+    #         f = open(export_path, 'wb')
+    #         f.write(main_header.get_binary_format())
+    #         f.write(channel_header_a.get_binary_format())
+    #         f.write(channel_header_b.get_binary_format())
+    #         f.write(channel_header_c.get_binary_format())
+    #
+    #         block_count = int((right_dt - left_dt).total_seconds() / 3600) + 1
+    #         for block_index in range(block_count):
+    #             left_dt_block = left_dt + timedelta(hours=block_index)
+    #             if left_dt_block >= right_dt:
+    #                 break
+    #             right_dt_block = left_dt_block + timedelta(hours=1,
+    #                                                        microseconds=-1)
+    #             if right_dt_block > right_dt:
+    #                 right_dt_block = right_dt
+    #             self.__read_date_time_start = left_dt_block
+    #             self.__read_date_time_stop = right_dt_block
+    #             block_signals = self.signals
+    #             if block_signals is None:
+    #                 break
+    #             block_signals.astype(np.int32).tofile(f)
+    #         f.close()
+    #         output_files.append(output_name)
+    #
+    #     # восстановление исходных значений
+    #     self.__use_avg_values = start_use_avg_values_flag
+    #     self.__read_date_time_start = start_read_dt_start_value
+    #     self.__read_date_time_stop = start_read_dt_stop_value
+    #     return tuple(output_files)

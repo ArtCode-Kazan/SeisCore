@@ -8,7 +8,7 @@
     - pywavelets    version 1.0.2
     - matplotlib    version 2.1.1
 
-# HYSTORY
+# HISTORY
 
 # version 0.0.0
 Первая версия пакета
@@ -245,3 +245,25 @@ read_date_time_stop для указания даты+времени считыв
 # version 0.2.4
 Исправлены ошибки в чтении файла - установлен строгий тип массива при 
 считывании np.int32, что позволило использовать новую версию numpy
+
+# version 0.2.5
+Binary class was edited. Added new property - ordered_signal_by_components.
+The method return ordered signal by components - x,y,z
+Edited property end moment - correct end position for reading signal
+
+# version 0.2.6
+Binary class was edited. Add new data type - HydroFrac
+
+# version 0.2.7
+Binary class was edited. Change correct condition - deleted condition with 
+time duration
+
+# version 0.2.8
+Binary class was edited. Fix bug with subtraction average value from signal
+
+# version 0.2.9
+Created temporary class for reading Sigma device data
+
+# version 0.3.0
+Add new file format - Sigma (bin-file) to BinaryFile Class. Deprecated
+methods in BinaryFile Class: dates, split_file_by_date

@@ -107,7 +107,7 @@ def _plot(times, frequencies, amplitudes, cmap, cnorm,
     """
     warnings.filterwarnings("ignore")
     # настройка вывода спектрограммы
-    mpl.rc('font', family='Verdana')
+    # mpl.rc('font', family='Verdana')
 
     # настройка отступов полей
     mpl.rcParams['figure.subplot.left'] = 0.07

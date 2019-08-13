@@ -19,7 +19,7 @@ def plot_signal(time_start_sec, frequency, signal, label, output_folder,
     :return: None
     """
     # настройка шрифта (для отображения русских букв)
-    mpl.rc('font', family='Verdana')
+    # mpl.rc('font', family='Verdana')
 
     # настройка отступов полей
     mpl.rcParams['figure.subplot.left'] = 0.07
@@ -101,7 +101,7 @@ def plot_average_spectrum(frequency, spectrum_begin_amplitudes,
     :return: функция ничего не возвращает. Работает как процедура
     """
     # настройка шрифта (для отображения русских букв)
-    mpl.rc('font', family='Verdana')
+    # mpl.rc('font', family='Verdana')
 
     # настройка отступов полей
     mpl.rcParams['figure.subplot.left'] = 0.07
