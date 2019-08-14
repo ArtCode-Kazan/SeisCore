@@ -256,6 +256,8 @@ class MainHeader:
         elif self._device_type == 'Baikal8':
             if self.dt is None or self.dt == 0:
                 return None
+            else:
+                return int(1 / self.dt)
         elif self._device_type == 'Sigma':
             return self.signal_frequency
         else:
