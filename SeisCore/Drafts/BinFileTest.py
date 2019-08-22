@@ -2,7 +2,7 @@ from SeisCore.BinaryFile.BinaryFile import BinaryFile
 
 bin_data=BinaryFile()
 bin_data.path='/media/michael/Data/Projects/GRP/DemkinskoeDeposit' \
-              '/Demkinskoe_4771/Binary/DM08_90043_530_2019-07-28_15-10-36.00'
+              '/Demkinskoe_4771/DefectedBinary/DM20_sigma002_2019-08-07_08-48-25.bin'
 bin_data.record_type='ZXY'
 print(bin_data.datetime_start, bin_data.datetime_stop)
 # bin_data.data_type='HydroFrac'

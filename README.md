@@ -267,3 +267,7 @@ Created temporary class for reading Sigma device data
 # version 0.3.0
 Add new file format - Sigma (bin-file) to BinaryFile Class. Deprecated
 methods in BinaryFile Class: dates, split_file_by_date
+
+# version 0.3.1
+Fix bug in Binary Class. Change reading time of recording start from
+Sigma file type

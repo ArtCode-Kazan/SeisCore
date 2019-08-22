@@ -2,7 +2,7 @@ from SeisCore.BinaryFile.BinaryFile import _binary_read
 import struct
 
 file = r'/media/michael/Data/Projects/GRP/DemkinskoeDeposit/Demkinskoe_4772' \
-       r'-4783/Binary/HF_0009_2019-07-30_16-25-44_sigma001_sigma001.bin'
+       r'-4783/DefectedBinary/HF_0012_2019-07-30_08-30-33_sigma003_sigma003.bin'
 
 bin_data = open(file, 'rb')
 ch_count = _binary_read(bin_data, 12, 'I', 1)

@@ -197,6 +197,7 @@ class MainHeader:
             if self.time_first_point is None:
                 errors.append('Отсутствует значение времени начала записи '
                               'сигнала')
+
         if len(errors) > 0:
             error = '\n'.join(errors)
             return False, error
@@ -232,6 +233,8 @@ class MainHeader:
         elif self._device_type == 'Sigma':
             date_src=str(self.date_start)
             time_src=str(self.time_start)
+            if len(time_src)==5:
+                time_src='0'+time_src
             year = 2000+int(date_src[:2])
             month = int(date_src[2:4])
             day = int(date_src[4:])
