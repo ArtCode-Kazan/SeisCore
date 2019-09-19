@@ -8,6 +8,9 @@ import warnings
 import os
 
 
+plt.switch_backend('SVG')
+
+
 def _specgram(signal_data, frequency_of_signal,
               min_frequency=None, max_frequency=None, time_start=0):
     """
@@ -146,7 +149,7 @@ def _plot(times, frequencies, amplitudes, cmap, cnorm,
     export_path = os.path.join(output_folder, output_name + '.png')
     plt.savefig(export_path, dpi=96)
     # закрытие плота
-    plt.close()
+    plt.close(fig)
 
     # проверка сохранения файла
     if os.path.isfile(export_path):

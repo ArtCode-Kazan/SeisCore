@@ -4,6 +4,9 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 
+plt.switch_backend('SVG')
+
+
 def plot_signal(time_start_sec, frequency, signal, label, output_folder,
                 output_name):
     """

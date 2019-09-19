@@ -271,3 +271,7 @@ methods in BinaryFile Class: dates, split_file_by_date
 # version 0.3.1
 Fix bug in Binary Class. Change reading time of recording start from
 Sigma file type
+
+# version 0.3.2
+Fix bug in spectrogram module: fix bug matplotlib _tkinter.TCLError -
+change matplotlib.plot backend
