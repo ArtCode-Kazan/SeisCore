@@ -778,7 +778,7 @@ class BinaryFile:
 
     @property
     def record_type(self):
-        if self.device_type=='Sigma' and self.__record_type is None:
+        if self.__record_type is None:
             self.__record_type='ZXY'
         return self.__record_type
 
