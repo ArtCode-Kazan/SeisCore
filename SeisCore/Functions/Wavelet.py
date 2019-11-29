@@ -87,4 +87,9 @@ def detrend(signal, frequency, edge_frequency):
         detrend_sig = waverec(wavelet_data, 'db10')
     else:
         detrend_sig = None
+    if detrend_sig.shape[0]>signal.shape[0]:
+        detrend_sig=detrend_sig[:signal.shape[0]]
+    elif detrend_sig.shape[0]<signal.shape[0]:
+        zero_count=signal.shape[0]-detrend_sig.shape[0]
+        detrend_sig=np.append(detrend_sig,[0]*zero_count)
     return detrend_sig

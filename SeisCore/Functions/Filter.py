@@ -1,3 +1,4 @@
+import numpy as np
 from scipy.fftpack import rfft, irfft, rfftfreq
 
 
@@ -38,4 +39,39 @@ def marmett(signal, order):
         recalc[0] = (signal[0] + signal[1]) / 2
         recalc[-1] = (signal[-1] + signal[-2]) / 2
         signal = recalc.copy()
+    return signal
+
+
+def sl_filter(signal, frequency, order=3, long_window=1, short_window=0.1):
+    """
+    Function for sta/lta filtration
+    :param signal: one-dimension array os signal
+    :param frequency: signal frequency
+    :param order: filter order
+    :param long_window: long window size (seconds)
+    :param short_window: short window size (seconds)
+    :return: filtered signal (one-dimension array)
+    """
+    long_window=int(frequency*long_window)
+    short_window=int(frequency*short_window)
+
+    for j in range(order):
+        left_lim = j * long_window
+        coeffs=np.zeros_like(signal)
+        for i in range(left_lim + long_window,
+                       signal.shape[0] - short_window):
+            lta_window = signal[i - long_window:i, 1]
+            lta = np.mean(np.abs(lta_window))
+
+            sta_window = signal[i-short_window:i, 1]
+            sta = np.mean(np.abs(sta_window))
+
+            if lta == 0:
+                val = 0
+            else:
+                val = sta / lta
+            coeffs[i] = val
+
+        coeffs = (coeffs - np.min(coeffs)) / (np.max(coeffs) - np.min(coeffs))
+        signal = signal * coeffs
     return signal

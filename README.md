@@ -275,3 +275,6 @@ Sigma file type
 # version 0.3.2
 Fix bug in spectrogram module: fix bug matplotlib _tkinter.TCLError -
 change matplotlib.plot backend
+
+# version 0.3.4
+Add function Wavelet detrend functions and STA/LTA filter
