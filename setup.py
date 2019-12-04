@@ -1,7 +1,7 @@
 from setuptools import setup
 from setuptools import find_packages
 setup(name='SeisCore',
-      version='0.3.4',
+      version='0.3.6',
       packages=find_packages(),
       description='Package for processing of microseismic data',
       author='Michael Chernov',

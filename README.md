@@ -278,3 +278,10 @@ change matplotlib.plot backend
 
 # version 0.3.4
 Add function Wavelet detrend functions and STA/LTA filter
+
+# version 0.3.5
+Fix bug in function STA/LTA filter
+
+# version 0.3.6
+Change STA/LTA filter - function was busted
+
