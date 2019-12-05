@@ -42,7 +42,7 @@ def marmett(signal, order):
     return signal
 
 
-def sl_filter(signal, frequency, order=3, short_window=0.1, long_window=1):
+def sl_filter(signal, frequency, short_window=0.1, long_window=1.0, order=3):
     """
     Function for sta/lta filtration
     :param signal: one-dimension array os signal
@@ -54,17 +54,16 @@ def sl_filter(signal, frequency, order=3, short_window=0.1, long_window=1):
     """
     long_window = int(frequency * long_window)
     short_window = int(frequency * short_window)
-
+    signal = signal - np.mean(signal)
     for j in range(order):
-        left_lim = j * long_window
+        left_lim = (j+1) * long_window
         coeffs = np.zeros_like(signal)
         lta_sum = 0
         sta_sum = 0
-        for i in range(left_lim + long_window,
-                       signal.shape[0] - short_window):
+        for i in range(left_lim, signal.shape[0] - short_window):
             lta_window = signal[i - long_window:i]
             sta_window = signal[i - short_window:i]
-            if i == 0:
+            if i == left_lim:
                 lta_sum = np.sum(np.abs(lta_window))
                 sta_sum = np.sum(np.abs(sta_window))
             else:
@@ -84,4 +83,5 @@ def sl_filter(signal, frequency, order=3, short_window=0.1, long_window=1):
 
         coeffs = (coeffs - np.min(coeffs)) / (np.max(coeffs) - np.min(coeffs))
         signal = signal * coeffs
+        signal = signal - np.mean(signal)
     return signal
