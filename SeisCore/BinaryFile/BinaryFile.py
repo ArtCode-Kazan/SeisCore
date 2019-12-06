@@ -81,7 +81,7 @@ class MainHeader:
     # долгота
     longitude = None
     # Экслюзивные поля для каждого типа прибора
-    if _device_type == 'Baikal7':
+    if _device_type in ['Baikal7', 'Baikal7Part']:
         # шаг квантования сигнала по времени (в секундах) = 1/signal_frequency
         dt = None
         # зарезервировано системой
@@ -162,7 +162,8 @@ class MainHeader:
         :return:
         """
         errors = list()
-        if self._device_type == 'Baikal7' and self.signal_frequency is None:
+        if self._device_type in ['Baikal7', 'Baikal7Part'] and \
+                self.signal_frequency is None:
             errors.append('Отсутствует частота записи сигнала')
 
         if self._device_type == 'Baikal8':
@@ -213,7 +214,7 @@ class MainHeader:
         is_correct = self.check_correct()
         if not is_correct:
             return None
-        if self._device_type == 'Baikal7':
+        if self._device_type in ['Baikal7', 'Baikal7Part']:
             # получение времени в секундах, начиная от 1 января 1980 г 0:00:00
             seconds = self.time_begin / 256000000
             # точка отсчета времени в приборе 1 января 1980 г 0:00:00
@@ -251,7 +252,7 @@ class MainHeader:
         Свойство-геттер, возвращающее частоту дискретизации записи сигнала
         :return:
         """
-        if self._device_type == 'Baikal7':
+        if self._device_type in ['Baikal7', 'Baikal7Part']:
             if self.dt is None or self.dt == 0:
                 return self.signal_frequency
             else:
@@ -271,7 +272,7 @@ class MainHeader:
         Метод, возвращающий заголовок файла в бинарном формате
         :return:
         """
-        if self._device_type == 'Baikal7':
+        if self._device_type in ['Baikal7', 'Baikal7Part']:
             result = struct.pack('H', self.channel_count)
             result += struct.pack('H', self.reserved1)
             result += struct.pack('H', self.version)
@@ -353,7 +354,7 @@ class ChannelHeader:
     # неясное содержание
     calcfreq = None
     # Эксклюзивные поля для каждого типа прибора
-    if _device_type == 'Baikal7':
+    if _device_type in ['Baikal7', 'Baikal7Part']:
         # неясное содержание
         adc_gain = None
 
@@ -362,7 +363,7 @@ class ChannelHeader:
         Метод, возвращающий заголовк канала в бинарном виде
         :return:
         """
-        if self._device_type == 'Baikal7':
+        if self._device_type in ['Baikal7', 'Baikal7Part']:
             result = struct.pack('H', self.phys_num)
             result += struct.pack('H', self.adc_gain)
             result += struct.pack('2H', self.reserved, 0)
@@ -566,7 +567,7 @@ class BinaryFile:
         if self.path is None:
             return None
         dt = (self.read_date_time_stop - self.datetime_start).total_seconds()
-        return int(round(dt * self.signal_frequency) - 1)
+        return int(round(dt * self.signal_frequency))
 
     @property
     def device_type(self):
@@ -574,8 +575,10 @@ class BinaryFile:
             return None
         file_name = os.path.basename(self.path)
         name, extension = file_name.split('.')
-        if extension == '00':
+        if extension=='00':
             return 'Baikal7'
+        elif extension=='00part':
+            return 'Baikal7Part'
         elif extension == 'xx':
             return 'Baikal8'
         elif extension == 'bin':
@@ -597,7 +600,7 @@ class BinaryFile:
         # создание экземпляра класса MainHeader
         main_header = MainHeader(self.device_type)
         # парсинг заголовка в зависимости от типа файла
-        if self.device_type == 'Baikal7':
+        if self.device_type in ['Baikal7', 'Baikal7Part']:
             main_header.channel_count = _binary_read(file_data, 0, 'H', 1)
             main_header.reserved1 = _binary_read(file_data, 0, 'H', 1)
             main_header.version = _binary_read(file_data, 0, 'H', 1)
@@ -691,6 +694,14 @@ class BinaryFile:
             channel_header.sensor_type = _binary_read(bin_data, 0, "s", 24)
             channel_header.coefficient = _binary_read(bin_data, 0, "d", 1)
             channel_header.calcfreq = _binary_read(bin_data, 0, "d", 1)
+        elif self.device_type == 'Baikal7Part':
+            channel_header.phys_num = 0
+            channel_header.adc_gain = 0
+            channel_header.reserved = 10
+            channel_header.channel_name = '_'
+            channel_header.sensor_type = '_'
+            channel_header.coefficient = 0.0
+            channel_header.calcfreq = 0.0
         if self.device_type == 'Baikal8':
             channel_header.phys_num = _binary_read(bin_data, 0, "H", 1)
             channel_header.reserved = _binary_read(bin_data, 0, "H", 3)
@@ -722,7 +733,7 @@ class BinaryFile:
         main_header = self.main_header
         if main_header is None:
             return None
-        if self.device_type in ('Baikal7', 'Baikal8'):
+        if self.device_type in ('Baikal7', 'Baikal7Part', 'Baikal8'):
             return main_header.longitude
         elif self.device_type=='Sigma':
             return float(main_header.longitude[1:-1])
@@ -734,7 +745,7 @@ class BinaryFile:
         main_header = self.main_header
         if main_header is None:
             return None
-        if self.device_type in ('Baikal7', 'Baikal8'):
+        if self.device_type in ('Baikal7', 'Baikal7Part', 'Baikal8'):
             return main_header.latitude
         elif self.device_type == 'Sigma':
             return float(main_header.latitude[:-1])
@@ -984,6 +995,8 @@ class BinaryFile:
     def extension(self):
         if self.device_type == 'Baikal7':
             return '00'
+        if self.device_type =='Baikal7Part':
+            return '00part'
         elif self.device_type == 'Baikal8':
             return 'xx'
         elif self.device_type == 'Sigma':

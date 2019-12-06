@@ -60,12 +60,10 @@ def sl_filter(signal, frequency, short_window=0.1, long_window=1.0, order=3):
         coeffs = np.zeros_like(signal)
         lta_sum = 0
         sta_sum = 0
-        for i in range(left_lim, signal.shape[0] - short_window):
-            lta_window = signal[i - long_window:i]
-            sta_window = signal[i - short_window:i]
+        for i in range(left_lim, signal.shape[0]):
             if i == left_lim:
-                lta_sum = np.sum(np.abs(lta_window))
-                sta_sum = np.sum(np.abs(sta_window))
+                lta_sum = np.sum(np.abs(signal[i - long_window:i]))
+                sta_sum = np.sum(np.abs(signal[i - short_window:i]))
             else:
                 lta_sum = lta_sum - np.abs(signal[i - long_window - 1]) + \
                           np.abs(signal[i - 1])

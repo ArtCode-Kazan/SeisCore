@@ -131,6 +131,12 @@ bin_data=BinaryFile()
 bin_data.path='/media/michael/Data/Projects/GRP/DemkinskoeDeposit' \
               '/Demkinskoe_4771/Binary/HF_0001_2019-07-28_07-40-24_065_127.xx'
 bin_data.record_type='ZXY'
+
+print(bin_data.discrete_amount)
+print((bin_data.signals.shape))
+exit(0)
+
+
 bin_data.read_date_time_start=datetime(2019,7,28,8,0,0)+timedelta(
     seconds=-1*3)
 bin_data.read_date_time_stop=datetime(2019,7,28,8,0,2)
