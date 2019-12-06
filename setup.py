@@ -9,4 +9,9 @@ setup(name='SeisCore',
       license='MIT',
       include_package_data=True,
       zip=False,
-      install_requires=['numpy', 'scipy', 'pywavelets', 'matplotlib'])
+      install_requires=[
+            'numpy==1.16.3',
+            'scipy==1.2.1',
+            'pywavelets==1.0.2',
+            'matplotlib==2.1.1'
+                        ])
