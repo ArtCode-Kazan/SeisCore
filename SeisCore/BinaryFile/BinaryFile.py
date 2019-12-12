@@ -567,7 +567,7 @@ class BinaryFile:
         if self.path is None:
             return None
         dt = (self.read_date_time_stop - self.datetime_start).total_seconds()
-        return int(round(dt * self.signal_frequency))
+        return int(round(dt * self.signal_frequency)+1)
 
     @property
     def device_type(self):
@@ -914,31 +914,18 @@ class BinaryFile:
         # сигнала. если параметр равен None, выборка начинается от первого
         # отсчета (нумерация отсчетов с единицы)
         # signals = None
-        if self.start_moment is not None:
-            bytes_count = self.start_moment * 4 * 3
-            file_data.seek(336 + bytes_count)
-        else:
-            file_data.seek(336)
+        bytes_count = self.start_moment * 4 * 3
+        file_data.seek(336 + bytes_count)
 
-        if self.end_moment is None:
-            try:
-                bin_data = file_data.read()
-                signals = np.frombuffer(bin_data, dtype=np.int32)
-            except MemoryError:
-                return None
-            finally:
-                # закрытие файла
-                file_data.close()
-        else:
-            moment_count = self.end_moment - self.start_moment + 1
-            try:
-                bin_data = file_data.read(moment_count * 3 * 4)
-                signals = np.frombuffer(bin_data, dtype=np.int32)
-            except MemoryError:
-                return None
-            finally:
-                # закрытие файла
-                file_data.close()
+        moment_count = self.end_moment - self.start_moment
+        try:
+            bin_data = file_data.read(moment_count * 3 * 4)
+            signals = np.frombuffer(bin_data, dtype=np.int32)
+        except MemoryError:
+            return None
+        finally:
+            # закрытие файла
+            file_data.close()
 
         # проверка на пустотность выборки сигнала
         if signals.shape[0] == 0:
@@ -951,11 +938,9 @@ class BinaryFile:
 
         # проверка на размер выборки сигнала,
         # если указаны end_moment и start_moment
-        if self.start_moment is not None and self.end_moment is not None:
-            if (self.end_moment - self.start_moment + 1) != signal_count:
-                print(self.end_moment - self.start_moment + 1, signal_count)
-                print('Err')
-                return None
+        if (self.end_moment - self.start_moment) != signal_count:
+            print('Error: wrong size array data')
+            return None
 
         # проверка значения параметра ресемплирования
         if self.resample_parameter is None:

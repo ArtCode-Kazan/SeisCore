@@ -288,3 +288,5 @@ Change STA/LTA filter - function was busted
 # version 0.3.7
 Add new file type in BinaryFile Class - Temporary file for Baikal7 (U3, U4, etc)
 
+# version 0.3.8
+Fix bug in BinaryFile Class - Change method signals

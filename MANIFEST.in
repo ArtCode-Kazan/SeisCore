@@ -1,3 +1,2 @@
 recursive-include SeisCore *.so
 recursive-include SeisCore *.pyd
-recursive-exclude SeisCore setup.py
