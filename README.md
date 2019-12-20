@@ -290,3 +290,7 @@ Add new file type in BinaryFile Class - Temporary file for Baikal7 (U3, U4, etc)
 
 # version 0.3.8
 Fix bug in BinaryFile Class - Change method signals: fix signal array size
+
+# version 0.3.9
+Refactoring Spectrogram module and BinaryFile class code - remove setter of
+ record type. Record type by default - ZXY for all sensors

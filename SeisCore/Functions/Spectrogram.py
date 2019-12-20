@@ -11,182 +11,171 @@ import os
 plt.switch_backend('SVG')
 
 
-def _specgram(signal_data, frequency_of_signal,
-              min_frequency=None, max_frequency=None, time_start=0):
+def specgram(signal_data, frequency_of_signal,
+             min_frequency=None, max_frequency=None, time_start=0):
     """
-    Функция вычисления параметров 2D-спектрограммы
-    :param time_start: разница времени в секундах между временем старта
-    прибора и временем начала генерации спектрограммы
-    :param signal_data: массив numpy сигнала
-    :param frequency_of_signal: частота дискретизации сигнала
-    :param min_frequency: минимальная частота для вычисления спектрограммы
-    :param max_frequency: максимальная частота для вычисления спектрограммы
-    :return: список вида: [время (с), частота(Гц), амплитуда(усл. единицы)]
+    Method for calculation spectrogram data
+    :param signal_data: 1D-array of signal data
+    :param frequency_of_signal: signal frequency
+    :param min_frequency: low cut frequency for spectrogram visualization
+    :param max_frequency: high cut frequency for spectrogram visualization
+    :param time_start: time difference (in seconds) between signal
+    start time and spectrogram analysis start time
+    :return: tuple with time(seconds), frequencies(Hz), amplitudes(dB)
     """
-    # создание окна Кайзера с параметрами:
+    # Kaiser window creation:
     # M=2048 beta=5 sym=false
     window_kaiser = signal.windows.kaiser(2048, 5, False)
 
-    # окно построения спектрограммы
+    # spectrogram window
     nfft_window_size = 8192
-    # перекрытие окна построения спектрограммы
+    # noverlap of window
     noverlap_size = 1792    # 2048-256
 
     if signal_data.shape[0]<=window_kaiser.shape[0]:
         return None
 
-    # получение данных спектрограммы
     f, t, s = signal.spectrogram(x=signal_data,
                                  fs=frequency_of_signal,
                                  window=window_kaiser,
                                  nfft=nfft_window_size,
                                  noverlap=noverlap_size)
 
-    # приведение времени к времени старта прибора (секунды)
+    # correction time
     t = t + time_start
-    # получение массива индексов массива S, элементы которого относятся
-    # к интервалу частот
-    # [min_frequency<=f<=max_frequency]
+
     if min_frequency is None:
         min_frequency = 0
     if max_frequency is None:
         max_frequency = frequency_of_signal/2
 
-    # получение подмассива dS из массива S, элементы которого лежат
-    # в пределах частот
-    ds = s[((min_frequency <= f) & (f <= max_frequency))]
+    # amplitudes selection
+    ds = s[((min_frequency <= f)*(f <= max_frequency))]
 
-    # получение подмассива df из массива f, элементы которого лежат в пределах
-    # [min_frequency<=f<=max_frequency]
-    df = f[((min_frequency <= f) & (f <= max_frequency))]
-
-    # возврат результата
+    # frequencies selection
+    df = f[((min_frequency <= f)*(f <= max_frequency))]
     return t, df, ds
 
 
-def _scale(amplitudes):
+def scale_limits(amplitudes, frequencies=None, low_f=None, high_f=None):
     """
-    Функция для расчета параметров раскраски цветовой шкалы
-    :param amplitudes: матрица значений амплитуд (комплексные числа)
-    :return: цветовая шкала cmap, уровни цветовой шкалы norm
+    Method for defining spectrogram scale limits
+    :param amplitudes: spectrogram amplitude matrix
+    :param frequencies: array of frequency
+    :param low_f: low cut frequency
+    :param high_f: high cut frequency
+    :return: scale limits
     """
-    # расчет параметров для раскраски спектрограммы
-    # среднее значение амплитуды из выборки по частоте
+    if frequencies is not None:
+        if low_f is None:
+            low_f = 0
+        if high_f is None:
+            high_f = frequencies[-1]
+        amplitudes = amplitudes[((low_f <= frequencies) & (frequencies <= high_f))]
+
     mid_amp = abs(amplitudes).mean()
-    disp_sum = 0  # сумма дисперсий для каждого интервала времени
+    # dispersion sum for each time interval
+    disp_sum = 0
     for i in range(amplitudes.shape[1]):
         d = np.std(abs(amplitudes[:, i]) - mid_amp)
         disp_sum += d
-    # среднее значение дисперсии за все времена
+    # average dispersion value
     disp_average = disp_sum / amplitudes.shape[1]
 
-    # минимальное значение цветовой шкалы (в децибелах!)
+    # minimal scale value (dB)
     bmin = 20 * np.log10(abs(np.min(amplitudes)))
-    # максимальное значение цветовой шкалы (в децибелах!)
+    # maximal scale value (dB)
     bmax = 20 * np.log10(mid_amp + 9 * disp_average)
+    return bmin, bmax
 
-    # расчет параметров цветовой шкалы
-    # создание уровней
+
+def get_scale(amplitudes):
+    """
+    Method for getting scale parameters (matplotlib)
+    :param amplitudes: amplitude matrix (dB)
+    :return: colormap parameters
+    """
+    bmin, bmax = scale_limits(amplitudes=amplitudes)
     levels = MaxNLocator(nbins=100).tick_values(bmin, bmax)
-    cmap = plt.get_cmap('jet')  # цветовая шкала jet
-    # построение цветовой шкалы с учетом уровней
+    cmap = plt.get_cmap('jet')
     norm = BoundaryNorm(boundaries=levels, ncolors=cmap.N, clip=False)
     return cmap, norm
 
 
-def _plot(times, frequencies, amplitudes, cmap, cnorm,
-          output_folder, output_name):
+def plot(times, frequencies, amplitudes, cmap, cnorm,output_folder,
+         output_name):
     """
-    Функция для визуализации данных спектрограммы в виде png-файла
-    :param times: массив времен
-    :param frequencies: массив частот
-    :param amplitudes: матрица амплитуд (в усл. единицах!)
-    :param cmap: цветовая шкала cmap
-    :param cnorm: уровни цветовой шкалы norm
-    :param output_folder: папка, куда будет сохранятся рисунок спектрограммы
-    :param output_name: имя выходного файла спектрограмма
-    :return: функция ничего не возвращает, работает как процедура
-
+    Method for spectrogram export to png file
+    :param times: time 1D-array (seconds)
+    :param frequencies: frequency 1D-array(Hz)
+    :param amplitudes: amplitude matrix
+    :param cmap: colormap
+    :param cnorm: colormap levels
+    :param output_folder: output folder
+    :param output_name: output file name
     """
     warnings.filterwarnings("ignore")
-    # настройка вывода спектрограммы
-    # mpl.rc('font', family='Verdana')
 
-    # настройка отступов полей
+    # document field offset
     mpl.rcParams['figure.subplot.left'] = 0.07
     mpl.rcParams['figure.subplot.right'] = 0.97
     mpl.rcParams['figure.subplot.bottom'] = 0.05
     mpl.rcParams['figure.subplot.top'] = 0.95
 
-    # создание бланка графика
     fig = plt.figure()
 
-    # размер плота в дюймах
+    # calc document size in inches (depend on time duration)
     ly = 9
     if np.max(times)-np.min(times) > 3600:
         lx = 12 / 3600 * (np.max(times)-np.min(times))
-        # ly = 9/20*(max_frequency_visualize-min_frequency_visulize)
     else:
         lx = 12
-        # ly = 9
+
     fig.set_size_inches(lx, ly)
-    # разрешение отображения графика
+
     fig.dpi = 96
-    # подготовка осей
     axes = fig.add_subplot(111)
 
-    # отображение спектрограммы в виде децибелов=20*lg(|amp|)
+    # decibels calculation
+    amplitudes=20 * np.log10(abs(amplitudes))
+
     axes.pcolormesh(times, frequencies, 20 * np.log10(abs(amplitudes)),
                     cmap=cmap, norm=cnorm)
-    # заголовки осей
-    x_label = u'Время, с'
-    y_label = u'Частота, Гц'
+
+    x_label = 'Time, s'
+    y_label = 'Frequency, Hz'
     axes.set_ylabel(y_label)
     axes.set_xlabel(x_label)
-    # подпись графика
+
     axes.set_title(output_name, fontsize=10)
-    # сохранение графика в png
+
     export_path = os.path.join(output_folder, output_name + '.png')
     plt.savefig(export_path, dpi=96)
-    # закрытие плота
     plt.close(fig)
-
-    # проверка сохранения файла
-    if os.path.isfile(export_path):
-        return True
-    else:
-        return False
 
 
 def create_spectrogram(signal_data, frequency, output_folder, output_name,
                        min_frequency=None, max_frequency=None, time_start=0):
     """
-    Метод для построения и экспорта спектрограммы в файл
-    :param signal_data: сигнал
-    :param frequency: частота сигнала
-    :param output_folder: папка экспорта
-    :param output_name: имя выходного файла (без расширения)
-    :param min_frequency: минимальная частота визуализации сигнала
-    :param max_frequency: максимальная частота визуализации сигнала
-    :param time_start: время от начала записи сигнала (секунды)
-    :return:
+    Simple method for creating and exporting spectrogram to png file
+    :param signal_data: 1D-array of signal data
+    :param frequency: signal frequency
+    :param output_folder: export folder path
+    :param output_name: output file name (without extension)
+    :param min_frequency: low cut frequency for spectrogram visualization
+    :param max_frequency: high cut frequency for spectrogram visualization
+    :param time_start: time difference (in seconds) between signal
+    start time and spectrogram analysis start time
     """
-    # вычисление параметров спектрограммы
-    result = _specgram(
-        signal_data=signal_data, frequency_of_signal=frequency,
-        min_frequency=min_frequency, max_frequency=max_frequency,
-        time_start=time_start)
+    result = specgram(signal_data=signal_data, frequency_of_signal=frequency,
+                      min_frequency=min_frequency,
+                      max_frequency=max_frequency, time_start=time_start)
 
     if result is None:
-        return False
+        return
 
     t, f, amplitudes = result
+    cmap, cnorm = get_scale(amplitudes=amplitudes)
 
-    # определение параметров раскраски шкалы
-    cmap, cnorm = _scale(amplitudes)
-
-    # экспорт спектрограммы в виде файла
-    result = _plot(times=t, frequencies=f, amplitudes=amplitudes,
-                   cmap=cmap, cnorm=cnorm, output_folder=output_folder,
-                   output_name=output_name)
-    return result
+    plot(times=t, frequencies=f, amplitudes=amplitudes, cmap=cmap,
+         cnorm=cnorm, output_folder=output_folder, output_name=output_name)

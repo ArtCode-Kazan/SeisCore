@@ -793,11 +793,6 @@ class BinaryFile:
             self.__record_type='ZXY'
         return self.__record_type
 
-    @record_type.setter
-    def record_type(self, value):
-        if 'X' in value and 'Y' in value and 'Z' in value and len(value) == 3:
-            self.__record_type = value
-
     def check_correct(self):
         errors = list()
         if self.path is None:
