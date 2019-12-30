@@ -294,3 +294,6 @@ Fix bug in BinaryFile Class - Change method signals: fix signal array size
 # version 0.3.9
 Refactoring Spectrogram module and BinaryFile class code - remove setter of
  record type. Record type by default - ZXY for all sensors
+ 
+# version 0.3.10
+Add STA/LTA function calculating in Filter module

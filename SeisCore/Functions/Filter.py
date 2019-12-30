@@ -42,6 +42,36 @@ def marmett(signal, order):
     return signal
 
 
+def sl_function(signal, frequency, long_window=1, short_window=0.1, order=1):
+    long_window = int(frequency * long_window)
+    short_window = int(frequency * short_window)
+
+    signal = signal - np.mean(signal)
+
+    result = np.zeros_like(signal)
+    lta_sum = 0
+    sta_sum = 0
+    left_lim = order * long_window
+    for i in range(left_lim, signal.shape[0]):
+        if i == left_lim:
+            lta_sum = np.sum(np.abs(signal[i - long_window:i]))
+            sta_sum = np.sum(np.abs(signal[i - short_window:i]))
+        else:
+            lta_sum = lta_sum - np.abs(signal[i - long_window - 1]) + \
+                np.abs(signal[i - 1])
+            sta_sum = sta_sum - np.abs(signal[i - short_window - 1]) + \
+                np.abs(signal[i - 1])
+        lta = lta_sum / long_window
+        sta = sta_sum / short_window
+
+        if lta == 0:
+            val = 0
+        else:
+            val = sta / lta
+        result[i] = val
+    return result
+
+
 def sl_filter(signal, frequency, short_window=0.1, long_window=1.0, order=3):
     """
     Function for sta/lta filtration
@@ -54,31 +84,11 @@ def sl_filter(signal, frequency, short_window=0.1, long_window=1.0, order=3):
     """
     long_window = int(frequency * long_window)
     short_window = int(frequency * short_window)
-    signal = signal - np.mean(signal)
+
     for j in range(order):
-        left_lim = (j+1) * long_window
-        coeffs = np.zeros_like(signal)
-        lta_sum = 0
-        sta_sum = 0
-        for i in range(left_lim, signal.shape[0]):
-            if i == left_lim:
-                lta_sum = np.sum(np.abs(signal[i - long_window:i]))
-                sta_sum = np.sum(np.abs(signal[i - short_window:i]))
-            else:
-                lta_sum = lta_sum - np.abs(signal[i - long_window - 1]) + \
-                          np.abs(signal[i - 1])
-                sta_sum = sta_sum - np.abs(signal[i - short_window - 1]) + \
-                          np.abs(signal[i - 1])
-
-            lta = lta_sum / long_window
-            sta = sta_sum / short_window
-
-            if lta == 0:
-                val = 0
-            else:
-                val = sta / lta
-            coeffs[i] = val
-
+        coeffs=sl_function(signal=signal, frequency=frequency,
+                           long_window=long_window,
+                           short_window=short_window, order=j+1)
         coeffs = (coeffs - np.min(coeffs)) / (np.max(coeffs) - np.min(coeffs))
         signal = signal * coeffs
         signal = signal - np.mean(signal)
