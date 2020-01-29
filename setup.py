@@ -1,7 +1,7 @@
 from setuptools import setup
 from setuptools import find_packages
 setup(name='SeisCore',
-      version='0.3.10',
+      version='0.3.11',
       packages=find_packages(),
       description='Package for processing of microseismic data',
       author='Michael Chernov',
@@ -13,4 +13,5 @@ setup(name='SeisCore',
             'numpy==1.16.3',
             'scipy==1.2.1',
             'pywavelets==1.0.2',
-            'matplotlib==2.1.1'])
+            'matplotlib==2.1.1',
+            'segyio==1.8.8'])

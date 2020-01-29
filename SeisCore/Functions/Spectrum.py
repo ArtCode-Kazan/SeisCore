@@ -3,79 +3,73 @@ from numpy.fft import rfft, rfftfreq
 from scipy.signal import medfilt
 from SeisCore.Functions.Filter import marmett
 
-"""
-Модуль для вычисления 1D-спектров сигнала
-"""
-
 
 def spectrum(signal, frequency):
     """
-    функция получения обычного Фурье спектра сигнала
-    :param signal: входной сигнал
-    :param frequency: частота дискретизации сигнала
-    :return: массив numpy спектра (частота, амплитуда)
-
+    Method for calculating simple Fourier spectrum of signal
+    :param signal: input signal
+    :param frequency: signal frequency
+    :return: 2D array of spectrum data
     """
-    # получение количества отсчетов в сигнале
     signal_count = signal.shape[0]
-    # быстрое преобразование фурье
     spectrum_data = rfft(signal)
-    # создание пустого массива, который будет в качестве выходных данных
     res = np.empty((signal_count // 2 + 1, 2), dtype=np.float)
-    res[:, 0] = rfftfreq(signal_count, 1 / frequency)  # присвоение частот
-    res[:, 1] = 2 * abs(spectrum_data) / signal_count  # присвоение амплитуд
-    # амплитуды удваиваются, чтобы не потерять энергию
-    # (спектр в отрицательных частотах зеркальный)
+    res[:, 0] = rfftfreq(signal_count, 1 / frequency)
+    res[:, 1] = 2 * abs(spectrum_data) / signal_count
     return res
 
 
-def average_spectrum(signal, frequency, window, overlap,
-                     med_filter, marmett_filter):
+def average_spectrum(signal, frequency, window, offset,
+                     med_filter=None, marmett_filter=None):
     """
-    Функция вычисления кумулятивного(среднего) спектра
-    :param signal: входной сигнал
-    :param frequency: частота дискретизации сигнала
-    :param window: размер окна расчета спектра (в отсчетах)
-    :param overlap: размер сдвига окна (в отсчетах)
-    :param med_filter: параметр медианного фильтра (может быть None)
-    :param marmett_filter: параметр фильтра marmett
-    :return: одномерный массив numpy среднего спектра
-
+    Method for calculating average (cumulative) spectrum
+    :param signal: input signal
+    :param frequency: signal frequency
+    :param window: window size (discreets)
+    :param offset: window offset (discreets)
+    :param med_filter: median filtration parameter
+    :param marmett_filter: marmett filtration parameter
+    :return: 2D array of spectrum data
     """
-    # подсчет количества передвижек окна
-    windows_count = (signal.shape[0] - window) // overlap + 1
+    windows_count = (signal.shape[0] - window) // offset + 1
 
-    # Вычисление первой передвижки окна
+    # First window position
     left_edge = 0
     right_edge = window
     selection_signal = signal[left_edge:right_edge]
     sum_a = spectrum(selection_signal, frequency)
     sum_a[:, 1] = np.power(sum_a[:, 1], 2)
-    # медианная фильтрация амплитуд (если параметр не None)
+    # median filtration
     if med_filter is not None:
         sum_a[:, 1] = medfilt(sum_a[:, 1], med_filter)
 
-    # процесс расчета остальных передвижек окон
+    # Other window positions
     for i in range(1, windows_count):
-        # левая граница окна
-        left_edge = i * overlap
-        # правая граница окна
+        left_edge = i * offset
         right_edge = left_edge + window
-        # выборка сигнала в заданном окне
         selection_signal = signal[left_edge:right_edge]
-        # вычисление спектра и одновременное их суммирование
         sp_data = np.power(spectrum(selection_signal, frequency)[:, 1], 2)
-        # медианная фильтрация амплитуд (если параметр не None)
         if med_filter is not None:
             sp_data = medfilt(sp_data, med_filter)
         sum_a[:, 1] = sum_a[:, 1] + sp_data
 
-    # получение среднего спектра (амплитуды)
+    # getting average spectrum for all windows
     sum_a[:, 1] = sum_a[:, 1] / windows_count
 
-    # фильтрация marmett амплитуд (если параметр не None)
+    # marmett filtration
     if marmett_filter is not None:
         sum_a[:, 1] = marmett(sum_a[:, 1], marmett_filter)
-
-    # возврат кумулятивного (среднего) спектра
     return sum_a
+
+
+def cepstral_spectrum(spectrum_data):
+    """
+    Calculating cepstral spectrum from other spectrum data
+    :param spectrum_data: 2D array of spectral data: first column -
+    frequencies, second - amplitudes
+    :return: cepstral spectrum
+    """
+    dt_fictive = spectrum_data[1, 0] - spectrum_data[0, 0]
+    freq_fictive = 1 / dt_fictive
+    result = spectrum(signal=spectrum_data[:, 1], frequency=freq_fictive)
+    return result

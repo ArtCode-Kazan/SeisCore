@@ -297,3 +297,8 @@ Refactoring Spectrogram module and BinaryFile class code - remove setter of
  
 # version 0.3.10
 Add STA/LTA function calculating in Filter module
+
+# version 0.3.11
+Create class for SEG-Y file reading and new type of spectrum - cepstral
+ spectrum analysis
+ 
