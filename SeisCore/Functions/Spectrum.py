@@ -73,3 +73,34 @@ def cepstral_spectrum(spectrum_data):
     freq_fictive = 1 / dt_fictive
     result = spectrum(signal=spectrum_data[:, 1], frequency=freq_fictive)
     return result
+
+
+def nakamura_spectrum(components_spectrum_data, components_order='XYZ',
+                      spectrum_type='HV'):
+    """
+    Calculating nakamura spectrum
+    :param components_spectrum_data: 2D array: first column - frequencies,
+    2,3,4 - components spectral ampolitudes
+    :param components_order: components order
+    :param spectrum_type: spectrum type:
+        HV - horizontal/vertical ratio
+        VH - vertical/horizontal ratio
+    :return: nakamura spectrum
+    """
+    x_index = components_order.index('X')
+    y_index = components_order.index('Y')
+    z_index = components_order.index('Z')
+
+    result = np.zeros(shape=(components_spectrum_data.shape[0], 2))
+    result[:, 0] = components_spectrum_data[:, 0]
+    horizontal_vector = (components_spectrum_data[:, x_index + 1] ** 2 +
+                         components_spectrum_data[:, y_index + 1] ** 2) ** 0.5
+    vertical_vector = components_spectrum_data[:, z_index + 1]
+
+    hor_ver_ratio = horizontal_vector / vertical_vector
+    if spectrum_type == 'HV':
+        result[:, 1] = hor_ver_ratio
+        return result
+    elif spectrum_type == 'VH':
+        result[:, 1] = 1 / hor_ver_ratio
+        return result

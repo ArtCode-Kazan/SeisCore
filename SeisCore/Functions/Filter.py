@@ -43,6 +43,15 @@ def marmett(signal, order):
 
 
 def sl_function(signal, frequency, long_window=1, short_window=0.1, order=1):
+    """
+    Function for getting sta/lta coefficients
+    :param signal: 1D array signal data
+    :param frequency: signal frequency
+    :param long_window: long window (seconds)
+    :param short_window: short window (seconds)
+    :param order: sl order
+    :return: 1D coefficient array
+    """
     long_window = int(frequency * long_window)
     short_window = int(frequency * short_window)
 

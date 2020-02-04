@@ -301,4 +301,6 @@ Add STA/LTA function calculating in Filter module
 # version 0.3.11
 Create class for SEG-Y file reading and new type of spectrum - cepstral
  spectrum analysis
- 
+
+# version 0.3.12
+Add new spectrum type: Nakamura spectral analysis
