@@ -10,11 +10,16 @@ from SeisCore.Plotting.Plotting import plot_average_spectrum
 
 def proc_file(src_file_name, detrend_type, proc_type,
               files_list, frequency,
-              avg_sp_params, cepster_params, nak_sp_params, output_path):
-
+              avg_sp_params, cepster_params, nak_sp_params,
+              output_path):
+    # print(f'Processing: {src_file_name}')
     signals=None
     for path in files_list:
         signal = np.loadtxt(path, delimiter=' ')[:,1]
+        if str(np.max(signal))=='nan':
+            print('Bad signal')
+            return
+
         if signals is None:
             signals = signal
         else:
@@ -147,11 +152,13 @@ def proc_file(src_file_name, detrend_type, proc_type,
 
 
 # root_folder=r'/media/michael/Data/TEMP/input_data'
-root_folder=r'/media/michael/Data/TEMP/1056_matlab'
+root_folder=r'/media/michael/Data/Projects/Yamburg/Modeling/EnergyAnalysis' \
+            r'/31101/31101_matlab'
 signal_frequency=250
 
 # output_root_folder=r'/media/michael/Data/TEMP/output_data'
-output_root_folder=r'/media/michael/Data/TEMP/1056_matlab_output'
+output_root_folder=r'/media/michael/Data/Projects/Yamburg/Modeling' \
+                   r'/EnergyAnalysis/31101/31101_matlab_output'
 
 avg_spec_params=dict()
 avg_spec_params['window']=8192
@@ -214,11 +221,13 @@ for point in points_list:
 
             proc_file(src_file_name=point, detrend_type=detrend_type,
                       proc_type=proc_type,
-                      files_list=ordered_paths, frequency=signal_frequency,
+                      files_list=ordered_paths,
+                      frequency=signal_frequency,
                       avg_sp_params=avg_spec_params,
                       cepster_params=cepster_params,
                       nak_sp_params=nak_sp_params,
                       output_path=output_root_folder)
+
     t2 = datetime.now()
     dt=(t2-t1).total_seconds()
     print(f'Point {point} done. Time: {dt} sec')

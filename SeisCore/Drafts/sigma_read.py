@@ -2,12 +2,16 @@ from SeisCore.BinaryFile.BinaryFile import BinaryFile
 import struct
 import numpy as np
 
-file = r'/media/michael/MAHCYP32GB/190907_55207_Sigma№002/190907_55207_Sigma№002.bin'
+file = r'/media/michael/GSP1RMCSTFREO_RU_DVD/YM_013_K07_2019-11-25_00-00-00.xx'
 
 bin_data=BinaryFile()
 bin_data.path=file
 bin_data.use_avg_values=False
 signal=bin_data.signals
+signal=signal[:5000000][:,0]
+a=np.average(signal)
+signal=signal-a
+print(signal[0], signal[-1])
 np.savetxt(r'/media/michael/MAHCYP32GB/190907_55207_Sigma№002/signal.dat',
            signal, '%i', '\t', header='Z\tX\tY', comments='')
 input()

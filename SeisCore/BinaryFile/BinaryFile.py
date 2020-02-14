@@ -408,9 +408,6 @@ class BinaryFile:
         # дата+время окончания считывания сигнала
         self.__read_date_time_stop = None
 
-        # среднее значение по каналам
-        self.__avg_value_channels = None
-
     @property
     def path(self):
         return self.__path
@@ -848,58 +845,10 @@ class BinaryFile:
         return x_component_index, y_component_index, z_component_index
 
     @property
-    def average_value_channels(self):
-        # проверка полей класса
-        is_correct, error = self.check_correct()
-        if not is_correct:
-            return None
-
-        if not self.use_avg_values:
-            self.__avg_value_channels = (0, 0, 0)
-        else:
-            if self.__avg_value_channels is None:
-                # количество дискрет в одном блоке
-                discrete_block_count = 3600 * self.signal_frequency
-
-                # количество блоков для считывания
-                block_count = self.discrete_amount // discrete_block_count + 1
-
-                # список для сохранения суммы средних значений блоков сигнала
-                mean_values = [0, 0, 0]
-
-                # поблочное чтение данных файла и вычисление средних по каждому
-                # каналу
-                file_data = open(self.path, 'rb')
-                for i in range(block_count):
-                    file_data.seek(336 + i * 4 * 3 * discrete_block_count)
-                    bin_data = file_data.read(4 * 3 * discrete_block_count)
-                    signals = np.frombuffer(bin_data, dtype=np.int32)
-                    if signals.shape[0] == 0:
-                        break
-                    for j in range(3):
-                        channel_signal = signals[j:len(signals):3]
-                        mean_value = np.mean(channel_signal)
-                        mean_values[j] = mean_values[j] + mean_value
-                file_data.close()
-
-                # вычисление средних значений по каналам
-                for i in range(3):
-                    mean_values[i] = int(mean_values[i] / block_count)
-
-                self.__avg_value_channels = \
-                    (mean_values[0], mean_values[1], mean_values[2])
-        return self.__avg_value_channels
-
-    @property
     def signals(self):
         # проверка полей класса
         is_correct, error = self.check_correct()
         if not is_correct:
-            return None
-
-        # вычисление средних значений для каждого канала по всему сигналу
-        avg_values = self.average_value_channels
-        if avg_values is None:
             return None
 
         # чтение файла
@@ -956,9 +905,8 @@ class BinaryFile:
         # resample_signal.setflags(True)
         resample_signal = np.copy(resample_signal)
         if self.use_avg_values:
-            resample_signal[:, 0] = resample_signal[:, 0] - avg_values[0]
-            resample_signal[:, 1] = resample_signal[:, 1] - avg_values[1]
-            resample_signal[:, 2] = resample_signal[:, 2] - avg_values[2]
+            avg_values=np.average(resample_signal, axis=0)
+            resample_signal=resample_signal-avg_values
         return resample_signal
 
     @property

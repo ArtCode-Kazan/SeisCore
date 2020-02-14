@@ -304,3 +304,7 @@ Create class for SEG-Y file reading and new type of spectrum - cepstral
 
 # version 0.3.12
 Add new spectrum type: Nakamura spectral analysis
+
+# version 0.3.13
+Fix bugs in Nakamura spectrum algorithm. Change Binary Class: fix function
+ for calculating average values for channels

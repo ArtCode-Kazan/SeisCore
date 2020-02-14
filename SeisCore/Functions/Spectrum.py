@@ -97,10 +97,14 @@ def nakamura_spectrum(components_spectrum_data, components_order='XYZ',
                          components_spectrum_data[:, y_index + 1] ** 2) ** 0.5
     vertical_vector = components_spectrum_data[:, z_index + 1]
 
-    hor_ver_ratio = horizontal_vector / vertical_vector
     if spectrum_type == 'HV':
-        result[:, 1] = hor_ver_ratio
-        return result
+        bad_indexes = np.argwhere(vertical_vector == 0)
+        horizontal_vector[bad_indexes] = -9999.25
+        vertical_vector[bad_indexes] = 1
+        result[:, 1] = horizontal_vector / vertical_vector
     elif spectrum_type == 'VH':
-        result[:, 1] = 1 / hor_ver_ratio
-        return result
+        bad_indexes = np.argwhere(horizontal_vector == 0)
+        vertical_vector[bad_indexes] = -9999.25
+        horizontal_vector[bad_indexes] = 1
+        result[:, 1] = vertical_vector / horizontal_vector
+    return result
