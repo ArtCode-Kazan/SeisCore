@@ -2,7 +2,7 @@ import os
 import numpy as np
 from datetime import datetime
 from SeisCore.Functions.Spectrum import average_spectrum
-from SeisCore.Functions.Spectrum import cepstral_spectrum
+from SeisCore.Functions.Spectrum import cepstral_spectrum_from_spectrum
 from SeisCore.Functions.Spectrum import nakamura_spectrum
 
 from SeisCore.Plotting.Plotting import plot_average_spectrum
@@ -55,9 +55,9 @@ def proc_file(src_file_name, detrend_type, proc_type,
         spectrum=np.zeros(shape=(no_smooth_avg_specs.shape[0],2))
         spectrum[:,0]=no_smooth_avg_specs[:,0]
         spectrum[:,1] = no_smooth_avg_specs[:, i+1]
-        ns_cep_spec = cepstral_spectrum(spectrum_data=spectrum)
+        ns_cep_spec = cepstral_spectrum_from_spectrum(spectrum_data=spectrum)
         spectrum[:, 1] = smooth_avg_specs[:, i + 1]
-        s_cep_spec = cepstral_spectrum(spectrum_data=spectrum)
+        s_cep_spec = cepstral_spectrum_from_spectrum(spectrum_data=spectrum)
         if smooth_cep_specs is None:
             smooth_cep_specs=s_cep_spec
             no_smooth_cep_specs=ns_cep_spec
@@ -153,12 +153,12 @@ def proc_file(src_file_name, detrend_type, proc_type,
 
 # root_folder=r'/media/michael/Data/TEMP/input_data'
 root_folder=r'/media/michael/Data/Projects/Yamburg/Modeling/EnergyAnalysis' \
-            r'/31101/31101_matlab'
+            r'/1056/1056_matlab'
 signal_frequency=250
 
 # output_root_folder=r'/media/michael/Data/TEMP/output_data'
 output_root_folder=r'/media/michael/Data/Projects/Yamburg/Modeling' \
-                   r'/EnergyAnalysis/31101/31101_matlab_output'
+                   r'/EnergyAnalysis/1056/1056_matlab_output'
 
 avg_spec_params=dict()
 avg_spec_params['window']=8192
@@ -170,7 +170,7 @@ avg_spec_params['f_max']=25
 
 cepster_params=dict()
 cepster_params['t_min']=0.2
-cepster_params['t_max']=None
+cepster_params['t_max']=3
 
 nak_sp_params=dict()
 nak_sp_params['type']='HV'

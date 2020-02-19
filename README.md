@@ -308,3 +308,6 @@ Add new spectrum type: Nakamura spectral analysis
 # version 0.3.13
 Fix bugs in Nakamura spectrum algorithm. Change Binary Class: fix function
  for calculating average values for channels
+ 
+# version 0.3.14
+Code refactoring - deleting useless functions in Binary Class

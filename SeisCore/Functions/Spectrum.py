@@ -62,16 +62,19 @@ def average_spectrum(signal, frequency, window, offset,
     return sum_a
 
 
-def cepstral_spectrum(spectrum_data):
+def cepstral_spectrum(spectrum_data, using_log=False):
     """
     Calculating cepstral spectrum from other spectrum data
     :param spectrum_data: 2D array of spectral data: first column -
     frequencies, second - amplitudes
+    :param using_log: using log of amplitude
     :return: cepstral spectrum
     """
-    dt_fictive = spectrum_data[1, 0] - spectrum_data[0, 0]
-    freq_fictive = 1 / dt_fictive
-    result = spectrum(signal=spectrum_data[:, 1], frequency=freq_fictive)
+    if using_log:
+        spectrum_data[:,1]=np.log(spectrum_data[:,1])
+
+    freq_fictive=1/(spectrum_data[1,0]-spectrum_data[0,0])
+    result=spectrum(signal=spectrum_data[:,1], frequency=freq_fictive)
     return result
 
 
@@ -108,3 +111,15 @@ def nakamura_spectrum(components_spectrum_data, components_order='XYZ',
         horizontal_vector[bad_indexes] = 1
         result[:, 1] = vertical_vector / horizontal_vector
     return result
+
+
+def cepstral_spectrum_from_signal(signal, frequency, using_log=False):
+    """
+    Calculating cepstral spectrum from other spectrum data
+    :param frequency: signal frequency
+    :param signal: 1D array of signal data
+    :param using_log: using log of amplitude
+    :return: cepstral spectrum
+    """
+    sp_data=spectrum(signal=signal, frequency=frequency)
+    return cepstral_spectrum(spectrum_data=sp_data, using_log=using_log)

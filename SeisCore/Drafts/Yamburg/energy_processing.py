@@ -39,16 +39,18 @@ def get_energy(avg_spectrum_data, f_min, f_max):
 
 # root_folder=r'/media/michael/Data/TEMP/input_data'
 root_folder=r'/media/michael/Data/Projects/Yamburg/Modeling/EnergyAnalysis' \
-            r'/31101/31101_matlab'
+            r'/30302/30302_matlab'
 signal_frequency=250
 
 # coord file
 coords_file=r'/media/michael/Data/Projects/Yamburg/Modeling/EnergyAnalysis' \
-            r'/31101/31101_PointsCoords.dat'
+            r'/30302/30302_PointsCoords.dat'
 
 # output_root_folder=r'/media/michael/Data/TEMP/output_data'
 output_root_folder=r'/media/michael/Data/Projects/Yamburg/Modeling' \
-                   r'/EnergyAnalysis/31101/31101_matlab_output'
+                   r'/EnergyAnalysis/30302/30302_matlab_output'
+
+output_file_name='Energy_data_2-3&3-4&18.3-19.4Hz.dat'
 
 avg_spec_params=dict()
 avg_spec_params['window']=8192
@@ -59,8 +61,8 @@ avg_spec_params['f_min']=1
 avg_spec_params['f_max']=25
 
 energy_params=dict()
-energy_params['f_intervals']=[[i*0.5, (i+1)*0.5] for i in range(50)]
-# energy_params['f_intervals']=[[3,15],[3, 25]]
+# energy_params['f_intervals']=[[i*0.5, (i+1)*0.5] for i in range(50)]
+energy_params['f_intervals']=[[2,3], [3,4], [18.3,19.4]]
 
 coords_data=dict()
 with open(coords_file,'r') as handle:
@@ -138,7 +140,7 @@ for point in points_list:
     dt=(t2-t1).total_seconds()
     print(f'Point {point} done. Time: {dt} sec')
 
-with open(os.path.join(output_root_folder,'Energy_data_0-25Hz_df=0.5Hz.dat'),
+with open(os.path.join(output_root_folder,output_file_name),
           'w') as handle:
     header=['Point', 'x', 'y', 'Interval', 'Date', 'Proc', 'Type', 'Energy']
     header='\t'.join(header)+'\n'

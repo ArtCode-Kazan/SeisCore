@@ -10,36 +10,29 @@ np.import_array()
 def resampling(np.ndarray[np.int32_t, ndim=2] signal,
                int resample_parameter):
     """
-    Функция для ресемплирования сигнала
-    :param signal: одномерный массив сигнала для ресемплирования
-    :param resample_parameter: параметр ресемплирования
-    :return: одномерный массив сигнала после ресемплирования
+    Method for signal resampling
+    :param signal: 1D array of signal
+    :param resample_parameter: resample factor
+    :return: 1D array of resample signal
     """
-
     cdef:
-        # Количество дискрет в исходном сигнале
+        # Origin signal size
         int discrete_amount
-        # Количество дискрет в ресемплированном сигнале
+        # Resample signal size
         int resample_discrete_amount
-        # Итеративные переменные
+        # Iteration varables
         int i, j, k
-        # Вычисление сумм для нахождения среднего
         int sum_a, sum_b, sum_c
-        # Вычисленные значения после ресемплирования
         int value_a, value_b, value_c
-        # Создание выходного массива
+        # Output array
         np.ndarray[np.int32_t, ndim = 2] resample_signal
 
-    # проверка кратности длины сигнала и параметра ресемплирования
     discrete_amount = signal.shape[0]
-
-    # расчет длины ресемплированного сигнала
     resample_discrete_amount = discrete_amount // resample_parameter
 
     resample_signal = np.empty(shape=(resample_discrete_amount,3),
                                dtype=np.int32)
 
-    # операция ресемплирования
     for i in range(resample_discrete_amount):
         sum_a = sum_b = sum_c = 0
         for j in range(resample_parameter):

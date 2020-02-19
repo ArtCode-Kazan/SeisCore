@@ -80,9 +80,7 @@ folder=r'/media/michael/Data/Projects/Yamburg/Modeling/ModelPreparing/Well_1056'
 signal_file='source_meander_1Hz_h=3900_BottomKp=50.dat'
 file_prefix='Kp=50'
 time_start=5.1
-cep_t_min=0.1
-cep_t_max=10
-
+t0, tn=0.1, 3
 
 signal_data=np.loadtxt(os.path.join(folder, signal_file), skiprows=1,
                        delimiter='\t')
@@ -92,14 +90,14 @@ freq=1/(signal_data[1,0]-signal_data[0,0])
 
 for i, item in enumerate('XYZ'):
     si=signal_data[:, i+1]
-    sp_data=spectrum(signal=si, frequency=freq)
-    cep_sp=cepstral_spectrum(sp_data)
+    cep_sp=cepstral_spectrum(signal=si, frequency=freq)
 
     np.savetxt(os.path.join(folder,f'{file_prefix}_Component_{item}.dat'),
                cep_sp, delimiter='\t', header='Time\tAmplitude',
                comments='')
+    cep_sp=cep_sp[(cep_sp[:,0]>=t0)*(cep_sp[:,0]<=tn)]
 
-    cep_sp=cep_sp[(cep_sp[:,0]>=cep_t_min)*(cep_sp[:,0]<=cep_t_max)]
+    # cep_sp=cep_sp[(cep_sp[:,0]>=cep_t_min)*(cep_sp[:,0]<=cep_t_max)]
     plot_spectrum(frequency=cep_sp[:,0], amplitude=cep_sp[:,1],
                   label=f'{file_prefix}_Component_{item}',
                   output_folder=folder,
