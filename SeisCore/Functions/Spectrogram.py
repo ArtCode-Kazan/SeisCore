@@ -139,7 +139,7 @@ def plot(times, frequencies, amplitudes, cmap, cnorm,output_folder,
     # decibels calculation
     amplitudes=20 * np.log10(abs(amplitudes))
 
-    axes.pcolormesh(times, frequencies, 20 * np.log10(abs(amplitudes)),
+    axes.pcolormesh(times, frequencies, amplitudes,
                     cmap=cmap, norm=cnorm)
 
     x_label = 'Time, s'

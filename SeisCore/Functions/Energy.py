@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def spectrum_energy(spectrum_data, f_min, f_max):
+def spectrum_energy(spectrum_data, f_min=None, f_max=None):
     """
     Method for calculating spectral energy
     :param spectrum_data: spectral data (2-D array: first column -

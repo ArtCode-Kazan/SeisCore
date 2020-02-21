@@ -311,3 +311,6 @@ Fix bugs in Nakamura spectrum algorithm. Change Binary Class: fix function
  
 # version 0.3.14
 Code refactoring - deleting useless functions in Binary Class
+
+# version 0.3.15
+Fix bug for creation spectrogram - wrong calculate amplitudes

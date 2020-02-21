@@ -62,7 +62,7 @@ def average_spectrum(signal, frequency, window, offset,
     return sum_a
 
 
-def cepstral_spectrum(spectrum_data, using_log=False):
+def cepstral_spectrum(spectrum_data, using_log=False, freq_limits=None):
     """
     Calculating cepstral spectrum from other spectrum data
     :param spectrum_data: 2D array of spectral data: first column -
@@ -70,6 +70,13 @@ def cepstral_spectrum(spectrum_data, using_log=False):
     :param using_log: using log of amplitude
     :return: cepstral spectrum
     """
+    if freq_limits is not None:
+        left_lim, right_lim = freq_limits
+        if left_lim is not None:
+            spectrum_data=spectrum_data[spectrum_data[:,0]>=left_lim]
+        if right_lim is not None:
+            spectrum_data=spectrum_data[spectrum_data[:,0]<=right_lim]
+
     if using_log:
         spectrum_data[:,1]=np.log(spectrum_data[:,1])
 
@@ -83,7 +90,7 @@ def nakamura_spectrum(components_spectrum_data, components_order='XYZ',
     """
     Calculating nakamura spectrum
     :param components_spectrum_data: 2D array: first column - frequencies,
-    2,3,4 - components spectral ampolitudes
+    2,3,4 - components spectral amplitudes
     :param components_order: components order
     :param spectrum_type: spectrum type:
         HV - horizontal/vertical ratio
@@ -102,18 +109,19 @@ def nakamura_spectrum(components_spectrum_data, components_order='XYZ',
 
     if spectrum_type == 'HV':
         bad_indexes = np.argwhere(vertical_vector == 0)
-        horizontal_vector[bad_indexes] = -9999.25
+        horizontal_vector[bad_indexes] = 0
         vertical_vector[bad_indexes] = 1
         result[:, 1] = horizontal_vector / vertical_vector
     elif spectrum_type == 'VH':
         bad_indexes = np.argwhere(horizontal_vector == 0)
-        vertical_vector[bad_indexes] = -9999.25
+        vertical_vector[bad_indexes] = 0
         horizontal_vector[bad_indexes] = 1
         result[:, 1] = vertical_vector / horizontal_vector
     return result
 
 
-def cepstral_spectrum_from_signal(signal, frequency, using_log=False):
+def cepstral_spectrum_from_signal(signal, frequency, using_log=False,
+                                  freq_limits=None):
     """
     Calculating cepstral spectrum from other spectrum data
     :param frequency: signal frequency
@@ -122,4 +130,5 @@ def cepstral_spectrum_from_signal(signal, frequency, using_log=False):
     :return: cepstral spectrum
     """
     sp_data=spectrum(signal=signal, frequency=frequency)
-    return cepstral_spectrum(spectrum_data=sp_data, using_log=using_log)
+    return cepstral_spectrum(spectrum_data=sp_data, using_log=using_log,
+                             freq_limits=freq_limits)

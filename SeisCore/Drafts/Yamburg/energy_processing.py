@@ -2,6 +2,7 @@ import os
 import numpy as np
 from datetime import datetime
 from SeisCore.Functions.Spectrum import average_spectrum
+from SeisCore.Functions.Spectrum import nakamura_spectrum
 from SeisCore.Functions.Energy import spectrum_energy
 
 
@@ -32,7 +33,7 @@ def get_avg_spectrums(files_list, frequency, avg_sp_params):
 
 
 def get_energy(avg_spectrum_data, f_min, f_max):
-    z_energy = spectrum_energy(spectrum_data=avg_spectrum_data[:, [0, 3]],
+    z_energy = spectrum_energy(spectrum_data=avg_spectrum_data,
                                f_min=f_min, f_max=f_max)
     return z_energy
 
@@ -50,7 +51,7 @@ coords_file=r'/media/michael/Data/Projects/Yamburg/Modeling/EnergyAnalysis' \
 output_root_folder=r'/media/michael/Data/Projects/Yamburg/Modeling' \
                    r'/EnergyAnalysis/30302/30302_matlab_output'
 
-output_file_name='Energy_data_2-3&3-4&18.3-19.4Hz.dat'
+output_file_name='Nakamura_energy_data.dat'
 
 avg_spec_params=dict()
 avg_spec_params['window']=8192
@@ -62,7 +63,11 @@ avg_spec_params['f_max']=25
 
 energy_params=dict()
 # energy_params['f_intervals']=[[i*0.5, (i+1)*0.5] for i in range(50)]
-energy_params['f_intervals']=[[2,3], [3,4], [18.3,19.4]]
+# energy_params['f_intervals']=[[17, 21]]
+# energy_params['f_intervals']=[(0.48828125, 0.54931640625), (2.593994140625, 2.99072265625), (8.6669921875, 12.847900390625), (14.007568359375, 15.289306640625), (16.357421875, 21.697998046875)]
+energy_params['f_intervals']=[(9.918212890625, 12.20703125), (14.068603515625, 15.2587890625), (16.571044921875, 18.4326171875), [20.6298828125, 20.660400390625]]
+pr_type='split'
+det_type='TnWN'
 
 coords_data=dict()
 with open(coords_file,'r') as handle:
@@ -85,6 +90,8 @@ for point in points_list:
     point_folder=os.path.join(root_folder,point)
     processing_types=os.listdir(point_folder)
     for proc_type in processing_types:
+        if proc_type!=pr_type:
+            continue
         proc_folder=os.path.join(point_folder, proc_type)
         dat_files=list()
         detrend_types=list()
@@ -99,6 +106,8 @@ for point in points_list:
             dat_files.append(file)
 
         for detrend_type in detrend_types:
+            if detrend_type!=det_type:
+                continue
             files=list()
             for fn in dat_files:
                 name, extension = fn.split('.')
@@ -125,9 +134,13 @@ for point in points_list:
                                             frequency=signal_frequency,
                                             avg_sp_params=avg_spec_params)
 
+            nak_data=nakamura_spectrum(
+                components_spectrum_data=spectrum_data,
+                components_order='XYZ', spectrum_type='HV')
+
             for interval in energy_params['f_intervals']:
                 f_min, f_max = interval
-                z_energy=get_energy(avg_spectrum_data=spectrum_data,
+                z_energy=get_energy(avg_spectrum_data=nak_data,
                                     f_min=f_min, f_max=f_max)
                 interval = str(f_min)+'-'+str(f_max)
                 t = [point_number, point_coords[0], point_coords[1],
