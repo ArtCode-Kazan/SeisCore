@@ -23,6 +23,7 @@ def get_avg_spectrums(signals, frequency, avg_sp_params):
                 (smooth_avg_specs, s_avg_spec[:,1]))
     return smooth_avg_specs
 
+
 def join(intervals):
     """
     Метод для объединения интервалов

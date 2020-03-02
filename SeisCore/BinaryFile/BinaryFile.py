@@ -377,8 +377,6 @@ class BinaryFile:
         self.__input_path = None
         # full file path
         self.__path = None
-        # data type
-        self.__data_type = None
         # resample frequency
         self.__resample_frequency = None
         # record type (by default ZXY)
@@ -405,20 +403,6 @@ class BinaryFile:
                     name, extension = t
                     if extension in ['00','xx', '00part', 'bin']:
                         self.__path = value
-
-    @property
-    def data_type(self):
-        if self.__data_type is None:
-            self.__data_type = 'NoDataType'
-        return self.__data_type
-
-    @data_type.setter
-    def data_type(self, value):
-        if value in ('HydroFrac', 'Revise', 'Variation', 'Ordinal', 'Control',
-                     'Well'):
-            self.__data_type = value
-        else:
-            self.__data_type = 'NoDataType'
 
     @property
     def resample_frequency(self):
@@ -828,60 +812,3 @@ class BinaryFile:
     @property
     def unique_file_name(self):
         return '{}.{}'.format(generate_name(), self.extension)
-
-    @property
-    def registrator_number(self):
-        if self.path is None:
-            return None
-        file_name = os.path.basename(self.path)
-        name, extension = file_name.split('.')
-        parser = re.findall('[0-9]+[A-Z]*', name)
-        return parser[-2].upper()
-
-    @property
-    def sensor_number(self):
-        if self.path is None:
-            return None
-        file_name = os.path.basename(self.path)
-        name, extension = file_name.split('.')
-        parser = re.findall('[0-9]+[A-Z]*', name)
-        return parser[-1].upper()
-
-    @property
-    def point_prefix(self):
-        if self.data_type in ('Revise', 'Variation'):
-            return None
-
-        if self.path is None:
-            return None
-        file_name = os.path.basename(self.path)
-        name, extension = file_name.split('.')
-        prefix_value = name[:2]
-        return prefix_value
-
-    @property
-    def point_name(self):
-        if self.path is None:
-            return None
-        if self.data_type in ('Revise', 'Variation'):
-            return None
-
-        file_name = os.path.basename(self.path)
-        name, extension = file_name.split('.')
-        if self.data_type in ('Ordinal', 'Control', 'Well'):
-            parser = re.findall('[0-9]+[A-Z]*', name)
-            point_name = parser[0]
-            try:
-                number = int(point_name)
-                return number, 'A'
-            except ValueError:
-                try:
-                    number = int(point_name[:-1])
-                    attr = point_name[-1]
-                    return number, attr
-                except ValueError:
-                    return None
-        if self.data_type == 'HydroFrac':
-            parser = re.findall('[0-9]{4,4}', name)
-            point_name = int(parser[0])
-            return point_name

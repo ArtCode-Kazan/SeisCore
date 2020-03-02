@@ -5,7 +5,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 from SeisCore.Functions.Spectrum import spectrum
-from SeisCore.Functions.Spectrum import cepstral_spectrum
+from SeisCore.Functions.Spectrum import cepstral_spectrum, cepstral_spectrum_from_signal
 
 
 plt.switch_backend('SVG')
@@ -76,11 +76,11 @@ def plot_spectrum(frequency, amplitude, label, output_folder,
     plt.close(fig)
 
 
-folder=r'/media/michael/Data/Projects/Yamburg/Modeling/ModelPreparing/Well_1056'
-signal_file='source_meander_1Hz_h=3900_BottomKp=50.dat'
-file_prefix='Kp=50'
-time_start=5.1
-t0, tn=0.1, 3
+folder=r'/media/michael/Data/Projects/Yamburg/Modeling/EnergyAnalysis/30302'
+signal_file='CommonGoodSignal_30302.dat'
+file_prefix=''
+time_start=0
+t0, tn=0.1, 10
 
 signal_data=np.loadtxt(os.path.join(folder, signal_file), skiprows=1,
                        delimiter='\t')
@@ -88,17 +88,19 @@ signal_data[:,0]=signal_data[:,0]/1000
 signal_data=signal_data[signal_data[:,0]>time_start]
 freq=1/(signal_data[1,0]-signal_data[0,0])
 
-for i, item in enumerate('XYZ'):
-    si=signal_data[:, i+1]
-    cep_sp=cepstral_spectrum(signal=si, frequency=freq)
 
-    np.savetxt(os.path.join(folder,f'{file_prefix}_Component_{item}.dat'),
-               cep_sp, delimiter='\t', header='Time\tAmplitude',
-               comments='')
-    cep_sp=cep_sp[(cep_sp[:,0]>=t0)*(cep_sp[:,0]<=tn)]
+si=signal_data[:, 60]
 
-    # cep_sp=cep_sp[(cep_sp[:,0]>=cep_t_min)*(cep_sp[:,0]<=cep_t_max)]
-    plot_spectrum(frequency=cep_sp[:,0], amplitude=cep_sp[:,1],
-                  label=f'{file_prefix}_Component_{item}',
-                  output_folder=folder,
-                  output_name=f'{file_prefix}_Component_{item}')
+cep_sp=cepstral_spectrum_from_signal(signal=si, frequency=freq,
+                                     using_log=False)
+
+np.savetxt(os.path.join(folder,f'{file_prefix}_Component_z.dat'),
+       cep_sp, delimiter='\t', header='Time\tAmplitude',
+       comments='')
+cep_sp=cep_sp[(cep_sp[:,0]>=t0)*(cep_sp[:,0]<=tn)]
+
+# cep_sp=cep_sp[(cep_sp[:,0]>=cep_t_min)*(cep_sp[:,0]<=cep_t_max)]
+plot_spectrum(frequency=cep_sp[:,0], amplitude=cep_sp[:,1],
+          label=f'{file_prefix}_Component_z',
+          output_folder=folder,
+          output_name=f'{file_prefix}_Component_z')

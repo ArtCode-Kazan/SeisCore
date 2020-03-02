@@ -1,19 +1,16 @@
 import numpy as np
-from SeisCore.Functions.Spectrum import spectrum, nakamura_spectrum
+from SeisCore.Functions.Spectrum import average_spectrum, nakamura_spectrum
 from SeisCore.Functions.Energy import spectrum_energy
 
-signal_file = r'/media/michael/Data/Projects/Yamburg/Modeling/ModelPreparing' \
-              r'/Well_30302/CompleteModeling/signal_test.dat'
-coords_file = r'/media/michael/Data/Projects/Yamburg/Modeling/ModelPreparing' \
-              r'/Well_30302/CompleteModeling/Points_coords.dat'
-export_file = r'/media/michael/Data/Projects/Yamburg/Modeling/ModelPreparing' \
-              r'/Well_30302/CompleteModeling/ClusterDataSrc.dat'
-t_min = 8
-selection_size = 50
+signal_file = r'/media/michael/Data/Projects/Yamburg/Modeling' \
+              r'/EnergyAnalysis/30302/CommonGoodSignal_30302_2.dat'
+coords_file = r'/media/michael/Data/Projects/Yamburg/Modeling/EnergyAnalysis/' \
+              r'30302/30302_PointsCoords.dat'
+export_file = r'/media/michael/Data/Projects/Yamburg/Modeling' \
+              r'/EnergyAnalysis/30302/EnergyData.dat'
 
 signal_data = np.loadtxt(signal_file, skiprows=1, delimiter='\t')
 signal_data[:, 0] = signal_data[:, 0] / 1000
-signal_data = signal_data[signal_data[:, 0] >= t_min]
 
 frequency = 1 / (signal_data[1, 0] - signal_data[0, 0])
 with open(signal_file, 'r') as handle:
@@ -30,8 +27,6 @@ for item in header:
     number = int(t[1])
     sensor_numbers.append(number)
 
-# sensor_numbers=sensor_numbers[:selection_size]
-
 coords_data = dict()
 with open(coords_file, 'r') as handle:
     for index, line in enumerate(handle):
@@ -42,8 +37,7 @@ with open(coords_file, 'r') as handle:
         x, y = [float(q) for q in t[1:]]
         coords_data[number] = (x, y)
 
-
-f_intervals = [[4, 4.32], [28,30]]
+f_intervals = [[4, 5], [28,30]]
 intervals_count = len(f_intervals)
 point_count = len(sensor_numbers)
 
@@ -51,11 +45,16 @@ result = None
 freq_array = None
 for index in range(point_count):
     signal = signal_data[:, 1 + 3 * index:1 + 3 * (index + 1)]
-    x, y = coords_data[sensor_numbers[index]]
 
-    sp_x = spectrum(signal=signal[:, 0], frequency=frequency)
-    sp_y = spectrum(signal=signal[:, 1], frequency=frequency)
-    sp_z = spectrum(signal=signal[:, 2], frequency=frequency)
+    sp_x = average_spectrum(signal=signal[:, 0], frequency=frequency,
+                            window=8192, offset=4096, med_filter=7,
+                            marmett_filter=7)
+    sp_y = average_spectrum(signal=signal[:, 1], frequency=frequency,
+                            window=8192, offset=4096, med_filter=7,
+                            marmett_filter=7)
+    sp_z = average_spectrum(signal=signal[:, 2], frequency=frequency,
+                            window=8192, offset=4096, med_filter=7,
+                            marmett_filter=7)
 
     join_sp_data = np.zeros(shape=(sp_x.shape[0], 5))
     join_sp_data[:, :2] = sp_x

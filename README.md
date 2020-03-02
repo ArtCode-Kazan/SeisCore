@@ -314,3 +314,6 @@ Code refactoring - deleting useless functions in Binary Class
 
 # version 0.3.15
 Fix bug for creation spectrogram - wrong calculate amplitudes
+
+# version 0.3.16
+Fix Binary Class - property data type was deprecated
