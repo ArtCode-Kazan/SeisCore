@@ -42,7 +42,8 @@ def marmett(signal, order):
     return signal
 
 
-def sl_function(signal, frequency, long_window=1, short_window=0.1, order=1):
+def sl_function(signal, frequency, long_window=1.0, short_window=0.1,
+                order=1):
     """
     Function for getting sta/lta coefficients
     :param signal: 1D array signal data
@@ -91,9 +92,6 @@ def sl_filter(signal, frequency, short_window=0.1, long_window=1.0, order=3):
     :param short_window: short window size (seconds)
     :return: filtered signal (one-dimension array)
     """
-    long_window = int(frequency * long_window)
-    short_window = int(frequency * short_window)
-
     for j in range(order):
         coeffs=sl_function(signal=signal, frequency=frequency,
                            long_window=long_window,
