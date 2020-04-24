@@ -3,10 +3,9 @@ import struct
 from datetime import datetime
 from datetime import timedelta
 import numpy as np
-import re
 import uuid
 
-from SeisCore.BinaryFile.Cython.Resampling.Execute import Resampling
+from SeisCore.BinaryFile.CPython.Resampling.Execute import Resampling
 
 
 def generate_name():

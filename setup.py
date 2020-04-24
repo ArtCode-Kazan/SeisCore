@@ -10,8 +10,8 @@ setup(name='SeisCore',
       include_package_data=True,
       zip=False,
       install_requires=[
-            'numpy==1.16.3',
-            'scipy==1.2.1',
-            'pywavelets==1.0.2',
-            'matplotlib==2.1.1',
-            'segyio==1.8.8'])
+          'numpy==1.16.3',
+          'scipy==1.2.1',
+          'pywavelets==1.0.2',
+          'matplotlib==2.1.1',
+          'segyio==1.8.8'])
