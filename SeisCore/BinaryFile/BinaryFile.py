@@ -8,6 +8,9 @@ import uuid
 from SeisCore.BinaryFile.CPython.Resampling.Execute import Resampling
 
 
+INTEGER_BYTE_SIZE=4
+
+
 def generate_name():
     """
     Generating unique file name
@@ -400,7 +403,7 @@ class BinaryFile:
                 t = file_name.split('.')
                 if len(t) == 2:
                     name, extension = t
-                    if extension in ['00','xx', '00part', 'bin']:
+                    if extension in ['00', 'xx', '00part', 'bin']:
                         self.__path = value
 
     @property
@@ -656,11 +659,21 @@ class BinaryFile:
             return None
 
     @property
+    def header_memory_size(self):
+        if self.path is None:
+            return 0
+        channel_count=self.main_header.channel_count
+        if channel_count==3:
+            return 336
+        elif channel_count==6:
+            return 552
+
+    @property
     def discrete_amount(self):
         if self.path is None:
             return None
         file_size = os.path.getsize(self.path)
-        discrete_amount = int((file_size - 336) / 12)
+        discrete_amount = int((file_size - self.header_memory_size) / (self.main_header.channel_count*INTEGER_BYTE_SIZE))
         return discrete_amount
 
     @property
@@ -740,14 +753,16 @@ class BinaryFile:
         if not is_correct:
             return None
 
+        channel_count=self.main_header.channel_count
+
         file_data = open(self.path, 'rb')
         # skipping bytes
-        bytes_count = self.start_moment * 4 * 3
-        file_data.seek(336 + bytes_count)
+        bytes_count = self.start_moment * INTEGER_BYTE_SIZE * channel_count
+        file_data.seek(self.header_memory_size + bytes_count)
 
         moment_count = self.end_moment - self.start_moment
         try:
-            bin_data = file_data.read(moment_count * 3 * 4)
+            bin_data = file_data.read(moment_count * channel_count * INTEGER_BYTE_SIZE)
             signals = np.frombuffer(bin_data, dtype=np.int32)
         except MemoryError:
             return None
@@ -757,9 +772,10 @@ class BinaryFile:
         if signals.shape[0] == 0:
             return None
 
-        channel_count = 3
         signal_count = signals.shape[0] // channel_count
         signals = np.reshape(signals, newshape=(signal_count, channel_count))
+        if channel_count==6:
+            signals=signals[:,:3]
 
         if (self.end_moment - self.start_moment) != signal_count:
             print('Error: wrong size array data')

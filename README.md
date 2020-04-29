@@ -320,3 +320,6 @@ Fix Binary Class - property data type was deprecated
 
 # version 0.3.17
 Fix Filter module - sl_filter
+
+# version 0.3.18
+Change BinaryFile class - add situation with six data column (Baikal8)
