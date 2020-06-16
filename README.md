@@ -323,3 +323,6 @@ Fix Filter module - sl_filter
 
 # version 0.3.18
 Change BinaryFile class - add situation with six data column (Baikal8)
+
+# version 0.3.19
+Change signal plotting function - add forced resampling for signal drawing 
