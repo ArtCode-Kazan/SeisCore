@@ -326,3 +326,7 @@ Change BinaryFile class - add situation with six data column (Baikal8)
 
 # version 0.3.19
 Change signal plotting function - add forced resampling for signal drawing 
+
+# version 0.3.20
+Change BinaryFile class - fix datetime start for sigma device^ add two
+ seconds for start time

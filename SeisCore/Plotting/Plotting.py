@@ -72,7 +72,6 @@ def plot_signal(signal, frequency, label, output_folder, output_name,
         signal=signal[::resample_param]
         frequency=frequency/resample_param
 
-
     mpl.rcParams['figure.subplot.left'] = 0.07
     mpl.rcParams['figure.subplot.right'] = 0.97
     mpl.rcParams['figure.subplot.bottom'] = 0.05

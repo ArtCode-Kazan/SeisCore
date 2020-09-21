@@ -8,7 +8,7 @@ import uuid
 from SeisCore.BinaryFile.CPython.Resampling.Execute import Resampling
 
 
-INTEGER_BYTE_SIZE=4
+INTEGER_BYTE_SIZE = 4
 
 
 def generate_name():
@@ -233,7 +233,7 @@ class MainHeader:
             day = int(date_src[4:])
             hour = int(time_src[:2])
             minute=int(time_src[2:4])
-            second=int(time_src[4:])
+            second=int(time_src[4:])+2
             return datetime(year, month, day, hour, minute, second)
         else:
             return None
