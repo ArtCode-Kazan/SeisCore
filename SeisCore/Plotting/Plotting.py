@@ -65,6 +65,13 @@ def plot_signal(signal, frequency, label, output_folder, output_name,
     :param time_start_sec: time in seconds of start signal
     :return:
     """
+
+    # forced signal resampling only for plotting
+    if signal.shape[0]>800000:
+        resample_param=signal.shape[0]//800000+1
+        signal=signal[::resample_param]
+        frequency=frequency/resample_param
+
     mpl.rcParams['figure.subplot.left'] = 0.07
     mpl.rcParams['figure.subplot.right'] = 0.97
     mpl.rcParams['figure.subplot.bottom'] = 0.05

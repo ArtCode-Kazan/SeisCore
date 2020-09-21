@@ -1,0 +1,1 @@
+from SeisCore.BinaryFile.BinaryFile import BinaryFile
