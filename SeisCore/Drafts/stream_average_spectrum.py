@@ -44,16 +44,16 @@ for root, folders, files in os.walk(root_folder):
             for component in components:
                 signal=signal_data[:, 'XYZ'.index(component)]
                 smooth_av_spec=average_spectrum(signal=signal,
-                                         frequency=bin_data.signal_frequency,
-                                         window=window_size,
-                                         overlap=overlap_size,
-                                         med_filter=median_param,
-                                         marmett_filter=marmett_param)
+                                                frequency=bin_data.signal_frequency,
+                                                window=window_size,
+                                                overlap=overlap_size,
+                                                median_filter=median_param,
+                                                marmett_filter=marmett_param)
                 no_smooth_av_spectrum=average_spectrum(signal=signal,
-                                         frequency=bin_data.signal_frequency,
-                                         window=window_size,
-                                         overlap=overlap_size,
-                                         med_filter=None, marmett_filter=None)
+                                                       frequency=bin_data.signal_frequency,
+                                                       window=window_size,
+                                                       overlap=overlap_size,
+                                                       median_filter=None, marmett_filter=None)
 
                 exp_folder=os.path.join(export_folder, name,
                                         f'{component}-Component')

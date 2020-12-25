@@ -1,10 +1,12 @@
+from math import inf
+
 import numpy as np
 from numpy.fft import rfft, rfftfreq
 from scipy.signal import medfilt
 from SeisCore.Functions.Filter import marmett
 
 
-def spectrum(signal, frequency):
+def spectrum(signal: np.ndarray, frequency: int) -> np.ndarray:
     """
     Method for calculating simple Fourier spectrum of signal
     :param signal: input signal
@@ -12,57 +14,58 @@ def spectrum(signal, frequency):
     :return: 2D array of spectrum data
     """
     signal_count = signal.shape[0]
-    spectrum_data = rfft(signal)
+    spectrum_data = rfft(signal-np.mean(signal))
     res = np.empty((signal_count // 2 + 1, 2), dtype=np.float)
     res[:, 0] = rfftfreq(signal_count, 1 / frequency)
     res[:, 1] = 2 * abs(spectrum_data) / signal_count
     return res
 
 
-def average_spectrum(signal, frequency, window, offset,
-                     med_filter=None, marmett_filter=None):
+def average_spectrum(signal: np.ndarray, frequency: int, window: int,
+                     offset: int, median_filter=-1,
+                     marmett_filter=-1) -> np.ndarray:
     """
     Method for calculating average (cumulative) spectrum
     :param signal: input signal
     :param frequency: signal frequency
     :param window: window size (discreets)
     :param offset: window offset (discreets)
-    :param med_filter: median filtration parameter
+    :param median_filter: median filtration parameter
     :param marmett_filter: marmett filtration parameter
     :return: 2D array of spectrum data
     """
-    windows_count = (signal.shape[0] - window) // offset + 1
+    if median_filter % 2 == 0 or marmett_filter % 2 == 0:
+        raise Exception('Marmett and median filters must be odd')
 
+    windows_count = (signal.shape[0] - window) // offset + 1
     # First window position
-    left_edge = 0
-    right_edge = window
+    left_edge, right_edge = 0, window
     selection_signal = signal[left_edge:right_edge]
-    sum_a = spectrum(selection_signal, frequency)
-    sum_a[:, 1] = np.power(sum_a[:, 1], 2)
+    sum_amplitudes = spectrum(selection_signal, frequency)
+    sum_amplitudes[:, 1] = np.power(sum_amplitudes[:, 1], 2)
     # median filtration
-    if med_filter is not None:
-        sum_a[:, 1] = medfilt(sum_a[:, 1], med_filter)
+    if median_filter > 0:
+        sum_amplitudes[:, 1] = medfilt(sum_amplitudes[:, 1], median_filter)
 
     # Other window positions
     for i in range(1, windows_count):
-        left_edge = i * offset
-        right_edge = left_edge + window
+        left_edge, right_edge = i * offset, i * offset + window
         selection_signal = signal[left_edge:right_edge]
         sp_data = np.power(spectrum(selection_signal, frequency)[:, 1], 2)
-        if med_filter is not None:
-            sp_data = medfilt(sp_data, med_filter)
-        sum_a[:, 1] = sum_a[:, 1] + sp_data
+        if median_filter > 0:
+            sp_data = medfilt(sp_data, median_filter)
+        sum_amplitudes[:, 1] = sum_amplitudes[:, 1] + sp_data
 
     # getting average spectrum for all windows
-    sum_a[:, 1] = sum_a[:, 1] / windows_count
+    sum_amplitudes[:, 1] = sum_amplitudes[:, 1] / windows_count
 
     # marmett filtration
-    if marmett_filter is not None:
-        sum_a[:, 1] = marmett(sum_a[:, 1], marmett_filter)
-    return sum_a
+    if marmett_filter > 0:
+        sum_amplitudes[:, 1] = marmett(sum_amplitudes[:, 1], marmett_filter)
+    return sum_amplitudes
 
 
-def cepstral_spectrum(spectrum_data, using_log=False, freq_limits=None):
+def cepstral_spectrum(spectrum_data, using_log=False) -> np.ndarray:
     """
     Calculating cepstral spectrum from other spectrum data
     :param spectrum_data: 2D array of spectral data: first column -
@@ -70,23 +73,15 @@ def cepstral_spectrum(spectrum_data, using_log=False, freq_limits=None):
     :param using_log: using log of amplitude
     :return: cepstral spectrum
     """
-    if freq_limits is not None:
-        left_lim, right_lim = freq_limits
-        if left_lim is not None:
-            spectrum_data=spectrum_data[spectrum_data[:,0]>=left_lim]
-        if right_lim is not None:
-            spectrum_data=spectrum_data[spectrum_data[:,0]<=right_lim]
-
     if using_log:
-        spectrum_data[:,1]=np.log(spectrum_data[:,1])
+        spectrum_data[:, 1] = np.log(spectrum_data[:, 1])
 
-    freq_fictive=1/(spectrum_data[1,0]-spectrum_data[0,0])
-    result=spectrum(signal=spectrum_data[:,1], frequency=freq_fictive)
-    return result
+    freq_fictive = 1 / (spectrum_data[1, 0] - spectrum_data[0, 0])
+    return spectrum(signal=spectrum_data[:, 1], frequency=freq_fictive)
 
 
 def nakamura_spectrum(components_spectrum_data, components_order='XYZ',
-                      spectrum_type='HV'):
+                      spectrum_type='HV') -> np.ndarray:
     """
     Calculating nakamura spectrum
     :param components_spectrum_data: 2D array: first column - frequencies,
@@ -120,15 +115,20 @@ def nakamura_spectrum(components_spectrum_data, components_order='XYZ',
     return result
 
 
-def cepstral_spectrum_from_signal(signal, frequency, using_log=False,
-                                  freq_limits=None):
+def cepstral_spectrum_from_signal(signal: np.ndarray, frequency: int,
+                                  using_log=False,
+                                  freq_limits=None) -> np.ndarray:
     """
     Calculating cepstral spectrum from other spectrum data
     :param frequency: signal frequency
     :param signal: 1D array of signal data
     :param using_log: using log of amplitude
+    :param freq_limits: frequency limits for selection part of signal spectrum
     :return: cepstral spectrum
     """
-    sp_data=spectrum(signal=signal, frequency=frequency)
-    return cepstral_spectrum(spectrum_data=sp_data, using_log=using_log,
-                             freq_limits=freq_limits)
+    sp_data = spectrum(signal=signal, frequency=frequency)
+    if freq_limits is None:
+        freq_limits = (0, inf)
+    sp_data = sp_data[(sp_data[:, 0] >= freq_limits[0]) *
+                      (sp_data[:, 0] <= freq_limits[1])]
+    return cepstral_spectrum(spectrum_data=sp_data, using_log=using_log)

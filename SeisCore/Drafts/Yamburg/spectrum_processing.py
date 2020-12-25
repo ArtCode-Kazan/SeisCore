@@ -32,13 +32,13 @@ def proc_file(src_file_name, detrend_type, proc_type,
                                        frequency=frequency,
                                        window=avg_sp_params['window'],
                                        offset=avg_sp_params['offset'],
-                                       med_filter=None,
+                                       median_filter=None,
                                        marmett_filter=None)
         s_avg_spec=average_spectrum(signal=signals[:, index],
                                     frequency=frequency,
                                     window=avg_sp_params['window'],
                                     offset=avg_sp_params['offset'],
-                                    med_filter=avg_sp_params['med_filter'],
+                                    median_filter=avg_sp_params['med_filter'],
                                     marmett_filter=avg_sp_params['marmett_filter'])
         if no_smooth_avg_specs is None:
             no_smooth_avg_specs=ns_avg_spec

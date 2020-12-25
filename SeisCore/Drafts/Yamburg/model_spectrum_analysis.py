@@ -13,7 +13,7 @@ def get_avg_spectrums(signals, frequency, avg_sp_params):
                                       frequency=frequency,
                                       window=avg_sp_params['window'],
                                       offset=avg_sp_params['offset'],
-                                      med_filter=avg_sp_params['med_filter'],
+                                      median_filter=avg_sp_params['med_filter'],
                                       marmett_filter=avg_sp_params[
                                           'marmett_filter'])
         if smooth_avg_specs is None:

@@ -264,69 +264,74 @@ Binary class was edited. Fix bug with subtraction average value from signal
 # version 0.2.9
 Created temporary class for reading Sigma device data
 
-# version 0.3.0
+### version 0.3.0
 Add new file format - Sigma (bin-file) to BinaryFile Class. Deprecated
 methods in BinaryFile Class: dates, split_file_by_date
 
-# version 0.3.1
+### version 0.3.1
 Fix bug in Binary Class. Change reading time of recording start from
 Sigma file type
 
-# version 0.3.2
+### version 0.3.2
 Fix bug in spectrogram module: fix bug matplotlib _tkinter.TCLError -
 change matplotlib.plot backend
 
-# version 0.3.4
+### version 0.3.4
 Add function Wavelet detrend functions and STA/LTA filter
 
-# version 0.3.5
+### version 0.3.5
 Fix bug in function STA/LTA filter
 
-# version 0.3.6
+### version 0.3.6
 Change STA/LTA filter - function was busted
 
-# version 0.3.7
+### version 0.3.7
 Add new file type in BinaryFile Class - Temporary file for Baikal7 (U3, U4, etc)
 
-# version 0.3.8
+### version 0.3.8
 Fix bug in BinaryFile Class - Change method signals: fix signal array size
 
-# version 0.3.9
+### version 0.3.9
 Refactoring Spectrogram module and BinaryFile class code - remove setter of
  record type. Record type by default - ZXY for all sensors
  
-# version 0.3.10
+### version 0.3.10
 Add STA/LTA function calculating in Filter module
 
-# version 0.3.11
+### version 0.3.11
 Create class for SEG-Y file reading and new type of spectrum - cepstral
  spectrum analysis
 
-# version 0.3.12
+### version 0.3.12
 Add new spectrum type: Nakamura spectral analysis
 
-# version 0.3.13
+### version 0.3.13
 Fix bugs in Nakamura spectrum algorithm. Change Binary Class: fix function
  for calculating average values for channels
  
-# version 0.3.14
+### version 0.3.14
 Code refactoring - deleting useless functions in Binary Class
 
-# version 0.3.15
+### version 0.3.15
 Fix bug for creation spectrogram - wrong calculate amplitudes
 
-# version 0.3.16
+### version 0.3.16
 Fix Binary Class - property data type was deprecated
 
-# version 0.3.17
+### version 0.3.17
 Fix Filter module - sl_filter
 
-# version 0.3.18
+### version 0.3.18
 Change BinaryFile class - add situation with six data column (Baikal8)
 
-# version 0.3.19
+### version 0.3.19
 Change signal plotting function - add forced resampling for signal drawing 
 
-# version 0.3.20
-Change BinaryFile class - fix datetime start for sigma device^ add two
+### version 0.3.20
+Change BinaryFile class - fix datetime start for sigma device add two
  seconds for start time
+
+### version 0.4.0
+Full code refactoring - rewrite BinaryClass and others modules. This 
+ version is not compatibility with other packages (SeisRevise, 
+ SeisHydroFrac and others)

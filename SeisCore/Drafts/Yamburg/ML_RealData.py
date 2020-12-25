@@ -47,13 +47,13 @@ for index in range(point_count):
     signal = signal_data[:, 1 + 3 * index:1 + 3 * (index + 1)]
 
     sp_x = average_spectrum(signal=signal[:, 0], frequency=frequency,
-                            window=8192, offset=4096, med_filter=7,
+                            window=8192, offset=4096, median_filter=7,
                             marmett_filter=7)
     sp_y = average_spectrum(signal=signal[:, 1], frequency=frequency,
-                            window=8192, offset=4096, med_filter=7,
+                            window=8192, offset=4096, median_filter=7,
                             marmett_filter=7)
     sp_z = average_spectrum(signal=signal[:, 2], frequency=frequency,
-                            window=8192, offset=4096, med_filter=7,
+                            window=8192, offset=4096, median_filter=7,
                             marmett_filter=7)
 
     join_sp_data = np.zeros(shape=(sp_x.shape[0], 5))
