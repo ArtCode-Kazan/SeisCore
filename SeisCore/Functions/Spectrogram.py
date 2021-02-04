@@ -1,6 +1,7 @@
 import warnings
 import os
 from typing import NamedTuple
+from math import inf
 
 import numpy as np
 
@@ -16,6 +17,19 @@ class SpData(NamedTuple):
     times: np.ndarray = np.array([0])
     frequencies: np.ndarray = np.array([0])
     amplitudes: np.ndarray = np.array([0])
+
+
+def define_step_size(signal_duration: float) -> float:
+    step_data = {0: 0, 0.025: 0.001, 0.05: 0.002, 0.1: 0.005, 0.5: 0.02,
+                 1: 0.05, 5: 0.2, 20: 1, 60: 5, 300: 20, 600: 30, 1200: 60,
+                 3600: 180, 7200: 600, inf: 1800}
+    step_data = list(step_data.items())
+    step_size = 300
+    for i in range(len(step_data) - 1):
+        if step_data[i][0] < signal_duration <= step_data[i + 1][0]:
+            step_size = step_data[i + 1][1]
+            break
+    return step_size
 
 
 class Spectrogram:
@@ -137,6 +151,11 @@ class Spectrogram:
         y_label = 'Frequency, Hz'
         axes.set_ylabel(y_label)
         axes.set_xlabel(x_label)
+
+        duration = self.signal.shape[0] / self.frequency
+        x_tick_step_size = define_step_size(duration)
+        t_min, t_max = times[0], times[-1] + 1 / self.frequency
+        axes.set_xticks(np.arange(t_min, t_max, x_tick_step_size))
 
         axes.set_title(output_name, fontsize=10)
 

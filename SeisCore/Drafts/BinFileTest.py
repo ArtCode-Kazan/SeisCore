@@ -3,10 +3,11 @@ from datetime import datetime, timedelta
 from matplotlib import pyplot as plt
 
 
-bin_data = BinaryFile()
-bin_data.path = '/media/michael/Data/Projects/HydroFracturing/NorthDeposit' \
-                '/Perforation/Binary/12_SigmaN001_2020-04-11_12-15-15.bin'
-signal = bin_data.signals[1000:2000]
+
+path = '/media/michael/Data/Projects/HydroFracturing/NorthDeposit/Results/Perforation/Binary/12_SigmaN001_2020-04-11_12-15-15.bin'
+
+bin_data = BinaryFile(path)
+signal = bin_data.read_signal('X')
 plt.plot(signal)
 plt.show()
 print(signal.shape[0])

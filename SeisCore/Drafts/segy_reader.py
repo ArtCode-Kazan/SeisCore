@@ -3,12 +3,11 @@ import numpy as np
 from SeisCore.Functions.Spectrum import spectrum
 
 
-file=r'/media/michael/Data/Projects/Yamburg/PriorData/ВСП/П-180/180_01/1' \
-     r'/PV001M01.SGY'
+file=r'/media/michael/Data/Projects/Yamburg/2020/PriorData/6_ВСП/ВСП_Ямбургская_ПО-502/Матер., резул/yamb502_1_z_VPI.sgy'
 depths=dict()
 
-out_data=np.zeros(shape=(4000, 1))
-out_data[:,0]=np.linspace(0, 4, 4000)
+out_data=np.zeros(shape=(6000, 1))
+out_data=np.linspace(0, 6, 6000)
 depth=list()
 j=0
 with segyio.open(file,ignore_geometry = True) as handle:

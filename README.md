@@ -335,3 +335,7 @@ Change BinaryFile class - fix datetime start for sigma device add two
 Full code refactoring - rewrite BinaryClass and others modules. This 
  version is not compatibility with other packages (SeisRevise, 
  SeisHydroFrac and others)
+
+
+### version 0.4.1
+Add time correction for datetime record start when using resampling frequency

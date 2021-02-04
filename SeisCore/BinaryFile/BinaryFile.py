@@ -27,6 +27,32 @@ FileHeader = namedtuple('Header', ['channel_count', 'signal_frequency',
                                    'datetime_start', 'longitude', 'latitude'])
 
 
+class BadHeaderData(Exception):
+    pass
+
+
+class BadFilePath(Exception):
+    pass
+
+
+class InvalidChannelsCount(Exception):
+    pass
+
+
+class InvalidComponentName(Exception):
+    pass
+
+
+def path_checker(path) -> bool:
+    if os.path.isfile(path):
+        extension = os.path.basename(path).split('.')[-1]
+        if extension in BINARY_FILE_FORMATS.values():
+            return True
+        else:
+            return False
+    return False
+
+
 def binary_read(bin_data, x_type: TypeClass, count, skipping_bytes=0):
     """
     Reading binary record (different data type)
@@ -99,7 +125,7 @@ def read_sigma_header(file_path: str) -> NamedTuple:
         datetime_start = datetime(year, month, day, hours, minutes,
                                   seconds) + timedelta(seconds=2)
     except ValueError:
-        raise Exception('Bad header data - invalid date/time values')
+        raise BadHeaderData('invalid date/time values')
     longitude = int(longitude[:3])+float(longitude[3:-1])/60
     latitude = int(latitude[:2])+float(latitude[2:-1])/60
     return FileHeader(channel_count, frequency, datetime_start, longitude,
@@ -108,10 +134,9 @@ def read_sigma_header(file_path: str) -> NamedTuple:
 
 class BinaryFile:
     def __init__(self, file_path: str, use_avg_values=False):
-        is_path_correct = self.path_checker(file_path)
+        is_path_correct = path_checker(path=file_path)
         if not is_path_correct:
-            raise Exception('Invalid extension of file')
-
+            raise BadFilePath(f'Invalid path - {file_path}')
         # full file path
         self.__path = file_path
         # file type
@@ -120,10 +145,13 @@ class BinaryFile:
         # header file data
         self.__header_data = None
 
+        # datetime record start
+        self.__dt_record_start: datetime = None
+
         # boolean-parameter for subtraction average values
         self.__use_avg_values = use_avg_values
         # resample frequency
-        self.__resample_frequency = None
+        self.__resample_frequency = 0
         # date and time for start signal reading
         self.__read_date_time_start = None
         # date and time for end signal reading
@@ -132,15 +160,6 @@ class BinaryFile:
     @property
     def file_extension(self) -> str:
         return os.path.basename(self.path).split('.')[-1]
-
-    @staticmethod
-    def path_checker(value: str) -> bool:
-        if os.path.isfile(value):
-            extension = os.path.basename(value).split('.')[-1]
-            if extension in BINARY_FILE_FORMATS.values():
-                return True
-            else:
-                return False
 
     @property
     def path(self) -> str:
@@ -175,7 +194,7 @@ class BinaryFile:
     @property
     def file_header(self) -> FileHeader:
         if self.__header_data is None:
-            file_type=self.file_type
+            file_type = self.file_type
             if file_type == 'Baikal7':
                 self.__header_data = read_baikal7_header(self.path)
             elif file_type == 'Baikal8':
@@ -192,15 +211,15 @@ class BinaryFile:
 
     @property
     def datetime_start(self) -> datetime:
-        return self.file_header.datetime_start
+        return self.__dt_record_start
 
     @property
     def longitude(self) -> float:
-        return self.file_header.longitude
+        return round(self.file_header.longitude, 6)
 
     @property
     def latitude(self) -> float:
-        return self.file_header.latitude
+        return round(self.file_header.latitude, 6)
 
     @property
     def channels_count(self) -> int:
@@ -208,15 +227,21 @@ class BinaryFile:
 
     @property
     def resample_frequency(self) -> int:
-        if self.__resample_frequency is None:
+        if self.__resample_frequency == 0:
             self.__resample_frequency = self.signal_frequency
+            self.__dt_record_start = self.file_header.datetime_start
         return self.__resample_frequency
 
     @resample_frequency.setter
     def resample_frequency(self, value: int):
         signal_freq = self.signal_frequency
         if signal_freq % value == 0:
+            dt_corr = int(0.5 * (signal_freq / value - 1)) / signal_freq
+            self.__dt_record_start = self.file_header.datetime_start + timedelta(
+                seconds=dt_corr)
             self.__resample_frequency = value
+        else:
+            self.__resample_frequency = 0
 
     @property
     def read_date_time_start(self) -> datetime:
@@ -268,7 +293,7 @@ class BinaryFile:
         elif channel_count == 6:
             return 552
         else:
-            raise Exception('Invalid channels count')
+            raise InvalidChannelsCount()
 
     @property
     def discrete_amount(self):
@@ -278,7 +303,7 @@ class BinaryFile:
         return discrete_amount
 
     @property
-    def seconds_duration(self):
+    def seconds_duration(self) -> float:
         discrete_count = self.discrete_amount
         freq = self.signal_frequency
         delta_seconds = (discrete_count - 1) / freq
@@ -309,13 +334,15 @@ class BinaryFile:
             (x_component_index, y_component_index, z_component_index)))
 
     def _get_component_signal(self, component_name='Z') -> np.ndarray:
-        if self.channels_count==3:
+        if self.channels_count == 3:
             column_index = self.components_index[component_name]
         else:
             column_index = 3 + self.components_index[component_name]
 
-        offset_size = self.header_memory_size + column_index * \
-            UNSIGNED_INT_CTYPE.byte_size
+        skip_data_size = UNSIGNED_INT_CTYPE.byte_size * \
+            self.channels_count*self.start_moment
+        offset_size = self.header_memory_size + skip_data_size + \
+            column_index * UNSIGNED_INT_CTYPE.byte_size
         strides_size = UNSIGNED_INT_CTYPE.byte_size * self.channels_count
         signal_size = self.end_moment - self.start_moment
         with open(self.path, 'rb') as f, \
@@ -333,6 +360,6 @@ class BinaryFile:
     def read_signal(self, component='Z') -> np.ndarray:
         component = component.upper()
         if component not in self.components_index:
-            raise Exception(f'Invalid component name - {component}')
+            raise InvalidComponentName(f'{component} not found')
         signal_array = self._get_component_signal(component_name=component)
         return self._resample_signal(src_signal=signal_array)

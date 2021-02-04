@@ -1,9 +1,13 @@
 import os
+from math import inf
 
 import numpy as np
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+
+
+from SeisCore.Functions.Spectrogram import define_step_size
 
 
 def plot_graph(x_data, y_data, label: str, output_folder: str,
@@ -74,8 +78,17 @@ def plot_signal(signal: np.ndarray, frequency: int, label: str,
     mpl.rcParams['figure.subplot.bottom'] = 0.05
     mpl.rcParams['figure.subplot.top'] = 0.95
 
+    max_time_length_sec = 3600
+    base_image_length_inch = 12
+    base_image_height_inch = 9
+    duration = signal.shape[0] / frequency
+    if duration > max_time_length_sec:
+        lx = duration / max_time_length_sec * base_image_length_inch
+    else:
+        lx = base_image_length_inch
+
     fig = plt.figure()
-    fig.set_size_inches(13, 10)
+    fig.set_size_inches(lx, base_image_height_inch)
     fig.dpi = 96
 
     axes = fig.add_subplot(111)
@@ -86,7 +99,10 @@ def plot_signal(signal: np.ndarray, frequency: int, label: str,
     t_min = time_start_sec
     t_max = time_start_sec+(signal.shape[0] - 1) / frequency
     axes.set_xlim(t_min, t_max)
-    axes.set_xticks(np.arange(t_min, t_max + 1, 300))
+
+    # tick step depend of signal_duration
+    step_size = define_step_size(signal_duration=duration)
+    axes.set_xticks(np.arange(t_min, t_max + 1 / frequency, step_size))
 
     axes.set_ylim(np.min(signal), np.max(signal))
     time_array = np.linspace(start=t_min, stop=t_max, num=signal.shape[0])
