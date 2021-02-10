@@ -1,5 +1,3 @@
-from math import inf
-
 import numpy as np
 
 
@@ -31,4 +29,4 @@ def amplitude_energy(signal: np.ndarray, norm_coeff=1) -> float:
     """
     signal = signal / norm_coeff
     signal = signal ** 2
-    return np.sum(signal)
+    return sum(signal)

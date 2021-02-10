@@ -132,13 +132,22 @@ def read_sigma_header(file_path: str) -> NamedTuple:
                       latitude)
 
 
+def calc_correct_time_start(origin_frequency, resample_frequency, dt_start):
+   dt_corr = int(0.5 * (origin_frequency / resample_frequency - 1)) / origin_frequency
+   return dt_start + timedelta(seconds=dt_corr)
+
+
 class BinaryFile:
-    def __init__(self, file_path: str, use_avg_values=False):
+    def __init__(self, file_path: str,
+                 resample_frequency=0, use_avg_values=False):
         is_path_correct = path_checker(path=file_path)
         if not is_path_correct:
             raise BadFilePath(f'Invalid path - {file_path}')
         # full file path
         self.__path = file_path
+        # resample frequency
+        self.__resample_frequency = resample_frequency
+
         # file type
         self.__file_type = None
 
@@ -150,8 +159,7 @@ class BinaryFile:
 
         # boolean-parameter for subtraction average values
         self.__use_avg_values = use_avg_values
-        # resample frequency
-        self.__resample_frequency = 0
+
         # date and time for start signal reading
         self.__read_date_time_start = None
         # date and time for end signal reading
@@ -210,8 +218,17 @@ class BinaryFile:
         return self.file_header.signal_frequency
 
     @property
+    def origin_datetime_start(self):
+        return self.file_header.datetime_start
+
+    @property
     def datetime_start(self) -> datetime:
-        return self.__dt_record_start
+        if self.resample_frequency == self.signal_frequency:
+            return self.origin_datetime_start
+        else:
+            return calc_correct_time_start(self.signal_frequency,
+                                           self.resample_frequency,
+                                           self.origin_datetime_start)
 
     @property
     def longitude(self) -> float:
@@ -229,19 +246,13 @@ class BinaryFile:
     def resample_frequency(self) -> int:
         if self.__resample_frequency == 0:
             self.__resample_frequency = self.signal_frequency
-            self.__dt_record_start = self.file_header.datetime_start
         return self.__resample_frequency
 
     @resample_frequency.setter
     def resample_frequency(self, value: int):
         signal_freq = self.signal_frequency
         if signal_freq % value == 0:
-            dt_corr = int(0.5 * (signal_freq / value - 1)) / signal_freq
-            self.__dt_record_start = self.file_header.datetime_start + timedelta(
-                seconds=dt_corr)
             self.__resample_frequency = value
-        else:
-            self.__resample_frequency = 0
 
     @property
     def read_date_time_start(self) -> datetime:

@@ -60,7 +60,8 @@ def level_num(frequency: float, edge_frequency: float) -> int:
     return i
 
 
-def detrend(signal: np.ndarray, frequency: int, edge_frequency: float):
+def detrend(signal: np.ndarray, frequency: int, edge_frequency: float) -> \
+        np.ndarray:
     """
     Method for detrending of signal
     :param signal: 1D-array of signal

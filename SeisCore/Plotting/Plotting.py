@@ -77,6 +77,7 @@ def plot_signal(signal: np.ndarray, frequency: int, label: str,
     mpl.rcParams['figure.subplot.right'] = 0.97
     mpl.rcParams['figure.subplot.bottom'] = 0.05
     mpl.rcParams['figure.subplot.top'] = 0.95
+    mpl.rcParams['agg.path.chunksize'] = 10000
 
     max_time_length_sec = 3600
     base_image_length_inch = 12
@@ -125,9 +126,10 @@ def plot_signal(signal: np.ndarray, frequency: int, label: str,
     plt.close(fig)
 
 
-def plot_average_spectrum(frequency, origin_amplitudes, output_folder,
-                          output_name, smooth_amplitudes=None, f_min=None,
-                          f_max=None):
+def plot_average_spectrum(frequency: np.ndarray, origin_amplitudes: np.ndarray,
+                          smooth_amplitudes: np.ndarray,
+                          output_folder: str, output_name: str,
+                          frequency_limits=(0, inf)) -> None:
     """
     Method for plotting average spectrum
     :param frequency: 1D array of spectrum frequency
@@ -152,39 +154,29 @@ def plot_average_spectrum(frequency, origin_amplitudes, output_folder,
     fig.dpi = 96
     axes = fig.add_subplot(111)
 
-    if f_min is None:
-        f_min = frequency[0]
-    if f_max is None:
-        f_max = frequency[-1]
-    axes.set_xlim(f_min, f_max)
-
+    f_min, f_max = frequency_limits
     selection_frequency = \
         frequency[(frequency >= f_min) * (frequency <= f_max)]
 
     selection_origin_amplitudes = \
         origin_amplitudes[(frequency >= f_min) * (frequency <= f_max)]
 
-    if smooth_amplitudes is not None:
-        selection_smooth_amplitudes = \
-            smooth_amplitudes[(frequency >= f_min) * (frequency <= f_max)]
+    selection_smooth_amplitudes = \
+        smooth_amplitudes[(frequency >= f_min) * (frequency <= f_max)]
 
-        amp_min = np.min([np.min(selection_origin_amplitudes),
-                          np.min(selection_smooth_amplitudes)])
-        amp_max = np.max([np.max(selection_origin_amplitudes),
-                          np.max(selection_smooth_amplitudes)])
-    else:
-        amp_min = np.min(selection_origin_amplitudes)
-        amp_max = np.max(selection_origin_amplitudes)
-        selection_smooth_amplitudes=None
+    amp_min = np.min([np.min(selection_origin_amplitudes),
+                      np.min(selection_smooth_amplitudes)])
+    amp_max = np.max([np.max(selection_origin_amplitudes),
+                      np.max(selection_smooth_amplitudes)])
 
+    axes.set_xlim(selection_frequency[0], selection_frequency[-1])
     axes.set_ylim(amp_min, amp_max)
     axes.plot(selection_frequency, selection_origin_amplitudes,
               lw=1, color='#000000',
               label='Average spectrum\n(without smoothing))')
-    if smooth_amplitudes is not None:
-        axes.plot(selection_frequency, selection_smooth_amplitudes,
-                  lw=2, color='#FF0000',
-                  label='Average spectrum\n(with smoothing)')
+    axes.plot(selection_frequency, selection_smooth_amplitudes,
+              lw=2, color='#FF0000',
+              label='Average spectrum\n(with smoothing)')
 
     axes.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 

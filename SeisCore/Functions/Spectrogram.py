@@ -14,9 +14,13 @@ from matplotlib.ticker import MaxNLocator
 
 
 class SpData(NamedTuple):
-    times: np.ndarray = np.array([0])
-    frequencies: np.ndarray = np.array([0])
-    amplitudes: np.ndarray = np.array([0])
+    times: np.ndarray = np.array([])
+    frequencies: np.ndarray = np.array([])
+    amplitudes: np.ndarray = np.array([])
+
+
+class ShortSignalException(Exception):
+    pass
 
 
 def define_step_size(signal_duration: float) -> float:
@@ -59,13 +63,13 @@ class Spectrogram:
         self.spectrogram_size_x_inch, self.spectrogram_size_y_inch = 12, 9
         self.max_time_length_sec = 3600
 
-    def _spectrogram_calc(self):
+    def spectrogram_calc(self):
         """
         Method for calculation spectrogram data
         :return: tuple with time(seconds), frequencies(Hz), amplitudes(dB)
         """
         if self.signal.shape[0] <= self._window_kaiser.shape[0]:
-            raise Exception('Signal size less then Kaiser window')
+            raise ShortSignalException('Signal size less then Kaiser window')
 
         f, t, s = signal.spectrogram(x=self.signal, fs=self.frequency,
                                      window=self._window_kaiser,
@@ -82,7 +86,16 @@ class Spectrogram:
         df = f[((min_frequency <= f)*(f <= max_frequency))]
         self._sp_data = SpData(t, df, ds)
 
-    def _scale_limits(self) -> tuple:
+    @property
+    def sp_data(self) -> SpData:
+        if self._sp_data.times.shape[0] == 0:
+            try:
+                self.spectrogram_calc()
+            except ShortSignalException:
+                self._sp_data = SpData()
+        return self._sp_data
+
+    def scale_limits(self) -> tuple:
         """
         Method for defining spectrogram scale limits
         :return: scale limits
@@ -107,7 +120,7 @@ class Spectrogram:
         Method for getting scale parameters (matplotlib)
         :return: colormap parameters
         """
-        b_min, b_max = self._scale_limits()
+        b_min, b_max = self.scale_limits()
         levels = MaxNLocator(nbins=100).tick_values(b_min, b_max)
         color_map = plt.get_cmap('jet')
         norm = BoundaryNorm(boundaries=levels, ncolors=color_map.N,
@@ -128,6 +141,8 @@ class Spectrogram:
         mpl.rcParams['figure.subplot.right'] = 0.97
         mpl.rcParams['figure.subplot.bottom'] = 0.05
         mpl.rcParams['figure.subplot.top'] = 0.95
+
+        mpl.rcParams['agg.path.chunksize'] = 10000
 
         # calc document size in inches (depend on time duration)
         duration = self._sp_data.times[-1] - self._sp_data.times[0]
@@ -169,5 +184,5 @@ class Spectrogram:
         :param output_folder: export folder path
         :param output_name: output file name (without extension)
         """
-        self._spectrogram_calc()
+        self.spectrogram_calc()
         self._plot(output_folder, output_name)
