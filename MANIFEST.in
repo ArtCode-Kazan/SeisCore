@@ -1,2 +1,0 @@
-recursive-include SeisCore *.so
-recursive-include SeisCore *.pyd

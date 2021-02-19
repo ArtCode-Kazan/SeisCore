@@ -14,4 +14,5 @@ setup(name='SeisCore',
           'scipy==1.2.1',
           'pywavelets==1.0.2',
           'matplotlib==2.1.1',
-          'segyio==1.8.8'])
+          'segyio==1.8.8'],
+      package_data={'Resampling': ['*.so']})
