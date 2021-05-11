@@ -78,7 +78,7 @@ def binary_read(bin_data, x_type: TypeClass, count, skipping_bytes=0):
 
 def read_baikal7_header(file_path: str) -> NamedTuple:
     with open(file_path, 'rb') as f:
-        channel_count=binary_read(f, UNSIGNED_SHORT_CTYPE, 1, 0)
+        channel_count = binary_read(f, UNSIGNED_SHORT_CTYPE, 1, 0)
         frequency = binary_read(f, UNSIGNED_SHORT_CTYPE, 1, 22)
         latitude = binary_read(f, DOUBLE_CTYPE, 1, 72)
         longitude = binary_read(f, DOUBLE_CTYPE, 1, 80)
@@ -126,15 +126,19 @@ def read_sigma_header(file_path: str) -> NamedTuple:
                                   seconds) + timedelta(seconds=2)
     except ValueError:
         raise BadHeaderData('invalid date/time values')
-    longitude = int(longitude[:3])+float(longitude[3:-1])/60
-    latitude = int(latitude[:2])+float(latitude[2:-1])/60
+
+    try:
+        longitude = int(longitude[:3]) + float(longitude[3:-1])/60
+        latitude = int(latitude[:2]) + float(latitude[2:-1])/60
+    except ValueError:
+        raise BadHeaderData('invalid longitude/latitude')
     return FileHeader(channel_count, frequency, datetime_start, longitude,
                       latitude)
 
 
 def calc_correct_time_start(origin_frequency, resample_frequency, dt_start):
-   dt_corr = int(0.5 * (origin_frequency / resample_frequency - 1)) / origin_frequency
-   return dt_start + timedelta(seconds=dt_corr)
+    dt_corr = int(0.5 * (origin_frequency / resample_frequency - 1)) / origin_frequency
+    return dt_start + timedelta(seconds=dt_corr)
 
 
 class BinaryFile:

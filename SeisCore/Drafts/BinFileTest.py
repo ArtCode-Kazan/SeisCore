@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 
 
 
-path = '/media/michael/Data/Projects/HydroFracturing/NorthDeposit/Results/Perforation/Binary/12_SigmaN001_2020-04-11_12-15-15.bin'
+path = '/media/michael/Data/Projects/GraviSeismicComparation/Kandalaksha_2021/MicroseismicData/SigmaN0018/210326_72356_SigmaN0018.bin'
 
 bin_data = BinaryFile(path)
 signal = bin_data.read_signal('X')
