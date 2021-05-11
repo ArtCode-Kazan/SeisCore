@@ -5,13 +5,12 @@ from mmap import ACCESS_READ
 from datetime import datetime
 from datetime import timedelta
 import uuid
-
 from typing import NamedTuple
 from collections import namedtuple
 
 import numpy as np
 
-from SeisCore.BinaryFile.CPython.Resampling.Execute import Resampling
+from seiscore.binaryfile.resampling.wrap import resampling
 
 
 TypeClass = namedtuple('TypeClass', ['label', 'byte_size'])
@@ -32,10 +31,6 @@ class BadHeaderData(Exception):
 
 
 class BadFilePath(Exception):
-    pass
-
-
-class InvalidChannelsCount(Exception):
     pass
 
 
@@ -136,11 +131,6 @@ def read_sigma_header(file_path: str) -> NamedTuple:
                       latitude)
 
 
-def calc_correct_time_start(origin_frequency, resample_frequency, dt_start):
-    dt_corr = int(0.5 * (origin_frequency / resample_frequency - 1)) / origin_frequency
-    return dt_start + timedelta(seconds=dt_corr)
-
-
 class BinaryFile:
     def __init__(self, file_path: str,
                  resample_frequency=0, use_avg_values=False):
@@ -157,9 +147,6 @@ class BinaryFile:
 
         # header file data
         self.__header_data = None
-
-        # datetime record start
-        self.__dt_record_start: datetime = None
 
         # boolean-parameter for subtraction average values
         self.__use_avg_values = use_avg_values
@@ -227,12 +214,7 @@ class BinaryFile:
 
     @property
     def datetime_start(self) -> datetime:
-        if self.resample_frequency == self.signal_frequency:
-            return self.origin_datetime_start
-        else:
-            return calc_correct_time_start(self.signal_frequency,
-                                           self.resample_frequency,
-                                           self.origin_datetime_start)
+        return self.origin_datetime_start
 
     @property
     def longitude(self) -> float:
@@ -263,6 +245,13 @@ class BinaryFile:
         if self.__read_date_time_start is None:
             self.__read_date_time_start = self.datetime_start
         return self.__read_date_time_start
+
+    @property
+    def corrected_read_datetime_start(self) -> datetime:
+        origin_freq = self.signal_frequency
+        resample_freq = self.__resample_frequency
+        dt_offset = int(0.5 * (origin_freq / resample_freq - 1)) / origin_freq
+        return self.read_date_time_start + timedelta(seconds=dt_offset)
 
     @read_date_time_start.setter
     def read_date_time_start(self, value: datetime):
@@ -303,12 +292,7 @@ class BinaryFile:
     @property
     def header_memory_size(self) -> int:
         channel_count = self.channels_count
-        if channel_count == 3:
-            return 336
-        elif channel_count == 6:
-            return 552
-        else:
-            raise InvalidChannelsCount()
+        return 120 + 72 * channel_count
 
     @property
     def discrete_amount(self):
@@ -355,7 +339,7 @@ class BinaryFile:
             column_index = 3 + self.components_index[component_name]
 
         skip_data_size = UNSIGNED_INT_CTYPE.byte_size * \
-            self.channels_count*self.start_moment
+            self.channels_count * self.start_moment
         offset_size = self.header_memory_size + skip_data_size + \
             column_index * UNSIGNED_INT_CTYPE.byte_size
         strides_size = UNSIGNED_INT_CTYPE.byte_size * self.channels_count
@@ -370,7 +354,7 @@ class BinaryFile:
     def _resample_signal(self, src_signal: np.ndarray) -> np.ndarray:
         if self.resample_parameter == 1:
             return src_signal
-        return Resampling.resampling(src_signal, self.resample_parameter)
+        return resampling(src_signal, self.resample_parameter)
 
     def read_signal(self, component='Z') -> np.ndarray:
         component = component.upper()

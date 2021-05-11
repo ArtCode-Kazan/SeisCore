@@ -24,16 +24,21 @@ class ShortSignalException(Exception):
 
 
 def define_step_size(signal_duration: float) -> float:
-    step_data = {0: 0, 0.025: 0.001, 0.05: 0.002, 0.1: 0.005, 0.5: 0.02,
-                 1: 0.05, 5: 0.2, 20: 1, 60: 5, 300: 20, 600: 30, 1200: 60,
-                 3600: 180, 7200: 600, inf: 1800}
-    step_data = list(step_data.items())
-    step_size = 300
-    for i in range(len(step_data) - 1):
-        if step_data[i][0] < signal_duration <= step_data[i + 1][0]:
-            step_size = step_data[i + 1][1]
-            break
-    return step_size
+    """
+    Function for defining tick step time axis
+    :param signal_duration: seconds
+    :return: tick time interval in seconds
+    """
+    steps = {(0, 0.025): 0.001, (0.025, 0.05): 0.002, (0.05, 0.1): 0.005,
+             (0.1, 0.5): 0.02, (0.5, 1): 0.05, (1, 5): 0.2, (5, 20): 1,
+             (20, 60): 5, (60, 300):20, (300, 600): 30, (600, 1200): 60,
+             (1200, 3600): 180, (3600, 7200): 600, (7200, inf): 1800}
+    for duration_limits, step_size in steps.items():
+        min_duration, max_duration = duration_limits
+        if min_duration <= signal_duration < max_duration:
+            return step_size
+    else:
+        return 300
 
 
 class Spectrogram:

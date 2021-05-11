@@ -6,8 +6,7 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
-
-from SeisCore.Functions.Spectrogram import define_step_size
+from seiscore.plotting.spectrogram import define_step_size
 
 
 def plot_graph(x_data, y_data, label: str, output_folder: str,
@@ -138,8 +137,7 @@ def plot_average_spectrum(frequency: np.ndarray, origin_amplitudes: np.ndarray,
     :param output_name: export file name
     :param smooth_amplitudes: 1D array of smooth amplitudes (Marmett or
     Median filtration)
-    :param f_min: minimal frequency for plotting
-    :param f_max:maximal frequency for plotting
+    :param frequency_limits: frequency limits for plotting
     :return:
     """
     plt.switch_backend('SVG')

@@ -1,6 +1,6 @@
 import segyio
 import numpy as np
-from SeisCore.Functions.Spectrum import spectrum
+from seiscore.functions.Spectrum import spectrum
 
 
 file=r'/media/michael/Data/Projects/Yamburg/2020/PriorData/6_ВСП/ВСП_Ямбургская_ПО-502/Матер., резул/yamb502_1_z_VPI.sgy'
