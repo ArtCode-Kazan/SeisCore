@@ -1,5 +1,7 @@
 from setuptools import setup
 from setuptools import find_packages
+
+
 setup(name='seiscore',
       version='0.5.0',
       packages=find_packages(),
@@ -14,4 +16,4 @@ setup(name='seiscore',
           'scipy==1.5.4',
           'pywavelets==1.1.1',
           'matplotlib==3.3.4'],
-      package_data={'Resampling': ['*.so']})
+      package_data={'seiscore': ['binaryfile/resampling/*.so']})
