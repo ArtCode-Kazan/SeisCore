@@ -6,14 +6,57 @@ from datetime import datetime
 from datetime import timedelta
 import uuid
 from typing import NamedTuple
-from collections import namedtuple
 
 import numpy as np
 
 from seiscore.binaryfile.resampling.wrap import resampling
 
 
-TypeClass = namedtuple('TypeClass', ['label', 'byte_size'])
+class TypeClass(NamedTuple):
+    label: str
+    byte_size: int
+
+
+class FileHeader(NamedTuple):
+    channel_count: int
+    signal_frequency: int
+    datetime_start: datetime
+    longitude: float
+    latitude: float
+
+
+class FileInfo(NamedTuple):
+    path: str
+    format_type: str
+    frequency: int
+    time_start: datetime
+    time_stop: datetime
+    longitude: float
+    latitude: float
+
+    @property
+    def name(self) -> str:
+        return os.path.basename(self.path)
+
+    @property
+    def formatted_duration(self) -> str:
+        duration = (self.time_stop - self.time_start).total_seconds()
+        days = int(duration / (24 * 3600))
+        hours = int((duration - days * 24 * 3600) / 3600)
+        minutes = int((duration - days * 24 * 3600 - hours * 3600) / 60)
+        seconds = duration - days * 24 * 3600 - hours * 3600 - \
+            minutes * 60
+
+        hours = str(hours).zfill(2)
+        minutes = str(minutes).zfill(2)
+        seconds = f'{seconds:.3f}'.zfill(6)
+        if days:
+            duration_format = f'{days} days {hours}:{minutes}:{seconds}'
+        else:
+            duration_format = f'{hours}:{minutes}:{seconds}'
+        return duration_format
+
+
 CHAR_CTYPE = TypeClass('s', 1)
 UNSIGNED_SHORT_CTYPE = TypeClass('H', 2)
 UNSIGNED_INT_CTYPE = TypeClass('I', 4)
@@ -21,9 +64,6 @@ DOUBLE_CTYPE = TypeClass('d', 8)
 UNSIGNED_LONG_LONG_CTYPE = TypeClass('Q', 8)
 
 BINARY_FILE_FORMATS = {'Baikal7': '00', 'Baikal8': 'xx', 'Sigma': 'bin'}
-
-FileHeader = namedtuple('Header', ['channel_count', 'signal_frequency',
-                                   'datetime_start', 'longitude', 'latitude'])
 
 
 class BadHeaderData(Exception):
@@ -71,7 +111,7 @@ def binary_read(bin_data, x_type: TypeClass, count, skipping_bytes=0):
     return result
 
 
-def read_baikal7_header(file_path: str) -> NamedTuple:
+def read_baikal7_header(file_path: str) -> FileHeader:
     with open(file_path, 'rb') as f:
         channel_count = binary_read(f, UNSIGNED_SHORT_CTYPE, 1, 0)
         frequency = binary_read(f, UNSIGNED_SHORT_CTYPE, 1, 22)
@@ -85,7 +125,7 @@ def read_baikal7_header(file_path: str) -> NamedTuple:
                       latitude)
 
 
-def read_baikal8_header(file_path: str) -> NamedTuple:
+def read_baikal8_header(file_path: str) -> FileHeader:
     with open(file_path, 'rb') as f:
         channel_count = binary_read(f, UNSIGNED_SHORT_CTYPE, 1, 0)
         day = binary_read(f, UNSIGNED_SHORT_CTYPE, 1, 6)
@@ -102,7 +142,7 @@ def read_baikal8_header(file_path: str) -> NamedTuple:
                       latitude)
 
 
-def read_sigma_header(file_path: str) -> NamedTuple:
+def read_sigma_header(file_path: str) -> FileHeader:
     with open(file_path, 'rb') as f:
         channel_count = binary_read(f, UNSIGNED_INT_CTYPE, 1, 12)
         frequency = binary_read(f, UNSIGNED_INT_CTYPE, 1, 24)
@@ -143,7 +183,7 @@ class BinaryFile:
         self.__resample_frequency = resample_frequency
 
         # file type
-        self.__file_type = None
+        self.__format_type = None
 
         # header file data
         self.__header_data = None
@@ -165,13 +205,13 @@ class BinaryFile:
         return self.__path
 
     @property
-    def file_type(self) -> str:
-        if self.__file_type is None:
-            for file_type, extension in BINARY_FILE_FORMATS.items():
+    def format_type(self) -> str:
+        if self.__format_type is None:
+            for format_type, extension in BINARY_FILE_FORMATS.items():
                 if self.file_extension == extension:
-                    self.__file_type = file_type
+                    self.__format_type = format_type
                     break
-        return self.__file_type
+        return self.__format_type
 
     @property
     def unique_file_name(self) -> str:
@@ -193,12 +233,12 @@ class BinaryFile:
     @property
     def file_header(self) -> FileHeader:
         if self.__header_data is None:
-            file_type = self.file_type
-            if file_type == 'Baikal7':
+            format_type = self.format_type
+            if format_type == 'Baikal7':
                 self.__header_data = read_baikal7_header(self.path)
-            elif file_type == 'Baikal8':
+            elif format_type == 'Baikal8':
                 self.__header_data = read_baikal8_header(self.path)
-            elif file_type == 'Sigma':
+            elif format_type == 'Sigma':
                 self.__header_data = read_sigma_header(self.path)
             else:
                 pass
@@ -331,6 +371,12 @@ class BinaryFile:
         z_component_index = record_type.index('Z')
         return dict(zip(list('XYZ'),
             (x_component_index, y_component_index, z_component_index)))
+
+    @property
+    def short_file_info(self) -> FileInfo:
+        return FileInfo(self.path, self.format_type, self.signal_frequency,
+                        self.datetime_start, self.datetime_stop,
+                        self.longitude, self.latitude)
 
     def _get_component_signal(self, component_name='Z') -> np.ndarray:
         if self.channels_count == 3:
