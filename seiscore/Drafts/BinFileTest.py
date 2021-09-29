@@ -1,10 +1,11 @@
-from seiscore.binaryfile.BinaryFile import BinaryFile
+from seiscore.binaryfile.binaryfile import BinaryFile
 from datetime import datetime, timedelta
 from matplotlib import pyplot as plt
 
 
 
-path = '/media/michael/Data/Projects/GraviSeismicComparation/Kandalaksha_2021/MicroseismicData/SigmaN0018/210326_72356_SigmaN0018.bin'
+path = '/media/michael/Data/Projects/GraviSeismicComparation' \
+       '/Kandalaksha_2021/JoinData/Seis15-Grav132/20210324_point_2/210324_134453_SigmaN0015.bin'
 
 bin_data = BinaryFile(path)
 signal = bin_data.read_signal('X')

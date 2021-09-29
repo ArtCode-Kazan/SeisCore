@@ -12,8 +12,8 @@ setup(name='seiscore',
       include_package_data=True,
       zip=False,
       install_requires=[
-          'numpy==1.19.5',
-          'scipy==1.5.4',
+          'numpy==1.20.3',
+          'scipy==1.6.3',
           'pywavelets==1.1.1',
-          'matplotlib==3.3.4'],
+          'matplotlib==3.4.2'],
       package_data={'seiscore': ['binaryfile/resampling/*.so']})
