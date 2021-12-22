@@ -3,6 +3,8 @@ import sys
 
 import numpy as np
 
+from seiscore.binaryfile.resampling.prototype import resampling as slow_vers
+
 
 def import_function():
     try:
@@ -11,8 +13,7 @@ def import_function():
         from seiscore.binaryfile.resampling import resampling as resample_core
         return resample_core.resampling
     except ImportError:
-        from seiscore.binaryfile.resampling.origin import resampling
-        return resampling
+        return slow_vers
 
 
 def resampling(arr: np.ndarray, resample_parameter: int) -> np.ndarray:
