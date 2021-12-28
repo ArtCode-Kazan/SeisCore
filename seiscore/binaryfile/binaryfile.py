@@ -88,7 +88,7 @@ def path_checker(path) -> bool:
     return False
 
 
-def binary_read(bin_data, x_type: TypeClass, count, skipping_bytes=0):
+def binary_read(bin_data, x_type: TypeClass, count: int, skipping_bytes=0):
     """
     Reading binary record (different data type)
     :param bin_data: open binary file [bin_data = open(file_00, 'rb')]
