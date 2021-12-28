@@ -97,7 +97,7 @@ def binary_read(bin_data, x_type: TypeClass, count: int, skipping_bytes=0):
     :param x_type: data C-type [s-string (char), H-unsigned short,
                                 I-unsigned int, d-double,
                                 Q-unsigned long long]
-    :param count: symbols count(numbers, literals)
+    :param count: symbols count or numbers count (not digits!)
     :return: python data type
     """
     fmt = f'{count}{x_type.label}'
@@ -105,9 +105,10 @@ def binary_read(bin_data, x_type: TypeClass, count: int, skipping_bytes=0):
 
     bin_data.seek(skipping_bytes)
     record = bin_data.read(size)
-    result = struct.unpack(fmt, record)[0]
     if x_type.label == 's':
         result = struct.unpack(fmt, record)[0].decode('utf-8')
+    else:
+        result = struct.unpack(fmt, record)
     return result
 
 
