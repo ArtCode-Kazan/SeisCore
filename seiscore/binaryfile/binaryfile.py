@@ -6,6 +6,7 @@ from datetime import datetime
 from datetime import timedelta
 import uuid
 from typing import NamedTuple
+from dataclasses import dataclass
 
 import numpy as np
 
@@ -25,7 +26,20 @@ class FileHeader(NamedTuple):
     latitude: float
 
 
-class FileInfo(NamedTuple):
+def format_duration(days: int, hours: int, minutes: int,
+                    seconds: float) -> str:
+    hours_fmt = str(hours).zfill(2)
+    minutes_fmt = str(minutes).zfill(2)
+    seconds_fmt = f'{seconds:.3f}'.zfill(6)
+    if days:
+        duration_format = f'{days} days {hours_fmt}:{minutes_fmt}:{seconds_fmt}'
+    else:
+        duration_format = f'{hours_fmt}:{minutes_fmt}:{seconds_fmt}'
+    return duration_format
+
+
+@dataclass
+class FileInfo:
     path: str
     format_type: str
     frequency: int
@@ -39,22 +53,17 @@ class FileInfo(NamedTuple):
         return os.path.basename(self.path)
 
     @property
-    def formatted_duration(self) -> str:
-        duration = (self.time_stop - self.time_start).total_seconds()
-        days = int(duration / (24 * 3600))
-        hours = int((duration - days * 24 * 3600) / 3600)
-        minutes = int((duration - days * 24 * 3600 - hours * 3600) / 60)
-        seconds = duration - days * 24 * 3600 - hours * 3600 - \
-            minutes * 60
+    def duration_in_seconds(self) -> float:
+        return (self.time_stop - self.time_start).total_seconds()
 
-        hours = str(hours).zfill(2)
-        minutes = str(minutes).zfill(2)
-        seconds = f'{seconds:.3f}'.zfill(6)
-        if days:
-            duration_format = f'{days} days {hours}:{minutes}:{seconds}'
-        else:
-            duration_format = f'{hours}:{minutes}:{seconds}'
-        return duration_format
+    @property
+    def formatted_duration(self) -> str:
+        days = int(self.duration_in_seconds / (24 * 3600))
+        hours = int((self.duration_in_seconds - days * 24 * 3600) / 3600)
+        minutes = int((self.duration_in_seconds - days * 24 * 3600 - hours * 3600) / 60)
+        seconds = self.duration_in_seconds - days * 24 * 3600 - hours * 3600 - \
+            minutes * 60
+        return format_duration(days, hours, minutes, seconds)
 
 
 CHAR_CTYPE = TypeClass('s', 1)
