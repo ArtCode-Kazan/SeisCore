@@ -5,7 +5,7 @@ from mmap import ACCESS_READ
 from datetime import datetime
 from datetime import timedelta
 import uuid
-from typing import NamedTuple
+from typing import NamedTuple, List, Dict, Union
 from dataclasses import dataclass
 
 import numpy as np
@@ -191,8 +191,7 @@ def read_sigma_header(file_path: str) -> FileHeader:
     hours, minutes = int(time_src[:2]), int(time_src[2:4])
     seconds = int(time_src[4:])
     try:
-        datetime_start = datetime(year, month, day, hours, minutes,
-                                  seconds) + timedelta(seconds=2)
+        datetime_start = datetime(year, month, day, hours, minutes, seconds)
     except ValueError:
         raise BadHeaderData('invalid date/time values')
 
