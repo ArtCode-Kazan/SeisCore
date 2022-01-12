@@ -222,7 +222,7 @@ class BinaryFile:
         self.__format_type = None
 
         # header file data
-        self.__header_data = None
+        self.__file_header = self.__get_file_header()
 
         # boolean-parameter for subtraction average values
         self.__is_use_avg_values = is_use_avg_values
@@ -392,6 +392,28 @@ class BinaryFile:
         return FileInfo(self.path, self.format_type, self.origin_frequency,
                         self.datetime_start, self.datetime_stop,
                         self.longitude, self.latitude)
+
+    def __get_file_header(self) -> Union[FileHeader, None]:
+        format_type = self.format_type
+        if format_type == BAIKAL7_FMT:
+            return read_baikal7_header(self.path)
+        elif format_type == BAIKAL8_FMT:
+            return read_baikal8_header(self.path)
+        elif format_type == SIGMA_FMT:
+            return read_sigma_header(self.path)
+        else:
+            return
+
+    def __is_correct_resample_frequency(self, value: int) -> bool:
+        if value < 0:
+            return False
+        elif value == 0:
+            return True
+        else:
+            return not self.origin_frequency % value
+
+    def __create_unique_file_name(self) -> str:
+        return '{}.{}'.format(uuid.uuid4().hex, self.file_extension)
 
     def _get_component_signal(self, component_name='Z') -> np.ndarray:
         if self.channels_count == 3:
