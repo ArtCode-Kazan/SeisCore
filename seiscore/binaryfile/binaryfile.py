@@ -171,7 +171,7 @@ def read_baikal8_header(file_path: str) -> FileHeader:
         longitude = binary_read(f, DOUBLE_CTYPE, 1, 80)
     datetime_start = datetime(year, month, day, 0, 0, 0) + timedelta(
         seconds=seconds)
-    frequency = int(1/dt)
+    frequency = int(1 / dt)
     return FileHeader(channel_count, frequency, datetime_start, longitude,
                       latitude)
 
