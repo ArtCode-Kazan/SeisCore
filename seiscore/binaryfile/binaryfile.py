@@ -380,27 +380,6 @@ class BinaryFile:
         return 120 + 72 * channel_count
 
     @property
-    def discrete_amount(self):
-        file_size = os.path.getsize(self.path)
-        discrete_amount = int((file_size - self.header_memory_size) / (
-                self.file_header.channel_count * UNSIGNED_INT_CTYPE.byte_size))
-        return discrete_amount
-
-    @property
-    def seconds_duration(self) -> float:
-        discrete_count = self.discrete_amount
-        freq = self.signal_frequency
-        delta_seconds = (discrete_count - 1) / freq
-        return delta_seconds
-
-    @property
-    def datetime_stop(self) -> datetime:
-        delta_sec = self.seconds_duration
-        dt_start = self.datetime_start
-        result = dt_start + timedelta(seconds=delta_sec)
-        return result
-
-    @property
     def resample_parameter(self) -> int:
         return self.origin_frequency // self.resample_frequency
 
