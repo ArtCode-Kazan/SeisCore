@@ -325,18 +325,6 @@ class BinaryFile:
         return self.file_header.channel_count
 
     @property
-    def resample_frequency(self) -> int:
-        if self.__resample_frequency == 0:
-            self.__resample_frequency = self.signal_frequency
-        return self.__resample_frequency
-
-    @resample_frequency.setter
-    def resample_frequency(self, value: int):
-        signal_freq = self.signal_frequency
-        if signal_freq % value == 0:
-            self.__resample_frequency = value
-
-    @property
     def read_date_time_start(self) -> datetime:
         if self.__read_date_time_start is None:
             self.__read_date_time_start = self.datetime_start
