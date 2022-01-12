@@ -138,6 +138,9 @@ def binary_read(bin_data, x_type: TypeClass, count: int, skipping_bytes=0) \
 
 
 def read_baikal7_header(file_path: str) -> FileHeader:
+    """
+    Details: http://www.gsras.ru/unu/uploads/files/Dataloggers/Baikal-7HR.pdf
+    """
     with open(file_path, 'rb') as f:
         channel_count = binary_read(f, UNSIGNED_SHORT_CTYPE, 1, 0)
         frequency = binary_read(f, UNSIGNED_SHORT_CTYPE, 1, 22)
