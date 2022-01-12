@@ -82,15 +82,19 @@ BINARY_FILE_FORMATS = {BAIKAL7_FMT: BAIKAL7_EXTENSION,
 SIGMA_SECONDS_OFFSET = 2
 
 
-class BadHeaderData(Exception):
+class BadHeaderData(ValueError):
     pass
 
 
-class BadFilePath(Exception):
+class BadFilePath(OSError):
     pass
 
 
-class InvalidComponentName(Exception):
+class InvalidComponentName(ValueError):
+    pass
+
+
+class InvalidResampleFrequency(ValueError):
     pass
 
 
