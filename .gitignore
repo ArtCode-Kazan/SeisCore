@@ -1,6 +1,6 @@
 # IntelliJ project files
 .idea
-Drafts
+seiscore/Drafts
 venv
 build
 dist

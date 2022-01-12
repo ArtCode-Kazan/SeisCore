@@ -20,7 +20,7 @@ class TypeClass(NamedTuple):
 
 class FileHeader(NamedTuple):
     channel_count: int
-    signal_frequency: int
+    frequency: int
     datetime_start: datetime
     longitude: float
     latitude: float
