@@ -54,16 +54,16 @@ def generate_binary_lines(request):
         expected = 'qwerty'
         bin_fmt = struct.pack(f'{len(expected)}s', expected.encode())
     elif c_type == UNSIGNED_SHORT_CTYPE:
-        expected = (0, 1, 10, 100, 65535)
+        expected = [0, 1, 10, 100, 65535]
         bin_fmt = struct.pack(f'{len(expected)}H', *expected)
     elif c_type == UNSIGNED_INT_CTYPE:
-        expected = (0, 1, 100, 1000, 4294967295)
+        expected = [0, 1, 100, 1000, 4294967295]
         bin_fmt = struct.pack(f'{len(expected)}I', *expected)
     elif c_type == DOUBLE_CTYPE:
-        expected = (-1e10, -1, 0, 1, 1e10)
+        expected = [-1e10, -1, 0, 1, 1e10]
         bin_fmt = struct.pack(f'{len(expected)}d', *expected)
     elif c_type == UNSIGNED_LONG_LONG_CTYPE:
-        expected = (0, 1, 1000, 12456, 18446744073709551615)
+        expected = [0, 1, 1000, 12456, 18446744073709551615]
         bin_fmt = struct.pack(f'{len(expected)}Q', *expected)
     else:
         raise Exception('Invalid C type parameter')
