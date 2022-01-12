@@ -330,13 +330,6 @@ class BinaryFile:
             self.__read_date_time_start = self.datetime_start
         return self.__read_date_time_start
 
-    @property
-    def corrected_read_datetime_start(self) -> datetime:
-        origin_freq = self.signal_frequency
-        resample_freq = self.__resample_frequency
-        dt_offset = int(0.5 * (origin_freq / resample_freq - 1)) / origin_freq
-        return self.read_date_time_start + timedelta(seconds=dt_offset)
-
     @read_date_time_start.setter
     def read_date_time_start(self, value: datetime):
         dt1 = (value - self.datetime_start).total_seconds()
