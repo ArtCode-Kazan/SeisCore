@@ -72,7 +72,14 @@ UNSIGNED_INT_CTYPE = TypeClass('I', 4)
 DOUBLE_CTYPE = TypeClass('d', 8)
 UNSIGNED_LONG_LONG_CTYPE = TypeClass('Q', 8)
 
-BINARY_FILE_FORMATS = {'Baikal7': '00', 'Baikal8': 'xx', 'Sigma': 'bin'}
+BAIKAL7_FMT, BAIKAL8_FMT, SIGMA_FMT = 'Baikal7', 'Baikal8', 'Sigma'
+BAIKAL7_EXTENSION, BAIKAL8_EXTENSION, SIGMA_EXTENSION = '00', 'xx', 'bin'
+
+BINARY_FILE_FORMATS = {BAIKAL7_FMT: BAIKAL7_EXTENSION,
+                       BAIKAL8_FMT: BAIKAL8_EXTENSION,
+                       SIGMA_FMT: SIGMA_EXTENSION}
+
+SIGMA_SECONDS_OFFSET = 2
 
 
 class BadHeaderData(Exception):
