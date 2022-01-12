@@ -101,7 +101,8 @@ class InvalidResampleFrequency(ValueError):
 def is_binary_file_path(path) -> bool:
     if os.path.isfile(path):
         extension = os.path.basename(path).split('.')[-1]
-        if extension in BINARY_FILE_FORMATS.values():
+        if extension in {BAIKAL7_EXTENSION, BAIKAL8_EXTENSION,
+                         SIGMA_EXTENSION}:
             return True
         else:
             return False
