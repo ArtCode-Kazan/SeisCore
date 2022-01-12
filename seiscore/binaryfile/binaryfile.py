@@ -240,12 +240,34 @@ class BinaryFile:
         self.__read_date_time_stop = None
 
     @property
+    def path(self) -> str:
+        return self.__path
+
+    @property
+    def file_header(self) -> FileHeader:
+        return self.__file_header
+
+    @property
+    def is_use_avg_values(self) -> bool:
+        return self.__is_use_avg_values
+
+    @property
+    def origin_frequency(self) -> int:
+        return self.file_header.frequency
+
+    @property
+    def resample_frequency(self) -> int:
+        if self.__resample_frequency == 0:
+            self.__resample_frequency = self.origin_frequency
+        return self.__resample_frequency
+
+    @property
     def file_extension(self) -> str:
         return os.path.basename(self.path).split('.')[-1]
 
     @property
-    def path(self) -> str:
-        return self.__path
+    def unique_file_name(self) -> str:
+        return self.__unique_file_name
 
     @property
     def format_type(self) -> str:
@@ -254,43 +276,27 @@ class BinaryFile:
                 return format_type
 
     @property
-    def unique_file_name(self) -> str:
-        return '{}.{}'.format(uuid.uuid4().hex, self.file_extension)
-
-    @property
-    def use_avg_values(self) -> bool:
-        return self.__use_avg_values
-
-    @use_avg_values.setter
-    def use_avg_values(self, value: bool):
-        """
-        Flag - using substruction average values for signal
-        :param value: True - using / False - not need
-        :return:
-        """
-        self.__use_avg_values = value
-
-    @property
-    def file_header(self) -> FileHeader:
-        if self.__header_data is None:
-            format_type = self.format_type
-            if format_type == 'Baikal7':
-                self.__header_data = read_baikal7_header(self.path)
-            elif format_type == 'Baikal8':
-                self.__header_data = read_baikal8_header(self.path)
-            elif format_type == 'Sigma':
-                self.__header_data = read_sigma_header(self.path)
-            else:
-                pass
-        return self.__header_data
-
-    @property
-    def signal_frequency(self) -> int:
-        return self.file_header.signal_frequency
-
-    @property
-    def origin_datetime_start(self):
+    def origin_datetime_start(self) -> datetime:
         return self.file_header.datetime_start
+
+    @property
+    def discrete_amount(self) -> int:
+        file_size = os.path.getsize(self.path)
+        discrete_amount = int((file_size - self.header_memory_size) / (
+                self.file_header.channel_count * UNSIGNED_INT_CTYPE.byte_size))
+        return discrete_amount
+
+    @property
+    def seconds_duration(self) -> float:
+        discrete_count = self.discrete_amount
+        freq = self.origin_frequency
+        delta_seconds = (discrete_count - 1) / freq
+        return delta_seconds
+
+    @property
+    def origin_datetime_stop(self) -> datetime:
+        dt_diff = timedelta(seconds=self.seconds_duration)
+        return self.origin_datetime_start + dt_diff
 
     @property
     def datetime_start(self) -> datetime:
