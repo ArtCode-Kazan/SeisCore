@@ -249,12 +249,9 @@ class BinaryFile:
 
     @property
     def format_type(self) -> str:
-        if self.__format_type is None:
-            for format_type, extension in BINARY_FILE_FORMATS.items():
-                if self.file_extension == extension:
-                    self.__format_type = format_type
-                    break
-        return self.__format_type
+        for format_type, extension in BINARY_FILE_FORMATS.items():
+            if self.file_extension == extension:
+                return format_type
 
     @property
     def unique_file_name(self) -> str:
