@@ -409,13 +409,11 @@ class BinaryFile:
         return 'ZXY'
 
     @property
-    def components_index(self) -> dict:
-        record_type = self.record_type
-        x_component_index = record_type.index('X')
-        y_component_index = record_type.index('Y')
-        z_component_index = record_type.index('Z')
-        return dict(zip(list('XYZ'),
-            (x_component_index, y_component_index, z_component_index)))
+    def components_index(self) -> Dict[str, int]:
+        indexes = {}
+        for index, component in enumerate(self.record_type):
+            indexes[component] = index
+        return indexes
 
     @property
     def short_file_info(self) -> FileInfo:
