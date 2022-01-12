@@ -184,8 +184,8 @@ def read_sigma_header(file_path: str) -> FileHeader:
         longitude_src = binary_read(f, CHAR_CTYPE, 9, 48)
         date_src = str(binary_read(f, UNSIGNED_INT_CTYPE, 1, 60))
         time_src = str(binary_read(f, UNSIGNED_INT_CTYPE, 1, 64))
-    if len(time_src) == 5:
-        time_src = '0' + time_src
+
+    time_src = time_src.zfill(6)
     year = 2000 + int(date_src[:2])
     month, day = int(date_src[2:4]), int(date_src[4:])
     hours, minutes = int(time_src[:2]), int(time_src[2:4])
