@@ -213,13 +213,9 @@ class BinaryFile:
         is_path_correct = is_binary_file_path(path=file_path)
         if not is_path_correct:
             raise BadFilePath(f'Invalid path - {file_path}')
+
         # full file path
         self.__path = file_path
-        # resample frequency
-        self.__resample_frequency = resample_frequency
-
-        # file type
-        self.__format_type = None
 
         # header file data
         self.__file_header = self.__get_file_header()
