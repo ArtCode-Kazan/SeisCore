@@ -207,12 +207,6 @@ def read_sigma_header(file_path: str) -> FileHeader:
                       latitude)
 
 
-def get_correct_resample_frequency(signal_freq: int, resample_freq: int):
-    if resample_freq == 0 or signal_freq % resample_freq != 0:
-        return signal_freq
-    return resample_freq
-
-
 class BinaryFile:
     def __init__(self, file_path: str,
                  resample_frequency=0, is_use_avg_values=False):
