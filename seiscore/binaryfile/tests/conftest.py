@@ -1,4 +1,5 @@
 import os
+import random
 from random import randint
 from typing import Tuple, List
 from datetime import datetime, timedelta
@@ -7,8 +8,16 @@ import struct
 
 import pytest
 
-from seiscore.binaryfile.binaryfile import CHAR_CTYPE, DOUBLE_CTYPE, \
-    UNSIGNED_SHORT_CTYPE, UNSIGNED_INT_CTYPE, UNSIGNED_LONG_LONG_CTYPE
+from seiscore.binaryfile.binaryfile import (
+    CHAR_CTYPE, DOUBLE_CTYPE, UNSIGNED_SHORT_CTYPE, UNSIGNED_INT_CTYPE,
+    UNSIGNED_LONG_LONG_CTYPE
+)
+
+from seiscore.binaryfile.binaryfile import get_datetime_start_baikal7
+from seiscore.binaryfile.binaryfile import FileHeader
+
+from seiscore.binaryfile.tests.helpers import create_latitude_str
+from seiscore.binaryfile.tests.helpers import create_longitude_str
 
 
 def generate_word() -> str:
@@ -69,3 +78,101 @@ def generate_binary_lines(request):
         raise Exception('Invalid C type parameter')
 
     return bin_fmt, c_type, expected, len(expected)
+
+
+@pytest.fixture(params=[datetime(1980, 1, 1, 0, 0, 0),
+                        datetime(2000, 1, 2, 3, 4, 5),
+                        datetime(2022, 12, 31, 23, 59, 59)])
+def generate_baikal7_datetime(request):
+    const_datetime = datetime(1980, 1, 1, 0, 0, 0)
+    datetime_val = request.param
+
+    seconds_count = (datetime_val - const_datetime).total_seconds()
+    time_begin = seconds_count * 256_000_000
+    return time_begin, datetime_val
+
+
+@pytest.fixture
+def generate_baikal7_header():
+    channel_count = random.randint(1, 10)
+    frequency = random.randint(1, 10000)
+    latitude = random.randint(-9900, 9900) / 100
+    longitude = random.randint(-9900, 9900) / 100
+    time_begin = random.randint(0, int(1e10))
+
+    bin_fmt = struct.pack('H', channel_count)
+    bin_fmt += struct.pack('10H', *[0] * 10)
+    bin_fmt += struct.pack('H', frequency)
+    bin_fmt += struct.pack('24H', *[0] * 24)
+    bin_fmt += struct.pack('2d', latitude, longitude)
+    bin_fmt += struct.pack('8H', *[0] * 8)
+    bin_fmt += struct.pack('1Q', time_begin)
+
+    datetime_start = get_datetime_start_baikal7(time_begin)
+    return FileHeader(channel_count, frequency, datetime_start, longitude,
+                      latitude), bin_fmt
+
+
+@pytest.fixture
+def generate_baikal8_header():
+    channel_count = random.randint(1, 10)
+
+    datetime_start = datetime.now()
+    day = datetime_start.day
+    month = datetime_start.month
+    year = datetime_start.year
+
+    day_start = datetime_start.replace(hour=0, minute=0, second=0,
+                                       microsecond=0)
+    seconds = (datetime_start - day_start).total_seconds()
+
+    frequency = randint(1, 10000)
+    dt = 1 / frequency
+    latitude = random.randint(-9900, 9900) / 100
+    longitude = random.randint(-9900, 9900) / 100
+
+    bin_fmt = struct.pack('H', channel_count)
+    bin_fmt += struct.pack('2H', 0, 0)
+    bin_fmt += struct.pack('3H', day, month, year)
+    bin_fmt += struct.pack('18H', *[0] * 18)
+    bin_fmt += struct.pack('2d', dt, seconds)
+    bin_fmt += struct.pack('d', 0)
+    bin_fmt += struct.pack('2d', latitude, longitude)
+    return FileHeader(channel_count, frequency, datetime_start, longitude,
+                      latitude), bin_fmt
+
+
+@pytest.fixture
+def generate_sigma_header():
+    channel_count = random.randint(1, 10)
+    frequency = random.randint(1, 10000)
+    latitude = random.randint(1, 9900) / 100
+    lat_str = create_latitude_str(latitude)
+
+    longitude = random.randint(1, 9900) / 100
+    long_str = create_longitude_str(longitude)
+
+    datetime_start = datetime.now()
+    datetime_start = datetime_start.replace(microsecond=0)
+    year = datetime_start.year
+    month = datetime_start.month
+    day = datetime_start.day
+    date_as_int = int(str(year)[2:] + str(month).zfill(2) + str(day).zfill(2))
+
+    hour_str = str(datetime_start.hour).zfill(2)
+    minute_str = str(datetime_start.minute).zfill(2)
+    seconds = str(datetime_start.second).zfill(2)
+    time_as_int = int(hour_str + minute_str + seconds)
+
+    bin_fmt = struct.pack('6H', *[0] * 6)
+    bin_fmt += struct.pack('I', channel_count)
+    bin_fmt += struct.pack('4H', *[0] * 4)
+    bin_fmt += struct.pack('I', frequency)
+    bin_fmt += struct.pack('6H', *[0] * 6)
+    bin_fmt += struct.pack('8s9s', lat_str.encode(), long_str.encode())
+    bin_fmt += struct.pack('3s', '   '.encode())
+    bin_fmt += struct.pack('I', date_as_int)
+    bin_fmt += struct.pack('I', time_as_int)
+
+    return FileHeader(channel_count, frequency, datetime_start, longitude,
+                      latitude), bin_fmt
