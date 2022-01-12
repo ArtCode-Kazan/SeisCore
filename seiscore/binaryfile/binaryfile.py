@@ -290,7 +290,17 @@ class BinaryFile:
 
     @property
     def datetime_start(self) -> datetime:
-        return self.origin_datetime_start
+        if self.format_type == 'Sigma':
+            time_diff = timedelta(seconds=SIGMA_SECONDS_OFFSET)
+        else:
+            time_diff = timedelta(seconds=0)
+        return self.file_header.datetime_start + time_diff
+
+    @property
+    def datetime_stop(self) -> datetime:
+        time_diff = timedelta(seconds=self.seconds_duration)
+        dt_start = self.datetime_start
+        return dt_start + time_diff
 
     @property
     def longitude(self) -> float:
