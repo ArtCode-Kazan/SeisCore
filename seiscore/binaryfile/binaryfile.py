@@ -207,7 +207,7 @@ def read_sigma_header(file_path: str) -> FileHeader:
 
 class BinaryFile:
     def __init__(self, file_path: str,
-                 resample_frequency=0, use_avg_values=False):
+                 resample_frequency=0, is_use_avg_values=False):
         is_path_correct = is_binary_file_path(path=file_path)
         if not is_path_correct:
             raise BadFilePath(f'Invalid path - {file_path}')
@@ -223,7 +223,7 @@ class BinaryFile:
         self.__header_data = None
 
         # boolean-parameter for subtraction average values
-        self.__use_avg_values = use_avg_values
+        self.__is_use_avg_values = is_use_avg_values
 
         # date and time for start signal reading
         self.__read_date_time_start = None
