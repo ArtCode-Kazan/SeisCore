@@ -180,8 +180,8 @@ def read_sigma_header(file_path: str) -> FileHeader:
     with open(file_path, 'rb') as f:
         channel_count = binary_read(f, UNSIGNED_INT_CTYPE, 1, 12)
         frequency = binary_read(f, UNSIGNED_INT_CTYPE, 1, 24)
-        latitude = binary_read(f, CHAR_CTYPE, 8, 40)
-        longitude = binary_read(f, CHAR_CTYPE, 9, 48)
+        latitude_src = binary_read(f, CHAR_CTYPE, 8, 40)
+        longitude_src = binary_read(f, CHAR_CTYPE, 9, 48)
         date_src = str(binary_read(f, UNSIGNED_INT_CTYPE, 1, 60))
         time_src = str(binary_read(f, UNSIGNED_INT_CTYPE, 1, 64))
     if len(time_src) == 5:
@@ -197,8 +197,10 @@ def read_sigma_header(file_path: str) -> FileHeader:
         raise BadHeaderData('invalid date/time values')
 
     try:
-        longitude = int(longitude[:3]) + float(longitude[3:-1])/60
-        latitude = int(latitude[:2]) + float(latitude[2:-1])/60
+        longitude = round(int(longitude_src[:3]) +
+                          float(longitude_src[3:-1]) / 60, 2)
+        latitude = round(int(latitude_src[:2]) +
+                         float(latitude_src[2:-1]) / 60, 2)
     except ValueError:
         raise BadHeaderData('invalid longitude/latitude')
     return FileHeader(channel_count, frequency, datetime_start, longitude,
