@@ -137,6 +137,12 @@ def binary_read(bin_data, x_type: TypeClass, count: int, skipping_bytes=0) \
     return result
 
 
+def get_datetime_start_baikal7(time_begin: int) -> datetime:
+    const_datetime = datetime(1980, 1, 1, 0, 0, 0)
+    seconds = time_begin / 256_000_000
+    return const_datetime + timedelta(seconds=seconds)
+
+
 def read_baikal7_header(file_path: str) -> FileHeader:
     """
     Details: http://www.gsras.ru/unu/uploads/files/Dataloggers/Baikal-7HR.pdf
@@ -148,8 +154,7 @@ def read_baikal7_header(file_path: str) -> FileHeader:
         longitude = binary_read(f, DOUBLE_CTYPE, 1, 80)
         time_begin = binary_read(f, UNSIGNED_LONG_LONG_CTYPE, 1, 104)
 
-    seconds = time_begin / 256000000
-    datetime_start = datetime(1980, 1, 1, 0, 0, 0) + timedelta(seconds=seconds)
+    datetime_start = get_datetime_start_baikal7(time_begin)
     return FileHeader(channel_count, frequency, datetime_start, longitude,
                       latitude)
 
