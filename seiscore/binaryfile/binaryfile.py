@@ -368,7 +368,7 @@ class BinaryFile:
     @property
     def end_moment(self) -> int:
         dt = (self.read_date_time_stop - self.datetime_start).total_seconds()
-        discreet_index = int(round(dt * self.signal_frequency))
+        discreet_index = int(round(dt * self.origin_frequency))
         signal_length = discreet_index - self.start_moment
         signal_length -= signal_length % self.resample_parameter
         discreet_index = self.start_moment + signal_length
@@ -402,7 +402,7 @@ class BinaryFile:
 
     @property
     def resample_parameter(self) -> int:
-        return self.signal_frequency // self.resample_frequency
+        return self.origin_frequency // self.resample_frequency
 
     @property
     def record_type(self) -> str:
@@ -419,7 +419,7 @@ class BinaryFile:
 
     @property
     def short_file_info(self) -> FileInfo:
-        return FileInfo(self.path, self.format_type, self.signal_frequency,
+        return FileInfo(self.path, self.format_type, self.origin_frequency,
                         self.datetime_start, self.datetime_stop,
                         self.longitude, self.latitude)
 
