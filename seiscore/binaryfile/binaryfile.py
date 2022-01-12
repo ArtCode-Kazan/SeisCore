@@ -207,6 +207,12 @@ def read_sigma_header(file_path: str) -> FileHeader:
                       latitude)
 
 
+def get_correct_resample_frequency(signal_freq: int, resample_freq: int):
+    if resample_freq == 0 or signal_freq % resample_freq != 0:
+        return signal_freq
+    return resample_freq
+
+
 class BinaryFile:
     def __init__(self, file_path: str,
                  resample_frequency=0, is_use_avg_values=False):
@@ -227,6 +233,13 @@ class BinaryFile:
         # boolean-parameter for subtraction average values
         self.__is_use_avg_values = is_use_avg_values
 
+        # resample frequency
+        if self.__is_correct_resample_frequency(resample_frequency):
+            self.__resample_frequency = resample_frequency
+        else:
+            raise InvalidResampleFrequency()
+
+        self.__unique_file_name = self.__create_unique_file_name()
         # date and time for start signal reading
         self.__read_date_time_start = None
         # date and time for end signal reading
