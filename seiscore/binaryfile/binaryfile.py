@@ -130,7 +130,10 @@ def binary_read(bin_data, x_type: TypeClass, count: int, skipping_bytes=0) \
     if x_type.label == 's':
         result = struct.unpack(fmt, record)[0].decode('utf-8')
     else:
-        result = struct.unpack(fmt, record)
+        if count == 1:
+            result = struct.unpack(fmt, record)[0]
+        else:
+            result = list(struct.unpack(fmt, record))
     return result
 
 
