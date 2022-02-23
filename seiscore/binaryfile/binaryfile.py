@@ -311,7 +311,7 @@ class BinaryFile:
 
     @property
     def datetime_start(self) -> datetime:
-        if self.format_type == 'Sigma':
+        if self.format_type == SIGMA_FMT:
             time_diff = timedelta(seconds=SIGMA_SECONDS_OFFSET)
         else:
             time_diff = timedelta(seconds=0)
