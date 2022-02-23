@@ -80,6 +80,7 @@ BINARY_FILE_FORMATS = {BAIKAL7_FMT: BAIKAL7_EXTENSION,
                        SIGMA_FMT: SIGMA_EXTENSION}
 
 SIGMA_SECONDS_OFFSET = 2
+COMPONENTS_ORDER = 'ZXY'
 
 
 class BadHeaderData(ValueError):
@@ -373,7 +374,7 @@ class BinaryFile:
 
     @property
     def record_type(self) -> str:
-        return 'ZXY'
+        return COMPONENTS_ORDER
 
     @property
     def components_index(self) -> Dict[str, int]:
