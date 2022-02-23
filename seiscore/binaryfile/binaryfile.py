@@ -99,6 +99,10 @@ class InvalidResampleFrequency(ValueError):
     pass
 
 
+class InvalidDateTimeValue(ValueError):
+    pass
+
+
 def is_binary_file_path(path) -> bool:
     if os.path.isfile(path):
         extension = os.path.basename(path).split('.')[-1]
@@ -331,10 +335,11 @@ class BinaryFile:
     @read_date_time_start.setter
     def read_date_time_start(self, value: datetime):
         dt1 = (value - self.datetime_start).total_seconds()
-        if dt1 >= 0:
+        dt2 = (self.datetime_stop - value).total_seconds()
+        if dt1 >= 0 and dt2 > 0:
             self.__read_date_time_start = value
         else:
-            self.__read_date_time_start = self.datetime_start
+            raise InvalidDateTimeValue('Invalid start reading datetime ')
 
     @property
     def read_date_time_stop(self) -> datetime:
@@ -344,11 +349,12 @@ class BinaryFile:
 
     @read_date_time_stop.setter
     def read_date_time_stop(self, value: datetime):
+        dt1 = (value - self.datetime_start).total_seconds()
         dt2 = (self.datetime_stop - value).total_seconds()
-        if dt2 >= 0:
+        if dt1 > 0 and dt2 >= 0:
             self.__read_date_time_stop = value
         else:
-            self.__read_date_time_stop = self.datetime_stop
+            raise InvalidDateTimeValue('Invalid stop reading datetime ')
 
     @property
     def start_moment(self) -> int:
