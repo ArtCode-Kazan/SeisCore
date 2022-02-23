@@ -286,7 +286,9 @@ class BinaryFile:
     def seconds_duration(self) -> float:
         discrete_count = self.discrete_amount
         freq = self.origin_frequency
-        delta_seconds = (discrete_count - 1) / freq
+
+        accuracy = int(math.log10(freq))
+        delta_seconds = round(discrete_count / freq, accuracy)
         return delta_seconds
 
     @property
