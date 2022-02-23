@@ -280,6 +280,15 @@ class BinaryFile:
         return self.file_header.datetime_start
 
     @property
+    def channels_count(self) -> int:
+        return self.file_header.channel_count
+
+    @property
+    def header_memory_size(self) -> int:
+        channel_count = self.channels_count
+        return 120 + 72 * channel_count
+
+    @property
     def discrete_amount(self) -> int:
         file_size = os.path.getsize(self.path)
         discrete_amount = int((file_size - self.header_memory_size) / (
@@ -311,8 +320,7 @@ class BinaryFile:
     @property
     def datetime_stop(self) -> datetime:
         time_diff = timedelta(seconds=self.seconds_duration)
-        dt_start = self.datetime_start
-        return dt_start + time_diff
+        return self.datetime_start + time_diff
 
     @property
     def longitude(self) -> float:
@@ -321,10 +329,6 @@ class BinaryFile:
     @property
     def latitude(self) -> float:
         return round(self.file_header.latitude, 6)
-
-    @property
-    def channels_count(self) -> int:
-        return self.file_header.channel_count
 
     @property
     def read_date_time_start(self) -> datetime:
@@ -370,11 +374,6 @@ class BinaryFile:
         signal_length -= signal_length % self.resample_parameter
         discreet_index = self.start_moment + signal_length
         return discreet_index
-
-    @property
-    def header_memory_size(self) -> int:
-        channel_count = self.channels_count
-        return 120 + 72 * channel_count
 
     @property
     def resample_parameter(self) -> int:
