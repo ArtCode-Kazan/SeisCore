@@ -363,8 +363,8 @@ class BinaryFile:
     @property
     def start_moment(self) -> int:
         dt_diff = self.read_date_time_start - self.datetime_start
-        dt = dt_diff.total_seconds()
-        return int(round(dt * self.origin_frequency))
+        dt_seconds = dt_diff.total_seconds()
+        return int(round(dt_seconds * self.origin_frequency))
 
     @property
     def end_moment(self) -> int:
