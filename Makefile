@@ -1,31 +1,14 @@
-CUR_DIR = $(CURDIR)
-CYTHON_FOLDER = $(CUR_DIR)/"seiscore/binaryfile/resampling"
+VERSION="1.0.0"
 
-.PHONY: run
 
-seiscore-uninstall:
-	pip uninstall -y seiscore
+create-image:
+	docker build -t seiscore:$(VERSION) .
 
-requirements-install:
-	pip install -r requirements.txt
 
-cython-preparing:
-	apt-get -y install gcc
-	pip install Cython
-	cd $(CYTHON_FOLDER) && rm -rf *.so *.c
+upload-image:
+	docker build -t ghcr.io/mikkoartik/seiscore:$(VERSION) .
+	docker push ghcr.io/mikkoartik/seiscore:$(VERSION)
 
-cython-compile:
-	cd $(CYTHON_FOLDER) && python setup.py build_ext --inplace
-	cd $(CYTHON_FOLDER) && rm -f setup.py
 
-seiscore-install:
-	python setup.py install
-
-cython-clean:
-	apt-get -y remove --purge make gcc
-	pip uninstall -y Cython
-
-clean:
-	rm -rf $(APP_DIR)
-
-run: seiscore-uninstall requirements-install cython-preparing cython-compile seiscore-install cython-clean clean
+load-image:
+	docker pull ghcr.io/mikkoartik/seiscore:$(VERSION)
