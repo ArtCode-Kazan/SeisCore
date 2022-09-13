@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from itertools import permutations
 import struct
 
+import numpy as np
 import pytest
 
 from seiscore.binaryfile.binaryfile import (
@@ -18,6 +19,8 @@ from seiscore.binaryfile.binaryfile import FileHeader
 
 from seiscore.binaryfile.tests.helpers import create_latitude_str
 from seiscore.binaryfile.tests.helpers import create_longitude_str
+
+from seiscore.binaryfile.tests.helpers import add_microseconds
 
 
 def generate_word() -> str:
@@ -94,7 +97,7 @@ def generate_baikal7_datetime(request):
 
 @pytest.fixture
 def generate_baikal7_header():
-    channel_count = random.randint(1, 10)
+    channel_count = 3
     frequency = random.randint(1, 10000)
     latitude = random.randint(-9900, 9900) / 100
     longitude = random.randint(-9900, 9900) / 100
@@ -115,7 +118,7 @@ def generate_baikal7_header():
 
 @pytest.fixture
 def generate_baikal8_header():
-    channel_count = random.randint(1, 10)
+    channel_count = 3
 
     datetime_start = datetime.now()
     day = datetime_start.day
@@ -144,7 +147,7 @@ def generate_baikal8_header():
 
 @pytest.fixture
 def generate_sigma_header():
-    channel_count = random.randint(1, 10)
+    channel_count = 3
     frequency = random.randint(1, 10000)
     latitude = random.randint(1, 9900) / 100
     lat_str = create_latitude_str(latitude)
@@ -176,3 +179,41 @@ def generate_sigma_header():
 
     return FileHeader(channel_count, frequency, datetime_start, longitude,
                       latitude), bin_fmt
+
+
+@pytest.fixture
+def generate_datetime():
+    mid_datetime = add_microseconds(datetime.now(), frequency=1000)
+    dataset = [
+        (mid_datetime, mid_datetime + timedelta(5),
+         mid_datetime),
+        (mid_datetime, mid_datetime + timedelta(5),
+         mid_datetime + timedelta(5))
+    ]
+    for i in range(1000):
+        start_offset = timedelta(*[randint(-10, -1) for _ in range(4)])
+        stop_offset = timedelta(*[randint(1, 10) for _ in range(4)])
+        read_offset = timedelta(*[randint(-10, 10) for _ in range(4)])
+
+        start_datetime = add_microseconds(mid_datetime + start_offset,
+                                          frequency=1000)
+        stop_datetime = add_microseconds(mid_datetime + stop_offset,
+                                         frequency=1000)
+        read_datetime = add_microseconds(mid_datetime + read_offset,
+                                         frequency=1000)
+
+        dataset.append((start_datetime, stop_datetime, read_datetime))
+    return dataset
+
+
+@pytest.fixture
+def generate_baikal7_file(generate_baikal7_header):
+    file_header, header_bin_fmt = generate_baikal7_header
+
+    channels_header_size = 72 * file_header.channel_count
+    zeros_count = int(channels_header_size / UNSIGNED_SHORT_CTYPE.byte_size)
+    channels_bin_fmt = struct.pack(f'{zeros_count}H', *[0] * zeros_count)
+
+    values = np.random.randint(-1000, 1000, size=(10_000, 3), dtype=np.int32)
+    bin_fmt = header_bin_fmt + channels_bin_fmt + values.tobytes()
+    return file_header, values, bin_fmt
