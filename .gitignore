@@ -7,6 +7,7 @@ dist
 seiscore.egg-info
 .pytest_cache
 docs
+Drafts
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
