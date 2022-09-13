@@ -122,10 +122,10 @@ def binary_read(bin_data, x_type: TypeClass, count: int, skipping_bytes=0) \
     :param bin_data: open binary file [bin_data = open(file_00, 'rb')]
     :param skipping_bytes: bytes amount for skipping bytes from beginning
     of file
-    :param x_type: data C-type [s-string (char), H-unsigned short,
-                                I-unsigned int, d-double,
-                                Q-unsigned long long]
-    :param count: symbols count or numbers count (not digits!)
+    :param x_type: C-type [s-string (char), H-unsigned short,
+                           I-unsigned int, d-double,
+                           Q-unsigned long long]
+    :param count: symbols or numbers count (not digits!)
     :return: python data type
     """
     fmt = f'{count}{x_type.label}'
