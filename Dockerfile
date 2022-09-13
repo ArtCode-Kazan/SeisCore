@@ -14,7 +14,7 @@ RUN python3.8 -m pip install --upgrade pip
 
 RUN apt-get install gcc
 RUN python3.8 -m pip install Cython
-RUN python3.8 -m pip install numpy==1.20.3 scipy==1.6.3 \
+RUN python3.8 -m pip install numpy==1.22.0 scipy==1.6.3 \
     PyWavelets==1.1.1 matplotlib==3.4.2
 
 ENV PACKAGE_DIR=/package

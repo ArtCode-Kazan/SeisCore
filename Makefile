@@ -1,12 +1,11 @@
-VERSION="1.0.0"
+VERSION="1.0.1"
 
 
 create-image:
 	docker build -t seiscore:$(VERSION) .
-
+	docker build -t ghcr.io/mikkoartik/seiscore:$(VERSION) .
 
 upload-image:
-	docker build -t ghcr.io/mikkoartik/seiscore:$(VERSION) .
 	docker push ghcr.io/mikkoartik/seiscore:$(VERSION)
 
 

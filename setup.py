@@ -13,7 +13,7 @@ setup(
     include_package_data=True,
     zip=False,
     install_requires=[
-        'numpy==1.20.3',
+        'numpy==1.22.0',
         'scipy==1.6.3',
         'pywavelets==1.1.1',
         'matplotlib==3.4.2'
