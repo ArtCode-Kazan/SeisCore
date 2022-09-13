@@ -359,7 +359,7 @@ class BinaryFile:
         if dt1 > 0 and dt2 >= 0:
             self.__read_date_time_stop = value
         else:
-            raise InvalidDateTimeValue('Invalid stop reading datetime ')
+            raise InvalidDateTimeValue('Invalid stop reading datetime')
 
     @property
     def start_moment(self) -> int:
@@ -448,4 +448,9 @@ class BinaryFile:
         if component not in self.components_index:
             raise InvalidComponentName(f'{component} not found')
         signal_array = self._get_component_signal(component_name=component)
-        return self._resample_signal(src_signal=signal_array)
+
+        resample_signal = self._resample_signal(src_signal=signal_array)
+        if not self.is_use_avg_values:
+            return resample_signal
+
+        return resample_signal - int(np.average(resample_signal))
