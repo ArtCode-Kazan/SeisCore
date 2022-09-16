@@ -39,4 +39,5 @@ package-install:
 	cd $(CYTHON_DIR) && python3.8 setup.py build_ext --inplace
 	cd $(CYTHON_DIR) && rm -f setup.py
 
-	sudo python3.8 setup.py install
+	python3.8 setup.py bdist_wheel
+	sudo python3.8 -m pip install dist/seiscore-$(VERSION)-py3-none-any.whl
