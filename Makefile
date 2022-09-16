@@ -1,4 +1,4 @@
-VERSION="1.0.1"
+VERSION=1.0.1
 CYTHON_DIR=$(CURDIR)/seiscore/binaryfile/resampling
 
 
@@ -40,4 +40,4 @@ package-install:
 	cd $(CYTHON_DIR) && rm -f setup.py
 
 	python3.8 setup.py bdist_wheel
-	sudo python3.8 -m pip install dist/seiscore-$(VERSION)-py3-none-any.whl
+	cd $(CURDIR)/dist && sudo python3.8 -m pip install seiscore-$(VERSION)-py3-none-any.whl
