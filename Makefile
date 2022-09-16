@@ -1,4 +1,4 @@
-VERSION=1.0.1
+VERSION=1.0.0
 CYTHON_DIR=$(CURDIR)/seiscore/binaryfile/resampling
 
 
