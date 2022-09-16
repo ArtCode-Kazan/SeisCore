@@ -32,11 +32,11 @@ python-install:
 
 package-install:
 	sudo apt-get install -y gcc
-	python3.8 -m pip install Cython
-	python3.8 -m pip install numpy==1.22.0 scipy==1.6.3 \
+	sudo python3.8 -m pip install Cython
+	sudo python3.8 -m pip install numpy==1.22.0 scipy==1.6.3 \
     PyWavelets==1.1.1 matplotlib==3.4.2
 
 	cd $(CYTHON_DIR) && python3.8 setup.py build_ext --inplace
 	cd $(CYTHON_DIR) && rm -f setup.py
 
-	python3.8 setup.py install
+	sudo python3.8 setup.py install
