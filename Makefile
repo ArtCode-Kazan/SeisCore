@@ -36,7 +36,7 @@ package-install:
 	python3.8 -m pip install numpy==1.22.0 scipy==1.6.3 \
     PyWavelets==1.1.1 matplotlib==3.4.2
 
-	cd $CYTHON_DIR && python3.8 setup.py build_ext --inplace
-	cd $CYTHON_DIR && rm -f setup.py
+	cd $(CYTHON_DIR) && python3.8 setup.py build_ext --inplace
+	cd $(CYTHON_DIR) && rm -f setup.py
 
-	cd $PACKAGE_DIR && python3.8 setup.py install
+	python3.8 setup.py install
