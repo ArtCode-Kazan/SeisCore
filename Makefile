@@ -1,3 +1,6 @@
+# Makefile only for UBUNTU 18.04
+
+
 VERSION=1.0.0
 CYTHON_DIR=$(CURDIR)/seiscore/binaryfile/resampling
 
@@ -17,17 +20,16 @@ load-image:
 
 python-install:
 	sudo apt-get update
-	sudo apt-get install -y build-essential zlib1g-dev libncurses5-dev \
-    libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
-	sudo apt-get install -y libsqlite3-dev
+	sudo apt-get -y upgrade
+	sudo apt install -y software-properties-common gcc wget unzip
+	sudo apt autoremove -y
 
-	wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tar.xz
-	tar -xf Python-3.8.12.tar.xz
-	cd Python-3.8.12 && ./configure --enable-optimizations
-	cd Python-3.8.12 && make -j 4
-	cd Python-3.8.12 && make altinstall
-	python3.8 -m pip install --upgrade pip
-	rm -rf Python-3.8.12.tar.xz Python-3.8.12
+	sudo add-apt-repository ppa:deadsnakes/ppa
+	sudo apt install -y python3.8 python3.8-dev python3.8-distutils
+
+	wget https://bootstrap.pypa.io/get-pip.py
+	sudo python3.8 get-pip.py
+	sudo python3.8 -m pip install --upgrade pip
 
 
 package-install:
