@@ -43,3 +43,16 @@ package-install:
 
 	python3.8 setup.py bdist_wheel
 	cd $(CURDIR)/dist && sudo python3.8 -m pip install seiscore-$(VERSION)-py3-none-any.whl
+
+
+package-build:
+	cd $(CYTHON_DIR) && python3.8 setup.py build_ext --inplace
+	cd $(CYTHON_DIR) && mv setup.py setup.pytmp
+
+	rm -rf build && rm -rf seiscore.egg-info
+
+	python setup.py bdist_wheel
+
+	cd $(CYTHON_DIR) && mv setup.pytmp setup.py
+
+
