@@ -191,6 +191,7 @@ def read_sigma_header(file_path: str) -> FileHeader:
         date_src = str(binary_read(f, UNSIGNED_INT_CTYPE, 1, 60))
         time_src = str(binary_read(f, UNSIGNED_INT_CTYPE, 1, 64))
 
+    date_src = date_src.zfill(6)
     time_src = time_src.zfill(6)
     year = 2000 + int(date_src[:2])
     month, day = int(date_src[2:4]), int(date_src[4:])
