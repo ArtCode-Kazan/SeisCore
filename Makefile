@@ -65,15 +65,9 @@ endif
 	make create-build
 	cd $(CURDIR)/dist && sudo python3.8 -m pip install seiscore-$(VERSION)-py3-none-any.whl
 
-	python3.8 aliases.py --install
-	$(shell source ~/.bashrc)
-
 
 uninstall:
 	sudo python3.8 -m pip uninstall seiscore
-
-	python3.8 aliases.py --remove
-	$(shell source ~/.bashrc)
 
 
 update:
