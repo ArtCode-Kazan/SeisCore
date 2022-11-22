@@ -27,6 +27,8 @@ install-python:
 	wget https://bootstrap.pypa.io/get-pip.py
 	sudo python3.8 get-pip.py
 	sudo python3.8 -m pip install --upgrade pip
+	rm -f get-pip.py
+	sudo python3.8 -m pip install wheel
 
 
 install-dependencies:
