@@ -21,7 +21,7 @@ install-python:
 	sudo apt install -y software-properties-common gcc wget unzip
 	sudo apt autoremove -y
 
-	sudo add-apt-repository ppa:deadsnakes/ppa
+	sudo add-apt-repository -y ppa:deadsnakes/ppa
 	sudo apt install -y python3.8 python3.8-dev python3.8-distutils
 
 	wget https://bootstrap.pypa.io/get-pip.py
@@ -69,7 +69,7 @@ endif
 
 
 uninstall:
-	sudo python3.8 -m pip uninstall seiscore
+	sudo python3.8 -m pip uninstall -y seiscore
 
 
 update:
