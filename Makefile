@@ -1,18 +1,17 @@
+IMAGE_NAME=seiscore
 VERSION=1.0.1
+DOCKER_USERNAME=artcode-kazan
+
 CYTHON_DIR=$(CURDIR)/seiscore/binaryfile/resampling
 
-
 create-image:
-	docker build -t seiscore:$(VERSION) .
-	docker build -t ghcr.io/mikkoartik/seiscore:$(VERSION) .
-
+	docker build -t $(IMAGE_NAME):$(VERSION) .
+	docker build -t ghcr.io/$(DOCKER_USERNAME)/$(IMAGE_NAME):$(VERSION) .
 
 upload-image:
-	docker push ghcr.io/mikkoartik/seiscore:$(VERSION)
-
-
-load-image:
-	docker pull ghcr.io/mikkoartik/seiscore:$(VERSION)
+	. ~/.profile && \
+	echo $(CR_PAT) | docker login ghcr.io -u $(DOCKER_USERNAME) --password-stdin
+	docker push ghcr.io/$(DOCKER_USERNAME)/$(IMAGE_NAME):$(VERSION)
 
 
 install-python:
@@ -28,7 +27,7 @@ install-python:
 	sudo python3.8 get-pip.py
 	sudo python3.8 -m pip install --upgrade pip
 	rm -f get-pip.py
-	sudo python3.8 -m pip install wheel
+	sudo python3.8 -m pip install wheel poetry
 
 
 install-dependencies:
