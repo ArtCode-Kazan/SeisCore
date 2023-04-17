@@ -8,3 +8,5 @@ Drafts
 *.c
 *.so
 *.txt
+*.lock
+Makefile
