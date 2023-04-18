@@ -1,18 +1,12 @@
 # IntelliJ project files
 .idea
-seiscore/Drafts
-venv
 build
 dist
 seiscore.egg-info
 .pytest_cache
 docs
 Drafts
-
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+__pycache__
 
 # C extensions
 *.so
