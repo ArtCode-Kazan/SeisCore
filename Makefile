@@ -48,7 +48,7 @@ create-build:
 	python3.8 setup.py bdist_wheel
 
 	cd $(CYTHON_DIR) && mv setup.pytmp setup.py
-	make after-build
+	rm -rf build && rm -rf seiscore.egg-info
 
 
 install:
