@@ -52,16 +52,6 @@ create-build:
 
 
 install:
-ifeq (${python_version_major}, 3)
-ifeq (${python_version_minor}, 8)
-	@echo "Python version 3.8 installed"
-else
-	make install-python
-endif
-else
-	make install-python
-endif
-
 	make install-dependencies
 	make create-build
 	cd $(CURDIR)/dist && sudo python3.8 -m pip install seiscore-$(VERSION)-py3-none-any.whl
