@@ -38,13 +38,7 @@ install-python:
 
 install-dependencies:
 	sudo apt-get install -y gcc
-	sudo python3.8 -m pip install Cython
-	sudo python3.8 -m pip install numpy==1.22.0 scipy==1.6.3 \
-	PyWavelets==1.1.1 matplotlib==3.4.2
-
-
-after-build:
-	rm -rf build && rm -rf seiscore.egg-info
+	sudo poetry install --no-root
 
 
 create-build:
