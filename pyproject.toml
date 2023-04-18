@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "seiscorepackage"
+name = "seiscore"
 version = "0.1.0"
 description = ""
 authors = ["Michael <mihail.tchernov@yandex.ru>"]
