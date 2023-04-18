@@ -8,6 +8,7 @@ create-image:
 	docker build -t $(IMAGE_NAME):$(VERSION) .
 	docker build -t ghcr.io/$(DOCKER_USERNAME)/$(IMAGE_NAME):$(VERSION) .
 
+
 upload-image:
 	. ~/.profile && \
 	echo $(CR_PAT) | docker login ghcr.io -u $(DOCKER_USERNAME) --password-stdin
@@ -17,17 +18,22 @@ upload-image:
 install-python:
 	sudo apt-get update
 	sudo apt-get -y upgrade
-	sudo apt install -y software-properties-common gcc wget unzip
+	sudo apt-get install -y build-essential zlib1g-dev libncurses5-dev \
+    libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
+	sudo apt-get install -y libsqlite3-dev
 	sudo apt autoremove -y
 
-	sudo add-apt-repository -y ppa:deadsnakes/ppa
-	sudo apt install -y python3.8 python3.8-dev python3.8-distutils
+	wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tar.xz
+	tar -xf Python-3.8.12.tar.xz
+	cd Python-3.8.12 && ./configure --enable-optimizations
+	cd Python-3.8.12 && make -j 4
+	cd Python-3.8.12 && make altinstall
+	rm -rf Python-3.8.12.tar.xz Python-3.8.12
 
 	wget https://bootstrap.pypa.io/get-pip.py
-	sudo python3.8 get-pip.py
-	sudo python3.8 -m pip install --upgrade pip
+	python3.8 get-pip.py && sudo python3.8 -m pip install --upgrade pip
 	rm -f get-pip.py
-	sudo python3.8 -m pip install wheel poetry
+	sudo python3.8 -m pip install poetry
 
 
 install-dependencies:
